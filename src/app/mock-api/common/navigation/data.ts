@@ -973,7 +973,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon : 'heroicons_outline:megaphone',
                 link : '/docs/changelog',
                 badge: {
-                    title  : '19.1.0',
+                    title  : '20.0.0',
                     classes: 'px-2 bg-yellow-300 text-black rounded-full',
                 },
             },

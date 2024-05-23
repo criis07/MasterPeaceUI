@@ -13,6 +13,27 @@ export class ChangelogComponent
 {
     changelog: any[] = [
 
+        // v20.0.0
+        {
+            version    : 'v20.0.0',
+            releaseDate: 'May 27, 2024',
+            changes: [
+                {
+                    type: 'Changed',
+                    list: [
+                        '(Dependencies) Updated Angular & Angular Material to v18',
+                        '(Dependencies) Updated other packages',
+                        'Moved the project to the new "application" builder'
+                    ],
+                },
+                {
+                    type: 'Fixed',
+                    list: [
+                        '(apps/mailbox) "filter" renamed to "funnel" accidentally',
+                    ],
+                },
+            ]
+        },
         // v19.1.0
         {
             version    : 'v19.1.0',
