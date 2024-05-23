@@ -110,14 +110,27 @@ export class DirectoryStructureComponent implements OnInit
                     {name: 'app.component.html'},
                     {name: 'app.component.scss'},
                     {name: 'app.component.ts'},
+                    {name: 'app.config.ts'},
                     {name: 'app.resolvers.ts'},
-                    {name: 'app.routing.ts'},
+                    {name: 'app.routes.ts'},
                 ],
             },
         ];
 
         // General dir
         this.generalDir = [
+            {
+                name    : 'public',
+                children: [
+                    {name: 'fonts/'},
+                    {name: 'i18n/'},
+                    {name: 'icons/'},
+                    {name: 'images/'},
+                    {name: 'styles/'},
+                    {name: 'favicon-16x16.png'},
+                    {name: 'favicon-32x32.png'},
+                ],
+            },
             {
                 name    : 'src/',
                 children: [
@@ -140,16 +153,6 @@ export class DirectoryStructureComponent implements OnInit
                     },
                     this.appDir[0],
                     {
-                        name    : 'assets/',
-                        children: [
-                            {name: 'fonts/'},
-                            {name: 'i18n/'},
-                            {name: 'icons/'},
-                            {name: 'images/'},
-                            {name: 'styles/'},
-                        ],
-                    },
-                    {
                         name    : 'styles/',
                         children: [
                             {name: 'styles.scss'},
@@ -157,8 +160,6 @@ export class DirectoryStructureComponent implements OnInit
                             {name: 'vendors.scss'},
                         ],
                     },
-                    {name: 'favicon-16x16.png'},
-                    {name: 'favicon-32x32.png'},
                     {name: 'index.html'},
                     {name: 'main.ts'},
                 ],
@@ -205,9 +206,9 @@ export class DirectoryStructureComponent implements OnInit
             }
         });
 
-        // Expand the first item
+        // Expand the tree nodes
         this.appTree.treeControl.expand(this.appTree.treeControl.dataNodes[0]);
-        this.generalTree.treeControl.expand(this.generalTree.treeControl.dataNodes[0]);
+        this.generalTree.treeControl.expand(this.generalTree.treeControl.dataNodes[8]);
     }
 
     // -----------------------------------------------------------------------------------------------------

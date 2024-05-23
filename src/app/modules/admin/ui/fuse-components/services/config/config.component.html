@@ -52,100 +52,55 @@
 
         <h2>Default configuration</h2>
         <p>
-            By default, the application wide configuration is stored in <code>src/app/core/config/app.config.ts</code> file and it includes the <strong>layout style</strong> as
+            By default, the application wide configuration is stored in <code>src/app.config.ts</code> file and it includes the <strong>layout style</strong> as
             well as the <strong>color theme</strong> configurations:
         </p>
         <!-- @formatter:off -->
         <textarea fuse-highlight
                   lang="typescript">
-            import { Layout } from 'app/layout/layout.types';
-
-            // Types
-            export type Scheme = 'auto' | 'dark' | 'light';
-            export type Screens = { [key: string]: string };
-            export type Theme = 'theme-default' | string;
-            export type Themes = { id: string; name: string }[];
-
-            /**
-             * AppConfig interface. Update this interface to strictly type your config
-             * object.
-             */
-            export interface AppConfig
-            {
-                layout: Layout;
-                scheme: Scheme;
-                screens: Screens;
-                theme: Theme;
-                themes: Themes;
-            }
-
-            /**
-             * Default configuration for the entire application. This object is used by
-             * FuseConfigService to set the default configuration.
-             *
-             * If you need to store global configuration for your app, you can use this
-             * object to set the defaults. To access, update and reset the config, use
-             * FuseConfigService and its methods.
-             *
-             * "Screens" are carried over to the BreakpointObserver for accessing them within
-             * components, and they are required.
-             *
-             * "Themes" are required for Tailwind to generate themes.
-             */
-            export const appConfig: AppConfig = {
-                layout : 'classy',
-                scheme : 'light',
-                screens: {
-                    sm: '600px',
-                    md: '960px',
-                    lg: '1280px',
-                    xl: '1440px'
-                },
-                theme  : 'theme-default',
-                themes : [
-                    {
+            provideFuse({
+                ...
+                fuse   : {
+                    layout : 'classy',
+                    scheme : 'light',
+                    screens: {
+                        sm: '600px',
+                        md: '960px',
+                        lg: '1280px',
+                        xl: '1440px',
+                    },
+                    theme  : 'theme-default',
+                    themes : [{
                         id  : 'theme-default',
-                        name: 'Default'
+                        name: 'Default',
                     },
                     {
                         id  : 'theme-brand',
-                        name: 'Brand'
+                        name: 'Brand',
                     },
                     {
                         id  : 'theme-teal',
-                        name: 'Teal'
+                        name: 'Teal',
                     },
                     {
                         id  : 'theme-rose',
-                        name: 'Rose'
+                        name: 'Rose',
                     },
                     {
                         id  : 'theme-purple',
-                        name: 'Purple'
+                        name: 'Purple',
                     },
                     {
                         id  : 'theme-amber',
-                        name: 'Amber'
-                    }
-                ]
-            };
+                        name: 'Amber',
+                    }],
+                },
+            }),
         </textarea>
         <!-- @formatter:on -->
         <p>
-            The default configuration is supplied to the <strong>FuseConfigService</strong> using the <code>FuseConfigModule.forRoot()</code> in <strong>AppModule</strong>:
+            The default configuration is supplied to the <strong>FuseConfigService</strong> automatically:
         </p>
-        <!-- @formatter:off -->
-        <textarea fuse-highlight
-                  lang="typescript">
-            import { appConfig } from 'app/core/config/app.config';
-
-            ...
-
-            imports: [
-                FuseConfigModule.forRoot(appConfig)
-            ...
-        </textarea>
-        <!-- @formatter:on -->
 
         <h2>Methods</h2>
         <p>

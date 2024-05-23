@@ -54,7 +54,7 @@
         <h2>Translating the navigation</h2>
         <p>
             Since <code>FuseNavigation</code> supports runtime data swapping, you can replace the navigation data either partially or completely when the language changes.
-            The <strong>LanguageComponent</strong> is a suitable place to do this and it's located at <code>src/app/layout/common/language</code>.
+            The <strong>LanguageComponent</strong> is a suitable place to do this and it's located at <code>src/app/layout/common/languages</code>.
         </p>
 
         <h2>Removing Transloco</h2>
@@ -63,11 +63,10 @@
             the <strong>Transloco</strong> from Fuse:
         </p>
         <ol>
-            <li>Navigate to <code>src/app/core/core.module.ts</code> file and remove imports of <code>TranslocoCoreModule</code></li>
+            <li>Navigate to <code>src/app.config.ts</code> file and remove the lines marked with the comment <code>// Transloco Config</code></li>
             <li>Remove the <code>src/app/core/transloco</code> directory</li>
             <li>Do a project wide search for <code>&lt;languages&gt;&lt;/languages&gt;</code> and remove all instances</li>
-            <li>Do a project wide search for <code>LanguageModule</code> and remove all imports</li>
-            <li>Remove the <code>src/app/layout/common/language</code> directory</li>
+            <li>Remove the <code>src/app/layout/common/languages</code> directory</li>
             <li>Finally navigate to the <code>package.json</code> file, remove the <strong>"&#64;ngneat/transloco"</strong> from dependencies list and run <code>npm install</code> command</li>
         </ol>
 
