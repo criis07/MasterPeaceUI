@@ -33,9 +33,10 @@
                             "quill-delta"
                         ],
                         "assets": [
-                            "src/favicon-16x16.png",
-                            "src/favicon-32x32.png",
-                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            },
                             {
                                 "glob": "_redirects",
                                 "input": "src",
@@ -106,9 +107,10 @@
                         "tsConfig": "tsconfig.spec.json",
                         "inlineStyleLanguage": "scss",
                         "assets": [
-                            "src/favicon-16x16.png",
-                            "src/favicon-32x32.png",
-                            "src/assets"
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            }
                         ],
                         "styles": [
                             "src/styles/styles.scss"
