@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
 
@@ -9,17 +9,10 @@ import { filter, Subject, takeUntil } from 'rxjs';
 })
 export class FuseScrollResetDirective implements OnInit, OnDestroy
 {
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    private _elementRef = inject(ElementRef);
+    private _router = inject(Router);
 
-    /**
-     * Constructor
-     */
-    constructor(
-        private _elementRef: ElementRef,
-        private _router: Router,
-    )
-    {
-    }
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

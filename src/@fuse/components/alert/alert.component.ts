@@ -1,6 +1,6 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { fuseAnimations } from '@fuse/animations';
@@ -28,6 +28,10 @@ export class FuseAlertComponent implements OnChanges, OnInit, OnDestroy
     static ngAcceptInputType_showIcon: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
+    private _changeDetectorRef = inject(ChangeDetectorRef);
+    private _fuseAlertService = inject(FuseAlertService);
+    private _fuseUtilsService = inject(FuseUtilsService);
+
     @Input() appearance: FuseAlertAppearance = 'soft';
     @Input() dismissed: boolean = false;
     @Input() dismissible: boolean = false;
@@ -37,17 +41,6 @@ export class FuseAlertComponent implements OnChanges, OnInit, OnDestroy
     @Output() readonly dismissedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-
-    /**
-     * Constructor
-     */
-    constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _fuseAlertService: FuseAlertService,
-        private _fuseUtilsService: FuseUtilsService,
-    )
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors

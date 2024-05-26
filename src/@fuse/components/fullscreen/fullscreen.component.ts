@@ -1,5 +1,5 @@
 import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -15,13 +15,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class FuseFullscreenComponent
 {
+    private _document = inject(DOCUMENT);
+
     @Input() iconTpl: TemplateRef<any>;
     @Input() tooltip: string;
-
-    /**
-     * Constructor
-     */
-    constructor(@Inject(DOCUMENT) private _document: Document) { }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods

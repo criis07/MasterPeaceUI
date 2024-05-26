@@ -4,13 +4,6 @@ import hljs from 'highlight.js';
 @Injectable({providedIn: 'root'})
 export class FuseHighlightService
 {
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------

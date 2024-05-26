@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -10,13 +9,6 @@ export class FuseLoadingService
     private _progress$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(0);
     private _show$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     private _urlMap: Map<string, boolean> = new Map<string, boolean>();
-
-    /**
-     * Constructor
-     */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors

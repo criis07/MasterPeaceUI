@@ -1,6 +1,6 @@
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, inject, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { FuseDrawerService } from '@fuse/components/drawer/drawer.service';
 import { FuseDrawerMode, FuseDrawerPosition } from '@fuse/components/drawer/drawer.types';
 import { FuseUtilsService } from '@fuse/services/utils/utils.service';
@@ -21,6 +21,12 @@ export class FuseDrawerComponent implements OnChanges, OnInit, OnDestroy
     static ngAcceptInputType_transparentOverlay: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
+    private _animationBuilder = inject(AnimationBuilder);
+    private _elementRef = inject(ElementRef);
+    private _renderer2 = inject(Renderer2);
+    private _fuseDrawerService = inject(FuseDrawerService);
+    private _fuseUtilsService = inject(FuseUtilsService);
+
     @Input() fixed: boolean = false;
     @Input() mode: FuseDrawerMode = 'side';
     @Input() name: string = this._fuseUtilsService.randomId();
@@ -33,27 +39,10 @@ export class FuseDrawerComponent implements OnChanges, OnInit, OnDestroy
     @Output() readonly positionChanged: EventEmitter<FuseDrawerPosition> = new EventEmitter<FuseDrawerPosition>();
 
     private _animationsEnabled: boolean = false;
-    private readonly _handleOverlayClick: any;
+    private readonly _handleOverlayClick = (): void => this.close();
     private _hovered: boolean = false;
     private _overlay: HTMLElement;
     private _player: AnimationPlayer;
-
-    /**
-     * Constructor
-     */
-    constructor(
-        private _animationBuilder: AnimationBuilder,
-        private _elementRef: ElementRef,
-        private _renderer2: Renderer2,
-        private _fuseDrawerService: FuseDrawerService,
-        private _fuseUtilsService: FuseUtilsService,
-    )
-    {
-        this._handleOverlayClick = (): void =>
-        {
-            this.close();
-        };
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors

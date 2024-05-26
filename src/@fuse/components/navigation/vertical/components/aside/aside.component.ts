@@ -1,6 +1,6 @@
 import { BooleanInput } from '@angular/cdk/coercion';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavigationEnd, Router } from '@angular/router';
@@ -28,6 +28,10 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
     static ngAcceptInputType_skipChildren: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
 
+    private _changeDetectorRef = inject(ChangeDetectorRef);
+    private _router = inject(Router);
+    private _fuseNavigationService = inject(FuseNavigationService);
+
     @Input() activeItemId: string;
     @Input() autoCollapse: boolean;
     @Input() item: FuseNavigationItem;
@@ -37,17 +41,6 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
     active: boolean = false;
     private _fuseVerticalNavigationComponent: FuseVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-
-    /**
-     * Constructor
-     */
-    constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _router: Router,
-        private _fuseNavigationService: FuseNavigationService,
-    )
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

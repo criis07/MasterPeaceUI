@@ -1,6 +1,6 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgIf } from '@angular/common';
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FuseLoadingService } from '@fuse/services/loading';
 import { Subject, takeUntil } from 'rxjs';
@@ -16,18 +16,13 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class FuseLoadingBarComponent implements OnChanges, OnInit, OnDestroy
 {
+    private _fuseLoadingService = inject(FuseLoadingService);
+
     @Input() autoMode: boolean = true;
     mode: 'determinate' | 'indeterminate';
     progress: number = 0;
     show: boolean = false;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-
-    /**
-     * Constructor
-     */
-    constructor(private _fuseLoadingService: FuseLoadingService)
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

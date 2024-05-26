@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EmbeddedViewRef, Input, OnChanges, Renderer2, SecurityContext, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EmbeddedViewRef, inject, Input, OnChanges, SecurityContext, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FuseHighlightService } from '@fuse/components/highlight/highlight.service';
 
@@ -15,26 +15,17 @@ import { FuseHighlightService } from '@fuse/components/highlight/highlight.servi
 })
 export class FuseHighlightComponent implements OnChanges, AfterViewInit
 {
+    private _domSanitizer = inject(DomSanitizer);
+    private _elementRef = inject(ElementRef);
+    private _fuseHighlightService = inject(FuseHighlightService);
+    private _viewContainerRef = inject(ViewContainerRef);
+
     @Input() code: string;
     @Input() lang: string;
     @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 
     highlightedCode: string;
     private _viewRef: EmbeddedViewRef<any>;
-
-    /**
-     * Constructor
-     */
-    constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _domSanitizer: DomSanitizer,
-        private _elementRef: ElementRef,
-        private _renderer2: Renderer2,
-        private _fuseHighlightService: FuseHighlightService,
-        private _viewContainerRef: ViewContainerRef,
-    )
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

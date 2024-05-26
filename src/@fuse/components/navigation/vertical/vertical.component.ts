@@ -2,7 +2,7 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { DOCUMENT, NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, inject, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
@@ -35,6 +35,16 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
     static ngAcceptInputType_opened: BooleanInput;
     static ngAcceptInputType_transparentOverlay: BooleanInput;
     /* eslint-enable @typescript-eslint/naming-convention */
+
+    private _animationBuilder = inject(AnimationBuilder);
+    private _changeDetectorRef = inject(ChangeDetectorRef);
+    private _document = inject(DOCUMENT);
+    private _elementRef = inject(ElementRef);
+    private _renderer2 = inject(Renderer2);
+    private _router = inject(Router);
+    private _scrollStrategyOptions = inject(ScrollStrategyOptions);
+    private _fuseNavigationService = inject(FuseNavigationService);
+    private _fuseUtilsService = inject(FuseUtilsService);
 
     @Input() appearance: FuseVerticalNavigationAppearance = 'default';
     @Input() autoCollapse: boolean = true;
@@ -71,17 +81,7 @@ export class FuseVerticalNavigationComponent implements OnChanges, OnInit, After
     /**
      * Constructor
      */
-    constructor(
-        private _animationBuilder: AnimationBuilder,
-        private _changeDetectorRef: ChangeDetectorRef,
-        @Inject(DOCUMENT) private _document: Document,
-        private _elementRef: ElementRef,
-        private _renderer2: Renderer2,
-        private _router: Router,
-        private _scrollStrategyOptions: ScrollStrategyOptions,
-        private _fuseNavigationService: FuseNavigationService,
-        private _fuseUtilsService: FuseUtilsService,
-    )
+    constructor()
     {
         this._handleAsideOverlayClick = (): void =>
         {

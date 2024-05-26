@@ -4,13 +4,6 @@ import { IsActiveMatchOptions } from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class FuseUtilsService
 {
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------

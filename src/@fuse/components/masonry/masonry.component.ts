@@ -1,7 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
-import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 
 @Component({
     selector     : 'fuse-masonry',
@@ -18,13 +17,6 @@ export class FuseMasonryComponent implements OnChanges, AfterViewInit
     @Input() columns: number;
     @Input() items: any[] = [];
     distributedColumns: any[] = [];
-
-    /**
-     * Constructor
-     */
-    constructor(private _fuseMediaWatcherService: FuseMediaWatcherService)
-    {
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

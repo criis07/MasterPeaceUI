@@ -7,13 +7,6 @@ export class FuseAlertService
     private readonly _onDismiss: ReplaySubject<string> = new ReplaySubject<string>(1);
     private readonly _onShow: ReplaySubject<string> = new ReplaySubject<string>(1);
 
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-    }
-
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------

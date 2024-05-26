@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,11 +31,5 @@ import { FuseConfirmationConfig } from '@fuse/services/confirmation/confirmation
 })
 export class FuseConfirmationDialogComponent
 {
-    /**
-     * Constructor
-     */
-    constructor(@Inject(MAT_DIALOG_DATA) public data: FuseConfirmationConfig)
-    {
-    }
-
+    data: FuseConfirmationConfig = inject(MAT_DIALOG_DATA);
 }
