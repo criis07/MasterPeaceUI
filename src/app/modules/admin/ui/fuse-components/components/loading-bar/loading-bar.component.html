@@ -205,10 +205,7 @@
                     <textarea
                         fuse-highlight
                         [lang]="'ts'">
-                        /**
-                         * Constructor
-                         */
-                        constructor( private _fuseLoadingService: FuseLoadingService ) { }
+                        private _fuseLoadingService = inject(FuseLoadingService);
 
                         ...
 
@@ -310,16 +307,10 @@
                     <textarea
                         fuse-highlight
                         [lang]="'ts'">
-                        apiCallStatus: string = '-';
+                        private _httpClient = inject(HttpClient);
+                        private _fuseLoadingService = inject(FuseLoadingService);
 
-                        /**
-                         * Constructor
-                         */
-                        constructor(
-                            private _httpClient: HttpClient,
-                            private _fuseLoadingService: FuseLoadingService
-                        )
-                        { }
+                        apiCallStatus: string = '-';
 
                         ...
 
@@ -439,12 +430,9 @@
                     <textarea
                         fuse-highlight
                         [lang]="'ts'">
-                        mode: 'determinate' | 'indeterminate' = 'indeterminate';
+                        private _fuseLoadingService = inject(FuseLoadingService);
 
-                        /**
-                         * Constructor
-                         */
-                        constructor( private _fuseLoadingService: FuseLoadingService ) { }
+                        mode: 'determinate' | 'indeterminate' = 'indeterminate';
 
                         ...
 

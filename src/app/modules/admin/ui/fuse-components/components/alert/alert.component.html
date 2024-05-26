@@ -1168,10 +1168,7 @@
                     <textarea fuse-highlight
                               [lang]="'typescript'">
 
-                        /**
-                         * Constructor
-                         */
-                        constructor( private _fuseAlertService: FuseAlertService ) {}
+                        private _fuseAlertService = inject(FuseAlertService);
 
                         /**
                          * Dismiss the alert via the service

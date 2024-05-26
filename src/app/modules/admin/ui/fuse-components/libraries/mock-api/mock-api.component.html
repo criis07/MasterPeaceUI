@@ -249,10 +249,12 @@
             })
             export class NavigationMockApi
             {
+                private _fuseMockApiService = inject(FuseMockApiService);
+
                 /**
                  * Constructor
                  */
-                constructor(private _fuseMockApiService: FuseMockApiService)
+                constructor()
                 {
                     // Register Mock API handlers
                     this.registerHandlers();
@@ -301,13 +303,15 @@
             })
             export class NavigationMockApi
             {
+                private _fuseMockApiService = inject(FuseMockApiService);
+
                 private readonly _compactNavigation: any[];
                 private readonly _defaultNavigation: any[];
 
                 /**
                  * Constructor
                  */
-                constructor(private _fuseMockApiService: FuseMockApiService)
+                constructor()
                 {
                     // Set the data
                     this._compactNavigation = compactNavigation;

@@ -111,10 +111,12 @@
         <textarea fuse-highlight lang="typescript">
             import { FuseConfigService } from '@fuse/services/config';
 
+            private _fuseConfigService = inject(FuseConfigService);
+
             /**
              * Constructor
              */
-            constructor(private _fuseConfigService: FuseConfigService)
+            constructor()
             {
                 this._fuseConfigService.config = {layout: 'classy'};
             }
@@ -128,12 +130,14 @@
             import { FuseConfigService } from '@fuse/services/config';
             import { AppConfig } from 'app/core/config/app.config';
 
+            private _fuseConfigService = inject(FuseConfigService);
+
             config: AppConfig;
 
             /**
              * Constructor
              */
-            constructor(private _fuseConfigService: FuseConfigService)
+            constructor()
             {
                 this._fuseConfigService.config$
                     .pipe(takeUntil(this._unsubscribeAll))

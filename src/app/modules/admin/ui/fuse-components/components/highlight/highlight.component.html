@@ -125,17 +125,10 @@
         <!-- @formatter:off -->
         <textarea fuse-highlight
                   lang="typescript">
-            import { FuseHighlightService } from '@fuse/components/highlight';
+            private _fuseHighlightService = inject(FuseHighlightService);
 
             code = '<div> Some code to highlight </div>'
-
-            /**
-             * Constructor
-             */
-            constructor(private _fuseHighlightService: FuseHighlightService)
-            {
-                const highlightedCode = this._fuseHighlightService.highlight(code, 'html');
-            }
+            highlightedCode = this._fuseHighlightService.highlight(code, 'html');
         </textarea>
         <!-- @formatter:on -->
 
