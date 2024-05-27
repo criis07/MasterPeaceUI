@@ -5,19 +5,16 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'prerequisites',
+    selector: 'prerequisites',
     templateUrl: './prerequisites.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule, FuseHighlightComponent],
 })
-export class PrerequisitesComponent
-{
+export class PrerequisitesComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -26,8 +23,7 @@ export class PrerequisitesComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

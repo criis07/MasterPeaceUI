@@ -5,9 +5,9 @@ import { FinanceService } from 'app/modules/admin/dashboards/finance/finance.ser
 
 export default [
     {
-        path     : '',
+        path: '',
         component: FinanceComponent,
-        resolve  : {
+        resolve: {
             data: () => inject(FinanceService).getData(),
         },
     },

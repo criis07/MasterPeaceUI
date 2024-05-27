@@ -1,19 +1,40 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector       : 'scrumboard-board-add-list',
-    templateUrl    : './add-list.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'scrumboard-board-add-list',
+    templateUrl: './add-list.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatButtonModule, NgClass, MatIconModule, FormsModule, ReactiveFormsModule],
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        NgClass,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
 })
-export class ScrumboardBoardAddListComponent implements OnInit
-{
+export class ScrumboardBoardAddListComponent implements OnInit {
     @ViewChild('titleInput') titleInput: ElementRef;
     @Input() buttonTitle: string = 'Add a list';
     @Output() readonly saved: EventEmitter<string> = new EventEmitter<string>();
@@ -26,10 +47,8 @@ export class ScrumboardBoardAddListComponent implements OnInit
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        private _formBuilder: UntypedFormBuilder,
-    )
-    {
-    }
+        private _formBuilder: UntypedFormBuilder
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -38,8 +57,7 @@ export class ScrumboardBoardAddListComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Initialize the new list form
         this.form = this._formBuilder.group({
             title: [''],
@@ -53,14 +71,12 @@ export class ScrumboardBoardAddListComponent implements OnInit
     /**
      * Save
      */
-    save(): void
-    {
+    save(): void {
         // Get the new list title
         const title = this.form.get('title').value;
 
         // Return, if the title is empty
-        if ( !title || title.trim() === '' )
-        {
+        if (!title || title.trim() === '') {
             return;
         }
 
@@ -78,14 +94,12 @@ export class ScrumboardBoardAddListComponent implements OnInit
     /**
      * Toggle the visibility of the form
      */
-    toggleFormVisibility(): void
-    {
+    toggleFormVisibility(): void {
         // Toggle the visibility
         this.formVisible = !this.formVisible;
 
         // If the form becomes visible, focus on the title field
-        if ( this.formVisible )
-        {
+        if (this.formVisible) {
             this.titleInput.nativeElement.focus();
         }
     }

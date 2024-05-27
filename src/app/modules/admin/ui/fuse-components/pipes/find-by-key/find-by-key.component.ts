@@ -5,19 +5,16 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'find-by-key',
+    selector: 'find-by-key',
     templateUrl: './find-by-key.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule, FuseHighlightComponent],
 })
-export class FindByKeyComponent
-{
+export class FindByKeyComponent {
     /**
      * Constructor
      */
-    constructor(private _fuseComponentsComponent: FuseComponentsComponent)
-    {
-    }
+    constructor(private _fuseComponentsComponent: FuseComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -26,8 +23,7 @@ export class FindByKeyComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

@@ -1,17 +1,22 @@
-<div class="flex flex-col flex-auto min-w-0">
-
+<div class="flex min-w-0 flex-auto flex-col">
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
-        <div class="flex-1 min-w-0">
+    <div
+        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-8"
+    >
+        <div class="min-w-0 flex-1">
             <!-- Breadcrumbs -->
             <div class="flex flex-wrap items-center font-medium">
                 <div>
-                    <a class="whitespace-nowrap text-primary-500">User Interface</a>
+                    <a class="whitespace-nowrap text-primary-500"
+                        >User Interface</a
+                    >
                 </div>
             </div>
             <!-- Title -->
             <div class="mt-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                <h2
+                    class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
+                >
                     Confirmation Dialog
                 </h2>
             </div>
@@ -20,92 +25,119 @@
 
     <!-- Main -->
     <div class="flex-auto p-6 sm:p-10">
-
         <div class="max-w-3xl">
-            <div class="max-w-3xl prose prose-sm">
+            <div class="prose prose-sm max-w-3xl">
                 <p>
-                    One of the repetitive and tedious jobs in Angular is to create confirmation dialogs. Since dialogs require their own components
-                    you have to either create a separate component every time you need a confirmation dialog or you have to create your own
-                    confirmation dialog system that can be configured.
+                    One of the repetitive and tedious jobs in Angular is to
+                    create confirmation dialogs. Since dialogs require their own
+                    components you have to either create a separate component
+                    every time you need a confirmation dialog or you have to
+                    create your own confirmation dialog system that can be
+                    configured.
                 </p>
                 <p>
-                    In order for you to save time while developing with Fuse, we have created a simple yet powerful <code>FuseConfirmationService</code>
+                    In order for you to save time while developing with Fuse, we
+                    have created a simple yet powerful
+                    <code>FuseConfirmationService</code>
                     to create customized confirmation dialogs on-the-fly.
                 </p>
                 <p>
-                    Below you can configure and preview the confirmation dialog. You can use the generated configuration object within your code to have
-                    the exact same dialog.
+                    Below you can configure and preview the confirmation dialog.
+                    You can use the generated configuration object within your
+                    code to have the exact same dialog.
                 </p>
                 <p>
-                    For more detailed information and API documentation, check the
-                    <a [routerLink]="'/ui/fuse-components/services/confirmation'">documentation</a>
+                    For more detailed information and API documentation, check
+                    the
+                    <a
+                        [routerLink]="
+                            '/ui/fuse-components/services/confirmation'
+                        "
+                        >documentation</a
+                    >
                     page.
                 </p>
             </div>
             <div class="example-viewer">
-
                 <div class="title">
                     <h6>Configure the dialog and preview it</h6>
                 </div>
 
                 <div class="flex flex-col p-8 pt-0">
-
                     <form
                         [formGroup]="configForm"
-                        class="flex flex-col items-start">
-
+                        class="flex flex-col items-start"
+                    >
                         <!-- Title -->
                         <mat-form-field
                             class="w-full"
-                            [subscriptSizing]="'dynamic'">
+                            [subscriptSizing]="'dynamic'"
+                        >
                             <mat-label>Title</mat-label>
-                            <input
-                                matInput
-                                [formControlName]="'title'">
+                            <input matInput [formControlName]="'title'" />
                         </mat-form-field>
 
                         <!-- Message -->
                         <mat-form-field
-                            class="w-full mt-6"
-                            [subscriptSizing]="'dynamic'">
+                            class="mt-6 w-full"
+                            [subscriptSizing]="'dynamic'"
+                        >
                             <mat-label>Message</mat-label>
-                            <textarea
-                                matInput
-                                [formControlName]="'message'">
+                            <textarea matInput [formControlName]="'message'">
                             </textarea>
                         </mat-form-field>
 
                         <!-- Divider -->
-                        <div class="w-full mt-8 mb-7 border-b"></div>
+                        <div class="mb-7 mt-8 w-full border-b"></div>
 
                         <!-- Icon -->
                         <div
-                            class="flex flex-col w-full"
-                            [formGroupName]="'icon'">
+                            class="flex w-full flex-col"
+                            [formGroupName]="'icon'"
+                        >
                             <mat-checkbox
                                 [color]="'primary'"
-                                [formControlName]="'show'">
+                                [formControlName]="'show'"
+                            >
                                 Show Icon
                             </mat-checkbox>
-                            <div class="flex items-center w-full mt-6">
+                            <div class="mt-6 flex w-full items-center">
                                 <!-- Icon name -->
                                 <mat-form-field
                                     class="w-1/2 pr-2"
-                                    [subscriptSizing]="'dynamic'">
+                                    [subscriptSizing]="'dynamic'"
+                                >
                                     <mat-label>Icon name</mat-label>
                                     <input
                                         matInput
-                                        [formControlName]="'name'">
+                                        [formControlName]="'name'"
+                                    />
                                 </mat-form-field>
 
                                 <!-- Icon color -->
                                 <mat-form-field
                                     class="w-1/2 pl-2"
-                                    [subscriptSizing]="'dynamic'">
+                                    [subscriptSizing]="'dynamic'"
+                                >
                                     <mat-label>Icon color</mat-label>
                                     <mat-select [formControlName]="'color'">
-                                        <ng-container *ngFor="let color of ['primary', 'accent', 'warn', 'basic', 'info', 'success', 'warning', 'error']">
-                                            <mat-option [value]="color">{{color | titlecase}}</mat-option>
+                                        <ng-container
+                                            *ngFor="
+                                                let color of [
+                                                    'primary',
+                                                    'accent',
+                                                    'warn',
+                                                    'basic',
+                                                    'info',
+                                                    'success',
+                                                    'warning',
+                                                    'error'
+                                                ]
+                                            "
+                                        >
+                                            <mat-option [value]="color">{{
+                                                color | titlecase
+                                            }}</mat-option>
                                         </ng-container>
                                     </mat-select>
                                 </mat-form-field>
@@ -113,41 +145,58 @@
                         </div>
 
                         <!-- Divider -->
-                        <div class="w-full mt-8 mb-7 border-b"></div>
+                        <div class="mb-7 mt-8 w-full border-b"></div>
 
                         <!-- Actions -->
-                        <div
-                            class="w-full"
-                            [formGroupName]="'actions'">
+                        <div class="w-full" [formGroupName]="'actions'">
                             <!-- Confirm -->
                             <div
-                                class="flex flex-col w-full"
-                                [formGroupName]="'confirm'">
+                                class="flex w-full flex-col"
+                                [formGroupName]="'confirm'"
+                            >
                                 <mat-checkbox
                                     class="mt-2"
                                     [color]="'primary'"
-                                    [formControlName]="'show'">
+                                    [formControlName]="'show'"
+                                >
                                     Show Confirm button
                                 </mat-checkbox>
-                                <div class="flex items-center w-full mt-4">
+                                <div class="mt-4 flex w-full items-center">
                                     <!-- Confirm label -->
                                     <mat-form-field
                                         class="w-1/2 pr-2"
-                                        [subscriptSizing]="'dynamic'">
-                                        <mat-label>Confirm button label</mat-label>
+                                        [subscriptSizing]="'dynamic'"
+                                    >
+                                        <mat-label
+                                            >Confirm button label</mat-label
+                                        >
                                         <input
                                             matInput
-                                            [formControlName]="'label'">
+                                            [formControlName]="'label'"
+                                        />
                                     </mat-form-field>
 
                                     <!-- Confirm color -->
                                     <mat-form-field
                                         class="w-1/2 pl-2"
-                                        [subscriptSizing]="'dynamic'">
-                                        <mat-label>Confirm button color</mat-label>
+                                        [subscriptSizing]="'dynamic'"
+                                    >
+                                        <mat-label
+                                            >Confirm button color</mat-label
+                                        >
                                         <mat-select [formControlName]="'color'">
-                                            <ng-container *ngFor="let color of ['primary', 'accent', 'warn']">
-                                                <mat-option [value]="color">{{color | titlecase}}</mat-option>
+                                            <ng-container
+                                                *ngFor="
+                                                    let color of [
+                                                        'primary',
+                                                        'accent',
+                                                        'warn'
+                                                    ]
+                                                "
+                                            >
+                                                <mat-option [value]="color">{{
+                                                    color | titlecase
+                                                }}</mat-option>
                                             </ng-container>
                                         </mat-select>
                                     </mat-form-field>
@@ -156,35 +205,42 @@
 
                             <!-- Cancel -->
                             <div
-                                class="flex flex-col w-full mt-6"
-                                [formGroupName]="'cancel'">
+                                class="mt-6 flex w-full flex-col"
+                                [formGroupName]="'cancel'"
+                            >
                                 <mat-checkbox
                                     class="mt-2"
                                     [color]="'primary'"
-                                    [formControlName]="'show'">
+                                    [formControlName]="'show'"
+                                >
                                     Show Cancel button
                                 </mat-checkbox>
-                                <div class="flex items-center w-full mt-4">
+                                <div class="mt-4 flex w-full items-center">
                                     <!-- Cancel label -->
                                     <mat-form-field
                                         class="w-1/2 pr-2"
-                                        [subscriptSizing]="'dynamic'">
-                                        <mat-label>Cancel button label</mat-label>
+                                        [subscriptSizing]="'dynamic'"
+                                    >
+                                        <mat-label
+                                            >Cancel button label</mat-label
+                                        >
                                         <input
                                             matInput
-                                            [formControlName]="'label'">
+                                            [formControlName]="'label'"
+                                        />
                                     </mat-form-field>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Divider -->
-                        <div class="w-full mt-8 mb-7 border-b"></div>
+                        <div class="mb-7 mt-8 w-full border-b"></div>
 
                         <!-- Dismissible -->
                         <mat-checkbox
                             [color]="'primary'"
-                            [formControlName]="'dismissible'">
+                            [formControlName]="'dismissible'"
+                        >
                             Dismissible
                         </mat-checkbox>
                     </form>
@@ -193,7 +249,8 @@
                         <button
                             mat-flat-button
                             [color]="'primary'"
-                            (click)="openConfirmationDialog()">
+                            (click)="openConfirmationDialog()"
+                        >
                             Open Confirmation Dialog
                         </button>
                     </div>
@@ -201,11 +258,12 @@
             </div>
 
             <!-- Config as json -->
-            <div class="dark w-full mt-8 p-4 rounded-2xl overflow-hidden">
+            <div class="dark mt-8 w-full overflow-hidden rounded-2xl p-4">
                 <textarea
                     fuse-highlight
                     [code]="configForm.value | json"
-                    [lang]="'json'"></textarea>
+                    [lang]="'json'"
+                ></textarea>
             </div>
         </div>
     </div>

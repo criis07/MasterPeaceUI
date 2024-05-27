@@ -3,7 +3,7 @@ import { AdvancedSearchComponent } from 'app/modules/admin/ui/advanced-search/ad
 
 export default [
     {
-        path     : '',
+        path: '',
         component: AdvancedSearchComponent,
     },
 ] as Routes;

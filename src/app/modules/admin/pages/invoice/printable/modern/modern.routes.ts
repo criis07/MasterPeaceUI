@@ -3,7 +3,7 @@ import { ModernComponent } from 'app/modules/admin/pages/invoice/printable/moder
 
 export default [
     {
-        path     : '',
+        path: '',
         component: ModernComponent,
     },
 ] as Routes;

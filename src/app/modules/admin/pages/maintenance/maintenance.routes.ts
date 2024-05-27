@@ -3,7 +3,7 @@ import { MaintenanceComponent } from 'app/modules/admin/pages/maintenance/mainte
 
 export default [
     {
-        path     : '',
+        path: '',
         component: MaintenanceComponent,
     },
 ] as Routes;

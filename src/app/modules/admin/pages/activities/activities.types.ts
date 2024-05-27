@@ -1,5 +1,4 @@
-export interface Activity
-{
+export interface Activity {
     id: string;
     icon?: string;
     image?: string;

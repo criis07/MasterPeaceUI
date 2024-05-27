@@ -1,12 +1,10 @@
-export interface Items
-{
+export interface Items {
     folders: Item[];
     files: Item[];
     path: any[];
 }
 
-export interface Item
-{
+export interface Item {
     id?: string;
     folderId?: string;
     name?: string;

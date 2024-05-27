@@ -20,133 +20,133 @@ import { MustMatchComponent } from 'app/modules/admin/ui/fuse-components/validat
 
 export default [
     {
-        path     : '',
+        path: '',
         component: FuseComponentsComponent,
-        children : [
+        children: [
             {
-                path      : '',
-                pathMatch : 'full',
+                path: '',
+                pathMatch: 'full',
                 redirectTo: 'libraries/mock-api',
             },
             {
-                path    : 'libraries',
+                path: 'libraries',
                 children: [
                     {
-                        path     : 'mock-api',
+                        path: 'mock-api',
                         component: MockApiComponent,
                     },
                 ],
             },
             {
-                path    : 'components',
+                path: 'components',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'alert',
                     },
                     {
-                        path     : 'alert',
+                        path: 'alert',
                         component: AlertComponent,
                     },
                     {
-                        path     : 'card',
+                        path: 'card',
                         component: CardComponent,
                     },
                     {
-                        path     : 'drawer',
+                        path: 'drawer',
                         component: DrawerComponent,
                     },
                     {
-                        path     : 'fullscreen',
+                        path: 'fullscreen',
                         component: FullscreenComponent,
                     },
                     {
-                        path     : 'highlight',
+                        path: 'highlight',
                         component: HighlightComponent,
                     },
                     {
-                        path     : 'loading-bar',
+                        path: 'loading-bar',
                         component: LoadingBarComponent,
                     },
                     {
-                        path     : 'masonry',
+                        path: 'masonry',
                         component: MasonryComponent,
                     },
                     {
-                        path     : 'navigation',
+                        path: 'navigation',
                         component: NavigationComponent,
                     },
                 ],
             },
             {
-                path    : 'directives',
+                path: 'directives',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'scrollbar',
                     },
                     {
-                        path     : 'scrollbar',
+                        path: 'scrollbar',
                         component: ScrollbarComponent,
                     },
                     {
-                        path     : 'scroll-reset',
+                        path: 'scroll-reset',
                         component: ScrollResetComponent,
                     },
                 ],
             },
             {
-                path    : 'services',
+                path: 'services',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'config',
                     },
                     {
-                        path     : 'config',
+                        path: 'config',
                         component: ConfigComponent,
                     },
                     {
-                        path     : 'confirmation',
+                        path: 'confirmation',
                         component: ConfirmationComponent,
                     },
                     {
-                        path     : 'splash-screen',
+                        path: 'splash-screen',
                         component: SplashScreenComponent,
                     },
                     {
-                        path     : 'media-watcher',
+                        path: 'media-watcher',
                         component: MediaWatcherComponent,
                     },
                 ],
             },
             {
-                path    : 'pipes',
+                path: 'pipes',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'find-by-key',
                     },
                     {
-                        path     : 'find-by-key',
+                        path: 'find-by-key',
                         component: FindByKeyComponent,
                     },
                 ],
             },
             {
-                path    : 'validators',
+                path: 'validators',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'must-match',
                     },
                     {
-                        path     : 'must-match',
+                        path: 'must-match',
                         component: MustMatchComponent,
                     },
                 ],

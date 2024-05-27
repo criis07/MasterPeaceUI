@@ -1,25 +1,26 @@
 import { NgClass, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FuseCardComponent } from '@fuse/components/card';
 
 @Component({
-    selector       : 'pricing-table',
-    templateUrl    : './table.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'pricing-table',
+    templateUrl: './table.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatButtonModule, NgClass, FuseCardComponent, NgIf, MatIconModule],
+    standalone: true,
+    imports: [MatButtonModule, NgClass, FuseCardComponent, NgIf, MatIconModule],
 })
-export class PricingTableComponent
-{
+export class PricingTableComponent {
     yearlyBilling: boolean = true;
 
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

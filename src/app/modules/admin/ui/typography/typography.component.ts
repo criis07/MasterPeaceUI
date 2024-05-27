@@ -3,18 +3,15 @@ import { RouterLink } from '@angular/router';
 import { FuseHighlightComponent } from '@fuse/components/highlight';
 
 @Component({
-    selector     : 'typography',
-    templateUrl  : './typography.component.html',
+    selector: 'typography',
+    templateUrl: './typography.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [FuseHighlightComponent, RouterLink],
+    standalone: true,
+    imports: [FuseHighlightComponent, RouterLink],
 })
-export class TypographyComponent
-{
+export class TypographyComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

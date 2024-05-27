@@ -4,27 +4,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector     : 'material-components',
-    templateUrl  : './material-components.component.html',
+    selector: 'material-components',
+    templateUrl: './material-components.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatButtonModule, MatIconModule, NgFor],
+    standalone: true,
+    imports: [MatButtonModule, MatIconModule, NgFor],
 })
-export class MaterialComponentsComponent
-{
+export class MaterialComponentsComponent {
     components: any[];
 
     /**
      * Constructor
      */
-    constructor()
-    {
+    constructor() {
         this.components = [
             {
-                id               : 'autocomplete',
-                name             : 'Autocomplete',
-                summary          : 'Suggests relevant options as the user types.',
-                exampleSpecs     : {
+                id: 'autocomplete',
+                name: 'Autocomplete',
+                summary: 'Suggests relevant options as the user types.',
+                exampleSpecs: {
                     prefix: 'autocomplete-',
                 },
                 additionalApiDocs: [
@@ -35,10 +33,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'badge',
-                name             : 'Badge',
-                summary          : 'A small value indicator that can be overlaid on another object.',
-                exampleSpecs     : {
+                id: 'badge',
+                name: 'Badge',
+                summary:
+                    'A small value indicator that can be overlaid on another object.',
+                exampleSpecs: {
                     prefix: 'badge-',
                 },
                 additionalApiDocs: [
@@ -49,10 +48,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'bottom-sheet',
-                name             : 'Bottom Sheet',
-                summary          : 'A large interactive panel primarily for mobile devices.',
-                exampleSpecs     : {
+                id: 'bottom-sheet',
+                name: 'Bottom Sheet',
+                summary:
+                    'A large interactive panel primarily for mobile devices.',
+                exampleSpecs: {
                     prefix: 'bottom-sheet-',
                 },
                 additionalApiDocs: [
@@ -63,11 +63,12 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'button',
-                name             : 'Button',
-                summary          : 'An interactive button with a range of presentation options.',
-                exampleSpecs     : {
-                    prefix : 'button-',
+                id: 'button',
+                name: 'Button',
+                summary:
+                    'An interactive button with a range of presentation options.',
+                exampleSpecs: {
+                    prefix: 'button-',
                     exclude: ['button-toggle-'],
                 },
                 additionalApiDocs: [
@@ -78,10 +79,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'button-toggle',
-                name             : 'Button toggle',
-                summary          : 'A groupable on/off toggle for enabling and disabling options.',
-                exampleSpecs     : {
+                id: 'button-toggle',
+                name: 'Button toggle',
+                summary:
+                    'A groupable on/off toggle for enabling and disabling options.',
+                exampleSpecs: {
                     prefix: 'button-toggle-',
                 },
                 additionalApiDocs: [
@@ -92,10 +94,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'card',
-                name             : 'Card',
-                summary          : 'A styled container for pieces of itemized content.',
-                exampleSpecs     : {
+                id: 'card',
+                name: 'Card',
+                summary: 'A styled container for pieces of itemized content.',
+                exampleSpecs: {
                     prefix: 'card-',
                 },
                 additionalApiDocs: [
@@ -106,10 +108,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'checkbox',
-                name             : 'Checkbox',
-                summary          : 'Captures boolean input with an optional indeterminate mode.',
-                exampleSpecs     : {
+                id: 'checkbox',
+                name: 'Checkbox',
+                summary:
+                    'Captures boolean input with an optional indeterminate mode.',
+                exampleSpecs: {
                     prefix: 'checkbox-',
                 },
                 additionalApiDocs: [
@@ -120,10 +123,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'chips',
-                name             : 'Chips',
-                summary          : 'Presents a list of items as a set of small, tactile entities.',
-                exampleSpecs     : {
+                id: 'chips',
+                name: 'Chips',
+                summary:
+                    'Presents a list of items as a set of small, tactile entities.',
+                exampleSpecs: {
                     prefix: 'chips-',
                 },
                 additionalApiDocs: [
@@ -134,10 +138,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'core',
-                name             : 'Core',
-                summary          : 'Reusable parts used by other components in the library.',
-                exampleSpecs     : {
+                id: 'core',
+                name: 'Core',
+                summary:
+                    'Reusable parts used by other components in the library.',
+                exampleSpecs: {
                     prefix: 'core-',
                 },
                 additionalApiDocs: [
@@ -148,10 +153,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'datepicker',
-                name             : 'Datepicker',
-                summary          : 'Captures dates, agnostic about their internal representation.',
-                exampleSpecs     : {
+                id: 'datepicker',
+                name: 'Datepicker',
+                summary:
+                    'Captures dates, agnostic about their internal representation.',
+                exampleSpecs: {
                     prefix: 'date',
                 },
                 additionalApiDocs: [
@@ -162,10 +168,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'dialog',
-                name             : 'Dialog',
-                summary          : 'A configurable modal that displays dynamic content.',
-                exampleSpecs     : {
+                id: 'dialog',
+                name: 'Dialog',
+                summary: 'A configurable modal that displays dynamic content.',
+                exampleSpecs: {
                     prefix: 'dialog-',
                 },
                 additionalApiDocs: [
@@ -176,10 +182,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'divider',
-                name             : 'Divider',
-                summary          : 'A vertical or horizontal visual divider.',
-                exampleSpecs     : {
+                id: 'divider',
+                name: 'Divider',
+                summary: 'A vertical or horizontal visual divider.',
+                exampleSpecs: {
                     prefix: 'divider-',
                 },
                 additionalApiDocs: [
@@ -190,10 +196,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'expansion',
-                name             : 'Expansion Panel',
-                summary          : 'A container which can be expanded to reveal more content.',
-                exampleSpecs     : {
+                id: 'expansion',
+                name: 'Expansion Panel',
+                summary:
+                    'A container which can be expanded to reveal more content.',
+                exampleSpecs: {
                     prefix: 'expansion-',
                 },
                 additionalApiDocs: [
@@ -204,10 +211,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'form-field',
-                name             : 'Form field',
-                summary          : 'Wraps input fields so they are displayed consistently.',
-                exampleSpecs     : {
+                id: 'form-field',
+                name: 'Form field',
+                summary:
+                    'Wraps input fields so they are displayed consistently.',
+                exampleSpecs: {
                     prefix: 'form-field-',
                 },
                 additionalApiDocs: [
@@ -218,10 +226,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'grid-list',
-                name             : 'Grid list',
-                summary          : 'A flexible structure for presenting content items in a grid.',
-                exampleSpecs     : {
+                id: 'grid-list',
+                name: 'Grid list',
+                summary:
+                    'A flexible structure for presenting content items in a grid.',
+                exampleSpecs: {
                     prefix: 'grid-list-',
                 },
                 additionalApiDocs: [
@@ -232,10 +241,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'icon',
-                name             : 'Icon',
-                summary          : 'Renders a specified icon.',
-                exampleSpecs     : {
+                id: 'icon',
+                name: 'Icon',
+                summary: 'Renders a specified icon.',
+                exampleSpecs: {
                     prefix: 'icon-',
                 },
                 additionalApiDocs: [
@@ -246,10 +255,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'input',
-                name             : 'Input',
-                summary          : 'Enables native inputs to be used within a Form field.',
-                exampleSpecs     : {
+                id: 'input',
+                name: 'Input',
+                summary:
+                    'Enables native inputs to be used within a Form field.',
+                exampleSpecs: {
                     prefix: 'input-',
                 },
                 additionalApiDocs: [
@@ -260,10 +270,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'list',
-                name             : 'List',
-                summary          : 'Presents conventional lists of items.',
-                exampleSpecs     : {
+                id: 'list',
+                name: 'List',
+                summary: 'Presents conventional lists of items.',
+                exampleSpecs: {
                     prefix: 'list-',
                 },
                 additionalApiDocs: [
@@ -274,10 +284,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'menu',
-                name             : 'Menu',
-                summary          : 'A floating panel of nestable options.',
-                exampleSpecs     : {
+                id: 'menu',
+                name: 'Menu',
+                summary: 'A floating panel of nestable options.',
+                exampleSpecs: {
                     prefix: 'menu-',
                 },
                 additionalApiDocs: [
@@ -288,10 +298,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'paginator',
-                name             : 'Paginator',
-                summary          : 'Controls for displaying paged data.',
-                exampleSpecs     : {
+                id: 'paginator',
+                name: 'Paginator',
+                summary: 'Controls for displaying paged data.',
+                exampleSpecs: {
                     prefix: 'paginator-',
                 },
                 additionalApiDocs: [
@@ -302,10 +312,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'progress-bar',
-                name             : 'Progress bar',
-                summary          : 'A linear progress indicator.',
-                exampleSpecs     : {
+                id: 'progress-bar',
+                name: 'Progress bar',
+                summary: 'A linear progress indicator.',
+                exampleSpecs: {
                     prefix: 'progress-bar-',
                 },
                 additionalApiDocs: [
@@ -316,10 +326,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'progress-spinner',
-                name             : 'Progress spinner',
-                summary          : 'A circular progress indicator.',
-                exampleSpecs     : {
+                id: 'progress-spinner',
+                name: 'Progress spinner',
+                summary: 'A circular progress indicator.',
+                exampleSpecs: {
                     prefix: 'progress-spinner-',
                 },
                 additionalApiDocs: [
@@ -330,12 +340,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'radio',
-                name             : 'Radio button',
-                summary          : 'Allows the user to select one option from a group.',
-                exampleSpecs     : {
+                id: 'radio',
+                name: 'Radio button',
+                summary: 'Allows the user to select one option from a group.',
+                exampleSpecs: {
                     prefix: 'radio-',
-
                 },
                 additionalApiDocs: [
                     {
@@ -345,19 +354,20 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id          : 'ripple',
-                name        : 'Ripples',
+                id: 'ripple',
+                name: 'Ripples',
                 overviewPath: 'material/core/ripple/ripple.html',
-                summary     : 'Directive for adding Material Design ripple effects',
+                summary: 'Directive for adding Material Design ripple effects',
                 exampleSpecs: {
                     prefix: 'ripple-',
                 },
             },
             {
-                id               : 'select',
-                name             : 'Select',
-                summary          : 'Allows the user to select one or more options using a dropdown.',
-                exampleSpecs     : {
+                id: 'select',
+                name: 'Select',
+                summary:
+                    'Allows the user to select one or more options using a dropdown.',
+                exampleSpecs: {
                     prefix: 'select-',
                 },
                 additionalApiDocs: [
@@ -368,10 +378,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'sidenav',
-                name             : 'Sidenav',
-                summary          : 'A container for content that is fixed to one side of the screen.',
-                exampleSpecs     : {
+                id: 'sidenav',
+                name: 'Sidenav',
+                summary:
+                    'A container for content that is fixed to one side of the screen.',
+                exampleSpecs: {
                     prefix: 'sidenav-',
                 },
                 additionalApiDocs: [
@@ -382,10 +393,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'slide-toggle',
-                name             : 'Slide toggle',
-                summary          : 'Captures boolean values as a clickable and draggable switch.',
-                exampleSpecs     : {
+                id: 'slide-toggle',
+                name: 'Slide toggle',
+                summary:
+                    'Captures boolean values as a clickable and draggable switch.',
+                exampleSpecs: {
                     prefix: 'slide-toggle-',
                 },
                 additionalApiDocs: [
@@ -396,10 +408,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'slider',
-                name             : 'Slider',
-                summary          : 'Allows the user to input a value by dragging along a slider.',
-                exampleSpecs     : {
+                id: 'slider',
+                name: 'Slider',
+                summary:
+                    'Allows the user to input a value by dragging along a slider.',
+                exampleSpecs: {
                     prefix: 'slider-',
                 },
                 additionalApiDocs: [
@@ -410,10 +423,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'snack-bar',
-                name             : 'Snackbar',
-                summary          : 'Displays short actionable messages as an uninvasive alert.',
-                exampleSpecs     : {
+                id: 'snack-bar',
+                name: 'Snackbar',
+                summary:
+                    'Displays short actionable messages as an uninvasive alert.',
+                exampleSpecs: {
                     prefix: 'snack-bar-',
                 },
                 additionalApiDocs: [
@@ -424,10 +438,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'sort',
-                name             : 'Sort header',
-                summary          : 'Allows the user to configure how tabular data is sorted.',
-                exampleSpecs     : {
+                id: 'sort',
+                name: 'Sort header',
+                summary:
+                    'Allows the user to configure how tabular data is sorted.',
+                exampleSpecs: {
                     prefix: 'sort-',
                 },
                 additionalApiDocs: [
@@ -438,10 +453,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'stepper',
-                name             : 'Stepper',
-                summary          : 'Presents content as steps through which to progress.',
-                exampleSpecs     : {
+                id: 'stepper',
+                name: 'Stepper',
+                summary: 'Presents content as steps through which to progress.',
+                exampleSpecs: {
                     prefix: 'stepper-',
                 },
                 additionalApiDocs: [
@@ -452,10 +467,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'table',
-                name             : 'Table',
-                summary          : 'A configurable component for displaying tabular data.',
-                exampleSpecs     : {
+                id: 'table',
+                name: 'Table',
+                summary:
+                    'A configurable component for displaying tabular data.',
+                exampleSpecs: {
                     prefix: 'table-',
                 },
                 additionalApiDocs: [
@@ -466,10 +482,11 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'tabs',
-                name             : 'Tabs',
-                summary          : 'Only presents one view at a time from a provided set of views.',
-                exampleSpecs     : {
+                id: 'tabs',
+                name: 'Tabs',
+                summary:
+                    'Only presents one view at a time from a provided set of views.',
+                exampleSpecs: {
                     prefix: 'tab-',
                 },
                 additionalApiDocs: [
@@ -480,10 +497,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'toolbar',
-                name             : 'Toolbar',
-                summary          : 'A container for top-level titles and controls.',
-                exampleSpecs     : {
+                id: 'toolbar',
+                name: 'Toolbar',
+                summary: 'A container for top-level titles and controls.',
+                exampleSpecs: {
                     prefix: 'toolbar-',
                 },
                 additionalApiDocs: [
@@ -494,10 +511,10 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id               : 'tooltip',
-                name             : 'Tooltip',
-                summary          : 'Displays floating content when an object is hovered.',
-                exampleSpecs     : {
+                id: 'tooltip',
+                name: 'Tooltip',
+                summary: 'Displays floating content when an object is hovered.',
+                exampleSpecs: {
                     prefix: 'tooltip-',
                 },
                 additionalApiDocs: [
@@ -508,9 +525,9 @@ export class MaterialComponentsComponent
                 ],
             },
             {
-                id          : 'tree',
-                name        : 'Tree',
-                summary     : 'Presents hierarchical content as an expandable tree.',
+                id: 'tree',
+                name: 'Tree',
+                summary: 'Presents hierarchical content as an expandable tree.',
                 exampleSpecs: {
                     prefix: 'tree-',
                 },

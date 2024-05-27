@@ -1,5 +1,4 @@
-export interface IBoard
-{
+export interface IBoard {
     id?: string | null;
     title: string;
     description?: string | null;
@@ -10,8 +9,7 @@ export interface IBoard
     members?: IMember[];
 }
 
-export interface IList
-{
+export interface IList {
     id?: string | null;
     boardId: string;
     position: number;
@@ -19,8 +17,7 @@ export interface IList
     cards?: ICard[];
 }
 
-export interface ICard
-{
+export interface ICard {
     id?: string | null;
     boardId: string;
     listId: string;
@@ -31,15 +28,13 @@ export interface ICard
     dueDate?: string | null;
 }
 
-export interface IMember
-{
+export interface IMember {
     id?: string | null;
     name: string;
     avatar?: string | null;
 }
 
-export interface ILabel
-{
+export interface ILabel {
     id: string | null;
     boardId: string;
     title: string;

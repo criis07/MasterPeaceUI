@@ -3,7 +3,7 @@ import { DatatableComponent } from 'app/modules/admin/ui/datatable/datatable.com
 
 export default [
     {
-        path     : '',
+        path: '',
         component: DatatableComponent,
     },
 ] as Routes;

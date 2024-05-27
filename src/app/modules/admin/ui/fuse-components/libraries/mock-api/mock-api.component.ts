@@ -6,19 +6,21 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'mock-api',
+    selector: 'mock-api',
     templateUrl: './mock-api.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+    ],
 })
-export class MockApiComponent
-{
+export class MockApiComponent {
     /**
      * Constructor
      */
-    constructor(private _fuseComponentsComponent: FuseComponentsComponent)
-    {
-    }
+    constructor(private _fuseComponentsComponent: FuseComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -27,8 +29,7 @@ export class MockApiComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

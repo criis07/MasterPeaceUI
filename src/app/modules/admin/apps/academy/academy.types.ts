@@ -1,12 +1,10 @@
-export interface Category
-{
+export interface Category {
     id?: string;
     title?: string;
     slug?: string;
 }
 
-export interface Course
-{
+export interface Course {
     id?: string;
     title?: string;
     slug?: string;

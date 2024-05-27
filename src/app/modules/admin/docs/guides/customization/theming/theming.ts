@@ -6,19 +6,21 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'theming',
+    selector: 'theming',
     templateUrl: './theming.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent, FuseAlertComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        FuseAlertComponent,
+    ],
 })
-export class ThemingComponent
-{
+export class ThemingComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -27,8 +29,7 @@ export class ThemingComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

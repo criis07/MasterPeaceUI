@@ -1,5 +1,4 @@
-export interface Mail
-{
+export interface Mail {
     id?: string;
     type?: string;
     from?: {
@@ -28,14 +27,12 @@ export interface Mail
     labels?: string[];
 }
 
-export interface MailCategory
-{
+export interface MailCategory {
     type: 'folder' | 'filter' | 'label';
     name: string;
 }
 
-export interface MailFolder
-{
+export interface MailFolder {
     id: string;
     title: string;
     slug: string;
@@ -43,16 +40,14 @@ export interface MailFolder
     count?: number;
 }
 
-export interface MailFilter
-{
+export interface MailFilter {
     id: string;
     title: string;
     slug: string;
     icon: string;
 }
 
-export interface MailLabel
-{
+export interface MailLabel {
     id: string;
     title: string;
     slug: string;

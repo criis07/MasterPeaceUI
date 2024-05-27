@@ -3,7 +3,7 @@ import { TailwindCSSComponent } from 'app/modules/admin/ui/tailwindcss/tailwindc
 
 export default [
     {
-        path     : '',
+        path: '',
         component: TailwindCSSComponent,
     },
 ] as Routes;

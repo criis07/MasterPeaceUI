@@ -4,19 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'updating',
+    selector: 'updating',
     templateUrl: './updating.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule],
 })
-export class UpdatingComponent
-{
+export class UpdatingComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -25,8 +22,7 @@ export class UpdatingComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

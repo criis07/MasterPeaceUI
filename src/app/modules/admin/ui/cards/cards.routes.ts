@@ -3,7 +3,7 @@ import { CardsComponent } from 'app/modules/admin/ui/cards/cards.component';
 
 export default [
     {
-        path     : '',
+        path: '',
         component: CardsComponent,
     },
 ] as Routes;

@@ -5,9 +5,9 @@ import { AnalyticsService } from 'app/modules/admin/dashboards/analytics/analyti
 
 export default [
     {
-        path     : '',
+        path: '',
         component: AnalyticsComponent,
-        resolve  : {
+        resolve: {
             data: () => inject(AnalyticsService).getData(),
         },
     },

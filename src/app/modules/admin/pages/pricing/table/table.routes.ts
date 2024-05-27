@@ -3,7 +3,7 @@ import { PricingTableComponent } from 'app/modules/admin/pages/pricing/table/tab
 
 export default [
     {
-        path     : '',
+        path: '',
         component: PricingTableComponent,
     },
 ] as Routes;

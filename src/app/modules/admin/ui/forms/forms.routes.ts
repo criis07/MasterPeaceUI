@@ -5,15 +5,15 @@ import { FormsWizardsComponent } from 'app/modules/admin/ui/forms/wizards/wizard
 
 export default [
     {
-        path     : 'fields',
+        path: 'fields',
         component: FormsFieldsComponent,
     },
     {
-        path     : 'layouts',
+        path: 'layouts',
         component: FormsLayoutsComponent,
     },
     {
-        path     : 'wizards',
+        path: 'wizards',
         component: FormsWizardsComponent,
     },
 ] as Routes;

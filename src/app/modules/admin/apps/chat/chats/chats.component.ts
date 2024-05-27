@@ -1,5 +1,12 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnDestroy,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,15 +21,28 @@ import { ProfileComponent } from 'app/modules/admin/apps/chat/profile/profile.co
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector       : 'chat-chats',
-    templateUrl    : './chats.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'chat-chats',
+    templateUrl: './chats.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatSidenavModule, NgIf, NewChatComponent, ProfileComponent, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule, MatInputModule, NgFor, NgClass, RouterLink, RouterOutlet],
+    standalone: true,
+    imports: [
+        MatSidenavModule,
+        NgIf,
+        NewChatComponent,
+        ProfileComponent,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgFor,
+        NgClass,
+        RouterLink,
+        RouterOutlet,
+    ],
 })
-export class ChatsComponent implements OnInit, OnDestroy
-{
+export class ChatsComponent implements OnInit, OnDestroy {
     chats: Chat[];
     drawerComponent: 'profile' | 'new-chat';
     drawerOpened: boolean = false;
@@ -36,10 +56,8 @@ export class ChatsComponent implements OnInit, OnDestroy
      */
     constructor(
         private _chatService: ChatService,
-        private _changeDetectorRef: ChangeDetectorRef,
-    )
-    {
-    }
+        private _changeDetectorRef: ChangeDetectorRef
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -48,13 +66,11 @@ export class ChatsComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Chats
         this._chatService.chats$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((chats: Chat[]) =>
-            {
+            .subscribe((chats: Chat[]) => {
                 this.chats = this.filteredChats = chats;
 
                 // Mark for check
@@ -64,8 +80,7 @@ export class ChatsComponent implements OnInit, OnDestroy
         // Profile
         this._chatService.profile$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((profile: Profile) =>
-            {
+            .subscribe((profile: Profile) => {
                 this.profile = profile;
 
                 // Mark for check
@@ -75,8 +90,7 @@ export class ChatsComponent implements OnInit, OnDestroy
         // Selected chat
         this._chatService.chat$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((chat: Chat) =>
-            {
+            .subscribe((chat: Chat) => {
                 this.selectedChat = chat;
 
                 // Mark for check
@@ -87,8 +101,7 @@ export class ChatsComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -106,23 +119,22 @@ export class ChatsComponent implements OnInit, OnDestroy
      *
      * @param query
      */
-    filterChats(query: string): void
-    {
+    filterChats(query: string): void {
         // Reset the filter
-        if ( !query )
-        {
+        if (!query) {
             this.filteredChats = this.chats;
             return;
         }
 
-        this.filteredChats = this.chats.filter(chat => chat.contact.name.toLowerCase().includes(query.toLowerCase()));
+        this.filteredChats = this.chats.filter((chat) =>
+            chat.contact.name.toLowerCase().includes(query.toLowerCase())
+        );
     }
 
     /**
      * Open the new chat sidebar
      */
-    openNewChat(): void
-    {
+    openNewChat(): void {
         this.drawerComponent = 'new-chat';
         this.drawerOpened = true;
 
@@ -133,8 +145,7 @@ export class ChatsComponent implements OnInit, OnDestroy
     /**
      * Open the profile sidebar
      */
-    openProfile(): void
-    {
+    openProfile(): void {
         this.drawerComponent = 'profile';
         this.drawerOpened = true;
 
@@ -148,8 +159,7 @@ export class ChatsComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

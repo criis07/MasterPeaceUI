@@ -13,70 +13,70 @@ import { QuillEditorComponent } from 'app/modules/admin/ui/other-components/thir
 
 export default [
     {
-        path     : '',
+        path: '',
         component: OtherComponentsComponent,
-        children : [
+        children: [
             {
-                path      : '',
-                pathMatch : 'full',
+                path: '',
+                pathMatch: 'full',
                 redirectTo: 'common/overview',
             },
             {
-                path    : 'common',
+                path: 'common',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: OverviewComponent,
                     },
                     {
-                        path     : 'languages',
+                        path: 'languages',
                         component: LanguagesComponent,
                     },
                     {
-                        path     : 'messages',
+                        path: 'messages',
                         component: MessagesComponent,
                     },
                     {
-                        path     : 'notifications',
+                        path: 'notifications',
                         component: NotificationsComponent,
                     },
                     {
-                        path     : 'search',
+                        path: 'search',
                         component: SearchComponent,
                     },
                     {
-                        path     : 'quick-chat',
+                        path: 'quick-chat',
                         component: QuickChatComponent,
                     },
                     {
-                        path     : 'shortcuts',
+                        path: 'shortcuts',
                         component: ShortcutsComponent,
                     },
                     {
-                        path     : 'user',
+                        path: 'user',
                         component: UserComponent,
                     },
                 ],
             },
             {
-                path    : 'third-party',
+                path: 'third-party',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'apex-charts',
                     },
                     {
-                        path     : 'apex-charts',
+                        path: 'apex-charts',
                         component: ApexChartsComponent,
                     },
                     {
-                        path     : 'quill-editor',
+                        path: 'quill-editor',
                         component: QuillEditorComponent,
                     },
                 ],

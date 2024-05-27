@@ -3,7 +3,7 @@ import { ConfirmationDialogComponent } from 'app/modules/admin/ui/confirmation-d
 
 export default [
     {
-        path     : '',
+        path: '',
         component: ConfirmationDialogComponent,
     },
 ] as Routes;

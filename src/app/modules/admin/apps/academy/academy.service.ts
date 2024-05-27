@@ -1,22 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category, Course } from 'app/modules/admin/apps/academy/academy.types';
-import { BehaviorSubject, map, Observable, of, switchMap, tap, throwError } from 'rxjs';
+import {
+    BehaviorSubject,
+    Observable,
+    map,
+    of,
+    switchMap,
+    tap,
+    throwError,
+} from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class AcademyService
-{
+@Injectable({ providedIn: 'root' })
+export class AcademyService {
     // Private
-    private _categories: BehaviorSubject<Category[] | null> = new BehaviorSubject(null);
+    private _categories: BehaviorSubject<Category[] | null> =
+        new BehaviorSubject(null);
     private _course: BehaviorSubject<Course | null> = new BehaviorSubject(null);
-    private _courses: BehaviorSubject<Course[] | null> = new BehaviorSubject(null);
+    private _courses: BehaviorSubject<Course[] | null> = new BehaviorSubject(
+        null
+    );
 
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+    constructor(private _httpClient: HttpClient) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -25,24 +33,21 @@ export class AcademyService
     /**
      * Getter for categories
      */
-    get categories$(): Observable<Category[]>
-    {
+    get categories$(): Observable<Category[]> {
         return this._categories.asObservable();
     }
 
     /**
      * Getter for courses
      */
-    get courses$(): Observable<Course[]>
-    {
+    get courses$(): Observable<Course[]> {
         return this._courses.asObservable();
     }
 
     /**
      * Getter for course
      */
-    get course$(): Observable<Course>
-    {
+    get course$(): Observable<Course> {
         return this._course.asObservable();
     }
 
@@ -53,52 +58,50 @@ export class AcademyService
     /**
      * Get categories
      */
-    getCategories(): Observable<Category[]>
-    {
-        return this._httpClient.get<Category[]>('api/apps/academy/categories').pipe(
-            tap((response: any) =>
-            {
-                this._categories.next(response);
-            }),
-        );
+    getCategories(): Observable<Category[]> {
+        return this._httpClient
+            .get<Category[]>('api/apps/academy/categories')
+            .pipe(
+                tap((response: any) => {
+                    this._categories.next(response);
+                })
+            );
     }
 
     /**
      * Get courses
      */
-    getCourses(): Observable<Course[]>
-    {
+    getCourses(): Observable<Course[]> {
         return this._httpClient.get<Course[]>('api/apps/academy/courses').pipe(
-            tap((response: any) =>
-            {
+            tap((response: any) => {
                 this._courses.next(response);
-            }),
+            })
         );
     }
 
     /**
      * Get course by id
      */
-    getCourseById(id: string): Observable<Course>
-    {
-        return this._httpClient.get<Course>('api/apps/academy/courses/course', {params: {id}}).pipe(
-            map((course) =>
-            {
-                // Update the course
-                this._course.next(course);
+    getCourseById(id: string): Observable<Course> {
+        return this._httpClient
+            .get<Course>('api/apps/academy/courses/course', { params: { id } })
+            .pipe(
+                map((course) => {
+                    // Update the course
+                    this._course.next(course);
 
-                // Return the course
-                return course;
-            }),
-            switchMap((course) =>
-            {
-                if ( !course )
-                {
-                    return throwError('Could not found course with id of ' + id + '!');
-                }
+                    // Return the course
+                    return course;
+                }),
+                switchMap((course) => {
+                    if (!course) {
+                        return throwError(
+                            'Could not found course with id of ' + id + '!'
+                        );
+                    }
 
-                return of(course);
-            }),
-        );
+                    return of(course);
+                })
+            );
     }
 }

@@ -8,14 +8,13 @@ import { GuideCategory } from 'app/modules/admin/apps/help-center/help-center.ty
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'help-center-guides-category',
-    templateUrl  : './category.component.html',
+    selector: 'help-center-guides-category',
+    templateUrl: './category.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatButtonModule, RouterLink, MatIconModule, NgFor],
+    standalone: true,
+    imports: [MatButtonModule, RouterLink, MatIconModule, NgFor],
 })
-export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
-{
+export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy {
     guideCategory: GuideCategory;
     private _unsubscribeAll: Subject<any> = new Subject();
 
@@ -25,10 +24,8 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _helpCenterService: HelpCenterService,
-        private _router: Router,
-    )
-    {
-    }
+        private _router: Router
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -37,13 +34,11 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the Guides
         this._helpCenterService.guides$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((guideCategories) =>
-            {
+            .subscribe((guideCategories) => {
                 this.guideCategory = guideCategories[0];
             });
     }
@@ -51,8 +46,7 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -68,8 +62,7 @@ export class HelpCenterGuidesCategoryComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

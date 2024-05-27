@@ -3,7 +3,7 @@ import { SettingsComponent } from 'app/modules/admin/pages/settings/settings.com
 
 export default [
     {
-        path     : '',
+        path: '',
         component: SettingsComponent,
     },
 ] as Routes;

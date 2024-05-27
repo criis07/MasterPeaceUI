@@ -4,18 +4,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'simple-fullwidth-1-normal-scroll',
-    templateUrl  : './fullwidth-1.component.html',
+    selector: 'simple-fullwidth-1-normal-scroll',
+    templateUrl: './fullwidth-1.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, RouterLink, MatButtonModule],
+    standalone: true,
+    imports: [MatIconModule, RouterLink, MatButtonModule],
 })
-export class SimpleFullwidth1NormalScrollComponent
-{
+export class SimpleFullwidth1NormalScrollComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

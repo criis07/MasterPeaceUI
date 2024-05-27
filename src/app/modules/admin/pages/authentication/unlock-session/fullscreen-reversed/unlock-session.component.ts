@@ -1,6 +1,13 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+    FormsModule,
+    NgForm,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,19 +18,29 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertComponent, FuseAlertType } from '@fuse/components/alert';
 
 @Component({
-    selector     : 'unlock-session-fullscreen-reversed',
-    templateUrl  : './unlock-session.component.html',
+    selector: 'unlock-session-fullscreen-reversed',
+    templateUrl: './unlock-session.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : fuseAnimations,
-    standalone   : true,
-    imports      : [NgIf, FuseAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
+    animations: fuseAnimations,
+    standalone: true,
+    imports: [
+        NgIf,
+        FuseAlertComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        RouterLink,
+    ],
 })
-export class UnlockSessionFullscreenReversedComponent implements OnInit
-{
+export class UnlockSessionFullscreenReversedComponent implements OnInit {
     @ViewChild('unlockSessionNgForm') unlockSessionNgForm: NgForm;
 
     alert: { type: FuseAlertType; message: string } = {
-        type   : 'success',
+        type: 'success',
         message: '',
     };
     name: string = 'Brian Hughes';
@@ -33,11 +50,7 @@ export class UnlockSessionFullscreenReversedComponent implements OnInit
     /**
      * Constructor
      */
-    constructor(
-        private _formBuilder: UntypedFormBuilder,
-    )
-    {
-    }
+    constructor(private _formBuilder: UntypedFormBuilder) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -46,13 +59,12 @@ export class UnlockSessionFullscreenReversedComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Create the form
         this.unlockSessionForm = this._formBuilder.group({
-            name    : [
+            name: [
                 {
-                    value   : this.name,
+                    value: this.name,
                     disabled: true,
                 },
             ],
@@ -67,7 +79,5 @@ export class UnlockSessionFullscreenReversedComponent implements OnInit
     /**
      * Unlock
      */
-    unlock(): void
-    {
-    }
+    unlock(): void {}
 }

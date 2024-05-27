@@ -8,19 +8,23 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'card',
+    selector: 'card',
     templateUrl: './card.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent, MatTabsModule, FuseCardComponent, NgIf],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        MatTabsModule,
+        FuseCardComponent,
+        NgIf,
+    ],
 })
-export class CardComponent
-{
+export class CardComponent {
     /**
      * Constructor
      */
-    constructor(private _fuseComponentsComponent: FuseComponentsComponent)
-    {
-    }
+    constructor(private _fuseComponentsComponent: FuseComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -29,8 +33,7 @@ export class CardComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

@@ -52,238 +52,238 @@ import { UnlockSessionSplitScreenComponent } from 'app/modules/admin/pages/authe
 export default [
     // Sign in
     {
-        path    : 'sign-in',
+        path: 'sign-in',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: SignInClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: SignInModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: SignInModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: SignInSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: SignInSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: SignInFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: SignInFullscreenReversedComponent,
             },
         ],
     },
     // Sign up
     {
-        path    : 'sign-up',
+        path: 'sign-up',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: SignUpClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: SignUpModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: SignUpModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: SignUpSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: SignUpSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: SignUpFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: SignUpFullscreenReversedComponent,
             },
         ],
     },
     // Sign out
     {
-        path    : 'sign-out',
+        path: 'sign-out',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: SignOutClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: SignOutModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: SignOutModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: SignOutSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: SignOutSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: SignOutFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: SignOutFullscreenReversedComponent,
             },
         ],
     },
     // Forgot password
     {
-        path    : 'forgot-password',
+        path: 'forgot-password',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: ForgotPasswordClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: ForgotPasswordModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: ForgotPasswordModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: ForgotPasswordSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: ForgotPasswordSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: ForgotPasswordFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: ForgotPasswordFullscreenReversedComponent,
             },
         ],
     },
     // Reset password
     {
-        path    : 'reset-password',
+        path: 'reset-password',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: ResetPasswordClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: ResetPasswordModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: ResetPasswordModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: ResetPasswordSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: ResetPasswordSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: ResetPasswordFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: ResetPasswordFullscreenReversedComponent,
             },
         ],
     },
     // Unlock session
     {
-        path    : 'unlock-session',
+        path: 'unlock-session',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: UnlockSessionClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: UnlockSessionModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: UnlockSessionModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: UnlockSessionSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: UnlockSessionSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: UnlockSessionFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: UnlockSessionFullscreenReversedComponent,
             },
         ],
     },
     // Confirmation required
     {
-        path    : 'confirmation-required',
+        path: 'confirmation-required',
         children: [
             {
-                path     : 'classic',
+                path: 'classic',
                 component: ConfirmationRequiredClassicComponent,
             },
             {
-                path     : 'modern',
+                path: 'modern',
                 component: ConfirmationRequiredModernComponent,
             },
             {
-                path     : 'modern-reversed',
+                path: 'modern-reversed',
                 component: ConfirmationRequiredModernReversedComponent,
             },
             {
-                path     : 'split-screen',
+                path: 'split-screen',
                 component: ConfirmationRequiredSplitScreenComponent,
             },
             {
-                path     : 'split-screen-reversed',
+                path: 'split-screen-reversed',
                 component: ConfirmationRequiredSplitScreenReversedComponent,
             },
             {
-                path     : 'fullscreen',
+                path: 'fullscreen',
                 component: ConfirmationRequiredFullscreenComponent,
             },
             {
-                path     : 'fullscreen-reversed',
+                path: 'fullscreen-reversed',
                 component: ConfirmationRequiredFullscreenReversedComponent,
             },
         ],

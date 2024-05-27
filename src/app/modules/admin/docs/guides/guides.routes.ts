@@ -20,118 +20,118 @@ import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component'
 
 export default [
     {
-        path     : '',
+        path: '',
         component: GuidesComponent,
-        children : [
+        children: [
             {
-                path      : '',
-                pathMatch : 'full',
+                path: '',
+                pathMatch: 'full',
                 redirectTo: 'getting-started',
             },
             {
-                path    : 'getting-started',
+                path: 'getting-started',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'introduction',
                     },
                     {
-                        path     : 'introduction',
+                        path: 'introduction',
                         component: IntroductionComponent,
                     },
                     {
-                        path     : 'prerequisites',
+                        path: 'prerequisites',
                         component: PrerequisitesComponent,
                     },
                     {
-                        path     : 'installation',
+                        path: 'installation',
                         component: InstallationComponent,
                     },
                     {
-                        path     : 'serving',
+                        path: 'serving',
                         component: ServingComponent,
                     },
                 ],
             },
             {
-                path    : 'development',
+                path: 'development',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'structure',
                     },
                     {
-                        path     : 'directory-structure',
+                        path: 'directory-structure',
                         component: DirectoryStructureComponent,
                     },
                     {
-                        path     : 'component-structure',
+                        path: 'component-structure',
                         component: ComponentStructureComponent,
                     },
                     {
-                        path     : 'starter-kit',
+                        path: 'starter-kit',
                         component: StarterKitComponent,
                     },
                     {
-                        path     : 'deployment',
+                        path: 'deployment',
                         component: DeploymentComponent,
                     },
                     {
-                        path     : 'updating',
+                        path: 'updating',
                         component: UpdatingComponent,
                     },
                 ],
             },
             {
-                path    : 'customization',
+                path: 'customization',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'theme-layouts',
                     },
                     {
-                        path     : 'theme-layouts',
+                        path: 'theme-layouts',
                         component: ThemeLayoutsComponent,
                     },
                     {
-                        path     : 'page-layouts',
+                        path: 'page-layouts',
                         component: PageLayoutsComponent,
                     },
                     {
-                        path     : 'tailwindcss',
+                        path: 'tailwindcss',
                         component: TailwindCSSComponent,
                     },
                     {
-                        path     : 'theming',
+                        path: 'theming',
                         component: ThemingComponent,
                     },
                     {
-                        path     : 'component-theming',
+                        path: 'component-theming',
                         component: ComponentThemingComponent,
                     },
                     {
-                        path     : 'splash-screen',
+                        path: 'splash-screen',
                         component: SplashScreenCustomizationComponent,
                     },
                     {
-                        path     : 'multi-language',
+                        path: 'multi-language',
                         component: MultiLanguageCustomizationComponent,
                     },
                 ],
             },
             {
-                path    : 'authentication',
+                path: 'authentication',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'jwt',
                     },
                     {
-                        path     : 'jwt',
+                        path: 'jwt',
                         component: JwtComponent,
                     },
                 ],

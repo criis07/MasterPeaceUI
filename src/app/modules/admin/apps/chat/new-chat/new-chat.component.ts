@@ -1,5 +1,12 @@
 import { NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -8,15 +15,14 @@ import { Contact } from 'app/modules/admin/apps/chat/chat.types';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector       : 'chat-new-chat',
-    templateUrl    : './new-chat.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'chat-new-chat',
+    templateUrl: './new-chat.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatButtonModule, MatIconModule, NgIf, NgFor],
+    standalone: true,
+    imports: [MatButtonModule, MatIconModule, NgIf, NgFor],
 })
-export class NewChatComponent implements OnInit, OnDestroy
-{
+export class NewChatComponent implements OnInit, OnDestroy {
     @Input() drawer: MatDrawer;
     contacts: Contact[] = [];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -24,9 +30,7 @@ export class NewChatComponent implements OnInit, OnDestroy
     /**
      * Constructor
      */
-    constructor(private _chatService: ChatService)
-    {
-    }
+    constructor(private _chatService: ChatService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -35,13 +39,11 @@ export class NewChatComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Contacts
         this._chatService.contacts$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((contacts: Contact[]) =>
-            {
+            .subscribe((contacts: Contact[]) => {
                 this.contacts = contacts;
             });
     }
@@ -49,8 +51,7 @@ export class NewChatComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -66,8 +67,7 @@ export class NewChatComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

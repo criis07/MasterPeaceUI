@@ -2,18 +2,15 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector     : 'mailbox-empty-details',
-    templateUrl  : './empty-details.component.html',
+    selector: 'mailbox-empty-details',
+    templateUrl: './empty-details.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule],
+    standalone: true,
+    imports: [MatIconModule],
 })
-export class MailboxEmptyDetailsComponent
-{
+export class MailboxEmptyDetailsComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

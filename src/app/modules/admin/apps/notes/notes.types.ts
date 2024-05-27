@@ -1,18 +1,15 @@
-export interface Task
-{
+export interface Task {
     id?: string;
     content?: string;
     completed?: string;
 }
 
-export interface Label
-{
+export interface Label {
     id?: string;
     title?: string;
 }
 
-export interface Note
-{
+export interface Note {
     id?: string;
     title?: string;
     content?: string;

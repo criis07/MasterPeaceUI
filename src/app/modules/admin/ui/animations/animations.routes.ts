@@ -3,7 +3,7 @@ import { AnimationsComponent } from 'app/modules/admin/ui/animations/animations.
 
 export default [
     {
-        path     : '',
+        path: '',
         component: AnimationsComponent,
     },
 ] as Routes;

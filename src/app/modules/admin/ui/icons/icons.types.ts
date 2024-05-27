@@ -1,5 +1,4 @@
-export interface Icon
-{
+export interface Icon {
     namespace: string;
     name: string;
     grid: number;

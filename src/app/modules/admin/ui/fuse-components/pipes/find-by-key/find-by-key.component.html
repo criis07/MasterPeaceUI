@@ -1,64 +1,68 @@
-<div class="flex flex-col flex-auto min-w-0">
-
+<div class="flex min-w-0 flex-auto flex-col">
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
-        <div class="flex-1 min-w-0">
+    <div
+        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-8"
+    >
+        <div class="min-w-0 flex-1">
             <!-- Breadcrumbs -->
             <div class="flex flex-wrap items-center font-medium">
                 <div>
-                    <a class="whitespace-nowrap text-primary-500">Documentation</a>
+                    <a class="whitespace-nowrap text-primary-500"
+                        >Documentation</a
+                    >
                 </div>
-                <div class="flex items-center ml-1 whitespace-nowrap">
+                <div class="ml-1 flex items-center whitespace-nowrap">
                     <mat-icon
-                        class="icon-size-5 text-secondary"
-                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                        class="text-secondary icon-size-5"
+                        [svgIcon]="'heroicons_mini:chevron-right'"
+                    ></mat-icon>
                     <a class="ml-1 text-primary-500">Fuse Components</a>
                 </div>
-                <div class="flex items-center ml-1 whitespace-nowrap">
+                <div class="ml-1 flex items-center whitespace-nowrap">
                     <mat-icon
-                        class="icon-size-5 text-secondary"
-                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
-                    <span class="ml-1 text-secondary">Pipes</span>
+                        class="text-secondary icon-size-5"
+                        [svgIcon]="'heroicons_mini:chevron-right'"
+                    ></mat-icon>
+                    <span class="text-secondary ml-1">Pipes</span>
                 </div>
             </div>
             <!-- Title -->
             <div class="mt-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                <h2
+                    class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
+                >
                     findByKey
                 </h2>
             </div>
         </div>
         <button
-            class="-ml-3 sm:ml-0 mb-2 sm:mb-0 order-first sm:order-last"
+            class="order-first -ml-3 mb-2 sm:order-last sm:mb-0 sm:ml-0"
             mat-icon-button
-            (click)="toggleDrawer()">
+            (click)="toggleDrawer()"
+        >
             <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
         </button>
     </div>
 
-    <div class="flex-auto max-w-3xl p-6 sm:p-10 prose prose-sm">
-
+    <div class="prose prose-sm max-w-3xl flex-auto p-6 sm:p-10">
         <p>
-            <strong>fuseFindByKey</strong> is a helper pipe that finds entries from an object using given key-source set.
+            <strong>fuseFindByKey</strong> is a helper pipe that finds entries
+            from an object using given key-source set.
         </p>
 
         <h2>Module</h2>
-        <textarea
-            fuse-highlight
-            lang="typescript">
+        <textarea fuse-highlight lang="typescript">
             import { FuseFindByKeyPipeModule } from '@fuse/pipe/find-by-key';
         </textarea>
 
         <h2>Usage</h2>
-        <textarea
-            fuse-highlight
-            lang="html">
+        <textarea fuse-highlight lang="html">
             value | fuseFindByKey:key:source
         </textarea>
         <p>
-            Consider this array of objects representing the <em>tags</em> and <em>tasks</em> data stored on the backend:
+            Consider this array of objects representing the <em>tags</em> and
+            <em>tasks</em> data stored on the backend:
         </p>
-        <!-- @formatter:off -->
         <textarea fuse-highlight lang="typescript">
             const tags = [
                 {
@@ -105,12 +109,11 @@
                 }
             ]
         </textarea>
-        <!-- @formatter:on -->
         <p>
-            Normally, you would <em>join</em> these two data together in the backend before sending it to the frontend so you can access tags of a task right from the task
-            itself:
+            Normally, you would <em>join</em> these two data together in the
+            backend before sending it to the frontend so you can access tags of
+            a task right from the task itself:
         </p>
-        <!-- @formatter:off -->
         <textarea fuse-highlight lang="typescript">
             const tasksWithTags = [
                 {
@@ -163,14 +166,14 @@
                 }
             ]
         </textarea>
-        <!-- @formatter:on -->
         <p>
-            But, let's say you cannot <em>join</em> them. You have no access to the backend app or you cannot make any changes to it and you have to work with what you have. In
-            this case, you can use the <code>fuseFindByKey</code> pipe to get the tags of a task without joining the two data using javascript:
+            But, let's say you cannot <em>join</em> them. You have no access to
+            the backend app or you cannot make any changes to it and you have to
+            work with what you have. In this case, you can use the
+            <code>fuseFindByKey</code> pipe to get the tags of a task without
+            joining the two data using javascript:
         </p>
-        <!-- @formatter:off -->
-        <textarea fuse-highlight
-                  lang="html">
+        <textarea fuse-highlight lang="html">
             <!-- Iterate through the tasks -->
             <ng-container *ngFor="let task of tasks">
 
@@ -178,20 +181,20 @@
                      the tag id, use that id to find the actual tag object from 'tags'
                      so we can access the properties like title and color of the tag -->
                 <ng-container *ngFor="let tag of (task.tags | fuseFindByKey:'id':tags);">
-                    <div>{{'{'}}{{'{'}}tag.title{{'}'}}{{'}'}}</div>
+                    <div>{{ '{' }}{{ '{' }}tag.title{{ '}' }}{{ '}' }}</div>
                 </ng-container>
 
             </ng-container>
         </textarea>
-        <!-- @formatter:on -->
         <p>
-            The above code will iterate through the tasks, and for each task, it will also iterate the task's tags.
+            The above code will iterate through the tasks, and for each task, it
+            will also iterate the task's tags.
         </p>
         <p>
-            <code>task.tags</code> array normally holds the <em>ids</em> of the assigned tags. But using <code>fuseFindByKey</code> pipe, we can use those <em>ids</em> to
-            extract the actual tag object from the <em>tags</em> array.
+            <code>task.tags</code> array normally holds the <em>ids</em> of the
+            assigned tags. But using <code>fuseFindByKey</code> pipe, we can use
+            those <em>ids</em> to extract the actual tag object from the
+            <em>tags</em> array.
         </p>
-
     </div>
-
 </div>

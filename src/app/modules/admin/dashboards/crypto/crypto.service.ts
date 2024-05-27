@@ -2,17 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class CryptoService
-{
+@Injectable({ providedIn: 'root' })
+export class CryptoService {
     private _data: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+    constructor(private _httpClient: HttpClient) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -21,8 +18,7 @@ export class CryptoService
     /**
      * Getter for data
      */
-    get data$(): Observable<any>
-    {
+    get data$(): Observable<any> {
         return this._data.asObservable();
     }
 
@@ -33,13 +29,11 @@ export class CryptoService
     /**
      * Get data
      */
-    getData(): Observable<any>
-    {
+    getData(): Observable<any> {
         return this._httpClient.get('api/dashboards/crypto').pipe(
-            tap((response: any) =>
-            {
+            tap((response: any) => {
                 this._data.next(response);
-            }),
+            })
         );
     }
 }

@@ -5,18 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'carded-fullwidth-content-scroll',
-    templateUrl  : './fullwidth.component.html',
+    selector: 'carded-fullwidth-content-scroll',
+    templateUrl: './fullwidth.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, RouterLink, MatButtonModule, CdkScrollable],
+    standalone: true,
+    imports: [MatIconModule, RouterLink, MatButtonModule, CdkScrollable],
 })
-export class CardedFullwidthContentScrollComponent
-{
+export class CardedFullwidthContentScrollComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

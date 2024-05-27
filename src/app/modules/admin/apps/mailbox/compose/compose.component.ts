@@ -1,6 +1,12 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,23 +15,31 @@ import { MatInputModule } from '@angular/material/input';
 import { QuillEditorComponent } from 'ngx-quill';
 
 @Component({
-    selector     : 'mailbox-compose',
-    templateUrl  : './compose.component.html',
+    selector: 'mailbox-compose',
+    templateUrl: './compose.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatButtonModule, MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, NgIf, QuillEditorComponent],
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgIf,
+        QuillEditorComponent,
+    ],
 })
-export class MailboxComposeComponent implements OnInit
-{
+export class MailboxComposeComponent implements OnInit {
     composeForm: UntypedFormGroup;
     copyFields: { cc: boolean; bcc: boolean } = {
-        cc : false,
+        cc: false,
         bcc: false,
     };
     quillModules: any = {
         toolbar: [
             ['bold', 'italic', 'underline'],
-            [{align: []}, {list: 'ordered'}, {list: 'bullet'}],
+            [{ align: [] }, { list: 'ordered' }, { list: 'bullet' }],
             ['clean'],
         ],
     };
@@ -35,10 +49,8 @@ export class MailboxComposeComponent implements OnInit
      */
     constructor(
         public matDialogRef: MatDialogRef<MailboxComposeComponent>,
-        private _formBuilder: UntypedFormBuilder,
-    )
-    {
-    }
+        private _formBuilder: UntypedFormBuilder
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -47,15 +59,14 @@ export class MailboxComposeComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Create the form
         this.composeForm = this._formBuilder.group({
-            to     : ['', [Validators.required, Validators.email]],
-            cc     : ['', [Validators.email]],
-            bcc    : ['', [Validators.email]],
+            to: ['', [Validators.required, Validators.email]],
+            cc: ['', [Validators.email]],
+            bcc: ['', [Validators.email]],
             subject: [''],
-            body   : ['', [Validators.required]],
+            body: ['', [Validators.required]],
         });
     }
 
@@ -68,11 +79,9 @@ export class MailboxComposeComponent implements OnInit
      *
      * @param name
      */
-    showCopyField(name: string): void
-    {
+    showCopyField(name: string): void {
         // Return if the name is not one of the available names
-        if ( name !== 'cc' && name !== 'bcc' )
-        {
+        if (name !== 'cc' && name !== 'bcc') {
             return;
         }
 
@@ -83,8 +92,7 @@ export class MailboxComposeComponent implements OnInit
     /**
      * Save and close
      */
-    saveAndClose(): void
-    {
+    saveAndClose(): void {
         // Save the message as a draft
         this.saveAsDraft();
 
@@ -95,21 +103,15 @@ export class MailboxComposeComponent implements OnInit
     /**
      * Discard the message
      */
-    discard(): void
-    {
-    }
+    discard(): void {}
 
     /**
      * Save the message as a draft
      */
-    saveAsDraft(): void
-    {
-    }
+    saveAsDraft(): void {}
 
     /**
      * Send the message
      */
-    send(): void
-    {
-    }
+    send(): void {}
 }

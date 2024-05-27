@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, Routes } from '@angular/router';
+import {
+    ActivatedRouteSnapshot,
+    Router,
+    RouterStateSnapshot,
+    Routes,
+} from '@angular/router';
 import { ChatComponent } from 'app/modules/admin/apps/chat/chat.component';
 import { ChatService } from 'app/modules/admin/apps/chat/chat.service';
 import { ChatsComponent } from 'app/modules/admin/apps/chat/chats/chats.component';
@@ -13,15 +18,16 @@ import { catchError, throwError } from 'rxjs';
  * @param route
  * @param state
  */
-const conversationResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
-{
+const conversationResolver = (
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+) => {
     const chatService = inject(ChatService);
     const router = inject(Router);
 
     return chatService.getChatById(route.paramMap.get('id')).pipe(
         // Error here means the requested chat is not available
-        catchError((error) =>
-        {
+        catchError((error) => {
             // Log the error
             console.error(error);
 
@@ -33,33 +39,33 @@ const conversationResolver = (route: ActivatedRouteSnapshot, state: RouterStateS
 
             // Throw an error
             return throwError(error);
-        }),
+        })
     );
 };
 
 export default [
     {
-        path     : '',
+        path: '',
         component: ChatComponent,
-        resolve  : {
-            chats   : () => inject(ChatService).getChats(),
+        resolve: {
+            chats: () => inject(ChatService).getChats(),
             contacts: () => inject(ChatService).getContacts(),
-            profile : () => inject(ChatService).getProfile(),
+            profile: () => inject(ChatService).getProfile(),
         },
-        children : [
+        children: [
             {
-                path     : '',
+                path: '',
                 component: ChatsComponent,
-                children : [
+                children: [
                     {
-                        path     : '',
+                        path: '',
                         pathMatch: 'full',
                         component: EmptyConversationComponent,
                     },
                     {
-                        path     : ':id',
+                        path: ':id',
                         component: ConversationComponent,
-                        resolve  : {
+                        resolve: {
                             conversation: conversationResolver,
                         },
                     },

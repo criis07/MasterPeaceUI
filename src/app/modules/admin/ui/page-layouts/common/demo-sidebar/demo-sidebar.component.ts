@@ -5,8 +5,8 @@ import { FuseVerticalNavigationComponent } from '@fuse/components/navigation';
 import { FuseNavigationItem } from '@fuse/components/navigation/navigation.types';
 
 @Component({
-    selector     : 'demo-sidebar',
-    template     : `
+    selector: 'demo-sidebar',
+    template: `
         <div class="py-10">
             <!-- Add any extra content that might be supplied with the component -->
             <div class="extra-content">
@@ -14,29 +14,36 @@ import { FuseNavigationItem } from '@fuse/components/navigation/navigation.types
             </div>
 
             <!-- Fixed demo sidebar -->
-            <div class="mx-6 text-3xl font-bold tracking-tighter">Demo Sidebar</div>
+            <div class="mx-6 text-3xl font-bold tracking-tighter">
+                Demo Sidebar
+            </div>
             <fuse-vertical-navigation
                 [appearance]="'default'"
                 [navigation]="menuData"
                 [inner]="true"
                 [mode]="'side'"
                 [name]="'demo-sidebar-navigation'"
-                [opened]="true"></fuse-vertical-navigation>
+                [opened]="true"
+            ></fuse-vertical-navigation>
 
             <!-- Storage -->
             <div class="mx-6 mt-2">
                 <div class="flex items-center">
                     <mat-icon
                         class="mr-2 icon-size-5"
-                        [svgIcon]="'heroicons_solid:circle-stack'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:circle-stack'"
+                    ></mat-icon>
                     <div class="text-lg font-semibold">Storage</div>
                 </div>
-                <div class="flex flex-col flex-auto mt-4">
-                    <span class="text-sm leading-none mb-3">19.9 GB of 100 GB used</span>
+                <div class="mt-4 flex flex-auto flex-col">
+                    <span class="mb-3 text-sm leading-none"
+                        >19.9 GB of 100 GB used</span
+                    >
                     <mat-progress-bar
                         [mode]="'determinate'"
                         [color]="'primary'"
-                        [value]="19.9"></mat-progress-bar>
+                        [value]="19.9"
+                    ></mat-progress-bar>
                 </div>
             </div>
 
@@ -45,152 +52,161 @@ import { FuseNavigationItem } from '@fuse/components/navigation/navigation.types
                 <div class="flex items-center">
                     <mat-icon
                         class="mr-2 icon-size-5"
-                        [svgIcon]="'heroicons_solid:users'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:users'"
+                    ></mat-icon>
                     <div class="text-lg font-semibold">Users</div>
                 </div>
-                <div class="flex flex-col flex-auto mt-4">
-                    <span class="text-sm leading-none mb-3">8 of 20 users used</span>
+                <div class="mt-4 flex flex-auto flex-col">
+                    <span class="mb-3 text-sm leading-none"
+                        >8 of 20 users used</span
+                    >
                     <mat-progress-bar
                         [mode]="'determinate'"
                         [color]="'accent'"
-                        [value]="40"></mat-progress-bar>
+                        [value]="40"
+                    ></mat-progress-bar>
                 </div>
             </div>
         </div>
     `,
-    styles       : [
+    styles: [
         `
-            demo-sidebar fuse-vertical-navigation .fuse-vertical-navigation-wrapper {
+            demo-sidebar
+                fuse-vertical-navigation
+                .fuse-vertical-navigation-wrapper {
                 box-shadow: none !important;
             }
         `,
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [FuseVerticalNavigationComponent, MatIconModule, MatProgressBarModule],
+    standalone: true,
+    imports: [
+        FuseVerticalNavigationComponent,
+        MatIconModule,
+        MatProgressBarModule,
+    ],
 })
-export class DemoSidebarComponent
-{
+export class DemoSidebarComponent {
     menuData: FuseNavigationItem[];
 
     /**
      * Constructor
      */
-    constructor()
-    {
+    constructor() {
         this.menuData = [
             {
-                title   : 'Actions',
+                title: 'Actions',
                 subtitle: 'Task, project & team',
-                type    : 'group',
+                type: 'group',
                 children: [
                     {
                         title: 'Create task',
-                        type : 'basic',
-                        icon : 'heroicons_outline:plus-circle',
+                        type: 'basic',
+                        icon: 'heroicons_outline:plus-circle',
                     },
                     {
                         title: 'Create team',
-                        type : 'basic',
-                        icon : 'heroicons_outline:user-group',
+                        type: 'basic',
+                        icon: 'heroicons_outline:user-group',
                     },
                     {
                         title: 'Create project',
-                        type : 'basic',
-                        icon : 'heroicons_outline:briefcase',
+                        type: 'basic',
+                        icon: 'heroicons_outline:briefcase',
                     },
                     {
                         title: 'Create user',
-                        type : 'basic',
-                        icon : 'heroicons_outline:user-plus',
+                        type: 'basic',
+                        icon: 'heroicons_outline:user-plus',
                     },
                     {
-                        title   : 'Assign user or team',
+                        title: 'Assign user or team',
                         subtitle: 'Assign to a task or a project',
-                        type    : 'basic',
-                        icon    : 'heroicons_outline:check-badge',
+                        type: 'basic',
+                        icon: 'heroicons_outline:check-badge',
                     },
                 ],
             },
             {
-                title   : 'Tasks',
-                type    : 'group',
+                title: 'Tasks',
+                type: 'group',
                 children: [
                     {
                         title: 'All tasks',
-                        type : 'basic',
-                        icon : 'heroicons_outline:clipboard-document-list',
+                        type: 'basic',
+                        icon: 'heroicons_outline:clipboard-document-list',
                         badge: {
-                            title  : '49',
-                            classes: 'px-2 bg-primary text-on-primary rounded-full',
+                            title: '49',
+                            classes:
+                                'px-2 bg-primary text-on-primary rounded-full',
                         },
                     },
                     {
                         title: 'Ongoing tasks',
-                        type : 'basic',
-                        icon : 'heroicons_outline:clipboard-document-check',
+                        type: 'basic',
+                        icon: 'heroicons_outline:clipboard-document-check',
                     },
                     {
                         title: 'Completed tasks',
-                        type : 'basic',
-                        icon : 'heroicons_outline:clipboard-document-check',
+                        type: 'basic',
+                        icon: 'heroicons_outline:clipboard-document-check',
                     },
                     {
                         title: 'Abandoned tasks',
-                        type : 'basic',
-                        icon : 'heroicons_outline:clipboard',
+                        type: 'basic',
+                        icon: 'heroicons_outline:clipboard',
                     },
                     {
                         title: 'Assigned to me',
-                        type : 'basic',
-                        icon : 'heroicons_outline:user',
+                        type: 'basic',
+                        icon: 'heroicons_outline:user',
                     },
                     {
                         title: 'Assigned to my team',
-                        type : 'basic',
-                        icon : 'heroicons_outline:users',
+                        type: 'basic',
+                        icon: 'heroicons_outline:users',
                     },
                 ],
             },
             {
-                title   : 'Settings',
-                type    : 'group',
+                title: 'Settings',
+                type: 'group',
                 children: [
                     {
-                        title   : 'General',
-                        type    : 'collapsable',
-                        icon    : 'heroicons_outline:cog-8-tooth',
+                        title: 'General',
+                        type: 'collapsable',
+                        icon: 'heroicons_outline:cog-8-tooth',
                         children: [
                             {
                                 title: 'Tasks',
-                                type : 'basic',
+                                type: 'basic',
                             },
                             {
                                 title: 'Users',
-                                type : 'basic',
+                                type: 'basic',
                             },
                             {
                                 title: 'Teams',
-                                type : 'basic',
+                                type: 'basic',
                             },
                         ],
                     },
                     {
-                        title   : 'Account',
-                        type    : 'collapsable',
-                        icon    : 'heroicons_outline:user-circle',
+                        title: 'Account',
+                        type: 'collapsable',
+                        icon: 'heroicons_outline:user-circle',
                         children: [
                             {
                                 title: 'Personal',
-                                type : 'basic',
+                                type: 'basic',
                             },
                             {
                                 title: 'Payment',
-                                type : 'basic',
+                                type: 'basic',
                             },
                             {
                                 title: 'Security',
-                                type : 'basic',
+                                type: 'basic',
                             },
                         ],
                     },

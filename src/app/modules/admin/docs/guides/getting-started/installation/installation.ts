@@ -6,19 +6,21 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'installation',
+    selector: 'installation',
     templateUrl: './installation.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+    ],
 })
-export class InstallationComponent
-{
+export class InstallationComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -27,8 +29,7 @@ export class InstallationComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

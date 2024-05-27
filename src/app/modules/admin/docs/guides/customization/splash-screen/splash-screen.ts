@@ -6,19 +6,21 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'splash-screen',
+    selector: 'splash-screen',
     templateUrl: './splash-screen.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+    ],
 })
-export class SplashScreenCustomizationComponent
-{
+export class SplashScreenCustomizationComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -27,8 +29,7 @@ export class SplashScreenCustomizationComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

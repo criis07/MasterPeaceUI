@@ -8,23 +8,26 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'drawer',
+    selector: 'drawer',
     templateUrl: './drawer.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent, MatTabsModule, FuseDrawerComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+        MatTabsModule,
+        FuseDrawerComponent,
+    ],
 })
-export class DrawerComponent
-{
+export class DrawerComponent {
     drawerMode: FuseDrawerMode;
     drawerOpened: boolean;
 
     /**
      * Constructor
      */
-    constructor(
-        private _fuseComponentsComponent: FuseComponentsComponent,
-    )
-    {
+    constructor(private _fuseComponentsComponent: FuseComponentsComponent) {
         // Set the defaults
         this.drawerMode = 'side';
         this.drawerOpened = true;
@@ -37,16 +40,14 @@ export class DrawerComponent
     /**
      * Toggle the drawer mode
      */
-    toggleDrawerMode(): void
-    {
+    toggleDrawerMode(): void {
         this.drawerMode = this.drawerMode === 'side' ? 'over' : 'side';
     }
 
     /**
      * Toggle the drawer open
      */
-    toggleDrawerOpen(): void
-    {
+    toggleDrawerOpen(): void {
         this.drawerOpened = !this.drawerOpened;
     }
 
@@ -55,16 +56,14 @@ export class DrawerComponent
      *
      * @param opened
      */
-    drawerOpenedChanged(opened: boolean): void
-    {
+    drawerOpenedChanged(opened: boolean): void {
         this.drawerOpened = opened;
     }
 
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

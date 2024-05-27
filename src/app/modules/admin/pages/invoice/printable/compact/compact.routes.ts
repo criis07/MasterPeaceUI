@@ -3,7 +3,7 @@ import { CompactComponent } from 'app/modules/admin/pages/invoice/printable/comp
 
 export default [
     {
-        path     : '',
+        path: '',
         component: CompactComponent,
     },
 ] as Routes;

@@ -3,7 +3,7 @@ import { ProfileComponent } from 'app/modules/admin/pages/profile/profile.compon
 
 export default [
     {
-        path     : '',
+        path: '',
         component: ProfileComponent,
     },
 ] as Routes;

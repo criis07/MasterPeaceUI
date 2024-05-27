@@ -2,18 +2,15 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector     : 'overview',
-    templateUrl  : './overview.component.html',
+    selector: 'overview',
+    templateUrl: './overview.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule],
+    standalone: true,
+    imports: [MatIconModule],
 })
-export class OverviewComponent
-{
+export class OverviewComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

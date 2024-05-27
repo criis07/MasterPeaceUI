@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+    MatSlideToggleChange,
+    MatSlideToggleModule,
+} from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FuseHighlightComponent } from '@fuse/components/highlight';
@@ -11,13 +14,19 @@ import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fu
 import { finalize } from 'rxjs';
 
 @Component({
-    selector   : 'loading-bar',
+    selector: 'loading-bar',
     templateUrl: './loading-bar.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent, MatTabsModule, MatSlideToggleModule, MatSliderModule],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        MatTabsModule,
+        MatSlideToggleModule,
+        MatSliderModule,
+    ],
 })
-export class LoadingBarComponent
-{
+export class LoadingBarComponent {
     apiCallStatus: string = '-';
     mode: 'determinate' | 'indeterminate' = 'indeterminate';
     sliderValue: number = 0;
@@ -28,10 +37,8 @@ export class LoadingBarComponent
     constructor(
         private _httpClient: HttpClient,
         private _fuseComponentsComponent: FuseComponentsComponent,
-        private _fuseLoadingService: FuseLoadingService,
-    )
-    {
-    }
+        private _fuseLoadingService: FuseLoadingService
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -40,8 +47,7 @@ export class LoadingBarComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }
@@ -49,16 +55,14 @@ export class LoadingBarComponent
     /**
      * Show the loading bar
      */
-    showLoadingBar(): void
-    {
+    showLoadingBar(): void {
         this._fuseLoadingService.show();
     }
 
     /**
      * Hide the loading bar
      */
-    hideLoadingBar(): void
-    {
+    hideLoadingBar(): void {
         this._fuseLoadingService.hide();
     }
 
@@ -67,25 +71,24 @@ export class LoadingBarComponent
      *
      * @param change
      */
-    setAutoMode(change: MatSlideToggleChange): void
-    {
+    setAutoMode(change: MatSlideToggleChange): void {
         this._fuseLoadingService.setAutoMode(change.checked);
     }
 
     /**
      * Make a fake API call
      */
-    makeAPICall(): void
-    {
+    makeAPICall(): void {
         this.apiCallStatus = 'Waiting...';
 
-        this._httpClient.get('https://jsonplaceholder.typicode.com/posts?_delay=2000')
-            .pipe(finalize(() =>
-            {
-                this.apiCallStatus = 'Finished!';
-            }))
-            .subscribe((response) =>
-            {
+        this._httpClient
+            .get('https://jsonplaceholder.typicode.com/posts?_delay=2000')
+            .pipe(
+                finalize(() => {
+                    this.apiCallStatus = 'Finished!';
+                })
+            )
+            .subscribe((response) => {
                 console.log(response);
             });
     }
@@ -93,21 +96,20 @@ export class LoadingBarComponent
     /**
      * Toggle the mode
      */
-    toggleMode(): void
-    {
+    toggleMode(): void {
         // Show the loading bar
         this._fuseLoadingService.show();
 
         // Set the mode
-        this.mode = this.mode === 'indeterminate' ? 'determinate' : 'indeterminate';
+        this.mode =
+            this.mode === 'indeterminate' ? 'determinate' : 'indeterminate';
         this._fuseLoadingService.setMode(this.mode);
     }
 
     /**
      * Set the progress
      */
-    setProgress(): void
-    {
+    setProgress(): void {
         this._fuseLoadingService.setProgress(this.sliderValue);
     }
 }

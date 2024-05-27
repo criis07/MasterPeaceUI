@@ -3,13 +3,16 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
+import {
+    MatTreeFlatDataSource,
+    MatTreeFlattener,
+    MatTreeModule,
+} from '@angular/material/tree';
 import { RouterLink } from '@angular/router';
 import { FuseAlertComponent } from '@fuse/components/alert';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
-interface DirNode
-{
+interface DirNode {
     name: string;
     expandable?: boolean;
     level?: number;
@@ -17,8 +20,7 @@ interface DirNode
     children?: DirNode[];
 }
 
-interface FlatDirNode
-{
+interface FlatDirNode {
     name: string;
     expandable: boolean;
     level: number;
@@ -26,12 +28,13 @@ interface FlatDirNode
 }
 
 @Component({
-    selector     : 'directory-structure',
-    templateUrl  : './directory-structure.html',
-    styles       : [
+    selector: 'directory-structure',
+    templateUrl: './directory-structure.html',
+    styles: [
         `
             directory-structure .mat-tree {
-                font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                font-family: 'IBM Plex Mono', Menlo, Monaco, Consolas,
+                    'Liberation Mono', 'Courier New', monospace;
             }
 
             directory-structure .mat-tree-node {
@@ -48,11 +51,17 @@ interface FlatDirNode
         `,
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, MatButtonModule, FuseAlertComponent, MatTreeModule, NgIf, RouterLink],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        MatTreeModule,
+        NgIf,
+        RouterLink,
+    ],
 })
-export class DirectoryStructureComponent implements OnInit
-{
+export class DirectoryStructureComponent implements OnInit {
     appDir: any;
     appTree: any;
     generalDir: any;
@@ -61,58 +70,57 @@ export class DirectoryStructureComponent implements OnInit
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
+    constructor(private _guidesComponent: GuidesComponent) {
         // App dir
         this.appDir = [
             {
-                name    : 'app/',
+                name: 'app/',
                 children: [
                     {
-                        name    : 'core/',
+                        name: 'core/',
                         children: [
-                            {name: 'auth/'},
-                            {name: 'icons/'},
-                            {name: 'navigation/'},
-                            {name: 'transloco/'},
-                            {name: 'user/'},
+                            { name: 'auth/' },
+                            { name: 'icons/' },
+                            { name: 'navigation/' },
+                            { name: 'transloco/' },
+                            { name: 'user/' },
                         ],
                     },
                     {
-                        name    : 'layout/',
+                        name: 'layout/',
                         children: [
-                            {name: 'common/'},
-                            {name: 'layouts/'},
-                            {name: 'layout.component.html'},
-                            {name: 'layout.component.scss'},
-                            {name: 'layout.component.ts'},
+                            { name: 'common/' },
+                            { name: 'layouts/' },
+                            { name: 'layout.component.html' },
+                            { name: 'layout.component.scss' },
+                            { name: 'layout.component.ts' },
                         ],
                     },
                     {
-                        name    : 'mock-api/',
+                        name: 'mock-api/',
                         children: [
-                            {name: 'apps/'},
-                            {name: 'common/'},
-                            {name: 'dashboards/'},
-                            {name: 'pages/'},
-                            {name: 'ui/'},
-                            {name: 'index.ts'},
+                            { name: 'apps/' },
+                            { name: 'common/' },
+                            { name: 'dashboards/' },
+                            { name: 'pages/' },
+                            { name: 'ui/' },
+                            { name: 'index.ts' },
                         ],
                     },
                     {
-                        name    : 'modules/',
+                        name: 'modules/',
                         children: [
-                            {name: 'admin/'},
-                            {name: 'auth/'},
-                            {name: 'landing/'},
+                            { name: 'admin/' },
+                            { name: 'auth/' },
+                            { name: 'landing/' },
                         ],
                     },
-                    {name: 'app.component.html'},
-                    {name: 'app.component.scss'},
-                    {name: 'app.component.ts'},
-                    {name: 'app.config.ts'},
-                    {name: 'app.resolvers.ts'},
-                    {name: 'app.routes.ts'},
+                    { name: 'app.component.html' },
+                    { name: 'app.component.scss' },
+                    { name: 'app.component.ts' },
+                    { name: 'app.config.ts' },
+                    { name: 'app.resolvers.ts' },
+                    { name: 'app.routes.ts' },
                 ],
             },
         ];
@@ -120,48 +128,48 @@ export class DirectoryStructureComponent implements OnInit
         // General dir
         this.generalDir = [
             {
-                name    : 'public',
+                name: 'public',
                 children: [
-                    {name: 'fonts/'},
-                    {name: 'i18n/'},
-                    {name: 'icons/'},
-                    {name: 'images/'},
-                    {name: 'styles/'},
-                    {name: 'favicon-16x16.png'},
-                    {name: 'favicon-32x32.png'},
+                    { name: 'fonts/' },
+                    { name: 'i18n/' },
+                    { name: 'icons/' },
+                    { name: 'images/' },
+                    { name: 'styles/' },
+                    { name: 'favicon-16x16.png' },
+                    { name: 'favicon-32x32.png' },
                 ],
             },
             {
-                name    : 'src/',
+                name: 'src/',
                 children: [
                     {
-                        name    : '@fuse/',
+                        name: '@fuse/',
                         children: [
-                            {name: 'animations/'},
-                            {name: 'components/'},
-                            {name: 'directives/'},
-                            {name: 'lib/'},
-                            {name: 'pipes/'},
-                            {name: 'services/'},
-                            {name: 'styles/'},
-                            {name: 'tailwind/'},
-                            {name: 'validators/'},
-                            {name: 'version/'},
-                            {name: 'fuse.provider.ts'},
-                            {name: 'index.ts'},
+                            { name: 'animations/' },
+                            { name: 'components/' },
+                            { name: 'directives/' },
+                            { name: 'lib/' },
+                            { name: 'pipes/' },
+                            { name: 'services/' },
+                            { name: 'styles/' },
+                            { name: 'tailwind/' },
+                            { name: 'validators/' },
+                            { name: 'version/' },
+                            { name: 'fuse.provider.ts' },
+                            { name: 'index.ts' },
                         ],
                     },
                     this.appDir[0],
                     {
-                        name    : 'styles/',
+                        name: 'styles/',
                         children: [
-                            {name: 'styles.scss'},
-                            {name: 'tailwind.scss'},
-                            {name: 'vendors.scss'},
+                            { name: 'styles.scss' },
+                            { name: 'tailwind.scss' },
+                            { name: 'vendors.scss' },
                         ],
                     },
-                    {name: 'index.html'},
-                    {name: 'main.ts'},
+                    { name: 'index.html' },
+                    { name: 'main.ts' },
                 ],
             },
         ];
@@ -174,41 +182,40 @@ export class DirectoryStructureComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         this.appTree = this.createTree(this.appDir);
         this.generalTree = this.createTree(this.generalDir);
 
         // Add 'last:true' to the last child
-        this.appTree.treeControl.dataNodes.forEach((node: FlatDirNode, index, nodes) =>
-        {
-            nodes[index].last = false;
-            if ( nodes[index + 1] )
-            {
-                nodes[index].last = nodes[index + 1].level === node.level - 1;
+        this.appTree.treeControl.dataNodes.forEach(
+            (node: FlatDirNode, index, nodes) => {
+                nodes[index].last = false;
+                if (nodes[index + 1]) {
+                    nodes[index].last =
+                        nodes[index + 1].level === node.level - 1;
+                } else {
+                    nodes[index].last = true;
+                }
             }
-            else
-            {
-                nodes[index].last = true;
-            }
-        });
+        );
 
-        this.generalTree.treeControl.dataNodes.forEach((node: FlatDirNode, index, nodes) =>
-        {
-            nodes[index].last = false;
-            if ( nodes[index + 1] )
-            {
-                nodes[index].last = nodes[index + 1].level === node.level - 1;
+        this.generalTree.treeControl.dataNodes.forEach(
+            (node: FlatDirNode, index, nodes) => {
+                nodes[index].last = false;
+                if (nodes[index + 1]) {
+                    nodes[index].last =
+                        nodes[index + 1].level === node.level - 1;
+                } else {
+                    nodes[index].last = true;
+                }
             }
-            else
-            {
-                nodes[index].last = true;
-            }
-        });
+        );
 
         // Expand the tree nodes
         this.appTree.treeControl.expand(this.appTree.treeControl.dataNodes[0]);
-        this.generalTree.treeControl.expand(this.generalTree.treeControl.dataNodes[8]);
+        this.generalTree.treeControl.expand(
+            this.generalTree.treeControl.dataNodes[8]
+        );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -221,27 +228,31 @@ export class DirectoryStructureComponent implements OnInit
      * @param _
      * @param node
      */
-    hasChild(_: number, node: DirNode): boolean
-    {
+    hasChild(_: number, node: DirNode): boolean {
         return node.expandable;
     }
 
     /**
      * Create a new tree
      */
-    createTree(data): { dataSource: any; treeControl: any }
-    {
+    createTree(data): { dataSource: any; treeControl: any } {
         // Create tree control and data source
-        const treeControl = new FlatTreeControl<FlatDirNode>(node => node.level, node => node.expandable);
+        const treeControl = new FlatTreeControl<FlatDirNode>(
+            (node) => node.level,
+            (node) => node.expandable
+        );
         const dataSource = new MatTreeFlatDataSource(
             treeControl,
             new MatTreeFlattener(
                 (node: DirNode, level: number) => ({
                     expandable: !!node.children && node.children.length > 0,
-                    name      : node.name,
-                    level     : level,
+                    name: node.name,
+                    level: level,
                 }),
-                node => node.level, node => node.expandable, node => node.children),
+                (node) => node.level,
+                (node) => node.expandable,
+                (node) => node.children
+            )
         );
 
         // Set the data
@@ -260,8 +271,7 @@ export class DirectoryStructureComponent implements OnInit
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

@@ -10,23 +10,27 @@ import { FaqCategory } from 'app/modules/admin/apps/help-center/help-center.type
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'help-center',
-    templateUrl  : './help-center.component.html',
+    selector: 'help-center',
+    templateUrl: './help-center.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, MatExpansionModule, NgFor],
+    standalone: true,
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        RouterLink,
+        MatExpansionModule,
+        NgFor,
+    ],
 })
-export class HelpCenterComponent implements OnInit, OnDestroy
-{
+export class HelpCenterComponent implements OnInit, OnDestroy {
     faqCategory: FaqCategory;
     private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
      */
-    constructor(private _helpCenterService: HelpCenterService)
-    {
-    }
+    constructor(private _helpCenterService: HelpCenterService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -35,13 +39,11 @@ export class HelpCenterComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the FAQs
         this._helpCenterService.faqs$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((faqCategories) =>
-            {
+            .subscribe((faqCategories) => {
                 this.faqCategory = faqCategories[0];
             });
     }
@@ -49,8 +51,7 @@ export class HelpCenterComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -66,8 +67,7 @@ export class HelpCenterComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

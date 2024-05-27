@@ -6,23 +6,23 @@ import { InventoryListComponent } from 'app/modules/admin/apps/ecommerce/invento
 
 export default [
     {
-        path      : '',
-        pathMatch : 'full',
+        path: '',
+        pathMatch: 'full',
         redirectTo: 'inventory',
     },
     {
-        path     : 'inventory',
+        path: 'inventory',
         component: InventoryComponent,
-        children : [
+        children: [
             {
-                path     : '',
+                path: '',
                 component: InventoryListComponent,
-                resolve  : {
-                    brands    : () => inject(InventoryService).getBrands(),
+                resolve: {
+                    brands: () => inject(InventoryService).getBrands(),
                     categories: () => inject(InventoryService).getCategories(),
-                    products  : () => inject(InventoryService).getProducts(),
-                    tags      : () => inject(InventoryService).getTags(),
-                    vendors   : () => inject(InventoryService).getVendors(),
+                    products: () => inject(InventoryService).getProducts(),
+                    tags: () => inject(InventoryService).getTags(),
+                    vendors: () => inject(InventoryService).getVendors(),
                 },
             },
         ],

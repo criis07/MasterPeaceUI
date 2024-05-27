@@ -1,7 +1,24 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { DatePipe, DecimalPipe, NgClass, NgFor, NgIf, NgPlural, NgPluralCase } from '@angular/common';
-import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import {
+    DatePipe,
+    DecimalPipe,
+    NgClass,
+    NgFor,
+    NgIf,
+    NgPlural,
+    NgPluralCase,
+} from '@angular/common';
+import {
+    Component,
+    ElementRef,
+    OnDestroy,
+    OnInit,
+    TemplateRef,
+    ViewChild,
+    ViewContainerRef,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
@@ -14,19 +31,41 @@ import { FuseScrollResetDirective } from '@fuse/directives/scroll-reset';
 import { FuseFindByKeyPipe } from '@fuse/pipes/find-by-key/find-by-key.pipe';
 import { labelColorDefs } from 'app/modules/admin/apps/mailbox/mailbox.constants';
 import { MailboxService } from 'app/modules/admin/apps/mailbox/mailbox.service';
-import { Mail, MailFolder, MailLabel } from 'app/modules/admin/apps/mailbox/mailbox.types';
+import {
+    Mail,
+    MailFolder,
+    MailLabel,
+} from 'app/modules/admin/apps/mailbox/mailbox.types';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'mailbox-details',
-    templateUrl  : './details.component.html',
+    selector: 'mailbox-details',
+    templateUrl: './details.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [NgIf, MatButtonModule, RouterLink, MatIconModule, MatMenuModule, NgFor, MatRippleModule, MatCheckboxModule, NgClass, FuseScrollResetDirective, NgPlural, NgPluralCase, MatFormFieldModule, MatInputModule, FuseFindByKeyPipe, DecimalPipe, DatePipe],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatButtonModule,
+        RouterLink,
+        MatIconModule,
+        MatMenuModule,
+        NgFor,
+        MatRippleModule,
+        MatCheckboxModule,
+        NgClass,
+        FuseScrollResetDirective,
+        NgPlural,
+        NgPluralCase,
+        MatFormFieldModule,
+        MatInputModule,
+        FuseFindByKeyPipe,
+        DecimalPipe,
+        DatePipe,
+    ],
 })
-export class MailboxDetailsComponent implements OnInit, OnDestroy
-{
-    @ViewChild('infoDetailsPanelOrigin') private _infoDetailsPanelOrigin: MatButton;
+export class MailboxDetailsComponent implements OnInit, OnDestroy {
+    @ViewChild('infoDetailsPanelOrigin')
+    private _infoDetailsPanelOrigin: MatButton;
     @ViewChild('infoDetailsPanel') private _infoDetailsPanel: TemplateRef<any>;
 
     folders: MailFolder[];
@@ -46,10 +85,8 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         private _mailboxService: MailboxService,
         private _overlay: Overlay,
         private _router: Router,
-        private _viewContainerRef: ViewContainerRef,
-    )
-    {
-    }
+        private _viewContainerRef: ViewContainerRef
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -58,40 +95,35 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the label colors
         this.labelColors = labelColorDefs;
 
         // Folders
         this._mailboxService.folders$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((folders: MailFolder[]) =>
-            {
+            .subscribe((folders: MailFolder[]) => {
                 this.folders = folders;
             });
 
         // Labels
         this._mailboxService.labels$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((labels: MailLabel[]) =>
-            {
+            .subscribe((labels: MailLabel[]) => {
                 this.labels = labels;
             });
 
         // Mail
         this._mailboxService.mail$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((mail: Mail) =>
-            {
+            .subscribe((mail: Mail) => {
                 this.mail = mail;
             });
 
         // Selected mail changed
         this._mailboxService.selectedMailChanged
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() =>
-            {
+            .subscribe(() => {
                 // De-activate the reply form
                 this.replyFormActive = false;
             });
@@ -100,8 +132,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -114,8 +145,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Get the current folder
      */
-    getCurrentFolder(): any
-    {
+    getCurrentFolder(): any {
         return this._activatedRoute.snapshot.paramMap.get('folder');
     }
 
@@ -124,15 +154,13 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      *
      * @param folderSlug
      */
-    moveToFolder(folderSlug: string): void
-    {
+    moveToFolder(folderSlug: string): void {
         // Find the folder details
-        const folder = this.folders.find(item => item.slug === folderSlug);
+        const folder = this.folders.find((item) => item.slug === folderSlug);
 
         // Return if the current folder of the mail
         // is already equals to the given folder
-        if ( this.mail.folder === folder.id )
-        {
+        if (this.mail.folder === folder.id) {
             return;
         }
 
@@ -140,10 +168,14 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         this.mail.folder = folder.id;
 
         // Update the mail on the server
-        this._mailboxService.updateMail(this.mail.id, {folder: this.mail.folder}).subscribe();
+        this._mailboxService
+            .updateMail(this.mail.id, { folder: this.mail.folder })
+            .subscribe();
 
         // Navigate to the parent
-        this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
+        this._router.navigate(['./'], {
+            relativeTo: this._activatedRoute.parent,
+        });
     }
 
     /**
@@ -151,36 +183,38 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      *
      * @param label
      */
-    toggleLabel(label: MailLabel): void
-    {
+    toggleLabel(label: MailLabel): void {
         let deleted = false;
 
         // Update the mail object
-        if ( this.mail.labels.includes(label.id) )
-        {
+        if (this.mail.labels.includes(label.id)) {
             // Set the deleted
             deleted = true;
 
             // Delete the label
             this.mail.labels.splice(this.mail.labels.indexOf(label.id), 1);
-        }
-        else
-        {
+        } else {
             // Add the label
             this.mail.labels.push(label.id);
         }
 
         // Update the mail on the server
-        this._mailboxService.updateMail(this.mail.id, {labels: this.mail.labels}).subscribe();
+        this._mailboxService
+            .updateMail(this.mail.id, { labels: this.mail.labels })
+            .subscribe();
 
         // If the label was deleted...
-        if ( deleted )
-        {
+        if (deleted) {
             // If the current activated route has a label parameter and it equals to the one we are removing...
-            if ( this._activatedRoute.snapshot.paramMap.get('label') && this._activatedRoute.snapshot.paramMap.get('label') === label.slug )
-            {
+            if (
+                this._activatedRoute.snapshot.paramMap.get('label') &&
+                this._activatedRoute.snapshot.paramMap.get('label') ===
+                    label.slug
+            ) {
                 // Navigate to the parent
-                this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
+                this._router.navigate(['./'], {
+                    relativeTo: this._activatedRoute.parent,
+                });
             }
         }
     }
@@ -188,22 +222,27 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Toggle important
      */
-    toggleImportant(): void
-    {
+    toggleImportant(): void {
         // Update the mail object
         this.mail.important = !this.mail.important;
 
         // Update the mail on the server
-        this._mailboxService.updateMail(this.mail.id, {important: this.mail.important}).subscribe();
+        this._mailboxService
+            .updateMail(this.mail.id, { important: this.mail.important })
+            .subscribe();
 
         // If the important was removed...
-        if ( !this.mail.important )
-        {
+        if (!this.mail.important) {
             // If the current activated route has a filter parameter and it equals to the 'important'...
-            if ( this._activatedRoute.snapshot.paramMap.get('filter') && this._activatedRoute.snapshot.paramMap.get('filter') === 'important' )
-            {
+            if (
+                this._activatedRoute.snapshot.paramMap.get('filter') &&
+                this._activatedRoute.snapshot.paramMap.get('filter') ===
+                    'important'
+            ) {
                 // Navigate to the parent
-                this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
+                this._router.navigate(['./'], {
+                    relativeTo: this._activatedRoute.parent,
+                });
             }
         }
     }
@@ -211,22 +250,27 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Toggle star
      */
-    toggleStar(): void
-    {
+    toggleStar(): void {
         // Update the mail object
         this.mail.starred = !this.mail.starred;
 
         // Update the mail on the server
-        this._mailboxService.updateMail(this.mail.id, {starred: this.mail.starred}).subscribe();
+        this._mailboxService
+            .updateMail(this.mail.id, { starred: this.mail.starred })
+            .subscribe();
 
         // If the star was removed...
-        if ( !this.mail.starred )
-        {
+        if (!this.mail.starred) {
             // If the current activated route has a filter parameter and it equals to the 'starred'...
-            if ( this._activatedRoute.snapshot.paramMap.get('filter') && this._activatedRoute.snapshot.paramMap.get('filter') === 'starred' )
-            {
+            if (
+                this._activatedRoute.snapshot.paramMap.get('filter') &&
+                this._activatedRoute.snapshot.paramMap.get('filter') ===
+                    'starred'
+            ) {
                 // Navigate to the parent
-                this._router.navigate(['./'], {relativeTo: this._activatedRoute.parent});
+                this._router.navigate(['./'], {
+                    relativeTo: this._activatedRoute.parent,
+                });
             }
         }
     }
@@ -236,65 +280,62 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      *
      * @param unread
      */
-    toggleUnread(unread: boolean): void
-    {
+    toggleUnread(unread: boolean): void {
         // Update the mail object
         this.mail.unread = unread;
 
         // Update the mail on the server
-        this._mailboxService.updateMail(this.mail.id, {unread: this.mail.unread}).subscribe();
+        this._mailboxService
+            .updateMail(this.mail.id, { unread: this.mail.unread })
+            .subscribe();
     }
 
     /**
      * Reply
      */
-    reply(): void
-    {
+    reply(): void {
         // Activate the reply form
         this.replyFormActive = true;
 
         // Scroll to the bottom of the details pane
-        setTimeout(() =>
-        {
-            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop =
+                this._elementRef.nativeElement.scrollHeight;
         });
     }
 
     /**
      * Reply all
      */
-    replyAll(): void
-    {
+    replyAll(): void {
         // Activate the reply form
         this.replyFormActive = true;
 
         // Scroll to the bottom of the details pane
-        setTimeout(() =>
-        {
-            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop =
+                this._elementRef.nativeElement.scrollHeight;
         });
     }
 
     /**
      * Forward
      */
-    forward(): void
-    {
+    forward(): void {
         // Activate the reply form
         this.replyFormActive = true;
 
         // Scroll to the bottom of the details pane
-        setTimeout(() =>
-        {
-            this._elementRef.nativeElement.scrollTop = this._elementRef.nativeElement.scrollHeight;
+        setTimeout(() => {
+            this._elementRef.nativeElement.scrollTop =
+                this._elementRef.nativeElement.scrollHeight;
         });
     }
 
     /**
      * Discard
      */
-    discard(): void
-    {
+    discard(): void {
         // Deactivate the reply form
         this.replyFormActive = false;
     }
@@ -302,8 +343,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Send
      */
-    send(): void
-    {
+    send(): void {
         // Deactivate the reply form
         this.replyFormActive = false;
     }
@@ -311,40 +351,42 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
     /**
      * Open info details panel
      */
-    openInfoDetailsPanel(): void
-    {
+    openInfoDetailsPanel(): void {
         // Create the overlay
         this._overlayRef = this._overlay.create({
-            backdropClass   : '',
-            hasBackdrop     : true,
-            scrollStrategy  : this._overlay.scrollStrategies.block(),
-            positionStrategy: this._overlay.position()
-                .flexibleConnectedTo(this._infoDetailsPanelOrigin._elementRef.nativeElement)
+            backdropClass: '',
+            hasBackdrop: true,
+            scrollStrategy: this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay
+                .position()
+                .flexibleConnectedTo(
+                    this._infoDetailsPanelOrigin._elementRef.nativeElement
+                )
                 .withFlexibleDimensions(true)
                 .withViewportMargin(16)
                 .withLockedPosition(true)
                 .withPositions([
                     {
-                        originX : 'start',
-                        originY : 'bottom',
+                        originX: 'start',
+                        originY: 'bottom',
                         overlayX: 'start',
                         overlayY: 'top',
                     },
                     {
-                        originX : 'start',
-                        originY : 'top',
+                        originX: 'start',
+                        originY: 'top',
                         overlayX: 'start',
                         overlayY: 'bottom',
                     },
                     {
-                        originX : 'end',
-                        originY : 'bottom',
+                        originX: 'end',
+                        originY: 'bottom',
                         overlayX: 'end',
                         overlayY: 'top',
                     },
                     {
-                        originX : 'end',
-                        originY : 'top',
+                        originX: 'end',
+                        originY: 'top',
                         overlayX: 'end',
                         overlayY: 'bottom',
                     },
@@ -352,24 +394,24 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
         });
 
         // Create a portal from the template
-        const templatePortal = new TemplatePortal(this._infoDetailsPanel, this._viewContainerRef);
+        const templatePortal = new TemplatePortal(
+            this._infoDetailsPanel,
+            this._viewContainerRef
+        );
 
         // Attach the portal to the overlay
         this._overlayRef.attach(templatePortal);
 
         // Subscribe to the backdrop click
-        this._overlayRef.backdropClick().subscribe(() =>
-        {
+        this._overlayRef.backdropClick().subscribe(() => {
             // If overlay exists and attached...
-            if ( this._overlayRef && this._overlayRef.hasAttached() )
-            {
+            if (this._overlayRef && this._overlayRef.hasAttached()) {
                 // Detach it
                 this._overlayRef.detach();
             }
 
             // If template portal exists and attached...
-            if ( templatePortal && templatePortal.isAttached )
-            {
+            if (templatePortal && templatePortal.isAttached) {
                 // Detach it
                 templatePortal.detach();
             }
@@ -382,8 +424,7 @@ export class MailboxDetailsComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

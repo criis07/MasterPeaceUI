@@ -1,5 +1,12 @@
 import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnDestroy,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,18 +21,37 @@ import { NotesLabelsComponent } from 'app/modules/admin/apps/notes/labels/labels
 import { NotesService } from 'app/modules/admin/apps/notes/notes.service';
 import { Label, Note } from 'app/modules/admin/apps/notes/notes.types';
 import { cloneDeep } from 'lodash-es';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, map, Observable, Subject, takeUntil } from 'rxjs';
+import {
+    BehaviorSubject,
+    Observable,
+    Subject,
+    combineLatest,
+    distinctUntilChanged,
+    map,
+    takeUntil,
+} from 'rxjs';
 
 @Component({
-    selector       : 'notes-list',
-    templateUrl    : './list.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'notes-list',
+    templateUrl: './list.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [MatSidenavModule, MatRippleModule, NgClass, MatIconModule, NgIf, NgFor, MatButtonModule, MatFormFieldModule, MatInputModule, FuseMasonryComponent, AsyncPipe],
+    standalone: true,
+    imports: [
+        MatSidenavModule,
+        MatRippleModule,
+        NgClass,
+        MatIconModule,
+        NgIf,
+        NgFor,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FuseMasonryComponent,
+        AsyncPipe,
+    ],
 })
-export class NotesListComponent implements OnInit, OnDestroy
-{
+export class NotesListComponent implements OnInit, OnDestroy {
     labels$: Observable<Label[]>;
     notes$: Observable<Note[]>;
 
@@ -44,10 +70,8 @@ export class NotesListComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _matDialog: MatDialog,
-        private _notesService: NotesService,
-    )
-    {
-    }
+        private _notesService: NotesService
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -56,8 +80,7 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * Get the filter status
      */
-    get filterStatus(): string
-    {
+    get filterStatus(): string {
         return this.filter$.value;
     }
 
@@ -68,8 +91,7 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Request the data from the server
         this._notesService.getLabels().subscribe();
         this._notesService.getNotes().subscribe();
@@ -78,12 +100,14 @@ export class NotesListComponent implements OnInit, OnDestroy
         this.labels$ = this._notesService.labels$;
 
         // Get notes
-        this.notes$ = combineLatest([this._notesService.notes$, this.filter$, this.searchQuery$]).pipe(
+        this.notes$ = combineLatest([
+            this._notesService.notes$,
+            this.filter$,
+            this.searchQuery$,
+        ]).pipe(
             distinctUntilChanged(),
-            map(([notes, filter, searchQuery]) =>
-            {
-                if ( !notes || !notes.length )
-                {
+            map(([notes, filter, searchQuery]) => {
+                if (!notes || !notes.length) {
                     return;
                 }
 
@@ -91,46 +115,48 @@ export class NotesListComponent implements OnInit, OnDestroy
                 let filteredNotes = notes;
 
                 // Filter by query
-                if ( searchQuery )
-                {
+                if (searchQuery) {
                     searchQuery = searchQuery.trim().toLowerCase();
-                    filteredNotes = filteredNotes.filter(note => note.title.toLowerCase().includes(searchQuery) || note.content.toLowerCase().includes(searchQuery));
+                    filteredNotes = filteredNotes.filter(
+                        (note) =>
+                            note.title.toLowerCase().includes(searchQuery) ||
+                            note.content.toLowerCase().includes(searchQuery)
+                    );
                 }
 
                 // Show all
-                if ( filter === 'notes' )
-                {
+                if (filter === 'notes') {
                     // Do nothing
                 }
 
                 // Show archive
                 const isArchive = filter === 'archived';
-                filteredNotes = filteredNotes.filter(note => note.archived === isArchive);
+                filteredNotes = filteredNotes.filter(
+                    (note) => note.archived === isArchive
+                );
 
                 // Filter by label
-                if ( filter.startsWith('label:') )
-                {
+                if (filter.startsWith('label:')) {
                     const labelId = filter.split(':')[1];
-                    filteredNotes = filteredNotes.filter(note => !!note.labels.find(item => item.id === labelId));
+                    filteredNotes = filteredNotes.filter(
+                        (note) =>
+                            !!note.labels.find((item) => item.id === labelId)
+                    );
                 }
 
                 return filteredNotes;
-            }),
+            })
         );
 
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) =>
-            {
+            .subscribe(({ matchingAliases }) => {
                 // Set the drawerMode and drawerOpened if the given breakpoint is active
-                if ( matchingAliases.includes('lg') )
-                {
+                if (matchingAliases.includes('lg')) {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
-                }
-                else
-                {
+                } else {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;
                 }
@@ -140,24 +166,15 @@ export class NotesListComponent implements OnInit, OnDestroy
                 // This if block structured in a way so that only the
                 // biggest matching alias will be used to set the column
                 // count.
-                if ( matchingAliases.includes('xl') )
-                {
+                if (matchingAliases.includes('xl')) {
                     this.masonryColumns = 5;
-                }
-                else if ( matchingAliases.includes('lg') )
-                {
+                } else if (matchingAliases.includes('lg')) {
                     this.masonryColumns = 4;
-                }
-                else if ( matchingAliases.includes('md') )
-                {
+                } else if (matchingAliases.includes('md')) {
                     this.masonryColumns = 3;
-                }
-                else if ( matchingAliases.includes('sm') )
-                {
+                } else if (matchingAliases.includes('sm')) {
                     this.masonryColumns = 2;
-                }
-                else
-                {
+                } else {
                     this.masonryColumns = 1;
                 }
 
@@ -169,8 +186,7 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -183,11 +199,10 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * Add a new note
      */
-    addNewNote(): void
-    {
+    addNewNote(): void {
         this._matDialog.open(NotesDetailsComponent, {
             autoFocus: false,
-            data     : {
+            data: {
                 note: {},
             },
         });
@@ -196,19 +211,17 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * Open the edit labels dialog
      */
-    openEditLabelsDialog(): void
-    {
-        this._matDialog.open(NotesLabelsComponent, {autoFocus: false});
+    openEditLabelsDialog(): void {
+        this._matDialog.open(NotesLabelsComponent, { autoFocus: false });
     }
 
     /**
      * Open the note dialog
      */
-    openNoteDialog(note: Note): void
-    {
+    openNoteDialog(note: Note): void {
         this._matDialog.open(NotesDetailsComponent, {
             autoFocus: false,
-            data     : {
+            data: {
                 note: cloneDeep(note),
             },
         });
@@ -217,8 +230,7 @@ export class NotesListComponent implements OnInit, OnDestroy
     /**
      * Filter by archived
      */
-    filterByArchived(): void
-    {
+    filterByArchived(): void {
         this.filter$.next('archived');
     }
 
@@ -227,8 +239,7 @@ export class NotesListComponent implements OnInit, OnDestroy
      *
      * @param labelId
      */
-    filterByLabel(labelId: string): void
-    {
+    filterByLabel(labelId: string): void {
         const filterValue = `label:${labelId}`;
         this.filter$.next(filterValue);
     }
@@ -238,16 +249,14 @@ export class NotesListComponent implements OnInit, OnDestroy
      *
      * @param query
      */
-    filterByQuery(query: string): void
-    {
+    filterByQuery(query: string): void {
         this.searchQuery$.next(query);
     }
 
     /**
      * Reset filter
      */
-    resetFilter(): void
-    {
+    resetFilter(): void {
         this.filter$.next('notes');
     }
 
@@ -257,8 +266,7 @@ export class NotesListComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

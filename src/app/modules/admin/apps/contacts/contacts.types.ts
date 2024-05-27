@@ -1,5 +1,4 @@
-export interface Contact
-{
+export interface Contact {
     id: string;
     avatar?: string | null;
     background?: string | null;
@@ -21,8 +20,7 @@ export interface Contact
     tags: string[];
 }
 
-export interface Country
-{
+export interface Country {
     id: string;
     iso: string;
     name: string;
@@ -30,8 +28,7 @@ export interface Country
     flagImagePos: string;
 }
 
-export interface Tag
-{
+export interface Tag {
     id?: string;
     title?: string;
 }

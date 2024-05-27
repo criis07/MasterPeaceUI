@@ -5,9 +5,9 @@ import { ActivitiesService } from 'app/modules/admin/pages/activities/activities
 
 export default [
     {
-        path     : '',
+        path: '',
         component: ActivitiesComponent,
-        resolve  : {
+        resolve: {
             activities: () => inject(ActivitiesService).getActivities(),
         },
     },

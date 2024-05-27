@@ -3,16 +3,14 @@ import { FuseMockApiService } from '@fuse/lib/mock-api';
 import { analytics as analyticsData } from 'app/mock-api/dashboards/analytics/data';
 import { cloneDeep } from 'lodash-es';
 
-@Injectable({providedIn: 'root'})
-export class AnalyticsMockApi
-{
+@Injectable({ providedIn: 'root' })
+export class AnalyticsMockApi {
     private _analytics: any = analyticsData;
 
     /**
      * Constructor
      */
-    constructor(private _fuseMockApiService: FuseMockApiService)
-    {
+    constructor(private _fuseMockApiService: FuseMockApiService) {
         // Register Mock API handlers
         this.registerHandlers();
     }
@@ -24,8 +22,7 @@ export class AnalyticsMockApi
     /**
      * Register Mock API handlers
      */
-    registerHandlers(): void
-    {
+    registerHandlers(): void {
         // -----------------------------------------------------------------------------------------------------
         // @ Sales - GET
         // -----------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@ import { MaterialComponentsComponent } from 'app/modules/admin/ui/material-compo
 
 export default [
     {
-        path     : '',
+        path: '',
         component: MaterialComponentsComponent,
     },
 ] as Routes;

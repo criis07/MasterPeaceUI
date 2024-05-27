@@ -1,6 +1,16 @@
 import { JsonPipe, NgFor, TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
@@ -12,15 +22,28 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 
 @Component({
-    selector       : 'confirmation',
-    templateUrl    : './confirmation-dialog.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'confirmation',
+    templateUrl: './confirmation-dialog.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [RouterLink, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule, NgFor, MatOptionModule, MatButtonModule, FuseHighlightComponent, JsonPipe, TitleCasePipe],
+    standalone: true,
+    imports: [
+        RouterLink,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        NgFor,
+        MatOptionModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        JsonPipe,
+        TitleCasePipe,
+    ],
 })
-export class ConfirmationDialogComponent implements OnInit
-{
+export class ConfirmationDialogComponent implements OnInit {
     configForm: UntypedFormGroup;
 
     /**
@@ -28,10 +51,8 @@ export class ConfirmationDialogComponent implements OnInit
      */
     constructor(
         private _formBuilder: UntypedFormBuilder,
-        private _fuseConfirmationService: FuseConfirmationService,
-    )
-    {
-    }
+        private _fuseConfirmationService: FuseConfirmationService
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -40,25 +61,25 @@ export class ConfirmationDialogComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Build the config form
         this.configForm = this._formBuilder.group({
-            title      : 'Remove contact',
-            message    : 'Are you sure you want to remove this contact permanently? <span class="font-medium">This action cannot be undone!</span>',
-            icon       : this._formBuilder.group({
-                show : true,
-                name : 'heroicons_outline:exclamation-triangle',
+            title: 'Remove contact',
+            message:
+                'Are you sure you want to remove this contact permanently? <span class="font-medium">This action cannot be undone!</span>',
+            icon: this._formBuilder.group({
+                show: true,
+                name: 'heroicons_outline:exclamation-triangle',
                 color: 'warn',
             }),
-            actions    : this._formBuilder.group({
+            actions: this._formBuilder.group({
                 confirm: this._formBuilder.group({
-                    show : true,
+                    show: true,
                     label: 'Remove',
                     color: 'warn',
                 }),
-                cancel : this._formBuilder.group({
-                    show : true,
+                cancel: this._formBuilder.group({
+                    show: true,
                     label: 'Cancel',
                 }),
             }),
@@ -73,14 +94,14 @@ export class ConfirmationDialogComponent implements OnInit
     /**
      * Open confirmation dialog
      */
-    openConfirmationDialog(): void
-    {
+    openConfirmationDialog(): void {
         // Open the dialog and save the reference of it
-        const dialogRef = this._fuseConfirmationService.open(this.configForm.value);
+        const dialogRef = this._fuseConfirmationService.open(
+            this.configForm.value
+        );
 
         // Subscribe to afterClosed from the dialog reference
-        dialogRef.afterClosed().subscribe((result) =>
-        {
+        dialogRef.afterClosed().subscribe((result) => {
             console.log(result);
         });
     }

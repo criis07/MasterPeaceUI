@@ -1,52 +1,58 @@
-<div class="flex flex-col flex-auto min-w-0">
-
+<div class="flex min-w-0 flex-auto flex-col">
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
-        <div class="flex-1 min-w-0">
+    <div
+        class="bg-card flex flex-0 flex-col border-b p-6 dark:bg-transparent sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-8"
+    >
+        <div class="min-w-0 flex-1">
             <!-- Breadcrumbs -->
             <div class="flex flex-wrap items-center font-medium">
                 <div>
-                    <a class="whitespace-nowrap text-primary-500">Documentation</a>
+                    <a class="whitespace-nowrap text-primary-500"
+                        >Documentation</a
+                    >
                 </div>
-                <div class="flex items-center ml-1 whitespace-nowrap">
+                <div class="ml-1 flex items-center whitespace-nowrap">
                     <mat-icon
-                        class="icon-size-5 text-secondary"
-                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                        class="text-secondary icon-size-5"
+                        [svgIcon]="'heroicons_mini:chevron-right'"
+                    ></mat-icon>
                     <a class="ml-1 text-primary-500">Fuse Components</a>
                 </div>
-                <div class="flex items-center ml-1 whitespace-nowrap">
+                <div class="ml-1 flex items-center whitespace-nowrap">
                     <mat-icon
-                        class="icon-size-5 text-secondary"
-                        [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
-                    <span class="ml-1 text-secondary">Services</span>
+                        class="text-secondary icon-size-5"
+                        [svgIcon]="'heroicons_mini:chevron-right'"
+                    ></mat-icon>
+                    <span class="text-secondary ml-1">Services</span>
                 </div>
             </div>
             <!-- Title -->
             <div class="mt-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                <h2
+                    class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
+                >
                     Confirmation
                 </h2>
             </div>
         </div>
         <button
-            class="-ml-3 sm:ml-0 mb-2 sm:mb-0 order-first sm:order-last"
+            class="order-first -ml-3 mb-2 sm:order-last sm:mb-0 sm:ml-0"
             mat-icon-button
-            (click)="toggleDrawer()">
+            (click)="toggleDrawer()"
+        >
             <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
         </button>
     </div>
 
-    <div class="flex-auto max-w-3xl p-6 sm:p-10 prose prose-sm">
-
+    <div class="prose prose-sm max-w-3xl flex-auto p-6 sm:p-10">
         <p>
-            <strong>FuseConfirmationService</strong> is a singleton service for creating confirmation and information dialogs. Internally it uses MatDialog to create and
-            show the dialog.
+            <strong>FuseConfirmationService</strong> is a singleton service for
+            creating confirmation and information dialogs. Internally it uses
+            MatDialog to create and show the dialog.
         </p>
 
         <h2>Module</h2>
-        <textarea
-            fuse-highlight
-            lang="typescript">
+        <textarea fuse-highlight lang="typescript">
             import { FuseConfirmationModule } from '@fuse/services/confirmation';
         </textarea>
 
@@ -54,9 +60,7 @@
         <p>
             Here is the interface for the <em>Confirmation configuration</em>:
         </p>
-        <!-- @formatter:off -->
-        <textarea fuse-highlight
-                  lang="typescript">
+        <textarea fuse-highlight lang="typescript">
             export interface FuseConfirmationConfig
             {
                 title?: string;
@@ -91,8 +95,7 @@
                 dismissible?: boolean;
             }
         </textarea>
-        <!-- @formatter:on -->
-        <div class="bg-card py-3 px-6 mt-2 rounded shadow">
+        <div class="bg-card mt-2 rounded px-6 py-3 shadow">
             <table>
                 <thead>
                     <tr>
@@ -102,7 +105,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>title</div>
                         </td>
                         <td>
@@ -110,7 +113,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>message</div>
                         </td>
                         <td>
@@ -118,77 +121,64 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>icon.show</div>
                         </td>
-                        <td>
-                            Whether to show the icon.
-                        </td>
+                        <td>Whether to show the icon.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>icon.name</div>
                         </td>
-                        <td>
-                            Name of the icon.
-                        </td>
+                        <td>Name of the icon.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>icon.color</div>
                         </td>
-                        <td>
-                            Color of the icon.
-                        </td>
+                        <td>Color of the icon.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>actions.confirm.show</div>
                         </td>
-                        <td>
-                            Whether to show the confirmation button.
-                        </td>
+                        <td>Whether to show the confirmation button.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>actions.confirm.label</div>
                         </td>
-                        <td>
-                            Label of the confirmation button.
-                        </td>
+                        <td>Label of the confirmation button.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>actions.confirm.color</div>
                         </td>
-                        <td>
-                            Color of the confirmation button.
-                        </td>
+                        <td>Color of the confirmation button.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>actions.cancel.show</div>
                         </td>
-                        <td>
-                            Whether to show the cancel button.
-                        </td>
+                        <td>Whether to show the cancel button.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>actions.confirm.label</div>
                         </td>
-                        <td>
-                            Label of the cancel button.
-                        </td>
+                        <td>Label of the cancel button.</td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div>dismissible</div>
                         </td>
                         <td>
-                            Sets the dismissible status of the confirmation dialog.<br>
-                            If <code>false</code>, confirmation dialog cannot be closed by clicking on backdrop or pressing Escape key.
-                            The close button on the top right corner also won't show up.
+                            Sets the dismissible status of the confirmation
+                            dialog.<br />
+                            If <code>false</code>, confirmation dialog cannot be
+                            closed by clicking on backdrop or pressing Escape
+                            key. The close button on the top right corner also
+                            won't show up.
                         </td>
                     </tr>
                 </tbody>
@@ -196,9 +186,10 @@
         </div>
 
         <h2>Methods</h2>
-        <div class="bg-card rounded shadow mt-4">
-            <div class="px-6 py-3 font-mono text-secondary border-b">
-                open(config: FuseConfirmationConfig): MatDialogRef&lt;FuseConfirmationDialogComponent&gt;
+        <div class="bg-card mt-4 rounded shadow">
+            <div class="text-secondary border-b px-6 py-3 font-mono">
+                open(config: FuseConfirmationConfig):
+                MatDialogRef&lt;FuseConfirmationDialogComponent&gt;
             </div>
             <div class="p-6">
                 Opens the confirmation dialog with the given configuration
@@ -207,27 +198,25 @@
 
         <h2>MatDialogRef</h2>
         <p>
-            Since <code>FuseConfirmationService</code> uses <em>MatDialog</em> behind the scenes, it returns
-            a reference to the created dialog. You can use all available methods from that reference such as
-            <code>updateSize</code> and <code>updatePosition</code> to further customize the dialog.
+            Since <code>FuseConfirmationService</code> uses
+            <em>MatDialog</em> behind the scenes, it returns a reference to the
+            created dialog. You can use all available methods from that
+            reference such as <code>updateSize</code> and
+            <code>updatePosition</code> to further customize the dialog.
         </p>
         <p>
             See
             <a
                 href="https://material.angular.io/components/dialog/api#MatDialogRef"
                 target="_blank"
-                rel="noreferrer">
+                rel="noreferrer"
+            >
                 https://material.angular.io/components/dialog/api#MatDialogRef
             </a>
             for the complete list of available methods.
         </p>
-        <p>
-            Using the reference, you can also access to the user input:
-        </p>
-        <!-- @formatter:off -->
-        <textarea
-            fuse-highlight
-            [lang]="'ts'">
+        <p>Using the reference, you can also access to the user input:</p>
+        <textarea fuse-highlight [lang]="'ts'">
             // Open the confirmation and save the reference
             const dialogRef = this._fuseConfirmationService.open({...});
 
@@ -236,8 +225,7 @@
                 console.log(result);
             });
         </textarea>
-        <!-- @formatter:on -->
-        <div class="bg-card py-3 px-6 mt-2 rounded shadow">
+        <div class="bg-card mt-2 rounded px-6 py-3 shadow">
             <table>
                 <thead>
                     <tr>
@@ -247,33 +235,35 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div><code>'confirmed'</code></div>
                         </td>
                         <td>
-                            This is the result if the user pressed the Confirm button.
+                            This is the result if the user pressed the Confirm
+                            button.
                         </td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div><code>'cancelled'</code></div>
                         </td>
                         <td>
-                            This is the result if the user pressed the Cancel button.
+                            This is the result if the user pressed the Cancel
+                            button.
                         </td>
                     </tr>
                     <tr>
-                        <td class="font-mono text-md text-secondary">
+                        <td class="text-secondary font-mono text-md">
                             <div><code>undefined</code></div>
                         </td>
                         <td>
-                            This is the result if the confirmation dismissed either using the close button,
-                            clicking on the backdrop or pressing the Escape key.
+                            This is the result if the confirmation dismissed
+                            either using the close button, clicking on the
+                            backdrop or pressing the Escape key.
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>

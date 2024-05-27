@@ -6,8 +6,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
-export interface PageLayoutsOverviewData
-{
+export interface PageLayoutsOverviewData {
     title: string;
     description: string;
     availableOptions: {
@@ -25,84 +24,135 @@ export interface PageLayoutsOverviewData
 }
 
 @Component({
-    selector     : 'layout-overview',
-    template     : `
-        <div class="w-full max-w-320 mx-auto px-6 md:px-8">
+    selector: 'layout-overview',
+    template: `
+        <div class="mx-auto w-full max-w-320 px-6 md:px-8">
             <div class="py-8">
                 <!-- Info -->
                 <div>
-                    <div class="text-3xl md:text-4xl font-extrabold tracking-tight">{{overview.title}}</div>
-                    <div class="text-lg md:text-xl text-secondary">{{overview.description}}</div>
+                    <div
+                        class="text-3xl font-extrabold tracking-tight md:text-4xl"
+                    >
+                        {{ overview.title }}
+                    </div>
+                    <div class="text-secondary text-lg md:text-xl">
+                        {{ overview.description }}
+                    </div>
                     <div class="mt-6 md:mt-8">
                         <mat-button-toggle-group
-                            class="flex flex-wrap items-center -m-2"
+                            class="-m-2 flex flex-wrap items-center"
                             name="options"
-                            [(ngModel)]="overview.selectedOption">
+                            [(ngModel)]="overview.selectedOption"
+                        >
                             <mat-button-toggle
                                 *ngFor="let option of overview.availableOptions"
                                 class="m-2 font-medium"
                                 [ngClass]="{
-                                    'bg-gray-300 dark:bg-gray-700': option.value === overview.selectedOption,
-                                    'bg-transparent': option.value !== overview.selectedOption
+                                    'bg-gray-300 dark:bg-gray-700':
+                                        option.value ===
+                                        overview.selectedOption,
+                                    'bg-transparent':
+                                        option.value !== overview.selectedOption
                                 }"
-                                [value]="option.value">
-                                {{option.title}}
+                                [value]="option.value"
+                            >
+                                {{ option.title }}
                             </mat-button-toggle>
                         </mat-button-toggle-group>
                     </div>
                 </div>
                 <!-- Options -->
-                <ng-container *ngIf="overview.options[overview.selectedOption] as selectedOption">
+                <ng-container
+                    *ngIf="
+                        overview.options[
+                            overview.selectedOption
+                        ] as selectedOption
+                    "
+                >
                     <div>
                         <!-- Preview -->
-                        <div class="z-20 relative mt-10 h-192 ring-1 ring-gray-300 rounded-2xl shadow-xl overflow-auto dark:ring-gray-700">
-                            <div class="flex flex-auto min-h-full">
+                        <div
+                            class="relative z-20 mt-10 h-192 overflow-auto rounded-2xl shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
+                        >
+                            <div class="flex min-h-full flex-auto">
                                 <!-- Navigation -->
-                                <div class="hidden md:block sticky top-0 flex-0 w-56 h-192 border-r border-gray-300 bg-gray-200 dark:border-gray-700 dark:bg-gray-800">
+                                <div
+                                    class="sticky top-0 hidden h-192 w-56 flex-0 border-r border-gray-300 bg-gray-200 dark:border-gray-700 dark:bg-gray-800 md:block"
+                                >
                                     <div class="h-4"></div>
-                                    <div class="w-2/3 h-4 m-6 rounded bg-gray-300 dark:bg-gray-700"></div>
-                                    <div class="w-3/4 h-4 m-6 rounded bg-gray-300 dark:bg-gray-700"></div>
-                                    <div class="w-2/3 h-4 m-6 rounded bg-gray-300 dark:bg-gray-700"></div>
-                                    <div class="w-1/2 h-4 m-6 rounded bg-gray-300 dark:bg-gray-700"></div>
-                                    <div class="w-2/3 h-4 m-6 rounded bg-gray-300 dark:bg-gray-700"></div>
+                                    <div
+                                        class="m-6 h-4 w-2/3 rounded bg-gray-300 dark:bg-gray-700"
+                                    ></div>
+                                    <div
+                                        class="m-6 h-4 w-3/4 rounded bg-gray-300 dark:bg-gray-700"
+                                    ></div>
+                                    <div
+                                        class="m-6 h-4 w-2/3 rounded bg-gray-300 dark:bg-gray-700"
+                                    ></div>
+                                    <div
+                                        class="m-6 h-4 w-1/2 rounded bg-gray-300 dark:bg-gray-700"
+                                    ></div>
+                                    <div
+                                        class="m-6 h-4 w-2/3 rounded bg-gray-300 dark:bg-gray-700"
+                                    ></div>
                                 </div>
                                 <!-- Content -->
-                                <div class="flex flex-col flex-auto">
+                                <div class="flex flex-auto flex-col">
                                     <!-- Header -->
                                     <div
-                                        class="relative z-10 flex items-center justify-end h-16 px-6 sm:px-10
-                                               border-b border-gray-300 bg-gray-200 dark:border-gray-700 dark:bg-gray-800">
-                                        <div class="w-6 h-6 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+                                        class="relative z-10 flex h-16 items-center justify-end border-b border-gray-300
+                                               bg-gray-200 px-6 dark:border-gray-700 dark:bg-gray-800 sm:px-10"
+                                    >
+                                        <div
+                                            class="h-6 w-6 rounded-full bg-gray-300 dark:bg-gray-700"
+                                        ></div>
                                     </div>
                                     <!-- Main -->
                                     <div
                                         id="component-container"
-                                        class="relative flex flex-col flex-auto">
-                                        <ng-container *ngComponentOutlet="selectedOption.component"></ng-container>
+                                        class="relative flex flex-auto flex-col"
+                                    >
+                                        <ng-container
+                                            *ngComponentOutlet="
+                                                selectedOption.component
+                                            "
+                                        ></ng-container>
                                     </div>
                                     <!-- Footer -->
-                                    <div class="relative z-10 flex items-center h-14 px-6 sm:px-10 border-t border-gray-300 bg-gray-200 dark:border-gray-700 dark:bg-gray-800">
-                                        <div class="w-32 h-4 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+                                    <div
+                                        class="relative z-10 flex h-14 items-center border-t border-gray-300 bg-gray-200 px-6 dark:border-gray-700 dark:bg-gray-800 sm:px-10"
+                                    >
+                                        <div
+                                            class="h-4 w-32 rounded-full bg-gray-300 dark:bg-gray-700"
+                                        ></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Preview details -->
-                        <div class="flex items-center justify-between mt-8">
+                        <div class="mt-8 flex items-center justify-between">
                             <div>
-                                <div>{{selectedOption.description}}</div>
+                                <div>{{ selectedOption.description }}</div>
                                 <div class="mt-1">
-                                    <code class="text-md">/src/app/modules/admin{{selectedOption.link}}/</code>
+                                    <code class="text-md"
+                                        >/src/app/modules/admin{{
+                                            selectedOption.link
+                                        }}/</code
+                                    >
                                 </div>
                             </div>
                             <div *ngIf="selectedOption.link">
                                 <a
                                     mat-flat-button
                                     [color]="'primary'"
-                                    [routerLink]="selectedOption.link">
+                                    [routerLink]="selectedOption.link"
+                                >
                                     <mat-icon
                                         class="icon-size-4"
-                                        [svgIcon]="'heroicons_mini:arrow-top-right-on-square'"></mat-icon>
+                                        [svgIcon]="
+                                            'heroicons_mini:arrow-top-right-on-square'
+                                        "
+                                    ></mat-icon>
                                     <span class="ml-2">View</span>
                                 </a>
                             </div>
@@ -112,7 +162,7 @@ export interface PageLayoutsOverviewData
             </div>
         </div>
     `,
-    styles       : [
+    styles: [
         `
             layout-overview #component-container > *:first-child {
                 position: relative;
@@ -123,25 +173,31 @@ export interface PageLayoutsOverviewData
         `,
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatButtonToggleModule, FormsModule, NgFor, NgClass, NgIf, NgComponentOutlet, MatButtonModule, RouterLink, MatIconModule],
+    standalone: true,
+    imports: [
+        MatButtonToggleModule,
+        FormsModule,
+        NgFor,
+        NgClass,
+        NgIf,
+        NgComponentOutlet,
+        MatButtonModule,
+        RouterLink,
+        MatIconModule,
+    ],
 })
-export class LayoutOverviewComponent implements OnInit
-{
+export class LayoutOverviewComponent implements OnInit {
     overview: PageLayoutsOverviewData;
 
     /**
      * Constructor
      */
-    constructor(private _activatedRoute: ActivatedRoute)
-    {
-    }
+    constructor(private _activatedRoute: ActivatedRoute) {}
 
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the route data
         this.overview = this._activatedRoute.snapshot.data.overview;
     }

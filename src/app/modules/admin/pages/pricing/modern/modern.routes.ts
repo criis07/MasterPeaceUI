@@ -3,7 +3,7 @@ import { PricingModernComponent } from 'app/modules/admin/pages/pricing/modern/m
 
 export default [
     {
-        path     : '',
+        path: '',
         component: PricingModernComponent,
     },
 ] as Routes;

@@ -1,21 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FaqCategory, Guide, GuideCategory } from 'app/modules/admin/apps/help-center/help-center.type';
+import {
+    FaqCategory,
+    Guide,
+    GuideCategory,
+} from 'app/modules/admin/apps/help-center/help-center.type';
 import { Observable, ReplaySubject, tap } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class HelpCenterService
-{
-    private _faqs: ReplaySubject<FaqCategory[]> = new ReplaySubject<FaqCategory[]>(1);
-    private _guides: ReplaySubject<GuideCategory[]> = new ReplaySubject<GuideCategory[]>(1);
+@Injectable({ providedIn: 'root' })
+export class HelpCenterService {
+    private _faqs: ReplaySubject<FaqCategory[]> = new ReplaySubject<
+        FaqCategory[]
+    >(1);
+    private _guides: ReplaySubject<GuideCategory[]> = new ReplaySubject<
+        GuideCategory[]
+    >(1);
     private _guide: ReplaySubject<Guide> = new ReplaySubject<Guide>(1);
 
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+    constructor(private _httpClient: HttpClient) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -24,24 +29,21 @@ export class HelpCenterService
     /**
      * Getter for FAQs
      */
-    get faqs$(): Observable<FaqCategory[]>
-    {
+    get faqs$(): Observable<FaqCategory[]> {
         return this._faqs.asObservable();
     }
 
     /**
      * Getter for guides
      */
-    get guides$(): Observable<GuideCategory[]>
-    {
+    get guides$(): Observable<GuideCategory[]> {
         return this._guides.asObservable();
     }
 
     /**
      * Getter for guide
      */
-    get guide$(): Observable<GuideCategory>
-    {
+    get guide$(): Observable<GuideCategory> {
         return this._guide.asObservable();
     }
 
@@ -52,14 +54,14 @@ export class HelpCenterService
     /**
      * Get all FAQs
      */
-    getAllFaqs(): Observable<FaqCategory[]>
-    {
-        return this._httpClient.get<FaqCategory[]>('api/apps/help-center/faqs').pipe(
-            tap((response: any) =>
-            {
-                this._faqs.next(response);
-            }),
-        );
+    getAllFaqs(): Observable<FaqCategory[]> {
+        return this._httpClient
+            .get<FaqCategory[]>('api/apps/help-center/faqs')
+            .pipe(
+                tap((response: any) => {
+                    this._faqs.next(response);
+                })
+            );
     }
 
     /**
@@ -67,16 +69,16 @@ export class HelpCenterService
      *
      * @param slug
      */
-    getFaqsByCategory(slug: string): Observable<FaqCategory[]>
-    {
-        return this._httpClient.get<FaqCategory[]>('api/apps/help-center/faqs', {
-            params: {slug},
-        }).pipe(
-            tap((response: any) =>
-            {
-                this._faqs.next(response);
-            }),
-        );
+    getFaqsByCategory(slug: string): Observable<FaqCategory[]> {
+        return this._httpClient
+            .get<FaqCategory[]>('api/apps/help-center/faqs', {
+                params: { slug },
+            })
+            .pipe(
+                tap((response: any) => {
+                    this._faqs.next(response);
+                })
+            );
     }
 
     /**
@@ -84,16 +86,16 @@ export class HelpCenterService
      *
      * @param limit
      */
-    getAllGuides(limit = '4'): Observable<GuideCategory[]>
-    {
-        return this._httpClient.get<GuideCategory[]>('api/apps/help-center/guides', {
-            params: {limit},
-        }).pipe(
-            tap((response: any) =>
-            {
-                this._guides.next(response);
-            }),
-        );
+    getAllGuides(limit = '4'): Observable<GuideCategory[]> {
+        return this._httpClient
+            .get<GuideCategory[]>('api/apps/help-center/guides', {
+                params: { limit },
+            })
+            .pipe(
+                tap((response: any) => {
+                    this._guides.next(response);
+                })
+            );
     }
 
     /**
@@ -101,16 +103,16 @@ export class HelpCenterService
      *
      * @param slug
      */
-    getGuidesByCategory(slug: string): Observable<GuideCategory[]>
-    {
-        return this._httpClient.get<GuideCategory[]>('api/apps/help-center/guides', {
-            params: {slug},
-        }).pipe(
-            tap((response: any) =>
-            {
-                this._guides.next(response);
-            }),
-        );
+    getGuidesByCategory(slug: string): Observable<GuideCategory[]> {
+        return this._httpClient
+            .get<GuideCategory[]>('api/apps/help-center/guides', {
+                params: { slug },
+            })
+            .pipe(
+                tap((response: any) => {
+                    this._guides.next(response);
+                })
+            );
     }
 
     /**
@@ -119,18 +121,21 @@ export class HelpCenterService
      * @param categorySlug
      * @param guideSlug
      */
-    getGuide(categorySlug: string, guideSlug: string): Observable<GuideCategory>
-    {
-        return this._httpClient.get<GuideCategory>('api/apps/help-center/guide', {
-            params: {
-                categorySlug,
-                guideSlug,
-            },
-        }).pipe(
-            tap((response: any) =>
-            {
-                this._guide.next(response);
-            }),
-        );
+    getGuide(
+        categorySlug: string,
+        guideSlug: string
+    ): Observable<GuideCategory> {
+        return this._httpClient
+            .get<GuideCategory>('api/apps/help-center/guide', {
+                params: {
+                    categorySlug,
+                    guideSlug,
+                },
+            })
+            .pipe(
+                tap((response: any) => {
+                    this._guide.next(response);
+                })
+            );
     }
 }

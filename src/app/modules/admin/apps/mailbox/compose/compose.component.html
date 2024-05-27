@@ -1,71 +1,60 @@
-<div class="flex flex-col max-w-240 md:min-w-160 max-h-screen -m-6">
-
+<div class="-m-6 flex max-h-screen max-w-240 flex-col md:min-w-160">
     <!-- Header -->
-    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+    <div
+        class="flex h-16 flex-0 items-center justify-between bg-primary pl-6 pr-3 text-on-primary sm:pl-8 sm:pr-5"
+    >
         <div class="text-lg font-medium">New Message</div>
-        <button
-            mat-icon-button
-            (click)="saveAndClose()"
-            [tabIndex]="-1">
+        <button mat-icon-button (click)="saveAndClose()" [tabIndex]="-1">
             <mat-icon
                 class="text-current"
-                [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+                [svgIcon]="'heroicons_outline:x-mark'"
+            ></mat-icon>
         </button>
     </div>
 
     <!-- Compose form -->
     <form
-        class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto"
-        [formGroup]="composeForm">
-
+        class="flex flex-auto flex-col overflow-y-auto p-6 sm:p-8"
+        [formGroup]="composeForm"
+    >
         <!-- To -->
         <mat-form-field>
             <mat-label>To</mat-label>
-            <input
-                matInput
-                [formControlName]="'to'">
-            <div
-                class="copy-fields-toggles"
-                matSuffix>
+            <input matInput [formControlName]="'to'" />
+            <div class="copy-fields-toggles" matSuffix>
                 <span
-                    class="text-sm font-medium cursor-pointer select-none hover:underline"
+                    class="cursor-pointer select-none text-sm font-medium hover:underline"
                     *ngIf="!copyFields.cc"
-                    (click)="showCopyField('cc')">
+                    (click)="showCopyField('cc')"
+                >
                     Cc
                 </span>
                 <span
-                    class="ml-2 text-sm font-medium cursor-pointer select-none hover:underline"
+                    class="ml-2 cursor-pointer select-none text-sm font-medium hover:underline"
                     *ngIf="!copyFields.bcc"
-                    (click)="showCopyField('bcc')">
+                    (click)="showCopyField('bcc')"
+                >
                     Bcc
                 </span>
             </div>
         </mat-form-field>
 
         <!-- Cc -->
-        <mat-form-field
-            *ngIf="copyFields.cc">
+        <mat-form-field *ngIf="copyFields.cc">
             <mat-label>Cc</mat-label>
-            <input
-                matInput
-                [formControlName]="'cc'">
+            <input matInput [formControlName]="'cc'" />
         </mat-form-field>
 
         <!-- Bcc -->
-        <mat-form-field
-            *ngIf="copyFields.bcc">
+        <mat-form-field *ngIf="copyFields.bcc">
             <mat-label>Bcc</mat-label>
-            <input
-                matInput
-                [formControlName]="'bcc'">
+            <input matInput [formControlName]="'bcc'" />
         </mat-form-field>
 
         <!-- Subject -->
         <mat-form-field>
             <mat-label>Subject</mat-label>
-            <input
-                matInput
-                [formControlName]="'subject'">
+            <input matInput [formControlName]="'subject'" />
         </mat-form-field>
 
         <!-- Body -->
@@ -73,50 +62,59 @@
             class="mt-2"
             [formControlName]="'body'"
             [bounds]="'self'"
-            [modules]="quillModules"></quill-editor>
+            [modules]="quillModules"
+        ></quill-editor>
 
         <!-- Actions -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
+        <div
+            class="mt-4 flex flex-col justify-between sm:mt-6 sm:flex-row sm:items-center"
+        >
             <div class="-ml-2">
                 <!-- Attach file -->
                 <button mat-icon-button>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:paper-clip'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:paper-clip'"
+                    ></mat-icon>
                 </button>
                 <!-- Insert link -->
                 <button mat-icon-button>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:link'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:link'"
+                    ></mat-icon>
                 </button>
                 <!-- Insert emoji -->
                 <button mat-icon-button>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:face-smile'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:face-smile'"
+                    ></mat-icon>
                 </button>
                 <!-- Insert image -->
                 <button mat-icon-button>
                     <mat-icon
                         class="icon-size-5"
-                        [svgIcon]="'heroicons_solid:photo'"></mat-icon>
+                        [svgIcon]="'heroicons_solid:photo'"
+                    ></mat-icon>
                 </button>
             </div>
 
-            <div class="flex items-center mt-4 sm:mt-0">
+            <div class="mt-4 flex items-center sm:mt-0">
                 <!-- Discard -->
                 <button
                     class="ml-auto sm:ml-0"
                     mat-stroked-button
-                    (click)="discard()">
+                    (click)="discard()"
+                >
                     Discard
                 </button>
                 <!-- Save as draft -->
                 <button
                     class="sm:mx-3"
                     mat-stroked-button
-                    (click)="saveAsDraft()">
+                    (click)="saveAsDraft()"
+                >
                     <span>Save as draft</span>
                 </button>
                 <!-- Send -->
@@ -124,7 +122,8 @@
                     class="order-first sm:order-last"
                     mat-flat-button
                     [color]="'primary'"
-                    (click)="send()">
+                    (click)="send()"
+                >
                     Send
                 </button>
             </div>

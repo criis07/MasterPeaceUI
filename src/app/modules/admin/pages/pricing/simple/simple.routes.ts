@@ -3,7 +3,7 @@ import { PricingSimpleComponent } from 'app/modules/admin/pages/pricing/simple/s
 
 export default [
     {
-        path     : '',
+        path: '',
         component: PricingSimpleComponent,
     },
 ] as Routes;

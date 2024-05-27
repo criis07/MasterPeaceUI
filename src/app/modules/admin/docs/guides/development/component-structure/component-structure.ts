@@ -7,19 +7,22 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'component-structure',
+    selector: 'component-structure',
     templateUrl: './component-structure.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent, RouterLink],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+        RouterLink,
+    ],
 })
-export class ComponentStructureComponent
-{
+export class ComponentStructureComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -28,8 +31,7 @@ export class ComponentStructureComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

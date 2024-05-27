@@ -3,7 +3,7 @@ import { TypographyComponent } from 'app/modules/admin/ui/typography/typography.
 
 export default [
     {
-        path     : '',
+        path: '',
         component: TypographyComponent,
     },
 ] as Routes;

@@ -61,9 +61,10 @@ import { SimpleRightSidebar3NormalScrollComponent } from 'app/modules/admin/ui/p
 import { SimpleRightSidebar3PageScrollComponent } from 'app/modules/admin/ui/page-layouts/simple/right-sidebar-3/page-scroll/right-sidebar-3.component';
 
 export const overviews = {
-    empty : {
-        title           : 'Empty Layout',
-        description     : 'Layout that spans the entire width of the content area with 2 different scroll modes.',
+    empty: {
+        title: 'Empty Layout',
+        description:
+            'Layout that spans the entire width of the content area with 2 different scroll modes.',
         availableOptions: [
             {
                 value: 'normalScroll',
@@ -74,24 +75,27 @@ export const overviews = {
                 title: 'Page Scroll',
             },
         ],
-        selectedOption  : 'normalScroll',
-        options         : {
+        selectedOption: 'normalScroll',
+        options: {
             normalScroll: {
-                description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                link       : '/ui/page-layouts/empty/normal-scroll',
-                component  : EmptyNormalScrollComponent,
+                description:
+                    'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                link: '/ui/page-layouts/empty/normal-scroll',
+                component: EmptyNormalScrollComponent,
             },
-            pageScroll  : {
-                description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                link       : '/ui/page-layouts/empty/page-scroll',
-                component  : EmptyPageScrollComponent,
+            pageScroll: {
+                description:
+                    'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                link: '/ui/page-layouts/empty/page-scroll',
+                component: EmptyPageScrollComponent,
             },
         },
     },
     carded: {
-        fullwidth    : {
-            title           : 'Carded Fullwidth Layout',
-            description     : 'Carded layout that spans the entire width of the content area with a dedicated header and 3 different scroll modes.',
+        fullwidth: {
+            title: 'Carded Fullwidth Layout',
+            description:
+                'Carded layout that spans the entire width of the content area with a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -106,28 +110,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/carded/fullwidth/normal-scroll',
-                    component  : CardedFullwidthNormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/carded/fullwidth/normal-scroll',
+                    component: CardedFullwidthNormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/carded/fullwidth/page-scroll',
-                    component  : CardedFullwidthPageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/carded/fullwidth/page-scroll',
+                    component: CardedFullwidthPageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/carded/fullwidth/content-scroll',
-                    component  : CardedFullwidthContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/carded/fullwidth/content-scroll',
+                    component: CardedFullwidthContentScrollComponent,
                 },
             },
         },
-        leftSidebar1 : {
-            title           : 'Carded Left Sidebar #1',
-            description     : 'Carded layout with a left sidebar, a dedicated header and 3 different scroll modes.',
+        leftSidebar1: {
+            title: 'Carded Left Sidebar #1',
+            description:
+                'Carded layout with a left sidebar, a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -142,28 +150,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/carded/left-sidebar-1/normal-scroll',
-                    component  : CardedLeftSidebar1NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/carded/left-sidebar-1/normal-scroll',
+                    component: CardedLeftSidebar1NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/carded/left-sidebar-1/page-scroll',
-                    component  : CardedLeftSidebar1PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/carded/left-sidebar-1/page-scroll',
+                    component: CardedLeftSidebar1PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/carded/left-sidebar-1/content-scroll',
-                    component  : CardedLeftSidebar1ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/carded/left-sidebar-1/content-scroll',
+                    component: CardedLeftSidebar1ContentScrollComponent,
                 },
             },
         },
-        leftSidebar2 : {
-            title           : 'Carded Left Sidebar #2',
-            description     : 'Carded layout with a left sidebar, a dedicated header and 3 different scroll modes.',
+        leftSidebar2: {
+            title: 'Carded Left Sidebar #2',
+            description:
+                'Carded layout with a left sidebar, a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -178,28 +190,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/carded/left-sidebar-2/normal-scroll',
-                    component  : CardedLeftSidebar2NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/carded/left-sidebar-2/normal-scroll',
+                    component: CardedLeftSidebar2NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/carded/left-sidebar-2/page-scroll',
-                    component  : CardedLeftSidebar2PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/carded/left-sidebar-2/page-scroll',
+                    component: CardedLeftSidebar2PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/carded/left-sidebar-2/content-scroll',
-                    component  : CardedLeftSidebar2ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/carded/left-sidebar-2/content-scroll',
+                    component: CardedLeftSidebar2ContentScrollComponent,
                 },
             },
         },
         rightSidebar1: {
-            title           : 'Carded Right Sidebar #1',
-            description     : 'Carded layout with a right sidebar, a dedicated header and 3 different scroll modes.',
+            title: 'Carded Right Sidebar #1',
+            description:
+                'Carded layout with a right sidebar, a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -214,28 +230,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/carded/right-sidebar-1/normal-scroll',
-                    component  : CardedRightSidebar1NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/carded/right-sidebar-1/normal-scroll',
+                    component: CardedRightSidebar1NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/carded/right-sidebar-1/page-scroll',
-                    component  : CardedRightSidebar1PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/carded/right-sidebar-1/page-scroll',
+                    component: CardedRightSidebar1PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/carded/right-sidebar-1/content-scroll',
-                    component  : CardedRightSidebar1ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/carded/right-sidebar-1/content-scroll',
+                    component: CardedRightSidebar1ContentScrollComponent,
                 },
             },
         },
         rightSidebar2: {
-            title           : 'Carded Right Sidebar #2',
-            description     : 'Carded layout with a right sidebar, a dedicated header and 3 different scroll modes.',
+            title: 'Carded Right Sidebar #2',
+            description:
+                'Carded layout with a right sidebar, a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -250,30 +270,34 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/carded/right-sidebar-2/normal-scroll',
-                    component  : CardedRightSidebar2NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/carded/right-sidebar-2/normal-scroll',
+                    component: CardedRightSidebar2NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/carded/right-sidebar-2/page-scroll',
-                    component  : CardedRightSidebar2PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/carded/right-sidebar-2/page-scroll',
+                    component: CardedRightSidebar2PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/carded/right-sidebar-2/content-scroll',
-                    component  : CardedRightSidebar2ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/carded/right-sidebar-2/content-scroll',
+                    component: CardedRightSidebar2ContentScrollComponent,
                 },
             },
         },
     },
     simple: {
-        fullwidth1   : {
-            title           : 'Fullwidth #1',
-            description     : 'Layout that spans the entire width of the content area with a dedicated header and 3 different scroll modes.',
+        fullwidth1: {
+            title: 'Fullwidth #1',
+            description:
+                'Layout that spans the entire width of the content area with a dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -288,28 +312,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/fullwidth-1/normal-scroll',
-                    component  : SimpleFullwidth1NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/fullwidth-1/normal-scroll',
+                    component: SimpleFullwidth1NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/fullwidth-1/page-scroll',
-                    component  : SimpleFullwidth1PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/fullwidth-1/page-scroll',
+                    component: SimpleFullwidth1PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/fullwidth-1/content-scroll',
-                    component  : SimpleFullwidth1ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/fullwidth-1/content-scroll',
+                    component: SimpleFullwidth1ContentScrollComponent,
                 },
             },
         },
-        fullwidth2   : {
-            title           : 'Fullwidth #2',
-            description     : 'Layout that spans the entire width of the content area with a dedicated header, tabs and 3 different scroll modes.',
+        fullwidth2: {
+            title: 'Fullwidth #2',
+            description:
+                'Layout that spans the entire width of the content area with a dedicated header, tabs and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -324,28 +352,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/fullwidth-2/normal-scroll',
-                    component  : SimpleFullwidth2NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/fullwidth-2/normal-scroll',
+                    component: SimpleFullwidth2NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/fullwidth-2/page-scroll',
-                    component  : SimpleFullwidth2PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/fullwidth-2/page-scroll',
+                    component: SimpleFullwidth2PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/fullwidth-2/content-scroll',
-                    component  : SimpleFullwidth2ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/fullwidth-2/content-scroll',
+                    component: SimpleFullwidth2ContentScrollComponent,
                 },
             },
         },
-        leftSidebar1 : {
-            title           : 'Left Sidebar #1',
-            description     : 'Layout with a left sidebar and 3 different scroll modes.',
+        leftSidebar1: {
+            title: 'Left Sidebar #1',
+            description:
+                'Layout with a left sidebar and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -360,28 +392,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/left-sidebar-1/normal-scroll',
-                    component  : SimpleLeftSidebar1NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/left-sidebar-1/normal-scroll',
+                    component: SimpleLeftSidebar1NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-1/page-scroll',
-                    component  : SimpleLeftSidebar1PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/left-sidebar-1/page-scroll',
+                    component: SimpleLeftSidebar1PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-1/content-scroll',
-                    component  : SimpleLeftSidebar1ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/left-sidebar-1/content-scroll',
+                    component: SimpleLeftSidebar1ContentScrollComponent,
                 },
             },
         },
-        leftSidebar2 : {
-            title           : 'Left Sidebar #2',
-            description     : 'Layout with a left sidebar, a dedicated header and 4 different scroll modes.',
+        leftSidebar2: {
+            title: 'Left Sidebar #2',
+            description:
+                'Layout with a left sidebar, a dedicated header and 4 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -400,33 +436,38 @@ export const overviews = {
                     title: 'Inner Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/left-sidebar-2/normal-scroll',
-                    component  : SimpleLeftSidebar2NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/left-sidebar-2/normal-scroll',
+                    component: SimpleLeftSidebar2NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-2/page-scroll',
-                    component  : SimpleLeftSidebar2PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/left-sidebar-2/page-scroll',
+                    component: SimpleLeftSidebar2PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-2/content-scroll',
-                    component  : SimpleLeftSidebar2ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/left-sidebar-2/content-scroll',
+                    component: SimpleLeftSidebar2ContentScrollComponent,
                 },
-                innerScroll  : {
-                    description: 'Only the inner content area of the page scrolls making sidebar and everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-2/inner-scroll',
-                    component  : SimpleLeftSidebar2InnerScrollComponent,
+                innerScroll: {
+                    description:
+                        'Only the inner content area of the page scrolls making sidebar and everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/left-sidebar-2/inner-scroll',
+                    component: SimpleLeftSidebar2InnerScrollComponent,
                 },
             },
         },
-        leftSidebar3 : {
-            title           : 'Left Sidebar #3',
-            description     : 'Layout with left sidebar, a fullwidth dedicated header and 3 different scroll modes.',
+        leftSidebar3: {
+            title: 'Left Sidebar #3',
+            description:
+                'Layout with left sidebar, a fullwidth dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -441,28 +482,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/left-sidebar-3/normal-scroll',
-                    component  : SimpleLeftSidebar3NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/left-sidebar-3/normal-scroll',
+                    component: SimpleLeftSidebar3NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-3/page-scroll',
-                    component  : SimpleLeftSidebar3PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/left-sidebar-3/page-scroll',
+                    component: SimpleLeftSidebar3PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/left-sidebar-3/content-scroll',
-                    component  : SimpleLeftSidebar3ScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/left-sidebar-3/content-scroll',
+                    component: SimpleLeftSidebar3ScrollComponent,
                 },
             },
         },
         rightSidebar1: {
-            title           : 'Right Sidebar #1',
-            description     : 'Layout with a right sidebar and 3 different scroll modes.',
+            title: 'Right Sidebar #1',
+            description:
+                'Layout with a right sidebar and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -477,28 +522,32 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/right-sidebar-1/normal-scroll',
-                    component  : SimpleRightSidebar1NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/right-sidebar-1/normal-scroll',
+                    component: SimpleRightSidebar1NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-1/page-scroll',
-                    component  : SimpleRightSidebar1PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/right-sidebar-1/page-scroll',
+                    component: SimpleRightSidebar1PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-1/content-scroll',
-                    component  : SimpleRightSidebar1ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/right-sidebar-1/content-scroll',
+                    component: SimpleRightSidebar1ContentScrollComponent,
                 },
             },
         },
         rightSidebar2: {
-            title           : 'Right Sidebar #2',
-            description     : 'Layout with a right sidebar, a dedicated header and 4 different scroll modes.',
+            title: 'Right Sidebar #2',
+            description:
+                'Layout with a right sidebar, a dedicated header and 4 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -517,33 +566,38 @@ export const overviews = {
                     title: 'Inner Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/right-sidebar-2/normal-scroll',
-                    component  : SimpleRightSidebar2NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/right-sidebar-2/normal-scroll',
+                    component: SimpleRightSidebar2NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-2/page-scroll',
-                    component  : SimpleRightSidebar2PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/right-sidebar-2/page-scroll',
+                    component: SimpleRightSidebar2PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-2/content-scroll',
-                    component  : SimpleRightSidebar2ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/right-sidebar-2/content-scroll',
+                    component: SimpleRightSidebar2ContentScrollComponent,
                 },
-                innerScroll  : {
-                    description: 'Only the inner content area of the page scrolls making sidebar and everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-2/inner-scroll',
-                    component  : SimpleRightSidebar2InnerScrollComponent,
+                innerScroll: {
+                    description:
+                        'Only the inner content area of the page scrolls making sidebar and everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/right-sidebar-2/inner-scroll',
+                    component: SimpleRightSidebar2InnerScrollComponent,
                 },
             },
         },
         rightSidebar3: {
-            title           : 'Right Sidebar #3',
-            description     : 'Layout with right sidebar, a fullwidth dedicated header and 3 different scroll modes.',
+            title: 'Right Sidebar #3',
+            description:
+                'Layout with right sidebar, a fullwidth dedicated header and 3 different scroll modes.',
             availableOptions: [
                 {
                     value: 'normalScroll',
@@ -558,22 +612,25 @@ export const overviews = {
                     title: 'Content Scroll',
                 },
             ],
-            selectedOption  : 'normalScroll',
-            options         : {
-                normalScroll : {
-                    description: 'No scrolling area manipulations, entire viewport scrolls (body scroll).',
-                    link       : '/ui/page-layouts/simple/right-sidebar-3/normal-scroll',
-                    component  : SimpleRightSidebar3NormalScrollComponent,
+            selectedOption: 'normalScroll',
+            options: {
+                normalScroll: {
+                    description:
+                        'No scrolling area manipulations, entire viewport scrolls (body scroll).',
+                    link: '/ui/page-layouts/simple/right-sidebar-3/normal-scroll',
+                    component: SimpleRightSidebar3NormalScrollComponent,
                 },
-                pageScroll   : {
-                    description: 'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-3/page-scroll',
-                    component  : SimpleRightSidebar3PageScrollComponent,
+                pageScroll: {
+                    description:
+                        'Only the page area scrolls making the main toolbar and footer to stick to the top and bottom of the viewport respectively.',
+                    link: '/ui/page-layouts/simple/right-sidebar-3/page-scroll',
+                    component: SimpleRightSidebar3PageScrollComponent,
                 },
                 contentScroll: {
-                    description: 'Only the content area of the page scrolls making everything else to stick into their positions.',
-                    link       : '/ui/page-layouts/simple/right-sidebar-3/content-scroll',
-                    component  : SimpleRightSidebar3ContentScrollComponent,
+                    description:
+                        'Only the content area of the page scrolls making everything else to stick into their positions.',
+                    link: '/ui/page-layouts/simple/right-sidebar-3/content-scroll',
+                    component: SimpleRightSidebar3ContentScrollComponent,
                 },
             },
         },
@@ -583,32 +640,32 @@ export const overviews = {
 export default [
     // Overview
     {
-        path     : 'overview',
+        path: 'overview',
         component: OverviewComponent,
     },
 
     // Empty
     {
-        path    : 'empty',
+        path: 'empty',
         children: [
             {
-                path      : '',
-                pathMatch : 'full',
+                path: '',
+                pathMatch: 'full',
                 redirectTo: 'overview',
             },
             {
-                path     : 'overview',
+                path: 'overview',
                 component: LayoutOverviewComponent,
-                data     : {
+                data: {
                     overview: overviews.empty,
                 },
             },
             {
-                path     : 'normal-scroll',
+                path: 'normal-scroll',
                 component: EmptyNormalScrollComponent,
             },
             {
-                path     : 'page-scroll',
+                path: 'page-scroll',
                 component: EmptyPageScrollComponent,
             },
         ],
@@ -616,149 +673,149 @@ export default [
 
     // Carded
     {
-        path    : 'carded',
+        path: 'carded',
         children: [
             {
-                path    : 'fullwidth',
+                path: 'fullwidth',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.carded.fullwidth,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: CardedFullwidthNormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: CardedFullwidthPageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: CardedFullwidthContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'left-sidebar-1',
+                path: 'left-sidebar-1',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.carded.leftSidebar1,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: CardedLeftSidebar1NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: CardedLeftSidebar1PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: CardedLeftSidebar1ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'left-sidebar-2',
+                path: 'left-sidebar-2',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.carded.leftSidebar2,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: CardedLeftSidebar2NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: CardedLeftSidebar2PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: CardedLeftSidebar2ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'right-sidebar-1',
+                path: 'right-sidebar-1',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.carded.rightSidebar1,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: CardedRightSidebar1NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: CardedRightSidebar1PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: CardedRightSidebar1ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'right-sidebar-2',
+                path: 'right-sidebar-2',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.carded.rightSidebar2,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: CardedRightSidebar2NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: CardedRightSidebar2PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: CardedRightSidebar2ContentScrollComponent,
                     },
                 ],
@@ -768,244 +825,244 @@ export default [
 
     // Simple
     {
-        path    : 'simple',
+        path: 'simple',
         children: [
             {
-                path    : 'fullwidth-1',
+                path: 'fullwidth-1',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.fullwidth1,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleFullwidth1NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleFullwidth1PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleFullwidth1ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'fullwidth-2',
+                path: 'fullwidth-2',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.fullwidth2,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleFullwidth2NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleFullwidth2PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleFullwidth2ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'left-sidebar-1',
+                path: 'left-sidebar-1',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.leftSidebar1,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleLeftSidebar1NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleLeftSidebar1PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleLeftSidebar1ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'left-sidebar-2',
+                path: 'left-sidebar-2',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.leftSidebar2,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleLeftSidebar2NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleLeftSidebar2PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleLeftSidebar2ContentScrollComponent,
                     },
                     {
-                        path     : 'inner-scroll',
+                        path: 'inner-scroll',
                         component: SimpleLeftSidebar2InnerScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'left-sidebar-3',
+                path: 'left-sidebar-3',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.leftSidebar3,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleLeftSidebar3NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleLeftSidebar3PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleLeftSidebar3ScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'right-sidebar-1',
+                path: 'right-sidebar-1',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.rightSidebar1,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleRightSidebar1NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleRightSidebar1PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleRightSidebar1ContentScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'right-sidebar-2',
+                path: 'right-sidebar-2',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.rightSidebar2,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleRightSidebar2NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleRightSidebar2PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleRightSidebar2ContentScrollComponent,
                     },
                     {
-                        path     : 'inner-scroll',
+                        path: 'inner-scroll',
                         component: SimpleRightSidebar2InnerScrollComponent,
                     },
                 ],
             },
             {
-                path    : 'right-sidebar-3',
+                path: 'right-sidebar-3',
                 children: [
                     {
-                        path      : '',
-                        pathMatch : 'full',
+                        path: '',
+                        pathMatch: 'full',
                         redirectTo: 'overview',
                     },
                     {
-                        path     : 'overview',
+                        path: 'overview',
                         component: LayoutOverviewComponent,
-                        data     : {
+                        data: {
                             overview: overviews.simple.rightSidebar3,
                         },
                     },
                     {
-                        path     : 'normal-scroll',
+                        path: 'normal-scroll',
                         component: SimpleRightSidebar3NormalScrollComponent,
                     },
                     {
-                        path     : 'page-scroll',
+                        path: 'page-scroll',
                         component: SimpleRightSidebar3PageScrollComponent,
                     },
                     {
-                        path     : 'content-scroll',
+                        path: 'content-scroll',
                         component: SimpleRightSidebar3ContentScrollComponent,
                     },
                 ],

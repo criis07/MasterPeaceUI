@@ -4,11 +4,11 @@ import { NotesComponent } from 'app/modules/admin/apps/notes/notes.component';
 
 export default [
     {
-        path     : '',
+        path: '',
         component: NotesComponent,
-        children : [
+        children: [
             {
-                path     : '',
+                path: '',
                 component: NotesListComponent,
             },
         ],

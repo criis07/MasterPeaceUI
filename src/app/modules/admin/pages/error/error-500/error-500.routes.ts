@@ -3,7 +3,7 @@ import { Error500Component } from 'app/modules/admin/pages/error/error-500/error
 
 export default [
     {
-        path     : '',
+        path: '',
         component: Error500Component,
     },
 ] as Routes;

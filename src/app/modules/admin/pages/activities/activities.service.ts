@@ -3,18 +3,15 @@ import { Injectable } from '@angular/core';
 import { Activity } from 'app/modules/admin/pages/activities/activities.types';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class ActivitiesService
-{
+@Injectable({ providedIn: 'root' })
+export class ActivitiesService {
     // Private
     private _activities: BehaviorSubject<any> = new BehaviorSubject(null);
 
     /**
      * Constructor
      */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+    constructor(private _httpClient: HttpClient) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -23,8 +20,7 @@ export class ActivitiesService
     /**
      * Getter for activities
      */
-    get activities(): Observable<any>
-    {
+    get activities(): Observable<any> {
         return this._activities.asObservable();
     }
 
@@ -35,13 +31,11 @@ export class ActivitiesService
     /**
      * Get activities
      */
-    getActivities(): Observable<any>
-    {
+    getActivities(): Observable<any> {
         return this._httpClient.get<Activity[]>('api/pages/activities').pipe(
-            tap((response: Activity[]) =>
-            {
+            tap((response: Activity[]) => {
                 this._activities.next(response);
-            }),
+            })
         );
     }
 }

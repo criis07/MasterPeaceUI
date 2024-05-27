@@ -1,5 +1,4 @@
-export interface Profile
-{
+export interface Profile {
     id?: string;
     name?: string;
     email?: string;
@@ -7,8 +6,7 @@ export interface Profile
     about?: string;
 }
 
-export interface Contact
-{
+export interface Contact {
     id?: string;
     avatar?: string;
     name?: string;
@@ -35,8 +33,7 @@ export interface Contact
     };
 }
 
-export interface Chat
-{
+export interface Chat {
     id?: string;
     contactId?: string;
     contact?: Contact;

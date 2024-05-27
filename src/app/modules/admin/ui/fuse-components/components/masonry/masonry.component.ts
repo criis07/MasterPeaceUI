@@ -10,13 +10,19 @@ import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fu
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector   : 'masonry',
+    selector: 'masonry',
     templateUrl: './masonry.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent, MatTabsModule, FuseMasonryComponent, NgFor],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        MatTabsModule,
+        FuseMasonryComponent,
+        NgFor,
+    ],
 })
-export class MasonryComponent implements OnInit
-{
+export class MasonryComponent implements OnInit {
     columns: number = 4;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -25,10 +31,8 @@ export class MasonryComponent implements OnInit
      */
     constructor(
         private _fuseComponentsComponent: FuseComponentsComponent,
-        private _fuseMediaWatcherService: FuseMediaWatcherService,
-    )
-    {
-    }
+        private _fuseMediaWatcherService: FuseMediaWatcherService
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -37,36 +41,25 @@ export class MasonryComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) =>
-            {
+            .subscribe(({ matchingAliases }) => {
                 // Set the masonry columns
                 //
                 // This if block structured in a way so that only the
                 // biggest matching alias will be used to set the column
                 // count.
-                if ( matchingAliases.includes('xl') )
-                {
+                if (matchingAliases.includes('xl')) {
                     this.columns = 5;
-                }
-                else if ( matchingAliases.includes('lg') )
-                {
+                } else if (matchingAliases.includes('lg')) {
                     this.columns = 4;
-                }
-                else if ( matchingAliases.includes('md') )
-                {
+                } else if (matchingAliases.includes('md')) {
                     this.columns = 3;
-                }
-                else if ( matchingAliases.includes('sm') )
-                {
+                } else if (matchingAliases.includes('sm')) {
                     this.columns = 2;
-                }
-                else
-                {
+                } else {
                     this.columns = 1;
                 }
             });
@@ -79,8 +72,7 @@ export class MasonryComponent implements OnInit
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

@@ -1,46 +1,58 @@
-<div class="flex flex-col flex-auto min-w-0">
-
+<div class="flex min-w-0 flex-auto flex-col">
     <!-- Main -->
-    <div class="flex flex-col flex-auto items-center p-6 sm:p-10">
-        <div class="flex flex-col w-full max-w-4xl">
+    <div class="flex flex-auto flex-col items-center p-6 sm:p-10">
+        <div class="flex w-full max-w-4xl flex-col">
             <div class="-ml-4 sm:mt-8">
-                <a
-                    mat-button
-                    [routerLink]="['../']"
-                    [color]="'primary'">
-                    <mat-icon [svgIcon]="'heroicons_outline:arrow-long-left'"></mat-icon>
+                <a mat-button [routerLink]="['../']" [color]="'primary'">
+                    <mat-icon
+                        [svgIcon]="'heroicons_outline:arrow-long-left'"
+                    ></mat-icon>
                     <span class="ml-2">Back to Help Center</span>
                 </a>
             </div>
-            <div class="mt-2 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">
+            <div
+                class="mt-2 text-4xl font-extrabold leading-tight tracking-tight sm:text-7xl"
+            >
                 Contact support
             </div>
             <!-- Form -->
-            <div class="mt-8 sm:mt-12 p-6 pb-7 sm:p-10 sm:pb-7 shadow rounded-2xl bg-card">
+            <div
+                class="bg-card mt-8 rounded-2xl p-6 pb-7 shadow sm:mt-12 sm:p-10 sm:pb-7"
+            >
                 <!-- Alert -->
                 <fuse-alert
                     class="mb-8"
                     *ngIf="alert"
                     [type]="alert.type"
-                    [showIcon]="false">
-                    {{alert.message}}
+                    [showIcon]="false"
+                >
+                    {{ alert.message }}
                 </fuse-alert>
                 <form
                     class="space-y-3"
                     [formGroup]="supportForm"
-                    #supportNgForm="ngForm">
+                    #supportNgForm="ngForm"
+                >
                     <div class="mb-6">
-                        <div class="text-2xl font-bold tracking-tight">Submit your request</div>
-                        <div class="text-secondary">Your request will be processed and our support staff will get back to you in 24 hours.</div>
+                        <div class="text-2xl font-bold tracking-tight">
+                            Submit your request
+                        </div>
+                        <div class="text-secondary">
+                            Your request will be processed and our support staff
+                            will get back to you in 24 hours.
+                        </div>
                     </div>
                     <!-- Name -->
                     <mat-form-field class="w-full">
                         <input
                             matInput
                             [formControlName]="'name'"
-                            [required]="true">
+                            [required]="true"
+                        />
                         <mat-label>Name</mat-label>
-                        <mat-error *ngIf="supportForm.get('name').hasError('required')">
+                        <mat-error
+                            *ngIf="supportForm.get('name').hasError('required')"
+                        >
                             Required
                         </mat-error>
                     </mat-form-field>
@@ -50,12 +62,19 @@
                             type="email"
                             matInput
                             [formControlName]="'email'"
-                            [required]="true">
+                            [required]="true"
+                        />
                         <mat-label>Email</mat-label>
-                        <mat-error *ngIf="supportForm.get('email').hasError('required')">
+                        <mat-error
+                            *ngIf="
+                                supportForm.get('email').hasError('required')
+                            "
+                        >
                             Required
                         </mat-error>
-                        <mat-error *ngIf="supportForm.get('email').hasError('email')">
+                        <mat-error
+                            *ngIf="supportForm.get('email').hasError('email')"
+                        >
                             Enter a valid email address
                         </mat-error>
                     </mat-form-field>
@@ -64,9 +83,14 @@
                         <input
                             matInput
                             [formControlName]="'subject'"
-                            [required]="true">
+                            [required]="true"
+                        />
                         <mat-label>Subject</mat-label>
-                        <mat-error *ngIf="supportForm.get('subject').hasError('required')">
+                        <mat-error
+                            *ngIf="
+                                supportForm.get('subject').hasError('required')
+                            "
+                        >
                             Required
                         </mat-error>
                     </mat-form-field>
@@ -77,9 +101,14 @@
                             [formControlName]="'message'"
                             [required]="true"
                             [rows]="5"
-                            cdkTextareaAutosize></textarea>
+                            cdkTextareaAutosize
+                        ></textarea>
                         <mat-label>Message</mat-label>
-                        <mat-error *ngIf="supportForm.get('message').hasError('required')">
+                        <mat-error
+                            *ngIf="
+                                supportForm.get('message').hasError('required')
+                            "
+                        >
                             Required
                         </mat-error>
                     </mat-form-field>
@@ -88,16 +117,22 @@
                         <button
                             mat-button
                             [color]="'accent'"
-                            [disabled]="supportForm.pristine || supportForm.untouched"
-                            (click)="clearForm()">
+                            [disabled]="
+                                supportForm.pristine || supportForm.untouched
+                            "
+                            (click)="clearForm()"
+                        >
                             Clear
                         </button>
                         <button
                             class="ml-2"
                             mat-flat-button
                             [color]="'primary'"
-                            [disabled]="supportForm.pristine || supportForm.invalid"
-                            (click)="sendForm()">
+                            [disabled]="
+                                supportForm.pristine || supportForm.invalid
+                            "
+                            (click)="sendForm()"
+                        >
                             Submit
                         </button>
                     </div>

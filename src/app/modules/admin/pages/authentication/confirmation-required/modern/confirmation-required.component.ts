@@ -3,19 +3,16 @@ import { RouterLink } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector     : 'confirmation-required-modern',
-    templateUrl  : './confirmation-required.component.html',
+    selector: 'confirmation-required-modern',
+    templateUrl: './confirmation-required.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : fuseAnimations,
-    standalone   : true,
-    imports      : [RouterLink],
+    animations: fuseAnimations,
+    standalone: true,
+    imports: [RouterLink],
 })
-export class ConfirmationRequiredModernComponent
-{
+export class ConfirmationRequiredModernComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

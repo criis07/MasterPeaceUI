@@ -5,21 +5,16 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'confirmation',
+    selector: 'confirmation',
     templateUrl: './confirmation.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule, FuseHighlightComponent],
 })
-export class ConfirmationComponent
-{
+export class ConfirmationComponent {
     /**
      * Constructor
      */
-    constructor(
-        private _fuseComponentsComponent: FuseComponentsComponent,
-    )
-    {
-    }
+    constructor(private _fuseComponentsComponent: FuseComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -28,8 +23,7 @@ export class ConfirmationComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

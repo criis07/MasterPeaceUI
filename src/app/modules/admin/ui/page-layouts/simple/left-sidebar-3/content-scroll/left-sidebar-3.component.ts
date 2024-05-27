@@ -8,14 +8,19 @@ import { DemoSidebarComponent } from 'app/modules/admin/ui/page-layouts/common/d
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'simple-left-sidebar-3-content-scroll',
-    templateUrl  : './left-sidebar-3.component.html',
+    selector: 'simple-left-sidebar-3-content-scroll',
+    templateUrl: './left-sidebar-3.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, RouterLink, MatButtonModule, MatSidenavModule, DemoSidebarComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        RouterLink,
+        MatButtonModule,
+        MatSidenavModule,
+        DemoSidebarComponent,
+    ],
 })
-export class SimpleLeftSidebar3ScrollComponent implements OnInit, OnDestroy
-{
+export class SimpleLeftSidebar3ScrollComponent implements OnInit, OnDestroy {
     drawerMode: 'over' | 'side' = 'side';
     drawerOpened: boolean = true;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -23,9 +28,7 @@ export class SimpleLeftSidebar3ScrollComponent implements OnInit, OnDestroy
     /**
      * Constructor
      */
-    constructor(private _fuseMediaWatcherService: FuseMediaWatcherService)
-    {
-    }
+    constructor(private _fuseMediaWatcherService: FuseMediaWatcherService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -34,21 +37,16 @@ export class SimpleLeftSidebar3ScrollComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) =>
-            {
+            .subscribe(({ matchingAliases }) => {
                 // Set the drawerMode and drawerOpened if
-                if ( matchingAliases.includes('lg') )
-                {
+                if (matchingAliases.includes('lg')) {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
-                }
-                else
-                {
+                } else {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;
                 }
@@ -58,8 +56,7 @@ export class SimpleLeftSidebar3ScrollComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();

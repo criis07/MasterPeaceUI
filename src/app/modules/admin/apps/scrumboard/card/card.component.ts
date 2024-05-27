@@ -1,27 +1,29 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScrumboardCardDetailsComponent } from 'app/modules/admin/apps/scrumboard/card/details/details.component';
 
 @Component({
-    selector       : 'scrumboard-card',
-    templateUrl    : './card.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'scrumboard-card',
+    templateUrl: './card.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
+    standalone: true,
 })
-export class ScrumboardCardComponent implements OnInit
-{
+export class ScrumboardCardComponent implements OnInit {
     /**
      * Constructor
      */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _matDialog: MatDialog,
-        private _router: Router,
-    )
-    {
-    }
+        private _router: Router
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -30,15 +32,16 @@ export class ScrumboardCardComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Launch the modal
-        this._matDialog.open(ScrumboardCardDetailsComponent, {autoFocus: false})
+        this._matDialog
+            .open(ScrumboardCardDetailsComponent, { autoFocus: false })
             .afterClosed()
-            .subscribe(() =>
-            {
+            .subscribe(() => {
                 // Go up twice because card routes are set up like this; "card/CARD_ID"
-                this._router.navigate(['./../..'], {relativeTo: this._activatedRoute});
+                this._router.navigate(['./../..'], {
+                    relativeTo: this._activatedRoute,
+                });
             });
     }
 }

@@ -1,11 +1,9 @@
-export interface Tag
-{
+export interface Tag {
     id?: string;
     title?: string;
 }
 
-export interface Task
-{
+export interface Task {
     id: string;
     type: 'task' | 'section';
     title: string;

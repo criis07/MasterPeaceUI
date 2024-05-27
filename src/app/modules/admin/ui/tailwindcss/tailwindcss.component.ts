@@ -1,17 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector     : 'tailwindcss',
-    templateUrl  : './tailwindcss.component.html',
+    selector: 'tailwindcss',
+    templateUrl: './tailwindcss.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
+    standalone: true,
 })
-export class TailwindCSSComponent
-{
+export class TailwindCSSComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

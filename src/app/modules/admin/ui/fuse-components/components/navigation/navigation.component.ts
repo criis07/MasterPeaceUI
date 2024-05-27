@@ -4,26 +4,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FuseAlertComponent } from '@fuse/components/alert';
 import { FuseHighlightComponent } from '@fuse/components/highlight';
-import { FuseNavigationItem, FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/components/navigation';
+import {
+    FuseNavigationItem,
+    FuseNavigationService,
+    FuseVerticalNavigationComponent,
+} from '@fuse/components/navigation';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'navigation',
+    selector: 'navigation',
     templateUrl: './navigation.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent, FuseHighlightComponent, MatTabsModule],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseAlertComponent,
+        FuseHighlightComponent,
+        MatTabsModule,
+    ],
 })
-export class NavigationComponent
-{
+export class NavigationComponent {
     /**
      * Constructor
      */
     constructor(
         private _fuseNavigationService: FuseNavigationService,
-        private _fuseComponentsComponent: FuseComponentsComponent,
-    )
-    {
-    }
+        private _fuseComponentsComponent: FuseComponentsComponent
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -35,14 +42,15 @@ export class NavigationComponent
      * @param itemId
      * @param navigationName
      */
-    getNavItem(itemId, navigationName): FuseNavigationItem | null
-    {
+    getNavItem(itemId, navigationName): FuseNavigationItem | null {
         // Get the component -> navigation data -> item
-        const navComponent = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(navigationName);
+        const navComponent =
+            this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
+                navigationName
+            );
 
         // Return if the navigation component does not exist
-        if ( !navComponent )
-        {
+        if (!navComponent) {
             return null;
         }
 
@@ -60,14 +68,15 @@ export class NavigationComponent
      * @param navigationName
      * @param title
      */
-    updateBadgeTitle(itemId, navigationName, title): void
-    {
+    updateBadgeTitle(itemId, navigationName, title): void {
         // Get the component -> navigation data -> item
-        const navComponent = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(navigationName);
+        const navComponent =
+            this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
+                navigationName
+            );
 
         // Return if the navigation component does not exist
-        if ( !navComponent )
-        {
+        if (!navComponent) {
             return null;
         }
 
@@ -84,14 +93,15 @@ export class NavigationComponent
      * @param itemId
      * @param navigationName
      */
-    toggleDisabled(itemId, navigationName): void
-    {
+    toggleDisabled(itemId, navigationName): void {
         // Get the component -> navigation data -> item
-        const navComponent = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(navigationName);
+        const navComponent =
+            this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
+                navigationName
+            );
 
         // Return if the navigation component does not exist
-        if ( !navComponent )
-        {
+        if (!navComponent) {
             return null;
         }
 
@@ -107,53 +117,54 @@ export class NavigationComponent
      *
      * @param navigationName
      */
-    swapNavigationData(navigationName): void
-    {
+    swapNavigationData(navigationName): void {
         // Get the component -> navigation data -> item
-        const navComponent = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(navigationName);
+        const navComponent =
+            this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(
+                navigationName
+            );
 
         // Return if the navigation component does not exist
-        if ( !navComponent )
-        {
+        if (!navComponent) {
             return null;
         }
 
         // A navigation data to replace with
         const newNavigation: FuseNavigationItem[] = [
             {
-                id      : 'supported-components',
-                title   : 'Supported components',
+                id: 'supported-components',
+                title: 'Supported components',
                 subtitle: 'Compatible third party components',
-                type    : 'group',
-                icon    : 'memory',
+                type: 'group',
+                icon: 'memory',
                 children: [
                     {
-                        id   : 'supported-components.apex-charts',
+                        id: 'supported-components.apex-charts',
                         title: 'ApexCharts',
-                        type : 'basic',
-                        icon : 'insert_chart',
-                        link : '/supported-components/apex-charts',
+                        type: 'basic',
+                        icon: 'insert_chart',
+                        link: '/supported-components/apex-charts',
                     },
                     {
-                        id   : 'supported-components.google-maps',
+                        id: 'supported-components.google-maps',
                         title: 'Google Maps',
-                        type : 'basic',
-                        icon : 'map',
-                        link : '/supported-components/google-maps',
+                        type: 'basic',
+                        icon: 'map',
+                        link: '/supported-components/google-maps',
                     },
                     {
-                        id   : 'supported-components.quill-editor',
+                        id: 'supported-components.quill-editor',
                         title: 'Quill editor',
-                        type : 'basic',
-                        icon : 'font_download',
-                        link : '/supported-components/quill-editor',
+                        type: 'basic',
+                        icon: 'font_download',
+                        link: '/supported-components/quill-editor',
                     },
                     {
-                        id   : 'supported-components.youtube-player',
+                        id: 'supported-components.youtube-player',
                         title: 'Youtube player',
-                        type : 'basic',
-                        icon : 'play_circle_filled',
-                        link : '/supported-components/youtube-player',
+                        type: 'basic',
+                        icon: 'play_circle_filled',
+                        link: '/supported-components/youtube-player',
                     },
                 ],
             },
@@ -167,8 +178,7 @@ export class NavigationComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

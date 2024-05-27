@@ -7,29 +7,32 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
 import { FuseComponentsComponent } from 'app/modules/admin/ui/fuse-components/fuse-components.component';
 
 @Component({
-    selector   : 'alert',
+    selector: 'alert',
     templateUrl: './alert.component.html',
-    styles     : [
+    styles: [
         `
             fuse-alert {
                 margin: 16px 0;
             }
         `,
     ],
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseHighlightComponent, MatTabsModule, FuseAlertComponent],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        FuseHighlightComponent,
+        MatTabsModule,
+        FuseAlertComponent,
+    ],
 })
-export class AlertComponent
-{
+export class AlertComponent {
     /**
      * Constructor
      */
     constructor(
         private _fuseAlertService: FuseAlertService,
-        private _fuseComponentsComponent: FuseComponentsComponent,
-    )
-    {
-    }
+        private _fuseComponentsComponent: FuseComponentsComponent
+    ) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -40,8 +43,7 @@ export class AlertComponent
      *
      * @param name
      */
-    dismiss(name: string): void
-    {
+    dismiss(name: string): void {
         // Dismiss
         this._fuseAlertService.dismiss(name);
     }
@@ -51,8 +53,7 @@ export class AlertComponent
      *
      * @param name
      */
-    show(name: string): void
-    {
+    show(name: string): void {
         // Show
         this._fuseAlertService.show(name);
     }
@@ -60,8 +61,7 @@ export class AlertComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._fuseComponentsComponent.matDrawer.toggle();
     }

@@ -4,19 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { OtherComponentsComponent } from 'app/modules/admin/ui/other-components/other-components.component';
 
 @Component({
-    selector   : 'apex-charts',
+    selector: 'apex-charts',
     templateUrl: './apex-charts.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule],
 })
-export class ApexChartsComponent
-{
+export class ApexChartsComponent {
     /**
      * Constructor
      */
-    constructor(private _otherComponentsComponent: OtherComponentsComponent)
-    {
-    }
+    constructor(private _otherComponentsComponent: OtherComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -25,8 +22,7 @@ export class ApexChartsComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._otherComponentsComponent.matDrawer.toggle();
     }

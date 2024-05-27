@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, Routes } from '@angular/router';
+import {
+    ActivatedRouteSnapshot,
+    Router,
+    RouterStateSnapshot,
+    Routes,
+} from '@angular/router';
 import { AcademyComponent } from 'app/modules/admin/apps/academy/academy.component';
 import { AcademyService } from 'app/modules/admin/apps/academy/academy.service';
 import { AcademyDetailsComponent } from 'app/modules/admin/apps/academy/details/details.component';
@@ -12,15 +17,16 @@ import { catchError, throwError } from 'rxjs';
  * @param route
  * @param state
  */
-const courseResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
-{
+const courseResolver = (
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+) => {
     const academyService = inject(AcademyService);
     const router = inject(Router);
 
     return academyService.getCourseById(route.paramMap.get('id')).pipe(
         // Error here means the requested course is not available
-        catchError((error) =>
-        {
+        catchError((error) => {
             // Log the error
             console.error(error);
 
@@ -32,30 +38,30 @@ const courseResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapsho
 
             // Throw an error
             return throwError(error);
-        }),
+        })
     );
 };
 
 export default [
     {
-        path     : '',
+        path: '',
         component: AcademyComponent,
-        resolve  : {
+        resolve: {
             categories: () => inject(AcademyService).getCategories(),
         },
-        children : [
+        children: [
             {
-                path     : '',
+                path: '',
                 pathMatch: 'full',
                 component: AcademyListComponent,
-                resolve  : {
+                resolve: {
                     courses: () => inject(AcademyService).getCourses(),
                 },
             },
             {
-                path     : ':id',
+                path: ':id',
                 component: AcademyDetailsComponent,
-                resolve  : {
+                resolve: {
                     course: courseResolver,
                 },
             },

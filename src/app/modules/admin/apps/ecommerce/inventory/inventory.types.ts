@@ -1,5 +1,4 @@
-export interface InventoryProduct
-{
+export interface InventoryProduct {
     id: string;
     category?: string;
     name: string;
@@ -21,8 +20,7 @@ export interface InventoryProduct
     active: boolean;
 }
 
-export interface InventoryPagination
-{
+export interface InventoryPagination {
     length: number;
     size: number;
     page: number;
@@ -31,29 +29,25 @@ export interface InventoryPagination
     endIndex: number;
 }
 
-export interface InventoryCategory
-{
+export interface InventoryCategory {
     id: string;
     parentId: string;
     name: string;
     slug: string;
 }
 
-export interface InventoryBrand
-{
+export interface InventoryBrand {
     id: string;
     name: string;
     slug: string;
 }
 
-export interface InventoryTag
-{
+export interface InventoryTag {
     id?: string;
     title?: string;
 }
 
-export interface InventoryVendor
-{
+export interface InventoryVendor {
     id: string;
     name: string;
     slug: string;

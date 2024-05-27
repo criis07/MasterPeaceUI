@@ -5,9 +5,9 @@ import { CryptoService } from 'app/modules/admin/dashboards/crypto/crypto.servic
 
 export default [
     {
-        path     : '',
+        path: '',
         component: CryptoComponent,
-        resolve  : {
+        resolve: {
             data: () => inject(CryptoService).getData(),
         },
     },

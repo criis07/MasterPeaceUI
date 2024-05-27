@@ -9,31 +9,31 @@ import { ComingSoonSplitScreenComponent } from 'app/modules/admin/pages/coming-s
 
 export default [
     {
-        path     : 'classic',
+        path: 'classic',
         component: ComingSoonClassicComponent,
     },
     {
-        path     : 'modern',
+        path: 'modern',
         component: ComingSoonModernComponent,
     },
     {
-        path     : 'modern-reversed',
+        path: 'modern-reversed',
         component: ComingSoonModernReversedComponent,
     },
     {
-        path     : 'split-screen',
+        path: 'split-screen',
         component: ComingSoonSplitScreenComponent,
     },
     {
-        path     : 'split-screen-reversed',
+        path: 'split-screen-reversed',
         component: ComingSoonSplitScreenReversedComponent,
     },
     {
-        path     : 'fullscreen',
+        path: 'fullscreen',
         component: ComingSoonFullscreenComponent,
     },
     {
-        path     : 'fullscreen-reversed',
+        path: 'fullscreen-reversed',
         component: ComingSoonFullscreenReversedComponent,
     },
 ] as Routes;

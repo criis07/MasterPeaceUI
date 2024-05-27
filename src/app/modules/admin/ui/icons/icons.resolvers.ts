@@ -3,15 +3,12 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IconsService } from 'app/modules/admin/ui/icons/icons.service';
 import { Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class IconsResolver
-{
+@Injectable({ providedIn: 'root' })
+export class IconsResolver {
     /**
      * Constructor
      */
-    constructor(private _iconsService: IconsService)
-    {
-    }
+    constructor(private _iconsService: IconsService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -23,8 +20,10 @@ export class IconsResolver
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
-    {
+    resolve(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable<any> {
         return this._iconsService.getIcons(state.url);
     }
 }

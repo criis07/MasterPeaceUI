@@ -7,23 +7,20 @@ import { GuideCategory } from 'app/modules/admin/apps/help-center/help-center.ty
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'help-center-guides-guide',
-    templateUrl  : './guide.component.html',
+    selector: 'help-center-guides-guide',
+    templateUrl: './guide.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatButtonModule, RouterLink, MatIconModule],
+    standalone: true,
+    imports: [MatButtonModule, RouterLink, MatIconModule],
 })
-export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy
-{
+export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy {
     guideCategory: GuideCategory;
     private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
      * Constructor
      */
-    constructor(private _helpCenterService: HelpCenterService)
-    {
-    }
+    constructor(private _helpCenterService: HelpCenterService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -32,13 +29,11 @@ export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the Guides
         this._helpCenterService.guide$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((guideCategory) =>
-            {
+            .subscribe((guideCategory) => {
                 this.guideCategory = guideCategory;
             });
     }
@@ -46,8 +41,7 @@ export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -63,8 +57,7 @@ export class HelpCenterGuidesGuideComponent implements OnInit, OnDestroy
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 }

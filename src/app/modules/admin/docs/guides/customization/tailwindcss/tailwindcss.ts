@@ -4,19 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { GuidesComponent } from 'app/modules/admin/docs/guides/guides.component';
 
 @Component({
-    selector   : 'tailwindcss',
+    selector: 'tailwindcss',
     templateUrl: './tailwindcss.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule],
 })
-export class TailwindCSSComponent
-{
+export class TailwindCSSComponent {
     /**
      * Constructor
      */
-    constructor(private _guidesComponent: GuidesComponent)
-    {
-    }
+    constructor(private _guidesComponent: GuidesComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -25,8 +22,7 @@ export class TailwindCSSComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._guidesComponent.matDrawer.toggle();
     }

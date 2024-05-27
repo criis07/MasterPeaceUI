@@ -5,19 +5,16 @@ import { FuseAlertComponent } from '@fuse/components/alert';
 import { OtherComponentsComponent } from 'app/modules/admin/ui/other-components/other-components.component';
 
 @Component({
-    selector   : 'overview',
+    selector: 'overview',
     templateUrl: './overview.component.html',
-    standalone : true,
-    imports    : [MatIconModule, MatButtonModule, FuseAlertComponent],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule, FuseAlertComponent],
 })
-export class OverviewComponent
-{
+export class OverviewComponent {
     /**
      * Constructor
      */
-    constructor(private _otherComponentsComponent: OtherComponentsComponent)
-    {
-    }
+    constructor(private _otherComponentsComponent: OtherComponentsComponent) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -26,8 +23,7 @@ export class OverviewComponent
     /**
      * Toggle the drawer
      */
-    toggleDrawer(): void
-    {
+    toggleDrawer(): void {
         // Toggle the drawer
         this._otherComponentsComponent.matDrawer.toggle();
     }

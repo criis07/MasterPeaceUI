@@ -9,13 +9,21 @@ import { DemoSidebarComponent } from 'app/modules/admin/ui/page-layouts/common/d
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector     : 'carded-left-sidebar-2-content-scroll',
-    templateUrl  : './left-sidebar-2.component.html',
+    selector: 'carded-left-sidebar-2-content-scroll',
+    templateUrl: './left-sidebar-2.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, RouterLink, MatButtonModule, MatSidenavModule, DemoSidebarComponent, CdkScrollable],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        RouterLink,
+        MatButtonModule,
+        MatSidenavModule,
+        DemoSidebarComponent,
+        CdkScrollable,
+    ],
 })
-export class CardedLeftSidebar2ContentScrollComponent implements OnInit, OnDestroy
+export class CardedLeftSidebar2ContentScrollComponent
+    implements OnInit, OnDestroy
 {
     drawerMode: 'over' | 'side' = 'side';
     drawerOpened: boolean = true;
@@ -24,9 +32,7 @@ export class CardedLeftSidebar2ContentScrollComponent implements OnInit, OnDestr
     /**
      * Constructor
      */
-    constructor(private _fuseMediaWatcherService: FuseMediaWatcherService)
-    {
-    }
+    constructor(private _fuseMediaWatcherService: FuseMediaWatcherService) {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
@@ -35,21 +41,16 @@ export class CardedLeftSidebar2ContentScrollComponent implements OnInit, OnDestr
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) =>
-            {
+            .subscribe(({ matchingAliases }) => {
                 // Set the drawerMode and drawerOpened if
-                if ( matchingAliases.includes('lg') )
-                {
+                if (matchingAliases.includes('lg')) {
                     this.drawerMode = 'side';
                     this.drawerOpened = true;
-                }
-                else
-                {
+                } else {
                     this.drawerMode = 'over';
                     this.drawerOpened = false;
                 }
@@ -59,8 +60,7 @@ export class CardedLeftSidebar2ContentScrollComponent implements OnInit, OnDestr
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();

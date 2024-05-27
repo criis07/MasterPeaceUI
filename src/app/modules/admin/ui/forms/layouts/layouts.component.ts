@@ -11,18 +11,26 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-    selector     : 'forms-layouts',
-    templateUrl  : './layouts.component.html',
+    selector: 'forms-layouts',
+    templateUrl: './layouts.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone   : true,
-    imports      : [MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatDividerModule, MatCheckboxModule, MatRadioModule, MatButtonModule],
+    standalone: true,
+    imports: [
+        MatIconModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatDividerModule,
+        MatCheckboxModule,
+        MatRadioModule,
+        MatButtonModule,
+    ],
 })
-export class FormsLayoutsComponent
-{
+export class FormsLayoutsComponent {
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

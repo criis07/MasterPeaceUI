@@ -3,19 +3,17 @@ import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector       : 'changelog',
-    templateUrl    : './changelog.html',
+    selector: 'changelog',
+    templateUrl: './changelog.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [NgFor],
+    standalone: true,
+    imports: [NgFor],
 })
-export class ChangelogComponent
-{
+export class ChangelogComponent {
     changelog: any[] = [
-
         // v20.0.0
         {
-            version    : 'v20.0.0',
+            version: 'v20.0.0',
             releaseDate: 'May 27, 2024',
             changes: [
                 {
@@ -23,7 +21,7 @@ export class ChangelogComponent
                     list: [
                         '(Dependencies) Updated Angular & Angular Material to v18',
                         '(Dependencies) Updated other packages',
-                        'Moved the project to the new "application" builder'
+                        'Moved the project to the new "application" builder',
                     ],
                 },
                 {
@@ -32,11 +30,11 @@ export class ChangelogComponent
                         '(apps/mailbox) "filter" renamed to "funnel" accidentally',
                     ],
                 },
-            ]
+            ],
         },
         // v19.1.0
         {
-            version    : 'v19.1.0',
+            version: 'v19.1.0',
             releaseDate: 'Mar 11, 2024',
             changes: [
                 {
@@ -49,16 +47,14 @@ export class ChangelogComponent
                 },
                 {
                     type: 'Fixed',
-                    list: [
-                        'Legacy peer dependeny resolution',
-                    ],
+                    list: ['Legacy peer dependeny resolution'],
                 },
-            ]
+            ],
         },
 
         // v19.0.0
         {
-            version    : 'v19.0.0',
+            version: 'v19.0.0',
             releaseDate: 'Nov 20, 2023',
             changes: [
                 {
@@ -67,24 +63,24 @@ export class ChangelogComponent
                         '(Dependencies) Updated Angular & Angular Material to v17',
                         '(Dependencies) Updated various other packages',
                         '(Transloco) Updated to standalone configuration',
-                        '(core) Use inject for dependencies'
+                        '(core) Use inject for dependencies',
                     ],
                 },
                 {
                     type: 'Fixed',
                     list: [
                         'Rotation on some icons',
-                        'Autocompleted input colors'
+                        'Autocompleted input colors',
                     ],
                 },
-            ]
+            ],
         },
 
         // v18.0.0
         {
-            version    : 'v18.0.0',
+            version: 'v18.0.0',
             releaseDate: 'May 30, 2023',
-            changes    : [
+            changes: [
                 {
                     type: 'Breaking',
                     list: [
@@ -98,7 +94,7 @@ export class ChangelogComponent
                     list: [
                         '(Dependencies) Updated Angular & Angular Material to v16',
                         '(Dependencies) Updated various other packages',
-                        '(Icons) Updated Heroicons'
+                        '(Icons) Updated Heroicons',
                     ],
                 },
             ],
@@ -106,9 +102,9 @@ export class ChangelogComponent
 
         // v17.2.0
         {
-            version    : 'v17.2.0',
+            version: 'v17.2.0',
             releaseDate: 'Jan 19, 2023',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -127,9 +123,9 @@ export class ChangelogComponent
 
         // v17.1.0
         {
-            version    : 'v17.1.0',
+            version: 'v17.1.0',
             releaseDate: 'Dec 12, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -150,9 +146,9 @@ export class ChangelogComponent
 
         // v17.0.1
         {
-            version    : 'v17.0.1',
+            version: 'v17.0.1',
             releaseDate: 'Nov 21, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Fixed',
                     list: [
@@ -164,9 +160,9 @@ export class ChangelogComponent
 
         // v17.0.0
         {
-            version    : 'v17.0.0',
+            version: 'v17.0.0',
             releaseDate: 'Nov 18, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Breaking',
                     list: [
@@ -181,7 +177,7 @@ export class ChangelogComponent
                     list: [
                         '(Dependencies) Updated Angular & Angular Material to v15.0.0',
                         '(Dependencies) Updated various other packages',
-                        '(Dependencies) Removed ngx-markdown from the package.json, it still can be used within Fuse, it\'s a part of the effort to make releasing Fuse updates easier',
+                        "(Dependencies) Removed ngx-markdown from the package.json, it still can be used within Fuse, it's a part of the effort to make releasing Fuse updates easier",
                         '(General) Matched the files and folders with a newly created Angular v15 project to make things easier for the newcomers',
                         '(Angular Material) Re-wrote the override styles to make sure everything look the same as before (compatibility for MDC components)',
                         '(Theming) Re-wrote the theming system to make sure to keep everything working as before without any breaking changes',
@@ -192,9 +188,9 @@ export class ChangelogComponent
 
         // v16.0.0
         {
-            version    : 'v16.0.0',
+            version: 'v16.0.0',
             releaseDate: 'Oct 04, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Breaking',
                     list: [
@@ -222,9 +218,9 @@ export class ChangelogComponent
         },
         // v15.2.0
         {
-            version    : 'v15.2.0',
+            version: 'v15.2.0',
             releaseDate: 'Aug 22, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -251,9 +247,9 @@ export class ChangelogComponent
         },
         // v15.1.0
         {
-            version    : 'v15.1.0',
+            version: 'v15.1.0',
             releaseDate: 'Jul 21, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -271,9 +267,9 @@ export class ChangelogComponent
         },
         // v15.0.0
         {
-            version    : 'v15.0.0',
+            version: 'v15.0.0',
             releaseDate: 'Jun 03, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -320,9 +316,9 @@ export class ChangelogComponent
         },
         // v14.2.0
         {
-            version    : 'v14.2.0',
+            version: 'v14.2.0',
             releaseDate: 'Feb 21, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -336,16 +332,16 @@ export class ChangelogComponent
                 {
                     type: 'Fixed',
                     list: [
-                        '(layouts/dense) Fixed: Navigation appearance doesn\'t set correctly on small devices',
+                        "(layouts/dense) Fixed: Navigation appearance doesn't set correctly on small devices",
                     ],
                 },
             ],
         },
         // v14.1.1
         {
-            version    : 'v14.1.1',
+            version: 'v14.1.1',
             releaseDate: 'Jan 02, 2022',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -364,9 +360,9 @@ export class ChangelogComponent
         },
         // v14.1.0
         {
-            version    : 'v14.1.0',
+            version: 'v14.1.0',
             releaseDate: 'Dec 22, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -380,9 +376,9 @@ export class ChangelogComponent
         },
         // v14.0.0
         {
-            version    : 'v14.0.0',
+            version: 'v14.0.0',
             releaseDate: 'Nov 11, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -395,7 +391,7 @@ export class ChangelogComponent
                         '(dependencies) Updated Angular & Angular Material to v13',
                         '(dependencies) Updated various other packages',
                         '(dependencies) BREAKING: Updated RxJS to 7.4.0 and optimized import paths',
-                        '(apps/calendar) BREAKING: Removed the Calendar app due to FullCalendar\'s Angular component not being properly developed',
+                        "(apps/calendar) BREAKING: Removed the Calendar app due to FullCalendar's Angular component not being properly developed",
                         '(FuseDateRange) BREAKING: Removed the FuseDateRange component, alternative: https://github.com/fetrarij/ngx-daterangepicker-material',
                     ],
                 },
@@ -403,16 +399,16 @@ export class ChangelogComponent
                     type: 'Fixed',
                     list: [
                         '(@fuse/overrides/angular-material) Fixed: Normal border color of the text field overrides the invalid and focus border colors on dark themes',
-                        '(@fuse/navigation) Don\'t need to use interpolation on scss variables anymore since Tailwind doesn\'t cause any problems with them anymore',
+                        "(@fuse/navigation) Don't need to use interpolation on scss variables anymore since Tailwind doesn't cause any problems with them anymore",
                     ],
                 },
             ],
         },
         // v13.6.2
         {
-            version    : 'v13.6.2',
+            version: 'v13.6.2',
             releaseDate: 'Sep 01, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Fixed',
                     list: [
@@ -423,27 +419,23 @@ export class ChangelogComponent
         },
         // v13.6.1
         {
-            version    : 'v13.6.1',
+            version: 'v13.6.1',
             releaseDate: 'Aug 31, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Fixed',
-                    list: [
-                        '(QuickChat) Fixed: Overflowing issue',
-                    ],
+                    list: ['(QuickChat) Fixed: Overflowing issue'],
                 },
             ],
         },
         // v13.6.0
         {
-            version    : 'v13.6.0',
+            version: 'v13.6.0',
             releaseDate: 'Aug 31, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
-                    list: [
-                        '(QuickChat) Added the QuickChat bar',
-                    ],
+                    list: ['(QuickChat) Added the QuickChat bar'],
                 },
                 {
                     type: 'Changed',
@@ -463,9 +455,9 @@ export class ChangelogComponent
         },
         // v13.5.0
         {
-            version    : 'v13.5.0',
+            version: 'v13.5.0',
             releaseDate: 'Aug 13, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -485,7 +477,7 @@ export class ChangelogComponent
                     list: [
                         '(@fuse/overrides) Quill editor is not styled correctly by default',
                         '(@fuse/confirmation) Dialog size cannot be updated using dialogRef\'s "updateSize" method',
-                        '(apps/mailbox) Compose dialog doesn\'t work correctly on small height resolutions',
+                        "(apps/mailbox) Compose dialog doesn't work correctly on small height resolutions",
                         '(ui/page-layouts) Demo layout navigation appearance is not correct',
                     ],
                 },
@@ -493,9 +485,9 @@ export class ChangelogComponent
         },
         // v13.4.0
         {
-            version    : 'v13.4.0',
+            version: 'v13.4.0',
             releaseDate: 'July 29, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -519,9 +511,9 @@ export class ChangelogComponent
         },
         // v13.3.1
         {
-            version    : 'v13.3.1',
+            version: 'v13.3.1',
             releaseDate: 'July 17, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Fixed',
                     list: [
@@ -532,9 +524,9 @@ export class ChangelogComponent
         },
         // v13.3.0
         {
-            version    : 'v13.3.0',
+            version: 'v13.3.0',
             releaseDate: 'July 16, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -566,9 +558,9 @@ export class ChangelogComponent
         },
         // v13.2.0
         {
-            version    : 'v13.2.0',
+            version: 'v13.2.0',
             releaseDate: 'July 01, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -610,9 +602,9 @@ export class ChangelogComponent
         },
         // v13.1.0
         {
-            version    : 'v13.1.0',
+            version: 'v13.1.0',
             releaseDate: 'June 15, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -639,7 +631,7 @@ export class ChangelogComponent
                 {
                     type: 'Fixed',
                     list: [
-                        '(fuse/navigation) First children of collapsable items don\'t have proper spacing at the top',
+                        "(fuse/navigation) First children of collapsable items don't have proper spacing at the top",
                         '(data/navigation) Wrong icon for "Invoice" navigation item',
                         '(data/navigation) Dashboards are missing from "Futuristic" navigation type',
                     ],
@@ -648,9 +640,9 @@ export class ChangelogComponent
         },
         // v13.0.3
         {
-            version    : 'v13.0.3',
+            version: 'v13.0.3',
             releaseDate: 'June 03, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -678,9 +670,9 @@ export class ChangelogComponent
         },
         // v13.0.2
         {
-            version    : 'v13.0.2',
+            version: 'v13.0.2',
             releaseDate: 'May 24, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Changed',
                     list: [
@@ -693,9 +685,9 @@ export class ChangelogComponent
         },
         // v13.0.1
         {
-            version    : 'v13.0.1',
+            version: 'v13.0.1',
             releaseDate: 'May 21, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -709,8 +701,8 @@ export class ChangelogComponent
                     list: [
                         '(dependencies) Updated various packages to their latest versions',
                         '(tailwind) Use TAILWIND_MODE environment variable to activate purge on build',
-                        '(overrides/angular-material) Changed the text and arrow color of mat-select on focus when it\'s used as a prefix or suffix in mat-form-field',
-                        '(overrides/angular-material) Use @apply whenever it\'s possible',
+                        "(overrides/angular-material) Changed the text and arrow color of mat-select on focus when it's used as a prefix or suffix in mat-form-field",
+                        "(overrides/angular-material) Use @apply whenever it's possible",
                         '(eslint) Removed e2e tsconfig path as there is no default e2e solution included into Angular since v12.0.0',
                         '(eslint) Activated explicit return types on functions and methods',
                         '(core) Separated the "auth" and "icon registry" to their own modules to keep the CoreModule simple',
@@ -725,9 +717,9 @@ export class ChangelogComponent
         },
         // v13.0.0
         {
-            version    : 'v13.0.0',
+            version: 'v13.0.0',
             releaseDate: 'May 15, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -753,9 +745,9 @@ export class ChangelogComponent
         },
         // v12.3.0
         {
-            version    : 'v12.3.0',
+            version: 'v12.3.0',
             releaseDate: 'May 07, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -775,9 +767,9 @@ export class ChangelogComponent
         },
         // v12.2.0
         {
-            version    : 'v12.2.0',
+            version: 'v12.2.0',
             releaseDate: 'May 01, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -799,9 +791,9 @@ export class ChangelogComponent
         },
         // v12.1.0
         {
-            version    : 'v12.1.0',
+            version: 'v12.1.0',
             releaseDate: 'April 26, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
@@ -816,7 +808,7 @@ export class ChangelogComponent
                         '(icons) Updated Heroicons',
                         '(icons) Updated Material Icons',
                         '(apps/file-manager) Better grid for File Manager app',
-                        '(layouts/classy) Removed footer for better \'classy\' look',
+                        "(layouts/classy) Removed footer for better 'classy' look",
                     ],
                 },
                 {
@@ -829,13 +821,13 @@ export class ChangelogComponent
         },
         // v12.0.0
         {
-            version    : 'v12.0.0',
+            version: 'v12.0.0',
             releaseDate: 'April 16, 2021',
-            changes    : [
+            changes: [
                 {
                     type: 'Added',
                     list: [
-                        'This is the new major version of the Fuse and it\'s completely different from previous versions with no upgrade path',
+                        "This is the new major version of the Fuse and it's completely different from previous versions with no upgrade path",
                         'This version requires a clean installation',
                     ],
                 },
@@ -855,7 +847,5 @@ export class ChangelogComponent
     /**
      * Constructor
      */
-    constructor()
-    {
-    }
+    constructor() {}
 }

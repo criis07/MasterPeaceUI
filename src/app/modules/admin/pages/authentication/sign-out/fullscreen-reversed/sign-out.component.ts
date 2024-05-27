@@ -5,19 +5,18 @@ import { fuseAnimations } from '@fuse/animations';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'sign-out-fullscreen-reversed',
-    templateUrl  : './sign-out.component.html',
+    selector: 'sign-out-fullscreen-reversed',
+    templateUrl: './sign-out.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : fuseAnimations,
-    standalone   : true,
-    imports      : [NgIf, RouterLink, I18nPluralPipe],
+    animations: fuseAnimations,
+    standalone: true,
+    imports: [NgIf, RouterLink, I18nPluralPipe],
 })
-export class SignOutFullscreenReversedComponent
-{
+export class SignOutFullscreenReversedComponent {
     countdown: number = 5;
     countdownMapping: any = {
-        '=1'   : '# second',
-        'other': '# seconds',
+        '=1': '# second',
+        other: '# seconds',
     };
 
     /**
@@ -25,8 +24,6 @@ export class SignOutFullscreenReversedComponent
      */
     constructor(
         private _authService: AuthService,
-        private _router: Router,
-    )
-    {
-    }
+        private _router: Router
+    ) {}
 }
