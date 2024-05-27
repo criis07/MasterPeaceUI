@@ -1,6 +1,16 @@
 import { BooleanInput } from '@angular/cdk/coercion';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    SimpleChanges,
+    inject,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavigationEnd, Router } from '@angular/router';
@@ -12,16 +22,28 @@ import { FuseVerticalNavigationDividerItemComponent } from '@fuse/components/nav
 import { FuseVerticalNavigationGroupItemComponent } from '@fuse/components/navigation/vertical/components/group/group.component';
 import { FuseVerticalNavigationSpacerItemComponent } from '@fuse/components/navigation/vertical/components/spacer/spacer.component';
 import { FuseVerticalNavigationComponent } from '@fuse/components/navigation/vertical/vertical.component';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { Subject, filter, takeUntil } from 'rxjs';
 
 @Component({
-    selector       : 'fuse-vertical-navigation-aside-item',
-    templateUrl    : './aside.component.html',
+    selector: 'fuse-vertical-navigation-aside-item',
+    templateUrl: './aside.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [NgClass, MatTooltipModule, NgIf, MatIconModule, NgFor, FuseVerticalNavigationBasicItemComponent, FuseVerticalNavigationCollapsableItemComponent, FuseVerticalNavigationDividerItemComponent, FuseVerticalNavigationGroupItemComponent, FuseVerticalNavigationSpacerItemComponent],
+    standalone: true,
+    imports: [
+        NgClass,
+        MatTooltipModule,
+        NgIf,
+        MatIconModule,
+        NgFor,
+        FuseVerticalNavigationBasicItemComponent,
+        FuseVerticalNavigationCollapsableItemComponent,
+        FuseVerticalNavigationDividerItemComponent,
+        FuseVerticalNavigationGroupItemComponent,
+        FuseVerticalNavigationSpacerItemComponent,
+    ],
 })
-export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnInit, OnDestroy
+export class FuseVerticalNavigationAsideItemComponent
+    implements OnChanges, OnInit, OnDestroy
 {
     /* eslint-disable @typescript-eslint/naming-convention */
     static ngAcceptInputType_autoCollapse: BooleanInput;
@@ -51,11 +73,9 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
      *
      * @param changes
      */
-    ngOnChanges(changes: SimpleChanges): void
-    {
+    ngOnChanges(changes: SimpleChanges): void {
         // Active item id
-        if ( 'activeItemId' in changes )
-        {
+        if ('activeItemId' in changes) {
             // Mark if active
             this._markIfActive(this._router.url);
         }
@@ -64,41 +84,41 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Mark if active
         this._markIfActive(this._router.url);
 
         // Attach a listener to the NavigationEnd event
         this._router.events
             .pipe(
-                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntil(this._unsubscribeAll),
+                filter(
+                    (event): event is NavigationEnd =>
+                        event instanceof NavigationEnd
+                ),
+                takeUntil(this._unsubscribeAll)
             )
-            .subscribe((event: NavigationEnd) =>
-            {
+            .subscribe((event: NavigationEnd) => {
                 // Mark if active
                 this._markIfActive(event.urlAfterRedirects);
             });
 
         // Get the parent navigation component
-        this._fuseVerticalNavigationComponent = this._fuseNavigationService.getComponent(this.name);
+        this._fuseVerticalNavigationComponent =
+            this._fuseNavigationService.getComponent(this.name);
 
         // Subscribe to onRefreshed on the navigation component
-        this._fuseVerticalNavigationComponent.onRefreshed.pipe(
-            takeUntil(this._unsubscribeAll),
-        ).subscribe(() =>
-        {
-            // Mark for check
-            this._changeDetectorRef.markForCheck();
-        });
+        this._fuseVerticalNavigationComponent.onRefreshed
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
     }
 
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -114,8 +134,7 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 
@@ -131,34 +150,33 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
      * @param currentUrl
      * @private
      */
-    private _hasActiveChild(item: FuseNavigationItem, currentUrl: string): boolean
-    {
+    private _hasActiveChild(
+        item: FuseNavigationItem,
+        currentUrl: string
+    ): boolean {
         const children = item.children;
 
-        if ( !children )
-        {
+        if (!children) {
             return false;
         }
 
-        for ( const child of children )
-        {
-            if ( child.children )
-            {
-                if ( this._hasActiveChild(child, currentUrl) )
-                {
+        for (const child of children) {
+            if (child.children) {
+                if (this._hasActiveChild(child, currentUrl)) {
                     return true;
                 }
             }
 
             // Skip items other than 'basic'
-            if ( child.type !== 'basic' )
-            {
+            if (child.type !== 'basic') {
                 continue;
             }
 
             // Check if the child has a link and is active
-            if ( child.link && this._router.isActive(child.link, child.exactMatch || false) )
-            {
+            if (
+                child.link &&
+                this._router.isActive(child.link, child.exactMatch || false)
+            ) {
                 return true;
             }
         }
@@ -171,15 +189,13 @@ export class FuseVerticalNavigationAsideItemComponent implements OnChanges, OnIn
      *
      * @private
      */
-    private _markIfActive(currentUrl: string): void
-    {
+    private _markIfActive(currentUrl: string): void {
         // Check if the activeItemId is equals to this item id
         this.active = this.activeItemId === this.item.id;
 
         // If the aside has a children that is active,
         // always mark it as active
-        if ( this._hasActiveChild(this.item, currentUrl) )
-        {
+        if (this._hasActiveChild(this.item, currentUrl)) {
             this.active = true;
         }
 
