@@ -6,14 +6,7 @@ import {
     CdkDropList,
     moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import {
-    DOCUMENT,
-    DatePipe,
-    NgClass,
-    NgFor,
-    NgIf,
-    TitleCasePipe,
-} from '@angular/common';
+import { DOCUMENT, DatePipe, NgClass, TitleCasePipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -52,12 +45,10 @@ import { Subject, filter, fromEvent, takeUntil } from 'rxjs';
     imports: [
         MatSidenavModule,
         RouterOutlet,
-        NgIf,
         MatButtonModule,
         MatTooltipModule,
         MatIconModule,
         CdkDropList,
-        NgFor,
         CdkDrag,
         NgClass,
         CdkDragPreview,

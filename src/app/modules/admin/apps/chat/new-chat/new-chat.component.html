@@ -14,28 +14,23 @@
     </div>
 
     <div class="relative overflow-y-auto">
-        <ng-container *ngIf="contacts.length; else noContacts">
-            <ng-container
-                *ngFor="
-                    let contact of contacts;
-                    let i = index;
-                    trackBy: trackByFn
-                "
-            >
+        @if (contacts.length) {
+            @for (
+                contact of contacts;
+                track trackByFn(i, contact);
+                let i = $index
+            ) {
                 <!-- Group -->
-                <ng-container
-                    *ngIf="
-                        i === 0 ||
-                        contact.name.charAt(0) !==
-                            contacts[i - 1].name.charAt(0)
-                    "
-                >
+                @if (
+                    i === 0 ||
+                    contact.name.charAt(0) !== contacts[i - 1].name.charAt(0)
+                ) {
                     <div
                         class="text-secondary sticky top-0 z-10 -mt-px border-b border-t bg-gray-100 px-6 py-1 font-medium uppercase dark:bg-gray-900 md:px-8"
                     >
                         {{ contact.name.charAt(0) }}
                     </div>
-                </ng-container>
+                }
                 <!-- Contact -->
                 <div
                     class="z-20 flex cursor-pointer items-center border-b px-6 py-4 dark:hover:bg-hover hover:bg-gray-100 md:px-8"
@@ -43,20 +38,20 @@
                     <div
                         class="flex h-10 w-10 flex-0 items-center justify-center overflow-hidden rounded-full"
                     >
-                        <ng-container *ngIf="contact.avatar">
+                        @if (contact.avatar) {
                             <img
                                 class="h-full w-full object-cover"
                                 [src]="contact.avatar"
                                 alt="Contact avatar"
                             />
-                        </ng-container>
-                        <ng-container *ngIf="!contact.avatar">
+                        }
+                        @if (!contact.avatar) {
                             <div
                                 class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-lg uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
                             >
                                 {{ contact.name.charAt(0) }}
                             </div>
-                        </ng-container>
+                        }
                     </div>
                     <div class="ml-4 min-w-0">
                         <div class="truncate font-medium leading-5">
@@ -67,16 +62,15 @@
                         </div>
                     </div>
                 </div>
-            </ng-container>
-        </ng-container>
+            }
+        } @else {
+            <div
+                class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16"
+            >
+                There are no contacts!
+            </div>
+        }
     </div>
 
     <!-- No contacts -->
-    <ng-template #noContacts>
-        <div
-            class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16"
-        >
-            There are no contacts!
-        </div>
-    </ng-template>
 </div>

@@ -24,9 +24,9 @@
                 <h2
                     class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl"
                 >
-                    <ng-container *ngIf="icons$ | async as icons">
+                    @if (icons$ | async; as icons) {
                         <h1>{{ icons.name }}</h1>
-                    </ng-container>
+                    }
                 </h2>
             </div>
         </div>
@@ -36,7 +36,7 @@
     <div class="flex-auto p-6 sm:p-10">
         <div class="prose prose-sm max-w-5xl">
             <h2>Usage</h2>
-            <ng-container *ngIf="filteredIcons$ | async as icons">
+            @if (filteredIcons$ | async; as icons) {
                 <textarea
                     fuse-highlight
                     lang="html"
@@ -46,7 +46,7 @@
                         '&#34;></mat-icon>'
                     "
                 ></textarea>
-            </ng-container>
+            }
 
             <h2>Icons</h2>
             <div class="xs:flex-col my-6 flex">
@@ -73,8 +73,8 @@
             </div>
 
             <div class="-mx-4 flex flex-wrap">
-                <ng-container *ngIf="filteredIcons$ | async as icons">
-                    <ng-container *ngFor="let icon of icons.list">
+                @if (filteredIcons$ | async; as icons) {
+                    @for (icon of icons.list; track icon) {
                         <div
                             class="bg-card m-4 flex max-h-30 min-h-30 min-w-36 max-w-36 cursor-pointer flex-col items-center justify-center rounded border-2 p-4"
                             [class.border-primary]="selectedIcon[1] === icon"
@@ -93,8 +93,8 @@
                                 {{ icon }}
                             </div>
                         </div>
-                    </ng-container>
-                </ng-container>
+                    }
+                }
             </div>
         </div>
     </div>

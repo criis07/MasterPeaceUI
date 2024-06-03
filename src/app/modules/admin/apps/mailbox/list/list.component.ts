@@ -1,4 +1,4 @@
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {
     Component,
     ElementRef,
@@ -25,12 +25,10 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
-        NgIf,
         MatButtonModule,
         MatIconModule,
         RouterLink,
         MatProgressBarModule,
-        NgFor,
         NgClass,
         RouterOutlet,
         DatePipe,

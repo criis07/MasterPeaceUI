@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -16,7 +15,7 @@ import { Chat } from 'app/modules/admin/apps/chat/chat.types';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [MatButtonModule, MatIconModule, NgIf, NgFor],
+    imports: [MatButtonModule, MatIconModule],
 })
 export class ContactInfoComponent {
     @Input() chat: Chat;

@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -35,9 +34,7 @@ import { Subject, takeUntil } from 'rxjs';
     imports: [
         MatSidenavModule,
         RouterOutlet,
-        NgIf,
         RouterLink,
-        NgFor,
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,

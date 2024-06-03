@@ -22,16 +22,17 @@
                 </div>
 
                 <!-- Alert -->
-                <fuse-alert
-                    class="-mb-4 mt-8"
-                    *ngIf="showAlert"
-                    [appearance]="'outline'"
-                    [showIcon]="false"
-                    [type]="alert.type"
-                    [@shake]="alert.type === 'error'"
-                >
-                    {{ alert.message }}
-                </fuse-alert>
+                @if (showAlert) {
+                    <fuse-alert
+                        class="-mb-4 mt-8"
+                        [appearance]="'outline'"
+                        [showIcon]="false"
+                        [type]="alert.type"
+                        [@shake]="alert.type === 'error'"
+                    >
+                        {{ alert.message }}
+                    </fuse-alert>
+                }
 
                 <!-- Unlock form -->
                 <form
@@ -65,16 +66,18 @@
                             "
                             matSuffix
                         >
-                            <mat-icon
-                                class="icon-size-5"
-                                *ngIf="passwordField.type === 'password'"
-                                [svgIcon]="'heroicons_solid:eye'"
-                            ></mat-icon>
-                            <mat-icon
-                                class="icon-size-5"
-                                *ngIf="passwordField.type === 'text'"
-                                [svgIcon]="'heroicons_solid:eye-slash'"
-                            ></mat-icon>
+                            @if (passwordField.type === 'password') {
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:eye'"
+                                ></mat-icon>
+                            }
+                            @if (passwordField.type === 'text') {
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:eye-slash'"
+                                ></mat-icon>
+                            }
                         </button>
                         <mat-error> Password is required </mat-error>
                     </mat-form-field>
@@ -87,14 +90,15 @@
                         [disabled]="unlockSessionForm.disabled"
                         (click)="unlock()"
                     >
-                        <span *ngIf="!unlockSessionForm.disabled">
-                            Unlock your session
-                        </span>
-                        <mat-progress-spinner
-                            *ngIf="unlockSessionForm.disabled"
-                            [diameter]="24"
-                            [mode]="'indeterminate'"
-                        ></mat-progress-spinner>
+                        @if (!unlockSessionForm.disabled) {
+                            <span> Unlock your session </span>
+                        }
+                        @if (unlockSessionForm.disabled) {
+                            <mat-progress-spinner
+                                [diameter]="24"
+                                [mode]="'indeterminate'"
+                            ></mat-progress-spinner>
+                        }
                     </button>
 
                     <!-- Form footer -->

@@ -6,9 +6,11 @@
         class="relative flex flex-0 flex-col border-b px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-8"
     >
         <!-- Loader -->
-        <div class="absolute inset-x-0 bottom-0" *ngIf="isLoading">
-            <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
-        </div>
+        @if (isLoading) {
+            <div class="absolute inset-x-0 bottom-0">
+                <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+            </div>
+        }
         <!-- Title -->
         <div class="text-4xl font-extrabold tracking-tight">Inventory</div>
         <!-- Actions -->
@@ -49,8 +51,8 @@
         <div
             class="flex flex-auto flex-col overflow-hidden sm:mb-18 sm:overflow-y-auto"
         >
-            <ng-container *ngIf="products$ | async as products">
-                <ng-container *ngIf="products.length > 0; else noProducts">
+            @if (products$ | async; as products) {
+                @if (products.length > 0) {
                     <div class="grid">
                         <!-- Header -->
                         <div
@@ -87,13 +89,11 @@
                             <div class="hidden sm:block">Details</div>
                         </div>
                         <!-- Rows -->
-                        <ng-container *ngIf="products$ | async as products">
-                            <ng-container
-                                *ngFor="
-                                    let product of products;
-                                    trackBy: trackByFn
-                                "
-                            >
+                        @if (products$ | async; as products) {
+                            @for (
+                                product of products;
+                                track trackByFn($index, product)
+                            ) {
                                 <div
                                     class="inventory-grid grid items-center gap-4 border-b px-6 py-3 md:px-8"
                                 >
@@ -102,20 +102,22 @@
                                         <div
                                             class="relative mr-6 flex h-12 w-12 flex-0 items-center justify-center overflow-hidden rounded border"
                                         >
-                                            <img
-                                                class="w-8"
-                                                *ngIf="product.thumbnail"
-                                                [alt]="
-                                                    'Product thumbnail image'
-                                                "
-                                                [src]="product.thumbnail"
-                                            />
-                                            <div
-                                                class="flex h-full w-full items-center justify-center text-center text-xs font-semibold uppercase leading-none"
-                                                *ngIf="!product.thumbnail"
-                                            >
-                                                NO THUMB
-                                            </div>
+                                            @if (product.thumbnail) {
+                                                <img
+                                                    class="w-8"
+                                                    [alt]="
+                                                        'Product thumbnail image'
+                                                    "
+                                                    [src]="product.thumbnail"
+                                                />
+                                            }
+                                            @if (!product.thumbnail) {
+                                                <div
+                                                    class="flex h-full w-full items-center justify-center text-center text-xs font-semibold uppercase leading-none"
+                                                >
+                                                    NO THUMB
+                                                </div>
+                                            }
                                         </div>
                                     </div>
 
@@ -146,55 +148,58 @@
                                             {{ product.stock }}
                                         </div>
                                         <!-- Low stock -->
-                                        <div
-                                            class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-red-200"
-                                            *ngIf="product.stock < 20"
-                                        >
+                                        @if (product.stock < 20) {
                                             <div
-                                                class="flex h-1/3 w-full bg-red-600"
-                                            ></div>
-                                        </div>
+                                                class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-red-200"
+                                            >
+                                                <div
+                                                    class="flex h-1/3 w-full bg-red-600"
+                                                ></div>
+                                            </div>
+                                        }
                                         <!-- Medium stock -->
-                                        <div
-                                            class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-orange-200"
-                                            *ngIf="
-                                                product.stock >= 20 &&
-                                                product.stock < 30
-                                            "
-                                        >
+                                        @if (
+                                            product.stock >= 20 &&
+                                            product.stock < 30
+                                        ) {
                                             <div
-                                                class="flex h-2/4 w-full bg-orange-400"
-                                            ></div>
-                                        </div>
+                                                class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-orange-200"
+                                            >
+                                                <div
+                                                    class="flex h-2/4 w-full bg-orange-400"
+                                                ></div>
+                                            </div>
+                                        }
                                         <!-- High stock -->
-                                        <div
-                                            class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-green-100"
-                                            *ngIf="product.stock >= 30"
-                                        >
+                                        @if (product.stock >= 30) {
                                             <div
-                                                class="flex h-full w-full bg-green-400"
-                                            ></div>
-                                        </div>
+                                                class="ml-2 flex h-4 w-1 items-end overflow-hidden rounded bg-green-100"
+                                            >
+                                                <div
+                                                    class="flex h-full w-full bg-green-400"
+                                                ></div>
+                                            </div>
+                                        }
                                     </div>
 
                                     <!-- Active -->
                                     <div class="hidden lg:block">
-                                        <ng-container *ngIf="product.active">
+                                        @if (product.active) {
                                             <mat-icon
                                                 class="text-green-400 icon-size-5"
                                                 [svgIcon]="
                                                     'heroicons_solid:check'
                                                 "
                                             ></mat-icon>
-                                        </ng-container>
-                                        <ng-container *ngIf="!product.active">
+                                        }
+                                        @if (!product.active) {
                                             <mat-icon
                                                 class="text-gray-400 icon-size-5"
                                                 [svgIcon]="
                                                     'heroicons_solid:x-mark'
                                                 "
                                             ></mat-icon>
-                                        </ng-container>
+                                        }
                                     </div>
 
                                     <!-- Details button -->
@@ -217,21 +222,17 @@
                                     </div>
                                 </div>
                                 <div class="grid">
-                                    <ng-container
-                                        *ngIf="
-                                            selectedProduct?.id === product.id
-                                        "
-                                    >
+                                    @if (selectedProduct?.id === product.id) {
                                         <ng-container
                                             *ngTemplateOutlet="
                                                 rowDetailsTemplate;
                                                 context: { $implicit: product }
                                             "
                                         ></ng-container>
-                                    </ng-container>
+                                    }
                                 </div>
-                            </ng-container>
-                        </ng-container>
+                            }
+                        }
                     </div>
 
                     <mat-paginator
@@ -243,8 +244,14 @@
                         [pageSizeOptions]="[5, 10, 25, 100]"
                         [showFirstLastButtons]="true"
                     ></mat-paginator>
-                </ng-container>
-            </ng-container>
+                } @else {
+                    <div
+                        class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16"
+                    >
+                        There are no products!
+                    </div>
+                }
+            }
 
             <ng-template #rowDetailsTemplate let-product>
                 <div class="overflow-hidden shadow-lg">
@@ -263,14 +270,11 @@
                                         <div
                                             class="h-44 w-32 overflow-hidden rounded border"
                                         >
-                                            <ng-container
-                                                *ngIf="
-                                                    selectedProductForm.get(
-                                                        'images'
-                                                    ).value.length;
-                                                    else noImage
-                                                "
-                                            >
+                                            @if (
+                                                selectedProductForm.get(
+                                                    'images'
+                                                ).value.length
+                                            ) {
                                                 <img
                                                     class="h-full w-full object-cover"
                                                     [src]="
@@ -283,58 +287,57 @@
                                                         ]
                                                     "
                                                 />
-                                            </ng-container>
-                                            <ng-template #noImage>
+                                            } @else {
                                                 <span
                                                     class="flex min-h-20 items-center text-lg font-semibold"
                                                     >NO IMAGE</span
                                                 >
-                                            </ng-template>
+                                            }
                                         </div>
-                                        <div
-                                            class="mt-2 flex items-center whitespace-nowrap"
-                                            *ngIf="
-                                                selectedProductForm.get(
-                                                    'images'
-                                                ).value.length
-                                            "
-                                        >
-                                            <button
-                                                mat-icon-button
-                                                (click)="cycleImages(false)"
+                                        @if (
+                                            selectedProductForm.get('images')
+                                                .value.length
+                                        ) {
+                                            <div
+                                                class="mt-2 flex items-center whitespace-nowrap"
                                             >
-                                                <mat-icon
-                                                    class="icon-size-5"
-                                                    [svgIcon]="
-                                                        'heroicons_mini:arrow-long-left'
-                                                    "
-                                                ></mat-icon>
-                                            </button>
-                                            <span class="font-sm mx-2">
-                                                {{
-                                                    selectedProductForm.get(
-                                                        'currentImageIndex'
-                                                    ).value + 1
-                                                }}
-                                                of
-                                                {{
-                                                    selectedProductForm.get(
-                                                        'images'
-                                                    ).value.length
-                                                }}
-                                            </span>
-                                            <button
-                                                mat-icon-button
-                                                (click)="cycleImages(true)"
-                                            >
-                                                <mat-icon
-                                                    class="icon-size-5"
-                                                    [svgIcon]="
-                                                        'heroicons_mini:arrow-long-right'
-                                                    "
-                                                ></mat-icon>
-                                            </button>
-                                        </div>
+                                                <button
+                                                    mat-icon-button
+                                                    (click)="cycleImages(false)"
+                                                >
+                                                    <mat-icon
+                                                        class="icon-size-5"
+                                                        [svgIcon]="
+                                                            'heroicons_mini:arrow-long-left'
+                                                        "
+                                                    ></mat-icon>
+                                                </button>
+                                                <span class="font-sm mx-2">
+                                                    {{
+                                                        selectedProductForm.get(
+                                                            'currentImageIndex'
+                                                        ).value + 1
+                                                    }}
+                                                    of
+                                                    {{
+                                                        selectedProductForm.get(
+                                                            'images'
+                                                        ).value.length
+                                                    }}
+                                                </span>
+                                                <button
+                                                    mat-icon-button
+                                                    (click)="cycleImages(true)"
+                                                >
+                                                    <mat-icon
+                                                        class="icon-size-5"
+                                                        [svgIcon]="
+                                                            'heroicons_mini:arrow-long-right'
+                                                        "
+                                                    ></mat-icon>
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                     <div class="mt-8 flex flex-col">
                                         <span class="mb-2 font-semibold"
@@ -398,11 +401,10 @@
                                                         'category'
                                                     "
                                                 >
-                                                    <ng-container
-                                                        *ngFor="
-                                                            let category of categories
-                                                        "
-                                                    >
+                                                    @for (
+                                                        category of categories;
+                                                        track category
+                                                    ) {
                                                         <mat-option
                                                             [value]="
                                                                 category.id
@@ -410,7 +412,7 @@
                                                         >
                                                             {{ category.name }}
                                                         </mat-option>
-                                                    </ng-container>
+                                                    }
                                                 </mat-select>
                                             </mat-form-field>
                                             <mat-form-field class="w-1/3 px-2">
@@ -418,17 +420,16 @@
                                                 <mat-select
                                                     [formControlName]="'brand'"
                                                 >
-                                                    <ng-container
-                                                        *ngFor="
-                                                            let brand of brands
-                                                        "
-                                                    >
+                                                    @for (
+                                                        brand of brands;
+                                                        track brand
+                                                    ) {
                                                         <mat-option
                                                             [value]="brand.id"
                                                         >
                                                             {{ brand.name }}
                                                         </mat-option>
-                                                    </ng-container>
+                                                    }
                                                 </mat-select>
                                             </mat-form-field>
                                             <mat-form-field class="w-1/3 pl-2">
@@ -436,17 +437,16 @@
                                                 <mat-select
                                                     [formControlName]="'vendor'"
                                                 >
-                                                    <ng-container
-                                                        *ngFor="
-                                                            let vendor of vendors
-                                                        "
-                                                    >
+                                                    @for (
+                                                        vendor of vendors;
+                                                        track vendor
+                                                    ) {
                                                         <mat-option
                                                             [value]="vendor.id"
                                                         >
                                                             {{ vendor.name }}
                                                         </mat-option>
-                                                    </ng-container>
+                                                    }
                                                 </mat-select>
                                             </mat-form-field>
                                         </div>
@@ -570,20 +570,22 @@
                                                         toggleTagsEditMode()
                                                     "
                                                 >
-                                                    <mat-icon
-                                                        *ngIf="!tagsEditMode"
-                                                        class="icon-size-5"
-                                                        [svgIcon]="
-                                                            'heroicons_solid:pencil-square'
-                                                        "
-                                                    ></mat-icon>
-                                                    <mat-icon
-                                                        *ngIf="tagsEditMode"
-                                                        class="icon-size-5"
-                                                        [svgIcon]="
-                                                            'heroicons_solid:check'
-                                                        "
-                                                    ></mat-icon>
+                                                    @if (!tagsEditMode) {
+                                                        <mat-icon
+                                                            class="icon-size-5"
+                                                            [svgIcon]="
+                                                                'heroicons_solid:pencil-square'
+                                                            "
+                                                        ></mat-icon>
+                                                    }
+                                                    @if (tagsEditMode) {
+                                                        <mat-icon
+                                                            class="icon-size-5"
+                                                            [svgIcon]="
+                                                                'heroicons_solid:check'
+                                                            "
+                                                        ></mat-icon>
+                                                    }
                                                 </button>
                                             </div>
                                             <!-- Available tags -->
@@ -591,15 +593,14 @@
                                                 class="h-44 overflow-y-auto border-t border-gray-300 leading-none dark:border-gray-500"
                                             >
                                                 <!-- Tags -->
-                                                <ng-container
-                                                    *ngIf="!tagsEditMode"
-                                                >
-                                                    <ng-container
-                                                        *ngFor="
-                                                            let tag of filteredTags;
-                                                            trackBy: trackByFn
-                                                        "
-                                                    >
+                                                @if (!tagsEditMode) {
+                                                    @for (
+                                                        tag of filteredTags;
+                                                        track trackByFn(
+                                                            $index,
+                                                            tag
+                                                        )
+                                                    ) {
                                                         <mat-checkbox
                                                             class="flex h-10 min-h-10 items-center pl-1 pr-4"
                                                             [color]="'primary'"
@@ -617,19 +618,18 @@
                                                         >
                                                             {{ tag.title }}
                                                         </mat-checkbox>
-                                                    </ng-container>
-                                                </ng-container>
+                                                    }
+                                                }
                                                 <!-- Tags editing -->
-                                                <ng-container
-                                                    *ngIf="tagsEditMode"
-                                                >
+                                                @if (tagsEditMode) {
                                                     <div class="space-y-2 p-4">
-                                                        <ng-container
-                                                            *ngFor="
-                                                                let tag of filteredTags;
-                                                                trackBy: trackByFn
-                                                            "
-                                                        >
+                                                        @for (
+                                                            tag of filteredTags;
+                                                            track trackByFn(
+                                                                $index,
+                                                                tag
+                                                            )
+                                                        ) {
                                                             <mat-form-field
                                                                 class="fuse-mat-dense w-full"
                                                                 [subscriptSizing]="
@@ -665,37 +665,39 @@
                                                                     ></mat-icon>
                                                                 </button>
                                                             </mat-form-field>
-                                                        </ng-container>
+                                                        }
                                                     </div>
-                                                </ng-container>
-                                                <div
-                                                    class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center border-t pl-4 pr-3 leading-none dark:hover:bg-hover hover:bg-gray-50"
-                                                    *ngIf="
-                                                        shouldShowCreateTagButton(
-                                                            newTagInput.value
-                                                        )
-                                                    "
-                                                    (click)="
-                                                        createTag(
-                                                            newTagInput.value
-                                                        );
-                                                        newTagInput.value = ''
-                                                    "
-                                                    matRipple
-                                                >
-                                                    <mat-icon
-                                                        class="mr-2 icon-size-5"
-                                                        [svgIcon]="
-                                                            'heroicons_solid:plus-circle'
+                                                }
+                                                @if (
+                                                    shouldShowCreateTagButton(
+                                                        newTagInput.value
+                                                    )
+                                                ) {
+                                                    <div
+                                                        class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center border-t pl-4 pr-3 leading-none dark:hover:bg-hover hover:bg-gray-50"
+                                                        (click)="
+                                                            createTag(
+                                                                newTagInput.value
+                                                            );
+                                                            newTagInput.value =
+                                                                ''
                                                         "
-                                                    ></mat-icon>
-                                                    <div class="break-all">
-                                                        Create "<b>{{
-                                                            newTagInput.value
-                                                        }}</b
-                                                        >"
+                                                        matRipple
+                                                    >
+                                                        <mat-icon
+                                                            class="mr-2 icon-size-5"
+                                                            [svgIcon]="
+                                                                'heroicons_solid:plus-circle'
+                                                            "
+                                                        ></mat-icon>
+                                                        <div class="break-all">
+                                                            Create "<b>{{
+                                                                newTagInput.value
+                                                            }}</b
+                                                            >"
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -714,38 +716,33 @@
                                     Delete
                                 </button>
                                 <div class="flex items-center">
-                                    <div
-                                        class="mr-4 flex items-center"
-                                        *ngIf="flashMessage"
-                                    >
-                                        <ng-container
-                                            *ngIf="flashMessage === 'success'"
-                                        >
-                                            <mat-icon
-                                                class="text-green-500"
-                                                [svgIcon]="
-                                                    'heroicons_outline:check'
-                                                "
-                                            ></mat-icon>
-                                            <span class="ml-2"
-                                                >Product updated</span
-                                            >
-                                        </ng-container>
-                                        <ng-container
-                                            *ngIf="flashMessage === 'error'"
-                                        >
-                                            <mat-icon
-                                                class="text-red-500"
-                                                [svgIcon]="
-                                                    'heroicons_outline:x-mark'
-                                                "
-                                            ></mat-icon>
-                                            <span class="ml-2"
-                                                >An error occurred, try
-                                                again!</span
-                                            >
-                                        </ng-container>
-                                    </div>
+                                    @if (flashMessage) {
+                                        <div class="mr-4 flex items-center">
+                                            @if (flashMessage === 'success') {
+                                                <mat-icon
+                                                    class="text-green-500"
+                                                    [svgIcon]="
+                                                        'heroicons_outline:check'
+                                                    "
+                                                ></mat-icon>
+                                                <span class="ml-2"
+                                                    >Product updated</span
+                                                >
+                                            }
+                                            @if (flashMessage === 'error') {
+                                                <mat-icon
+                                                    class="text-red-500"
+                                                    [svgIcon]="
+                                                        'heroicons_outline:x-mark'
+                                                    "
+                                                ></mat-icon>
+                                                <span class="ml-2"
+                                                    >An error occurred, try
+                                                    again!</span
+                                                >
+                                            }
+                                        </div>
+                                    }
                                     <button
                                         mat-flat-button
                                         [color]="'primary'"
@@ -757,14 +754,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </ng-template>
-
-            <ng-template #noProducts>
-                <div
-                    class="border-t p-8 text-center text-4xl font-semibold tracking-tight sm:p-16"
-                >
-                    There are no products!
                 </div>
             </ng-template>
         </div>

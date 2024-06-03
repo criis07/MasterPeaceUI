@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -28,7 +27,6 @@ import { AuthService } from 'app/core/auth/auth.service';
     imports: [
         RouterLink,
         FuseAlertComponent,
-        NgIf,
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,

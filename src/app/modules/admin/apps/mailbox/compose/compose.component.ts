@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -26,7 +25,6 @@ import { QuillEditorComponent } from 'ngx-quill';
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        NgIf,
         QuillEditorComponent,
     ],
 })

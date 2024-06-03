@@ -22,34 +22,40 @@
             <mat-label>To</mat-label>
             <input matInput [formControlName]="'to'" />
             <div class="copy-fields-toggles" matSuffix>
-                <span
-                    class="cursor-pointer select-none text-sm font-medium hover:underline"
-                    *ngIf="!copyFields.cc"
-                    (click)="showCopyField('cc')"
-                >
-                    Cc
-                </span>
-                <span
-                    class="ml-2 cursor-pointer select-none text-sm font-medium hover:underline"
-                    *ngIf="!copyFields.bcc"
-                    (click)="showCopyField('bcc')"
-                >
-                    Bcc
-                </span>
+                @if (!copyFields.cc) {
+                    <span
+                        class="cursor-pointer select-none text-sm font-medium hover:underline"
+                        (click)="showCopyField('cc')"
+                    >
+                        Cc
+                    </span>
+                }
+                @if (!copyFields.bcc) {
+                    <span
+                        class="ml-2 cursor-pointer select-none text-sm font-medium hover:underline"
+                        (click)="showCopyField('bcc')"
+                    >
+                        Bcc
+                    </span>
+                }
             </div>
         </mat-form-field>
 
         <!-- Cc -->
-        <mat-form-field *ngIf="copyFields.cc">
-            <mat-label>Cc</mat-label>
-            <input matInput [formControlName]="'cc'" />
-        </mat-form-field>
+        @if (copyFields.cc) {
+            <mat-form-field>
+                <mat-label>Cc</mat-label>
+                <input matInput [formControlName]="'cc'" />
+            </mat-form-field>
+        }
 
         <!-- Bcc -->
-        <mat-form-field *ngIf="copyFields.bcc">
-            <mat-label>Bcc</mat-label>
-            <input matInput [formControlName]="'bcc'" />
-        </mat-form-field>
+        @if (copyFields.bcc) {
+            <mat-form-field>
+                <mat-label>Bcc</mat-label>
+                <input matInput [formControlName]="'bcc'" />
+            </mat-form-field>
+        }
 
         <!-- Subject -->
         <mat-form-field>

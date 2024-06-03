@@ -1,11 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import {
-    I18nPluralPipe,
-    NgClass,
-    NgFor,
-    NgIf,
-    PercentPipe,
-} from '@angular/common';
+import { I18nPluralPipe, NgClass, PercentPipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -43,11 +37,9 @@ import { BehaviorSubject, Subject, combineLatest, takeUntil } from 'rxjs';
         MatFormFieldModule,
         MatSelectModule,
         MatOptionModule,
-        NgFor,
         MatIconModule,
         MatInputModule,
         MatSlideToggleModule,
-        NgIf,
         NgClass,
         MatTooltipModule,
         MatProgressBarModule,

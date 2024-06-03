@@ -1,7 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -57,7 +57,6 @@ import { Subject, debounceTime, filter, takeUntil, tap } from 'rxjs';
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
-        NgIf,
         MatIconModule,
         MatMenuModule,
         RouterLink,
@@ -65,7 +64,6 @@ import { Subject, debounceTime, filter, takeUntil, tap } from 'rxjs';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
-        NgFor,
         MatRippleModule,
         MatCheckboxModule,
         NgClass,

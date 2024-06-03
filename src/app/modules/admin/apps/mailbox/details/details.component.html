@@ -1,7 +1,7 @@
 <div
     class="bg-card flex flex-auto flex-col overflow-y-auto dark:bg-default lg:overflow-hidden"
 >
-    <ng-container *ngIf="mail; else selectMailToRead">
+    @if (mail) {
         <!-- Header -->
         <div class="relative z-10 flex w-full flex-0 flex-col border-b">
             <!-- Toolbar -->
@@ -28,9 +28,7 @@
                     <mat-icon [svgIcon]="'heroicons_outline:tag'"></mat-icon>
                 </button>
                 <mat-menu #toggleLabelMenu="matMenu">
-                    <ng-container
-                        *ngFor="let label of labels; trackBy: trackByFn"
-                    >
+                    @for (label of labels; track trackByFn($index, label)) {
                         <div
                             mat-menu-item
                             (click)="toggleLabel(label)"
@@ -45,7 +43,7 @@
                                 {{ label.title }}
                             </mat-checkbox>
                         </div>
-                    </ng-container>
+                    }
                 </mat-menu>
 
                 <!-- Toggle important button -->
@@ -56,7 +54,7 @@
                 >
                     <mat-icon
                         [ngClass]="{
-                            'text-red-600 dark:text-red-500': mail.important
+                            'text-red-600 dark:text-red-500': mail.important,
                         }"
                         [svgIcon]="'heroicons_outline:exclamation-circle'"
                     ></mat-icon>
@@ -66,7 +64,7 @@
                 <button class="ml-2" mat-icon-button (click)="toggleStar()">
                     <mat-icon
                         [ngClass]="{
-                            'text-orange-500 dark:text-red-400': mail.starred
+                            'text-orange-500 dark:text-red-400': mail.starred,
                         }"
                         [svgIcon]="'heroicons_outline:star'"
                     ></mat-icon>
@@ -84,61 +82,55 @@
                 </button>
                 <mat-menu #mailMenu="matMenu">
                     <!-- Mark as read / unread -->
-                    <button
-                        mat-menu-item
-                        *ngIf="mail.unread"
-                        (click)="toggleUnread(false)"
-                    >
-                        <mat-icon
-                            [svgIcon]="'heroicons_outline:envelope-open'"
-                        ></mat-icon>
-                        <span>Mark as read</span>
-                    </button>
-                    <button
-                        mat-menu-item
-                        *ngIf="!mail.unread"
-                        (click)="toggleUnread(true)"
-                    >
-                        <mat-icon
-                            [svgIcon]="'heroicons_outline:envelope'"
-                        ></mat-icon>
-                        <span>Mark as unread</span>
-                    </button>
+                    @if (mail.unread) {
+                        <button mat-menu-item (click)="toggleUnread(false)">
+                            <mat-icon
+                                [svgIcon]="'heroicons_outline:envelope-open'"
+                            ></mat-icon>
+                            <span>Mark as read</span>
+                        </button>
+                    }
+                    @if (!mail.unread) {
+                        <button mat-menu-item (click)="toggleUnread(true)">
+                            <mat-icon
+                                [svgIcon]="'heroicons_outline:envelope'"
+                            ></mat-icon>
+                            <span>Mark as unread</span>
+                        </button>
+                    }
                     <!-- Marks as spam / not span-->
-                    <button
-                        mat-menu-item
-                        *ngIf="
-                            getCurrentFolder() !== 'spam' &&
-                            getCurrentFolder() !== 'drafts'
-                        "
-                        (click)="moveToFolder('spam')"
-                    >
-                        <mat-icon
-                            [svgIcon]="'heroicons_outline:exclamation-triangle'"
-                        ></mat-icon>
-                        <span>Spam</span>
-                    </button>
-                    <button
-                        mat-menu-item
-                        *ngIf="getCurrentFolder() === 'spam'"
-                        (click)="moveToFolder('inbox')"
-                    >
-                        <mat-icon
-                            [svgIcon]="'heroicons_outline:exclamation-triangle'"
-                        ></mat-icon>
-                        <span>Not spam</span>
-                    </button>
+                    @if (
+                        getCurrentFolder() !== 'spam' &&
+                        getCurrentFolder() !== 'drafts'
+                    ) {
+                        <button mat-menu-item (click)="moveToFolder('spam')">
+                            <mat-icon
+                                [svgIcon]="
+                                    'heroicons_outline:exclamation-triangle'
+                                "
+                            ></mat-icon>
+                            <span>Spam</span>
+                        </button>
+                    }
+                    @if (getCurrentFolder() === 'spam') {
+                        <button mat-menu-item (click)="moveToFolder('inbox')">
+                            <mat-icon
+                                [svgIcon]="
+                                    'heroicons_outline:exclamation-triangle'
+                                "
+                            ></mat-icon>
+                            <span>Not spam</span>
+                        </button>
+                    }
                     <!-- Delete -->
-                    <button
-                        mat-menu-item
-                        *ngIf="getCurrentFolder() !== 'trash'"
-                        (click)="moveToFolder('trash')"
-                    >
-                        <mat-icon
-                            [svgIcon]="'heroicons_outline:trash'"
-                        ></mat-icon>
-                        <span>Delete</span>
-                    </button>
+                    @if (getCurrentFolder() !== 'trash') {
+                        <button mat-menu-item (click)="moveToFolder('trash')">
+                            <mat-icon
+                                [svgIcon]="'heroicons_outline:trash'"
+                            ></mat-icon>
+                            <span>Delete</span>
+                        </button>
+                    }
                 </mat-menu>
             </div>
 
@@ -149,25 +141,23 @@
                     {{ mail.subject }}
                 </div>
                 <!-- Labels -->
-                <ng-container *ngIf="mail.labels && mail.labels.length > 0">
+                @if (mail.labels && mail.labels.length > 0) {
                     <div
                         class="-mx-1 flex flex-wrap items-center justify-start"
                     >
-                        <ng-container
-                            *ngFor="
-                                let label of mail.labels
-                                    | fuseFindByKey: 'id' : labels
-                            "
-                        >
+                        @for (
+                            label of mail.labels | fuseFindByKey: 'id' : labels;
+                            track label
+                        ) {
                             <div
                                 class="m-1 whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm font-medium"
                                 [ngClass]="labelColors[label.color].combined"
                             >
                                 {{ label.title }}
                             </div>
-                        </ng-container>
+                        }
                     </div>
-                </ng-container>
+                }
             </div>
         </div>
 
@@ -205,9 +195,7 @@
                             <div class="mt-0.5 flex items-center leading-5">
                                 <div>to</div>
                                 <div class="ml-1 font-semibold">me</div>
-                                <ng-container
-                                    *ngIf="mail.ccCount + mail.bccCount > 0"
-                                >
+                                @if (mail.ccCount + mail.bccCount > 0) {
                                     <div>
                                         <span class="ml-1">and</span>
                                         <span class="ml-1 font-semibold">{{
@@ -227,7 +215,7 @@
                                             >
                                         </span>
                                     </div>
-                                </ng-container>
+                                }
 
                                 <!-- Info details panel button -->
                                 <button
@@ -276,7 +264,7 @@
                                             </div>
                                         </div>
                                         <!-- Cc -->
-                                        <ng-container *ngIf="mail.cc">
+                                        @if (mail.cc) {
                                             <div class="flex">
                                                 <div
                                                     class="min-w-14 text-right font-medium"
@@ -289,9 +277,9 @@
                                                     {{ mail.cc.join(',\n') }}
                                                 </div>
                                             </div>
-                                        </ng-container>
+                                        }
                                         <!-- Bbc -->
-                                        <ng-container *ngIf="mail.bcc">
+                                        @if (mail.bcc) {
                                             <div class="flex">
                                                 <div
                                                     class="min-w-14 text-right font-medium"
@@ -304,7 +292,7 @@
                                                     {{ mail.bcc.join(',\n') }}
                                                 </div>
                                             </div>
-                                        </ng-container>
+                                        }
                                         <!-- Date -->
                                         <div class="flex">
                                             <div
@@ -348,9 +336,7 @@
                     ></div>
 
                     <!-- Attachments -->
-                    <ng-container
-                        *ngIf="mail.attachments && mail.attachments.length > 0"
-                    >
+                    @if (mail.attachments && mail.attachments.length > 0) {
                         <div class="flex w-full flex-col">
                             <!-- Title -->
                             <div class="mt-12 flex items-center">
@@ -365,42 +351,43 @@
 
                             <!-- Files -->
                             <div class="-m-3 mt-3 flex flex-wrap">
-                                <ng-container
-                                    *ngFor="let attachment of mail.attachments"
-                                >
+                                @for (
+                                    attachment of mail.attachments;
+                                    track attachment
+                                ) {
                                     <div class="m-3 flex items-center">
                                         <!-- Preview -->
-                                        <img
-                                            class="h-10 w-10 overflow-hidden rounded-md"
-                                            *ngIf="
-                                                attachment.type.startsWith(
-                                                    'image/'
-                                                )
-                                            "
-                                            [src]="
-                                                'images/apps/mailbox/' +
-                                                attachment.preview
-                                            "
-                                        />
-                                        <div
-                                            class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-md bg-primary-100"
-                                            *ngIf="
-                                                attachment.type.startsWith(
-                                                    'application/'
-                                                )
-                                            "
-                                        >
+                                        @if (
+                                            attachment.type.startsWith('image/')
+                                        ) {
+                                            <img
+                                                class="h-10 w-10 overflow-hidden rounded-md"
+                                                [src]="
+                                                    'images/apps/mailbox/' +
+                                                    attachment.preview
+                                                "
+                                            />
+                                        }
+                                        @if (
+                                            attachment.type.startsWith(
+                                                'application/'
+                                            )
+                                        ) {
                                             <div
-                                                class="text-primary-500-800 flex items-center justify-center text-sm font-semibold"
+                                                class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-md bg-primary-100"
                                             >
-                                                {{
-                                                    attachment.type
-                                                        .split('/')[1]
-                                                        .trim()
-                                                        .toUpperCase()
-                                                }}
+                                                <div
+                                                    class="text-primary-500-800 flex items-center justify-center text-sm font-semibold"
+                                                >
+                                                    {{
+                                                        attachment.type
+                                                            .split('/')[1]
+                                                            .trim()
+                                                            .toUpperCase()
+                                                    }}
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                         <!-- File info -->
                                         <div class="ml-3">
                                             <div
@@ -421,10 +408,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </ng-container>
+                                }
                             </div>
                         </div>
-                    </ng-container>
+                    }
                 </div>
 
                 <!-- Footer -->
@@ -432,7 +419,7 @@
                     class="flex w-full border-t bg-gray-50 p-6 dark:bg-transparent"
                 >
                     <!-- Buttons -->
-                    <ng-container *ngIf="!replyFormActive">
+                    @if (!replyFormActive) {
                         <div class="-m-2 flex w-full flex-wrap">
                             <!-- Reply -->
                             <button
@@ -481,10 +468,10 @@
                                 <span class="ml-2">Forward</span>
                             </button>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Reply form -->
-                    <ng-container *ngIf="replyFormActive">
+                    @if (replyFormActive) {
                         <div class="flex w-full flex-col" #replyForm>
                             <mat-form-field [subscriptSizing]="'dynamic'">
                                 <textarea
@@ -554,14 +541,11 @@
                                 </div>
                             </div>
                         </div>
-                    </ng-container>
+                    }
                 </div>
             </div>
         </div>
-    </ng-container>
-
-    <!-- Select mail to read template -->
-    <ng-template #selectMailToRead>
+    } @else {
         <div
             class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
         >
@@ -575,5 +559,7 @@
                 Select a mail to read
             </div>
         </div>
-    </ng-template>
+    }
+
+    <!-- Select mail to read template -->
 </div>

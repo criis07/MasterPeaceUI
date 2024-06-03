@@ -1,11 +1,4 @@
-import {
-    AsyncPipe,
-    DOCUMENT,
-    I18nPluralPipe,
-    NgClass,
-    NgFor,
-    NgIf,
-} from '@angular/common';
+import { AsyncPipe, DOCUMENT, I18nPluralPipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -56,14 +49,12 @@ import {
     imports: [
         MatSidenavModule,
         RouterOutlet,
-        NgIf,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
-        NgFor,
         NgClass,
         RouterLink,
         AsyncPipe,

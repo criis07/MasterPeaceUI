@@ -30,13 +30,15 @@
                             Tasks
                         </div>
                         <div class="text-secondary ml-0.5 font-medium">
-                            <span *ngIf="tasksCount.incomplete === 0"
-                                >All tasks completed!</span
-                            >
-                            <span *ngIf="tasksCount.incomplete !== 0"
-                                >{{ tasksCount.incomplete }} remaining
-                                tasks</span
-                            >
+                            @if (tasksCount.incomplete === 0) {
+                                <span>All tasks completed!</span>
+                            }
+                            @if (tasksCount.incomplete !== 0) {
+                                <span
+                                    >{{ tasksCount.incomplete }} remaining
+                                    tasks</span
+                                >
+                            }
                         </div>
                     </div>
                     <!-- Actions -->
@@ -70,7 +72,7 @@
                 </div>
 
                 <!-- Tasks list -->
-                <ng-container *ngIf="tasks && tasks.length > 0; else noTasks">
+                @if (tasks && tasks.length > 0) {
                     <div
                         class="divide-y"
                         cdkDropList
@@ -78,13 +80,11 @@
                         (cdkDropListDropped)="dropped($event)"
                     >
                         <!-- Task -->
-                        <ng-container
-                            *ngFor="
-                                let task of tasks;
-                                let first = first;
-                                trackBy: trackByFn
-                            "
-                        >
+                        @for (
+                            task of tasks;
+                            track trackByFn($index, task);
+                            let first = $first
+                        ) {
                             <div
                                 [id]="'task-' + task.id"
                                 class="group w-full select-none dark:hover:bg-hover hover:bg-gray-100"
@@ -92,7 +92,7 @@
                                     'h-12 bg-gray-50 text-lg font-semibold dark:bg-transparent':
                                         task.type === 'section',
                                     'h-16': task.type === 'task',
-                                    'text-hint': task.completed
+                                    'text-hint': task.completed,
                                 }"
                                 [class.border-t]="first"
                                 cdkDrag
@@ -109,16 +109,14 @@
                                     class="relative flex h-full items-center pl-10"
                                 >
                                     <!-- Selected indicator -->
-                                    <ng-container
-                                        *ngIf="
-                                            selectedTask &&
-                                            selectedTask.id === task.id
-                                        "
-                                    >
+                                    @if (
+                                        selectedTask &&
+                                        selectedTask.id === task.id
+                                    ) {
                                         <div
                                             class="absolute -bottom-px -top-px right-0 z-10 flex w-1 flex-0 bg-primary"
                                         ></div>
-                                    </ng-container>
+                                    }
 
                                     <!-- Drag handle -->
                                     <div
@@ -132,29 +130,30 @@
                                     </div>
 
                                     <!-- Complete task button -->
-                                    <button
-                                        class="-ml-2.5 mr-2 leading-none"
-                                        *ngIf="task.type === 'task'"
-                                        (click)="toggleCompleted(task)"
-                                        mat-icon-button
-                                    >
-                                        <ng-container *ngIf="task.completed">
-                                            <mat-icon
-                                                class="text-primary"
-                                                [svgIcon]="
-                                                    'heroicons_outline:check-circle'
-                                                "
-                                            ></mat-icon>
-                                        </ng-container>
-                                        <ng-container *ngIf="!task.completed">
-                                            <mat-icon
-                                                class="text-hint"
-                                                [svgIcon]="
-                                                    'heroicons_outline:check-circle'
-                                                "
-                                            ></mat-icon>
-                                        </ng-container>
-                                    </button>
+                                    @if (task.type === 'task') {
+                                        <button
+                                            class="-ml-2.5 mr-2 leading-none"
+                                            (click)="toggleCompleted(task)"
+                                            mat-icon-button
+                                        >
+                                            @if (task.completed) {
+                                                <mat-icon
+                                                    class="text-primary"
+                                                    [svgIcon]="
+                                                        'heroicons_outline:check-circle'
+                                                    "
+                                                ></mat-icon>
+                                            }
+                                            @if (!task.completed) {
+                                                <mat-icon
+                                                    class="text-hint"
+                                                    [svgIcon]="
+                                                        'heroicons_outline:check-circle'
+                                                    "
+                                                ></mat-icon>
+                                            }
+                                        </button>
+                                    }
 
                                     <!-- Task link -->
                                     <a
@@ -163,10 +162,10 @@
                                     >
                                         <!-- Title & Placeholder -->
                                         <div class="mr-2 flex-auto truncate">
-                                            <ng-container *ngIf="task.title">
+                                            @if (task.title) {
                                                 <span>{{ task.title }}</span>
-                                            </ng-container>
-                                            <ng-container *ngIf="!task.title">
+                                            }
+                                            @if (!task.title) {
                                                 <span
                                                     class="text-hint select-none"
                                                     >{{
@@ -174,48 +173,50 @@
                                                     }}
                                                     title</span
                                                 >
-                                            </ng-container>
+                                            }
                                         </div>
                                         <!-- Priority -->
-                                        <ng-container
-                                            *ngIf="task.type === 'task'"
-                                        >
+                                        @if (task.type === 'task') {
                                             <div class="mr-3 h-4 w-4">
                                                 <!-- Low -->
-                                                <mat-icon
-                                                    class="text-green-600 icon-size-4 dark:text-green-400"
-                                                    *ngIf="task.priority === 0"
-                                                    [svgIcon]="
-                                                        'heroicons_mini:arrow-long-down'
-                                                    "
-                                                    [title]="'Low'"
-                                                ></mat-icon>
+                                                @if (task.priority === 0) {
+                                                    <mat-icon
+                                                        class="text-green-600 icon-size-4 dark:text-green-400"
+                                                        [svgIcon]="
+                                                            'heroicons_mini:arrow-long-down'
+                                                        "
+                                                        [title]="'Low'"
+                                                    ></mat-icon>
+                                                }
                                                 <!-- High -->
-                                                <mat-icon
-                                                    class="text-red-600 icon-size-4 dark:text-red-400"
-                                                    *ngIf="task.priority === 2"
-                                                    [svgIcon]="
-                                                        'heroicons_mini:arrow-long-up'
-                                                    "
-                                                    [title]="'High'"
-                                                ></mat-icon>
+                                                @if (task.priority === 2) {
+                                                    <mat-icon
+                                                        class="text-red-600 icon-size-4 dark:text-red-400"
+                                                        [svgIcon]="
+                                                            'heroicons_mini:arrow-long-up'
+                                                        "
+                                                        [title]="'High'"
+                                                    ></mat-icon>
+                                                }
                                             </div>
-                                        </ng-container>
+                                        }
                                         <!-- Due date -->
-                                        <div
-                                            class="text-secondary whitespace-nowrap text-sm"
-                                            *ngIf="task.type === 'task'"
-                                        >
-                                            {{ task.dueDate | date: 'LLL dd' }}
-                                        </div>
+                                        @if (task.type === 'task') {
+                                            <div
+                                                class="text-secondary whitespace-nowrap text-sm"
+                                            >
+                                                {{
+                                                    task.dueDate
+                                                        | date: 'LLL dd'
+                                                }}
+                                            </div>
+                                        }
                                     </a>
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
-                </ng-container>
-
-                <ng-template #noTasks>
+                } @else {
                     <div
                         class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
                     >
@@ -231,7 +232,7 @@
                             Add a task to start planning!
                         </div>
                     </div>
-                </ng-template>
+                }
             </div>
         </mat-drawer-content>
     </mat-drawer-container>

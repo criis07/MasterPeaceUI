@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -37,9 +37,7 @@ import { debounceTime, take } from 'rxjs';
         MatInputModule,
         MatSelectModule,
         NgClass,
-        NgFor,
         MatOptionModule,
-        NgIf,
     ],
 })
 export class MailboxSettingsComponent implements OnInit {

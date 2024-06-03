@@ -29,8 +29,8 @@
     </mat-form-field>
     <!-- Labels -->
     <div class="mt-4 flex flex-col">
-        <ng-container *ngIf="labels$ | async as labels">
-            <ng-container *ngFor="let label of labels; trackBy: trackByFn">
+        @if (labels$ | async; as labels) {
+            @for (label of labels; track trackByFn($index, label)) {
                 <mat-form-field class="fuse-mat-dense w-full">
                     <button
                         mat-icon-button
@@ -50,7 +50,7 @@
                         matInput
                     />
                 </mat-form-field>
-            </ng-container>
-        </ng-container>
+            }
+        }
     </div>
 </div>

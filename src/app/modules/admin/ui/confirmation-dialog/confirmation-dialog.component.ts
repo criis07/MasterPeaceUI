@@ -1,4 +1,4 @@
-import { JsonPipe, NgFor, TitleCasePipe } from '@angular/common';
+import { JsonPipe, TitleCasePipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -35,7 +35,6 @@ import { FuseConfirmationService } from '@fuse/services/confirmation';
         MatInputModule,
         MatCheckboxModule,
         MatSelectModule,
-        NgFor,
         MatOptionModule,
         MatButtonModule,
         FuseHighlightComponent,

@@ -48,23 +48,24 @@
                         Label color
                     </div>
                     <div class="mx-3 my-4 -mr-5 flex w-48 flex-wrap">
-                        <ng-container *ngFor="let color of labelColors">
+                        @for (color of labelColors; track color) {
                             <mat-option
                                 class="relative flex h-12 w-12 cursor-pointer rounded-full bg-transparent p-0"
                                 [value]="color"
                                 #matOption="matOption"
                             >
-                                <mat-icon
-                                    class="absolute m-3 text-white"
-                                    *ngIf="matOption.selected"
-                                    [svgIcon]="'heroicons_outline:check'"
-                                ></mat-icon>
+                                @if (matOption.selected) {
+                                    <mat-icon
+                                        class="absolute m-3 text-white"
+                                        [svgIcon]="'heroicons_outline:check'"
+                                    ></mat-icon>
+                                }
                                 <span
                                     class="m-1 flex h-10 w-10 rounded-full"
                                     [ngClass]="labelColorDefs[color].bg"
                                 ></span>
                             </mat-option>
-                        </ng-container>
+                        }
                     </div>
                 </mat-select>
                 <button
@@ -90,9 +91,7 @@
             [formArrayName]="'labels'"
         >
             <!-- Label -->
-            <ng-container
-                *ngFor="let label of labelsForm.get('labels')['controls']"
-            >
+            @for (label of labelsForm.get('labels')['controls']; track label) {
                 <mat-form-field class="w-full">
                     <input matInput [formControl]="label.get('title')" />
                     <mat-select
@@ -113,23 +112,26 @@
                             Label color
                         </div>
                         <div class="mx-3 my-4 -mr-5 flex w-48 flex-wrap">
-                            <ng-container *ngFor="let color of labelColors">
+                            @for (color of labelColors; track color) {
                                 <mat-option
                                     class="relative flex h-12 w-12 cursor-pointer rounded-full bg-transparent p-0"
                                     [value]="color"
                                     #matOption="matOption"
                                 >
-                                    <mat-icon
-                                        class="absolute m-3 text-white"
-                                        *ngIf="matOption.selected"
-                                        [svgIcon]="'heroicons_outline:check'"
-                                    ></mat-icon>
+                                    @if (matOption.selected) {
+                                        <mat-icon
+                                            class="absolute m-3 text-white"
+                                            [svgIcon]="
+                                                'heroicons_outline:check'
+                                            "
+                                        ></mat-icon>
+                                    }
                                     <span
                                         class="m-1 flex h-10 w-10 rounded-full"
                                         [ngClass]="labelColorDefs[color].bg"
                                     ></span>
                                 </mat-option>
-                            </ng-container>
+                            }
                         </div>
                     </mat-select>
                     <button
@@ -143,7 +145,7 @@
                         ></mat-icon>
                     </button>
                 </mat-form-field>
-            </ng-container>
+            }
         </div>
     </form>
 </div>

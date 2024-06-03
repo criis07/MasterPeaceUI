@@ -8,20 +8,20 @@
             #drawer
         >
             <!-- New chat -->
-            <ng-container *ngIf="drawerComponent === 'new-chat'">
+            @if (drawerComponent === 'new-chat') {
                 <chat-new-chat [drawer]="drawer"></chat-new-chat>
-            </ng-container>
+            }
 
             <!-- Profile -->
-            <ng-container *ngIf="drawerComponent === 'profile'">
+            @if (drawerComponent === 'profile') {
                 <chat-profile [drawer]="drawer"></chat-profile>
-            </ng-container>
+            }
         </mat-drawer>
 
         <!-- Drawer content -->
         <mat-drawer-content class="flex overflow-hidden">
             <!-- Chats list -->
-            <ng-container *ngIf="chats && chats.length > 0; else noChats">
+            @if (chats && chats.length > 0) {
                 <div
                     class="bg-card relative flex w-full min-w-0 flex-auto flex-col dark:bg-transparent lg:min-w-100 lg:max-w-100"
                 >
@@ -35,20 +35,20 @@
                                 (click)="openProfile()"
                             >
                                 <div class="h-10 w-10">
-                                    <ng-container *ngIf="profile.avatar">
+                                    @if (profile.avatar) {
                                         <img
-                                            class="h-full w-full rounded-full object-cover object-cover"
+                                            class="h-full w-full rounded-full object-cover"
                                             [src]="profile.avatar"
                                             alt="Profile avatar"
                                         />
-                                    </ng-container>
-                                    <ng-container *ngIf="!profile.avatar">
+                                    }
+                                    @if (!profile.avatar) {
                                         <div
                                             class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-lg uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
                                         >
                                             {{ profile.name.charAt(0) }}
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
                                 <div class="ml-4 truncate font-medium">
                                     {{ profile.name }}
@@ -152,15 +152,11 @@
 
                     <!-- Chats -->
                     <div class="flex-auto overflow-y-auto">
-                        <ng-container
-                            *ngIf="filteredChats.length > 0; else noChats"
-                        >
-                            <ng-container
-                                *ngFor="
-                                    let chat of filteredChats;
-                                    trackBy: trackByFn
-                                "
-                            >
+                        @if (filteredChats.length > 0) {
+                            @for (
+                                chat of filteredChats;
+                                track trackByFn($index, chat)
+                            ) {
                                 <a
                                     class="z-20 flex cursor-pointer items-center border-b px-8 py-5"
                                     [ngClass]="{
@@ -169,16 +165,14 @@
                                             selectedChat.id !== chat.id,
                                         'bg-primary-50 dark:bg-hover':
                                             selectedChat &&
-                                            selectedChat.id === chat.id
+                                            selectedChat.id === chat.id,
                                     }"
                                     [routerLink]="[chat.id]"
                                 >
                                     <div
                                         class="relative flex h-10 w-10 flex-0 items-center justify-center"
                                     >
-                                        <ng-container
-                                            *ngIf="chat.unreadCount > 0"
-                                        >
+                                        @if (chat.unreadCount > 0) {
                                             <div
                                                 class="ring-bg-card absolute bottom-0 right-0 -ml-0.5 h-2 w-2 flex-0 rounded-full bg-primary text-on-primary ring-2 dark:bg-primary-500 dark:ring-gray-900"
                                                 [class.ring-primary-50]="
@@ -186,19 +180,15 @@
                                                     selectedChat.id === chat.id
                                                 "
                                             ></div>
-                                        </ng-container>
-                                        <ng-container
-                                            *ngIf="chat.contact.avatar"
-                                        >
+                                        }
+                                        @if (chat.contact.avatar) {
                                             <img
                                                 class="h-full w-full rounded-full object-cover"
                                                 [src]="chat.contact.avatar"
                                                 alt="Contact avatar"
                                             />
-                                        </ng-container>
-                                        <ng-container
-                                            *ngIf="!chat.contact.avatar"
-                                        >
+                                        }
+                                        @if (!chat.contact.avatar) {
                                             <div
                                                 class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-lg uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
                                             >
@@ -206,7 +196,7 @@
                                                     chat.contact.name.charAt(0)
                                                 }}
                                             </div>
-                                        </ng-container>
+                                        }
                                     </div>
                                     <div class="ml-4 min-w-0">
                                         <div
@@ -234,24 +224,37 @@
                                         >
                                             {{ chat.lastMessageAt }}
                                         </div>
-                                        <ng-container *ngIf="chat.muted">
+                                        @if (chat.muted) {
                                             <mat-icon
                                                 class="text-hint icon-size-5"
                                                 [svgIcon]="
                                                     'heroicons_solid:speaker-x-mark'
                                                 "
                                             ></mat-icon>
-                                        </ng-container>
+                                        }
                                     </div>
                                 </a>
-                            </ng-container>
-                        </ng-container>
+                            }
+                        } @else {
+                            <div
+                                class="flex h-full flex-auto flex-col items-center justify-center"
+                            >
+                                <mat-icon
+                                    class="icon-size-24"
+                                    [svgIcon]="
+                                        'heroicons_outline:chat-bubble-oval-left-ellipsis'
+                                    "
+                                ></mat-icon>
+                                <div
+                                    class="text-secondary mt-4 text-2xl font-semibold tracking-tight"
+                                >
+                                    No chats
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
-            </ng-container>
-
-            <!-- No chats template -->
-            <ng-template #noChats>
+            } @else {
                 <div
                     class="flex h-full flex-auto flex-col items-center justify-center"
                 >
@@ -267,21 +270,23 @@
                         No chats
                     </div>
                 </div>
-            </ng-template>
+            }
+
+            <!-- No chats template -->
 
             <!-- Conversation -->
-            <ng-container *ngIf="chats && chats.length > 0">
+            @if (chats && chats.length > 0) {
                 <div
                     class="flex-auto border-l"
                     [ngClass]="{
                         'absolute inset-0 z-20 flex lg:static lg:inset-auto':
                             selectedChat && selectedChat.id,
-                        'hidden lg:flex': !selectedChat || !selectedChat.id
+                        'hidden lg:flex': !selectedChat || !selectedChat.id,
                     }"
                 >
                     <router-outlet></router-outlet>
                 </div>
-            </ng-container>
+            }
         </mat-drawer-content>
     </mat-drawer-container>
 </div>

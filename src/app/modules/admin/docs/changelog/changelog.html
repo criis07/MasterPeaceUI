@@ -21,32 +21,36 @@
 
     <div class="flex-auto p-6 sm:p-10">
         <div class="prose prose-sm max-w-5xl">
-            <ng-container *ngFor="let item of changelog">
-                <div class="bg-card mb-12 rounded-2xl p-8 shadow">
-                    <div>
-                        <h2 class="my-0">{{item.version}}</h2>
-                        <div class="text-secondary text-md font-semibold">
-                            {{item.releaseDate}}
-                        </div>
+            @for (item of changelog; track item) {
+
+            <div class="bg-card mb-12 rounded-2xl p-8 shadow">
+                <div>
+                    <h2 class="my-0">{{item.version}}</h2>
+                    <div class="text-secondary text-md font-semibold">
+                        {{item.releaseDate}}
                     </div>
-                    <hr class="mt-6" />
-                    <ng-container *ngFor="let change of item.changes">
-                        <div class="mt-8">
-                            <span
-                                class="text-secondary bg-default inline-flex rounded px-3 py-1 font-bold"
-                                >{{change.type}}</span
-                            >
-                            <ul>
-                                <ng-container
-                                    *ngFor="let listItem of change.list"
-                                >
-                                    <li>{{listItem}}</li>
-                                </ng-container>
-                            </ul>
-                        </div>
-                    </ng-container>
                 </div>
-            </ng-container>
+                <hr class="mt-6" />
+                @for (change of item.changes; track change) {
+
+                <div class="mt-8">
+                    <span
+                        class="text-secondary bg-default inline-flex rounded px-3 py-1 font-bold"
+                        >{{change.type}}</span
+                    >
+                    <ul>
+                        @for (listItem of change.list; track listItem) {
+
+                        <li>{{listItem}}</li>
+
+                        }
+                    </ul>
+                </div>
+
+                }
+            </div>
+
+            }
         </div>
     </div>
 </div>

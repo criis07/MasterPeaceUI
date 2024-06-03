@@ -1,17 +1,17 @@
 <div class="flex w-full flex-col">
     <!-- View mode -->
-    <ng-container *ngIf="!editMode">
+    @if (!editMode) {
         <!-- Header -->
         <div
             class="relative h-40 w-full bg-accent-100 px-8 dark:bg-accent-700 sm:h-48 sm:px-12"
         >
             <!-- Background -->
-            <ng-container *ngIf="contact.background">
+            @if (contact.background) {
                 <img
                     class="absolute inset-0 h-full w-full object-cover"
                     [src]="contact.background"
                 />
-            </ng-container>
+            }
             <!-- Close button -->
             <div
                 class="mx-auto flex w-full max-w-3xl items-center justify-end pt-6"
@@ -40,17 +40,19 @@
                     <div
                         class="ring-bg-card flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-4"
                     >
-                        <img
-                            class="h-full w-full object-cover"
-                            *ngIf="contact.avatar"
-                            [src]="contact.avatar"
-                        />
-                        <div
-                            class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                            *ngIf="!contact.avatar"
-                        >
-                            {{ contact.name.charAt(0) }}
-                        </div>
+                        @if (contact.avatar) {
+                            <img
+                                class="h-full w-full object-cover"
+                                [src]="contact.avatar"
+                            />
+                        }
+                        @if (!contact.avatar) {
+                            <div
+                                class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                            >
+                                {{ contact.name.charAt(0) }}
+                            </div>
+                        }
                     </div>
                     <!-- Actions -->
                     <div class="mb-1 ml-auto flex items-center">
@@ -73,16 +75,13 @@
                 </div>
 
                 <!-- Tags -->
-                <ng-container *ngIf="contact.tags.length">
+                @if (contact.tags.length) {
                     <div class="mt-2 flex flex-wrap items-center">
                         <!-- Tag -->
-                        <ng-container
-                            *ngFor="
-                                let tag of contact.tags
-                                    | fuseFindByKey: 'id' : tags;
-                                trackBy: trackByFn
-                            "
-                        >
+                        @for (
+                            tag of contact.tags | fuseFindByKey: 'id' : tags;
+                            track trackByFn($index, tag)
+                        ) {
                             <div
                                 class="mb-3 mr-3 flex items-center justify-center rounded-full bg-gray-100 px-3 py-1 leading-normal text-gray-500 dark:bg-gray-700 dark:text-gray-300"
                             >
@@ -91,13 +90,13 @@
                                     >{{ tag.title }}</span
                                 >
                             </div>
-                        </ng-container>
+                        }
                     </div>
-                </ng-container>
+                }
 
                 <div class="mt-4 flex flex-col space-y-8 border-t pt-6">
                     <!-- Title -->
-                    <ng-container *ngIf="contact.title">
+                    @if (contact.title) {
                         <div class="flex sm:items-center">
                             <mat-icon
                                 [svgIcon]="'heroicons_outline:briefcase'"
@@ -106,10 +105,10 @@
                                 {{ contact.title }}
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Company -->
-                    <ng-container *ngIf="contact.company">
+                    @if (contact.company) {
                         <div class="flex sm:items-center">
                             <mat-icon
                                 [svgIcon]="
@@ -120,21 +119,19 @@
                                 {{ contact.company }}
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Emails -->
-                    <ng-container *ngIf="contact.emails.length">
+                    @if (contact.emails.length) {
                         <div class="flex">
                             <mat-icon
                                 [svgIcon]="'heroicons_outline:envelope'"
                             ></mat-icon>
                             <div class="ml-6 min-w-0 space-y-1">
-                                <ng-container
-                                    *ngFor="
-                                        let email of contact.emails;
-                                        trackBy: trackByFn
-                                    "
-                                >
+                                @for (
+                                    email of contact.emails;
+                                    track trackByFn($index, email)
+                                ) {
                                     <div class="flex items-center leading-6">
                                         <a
                                             class="text-primary-500 hover:underline"
@@ -143,34 +140,33 @@
                                         >
                                             {{ email.email }}
                                         </a>
-                                        <div
-                                            class="text-secondary truncate text-md"
-                                            *ngIf="email.label"
-                                        >
-                                            <span class="mx-2">&bull;</span>
-                                            <span class="font-medium">{{
-                                                email.label
-                                            }}</span>
-                                        </div>
+                                        @if (email.label) {
+                                            <div
+                                                class="text-secondary truncate text-md"
+                                            >
+                                                <span class="mx-2">&bull;</span>
+                                                <span class="font-medium">{{
+                                                    email.label
+                                                }}</span>
+                                            </div>
+                                        }
                                     </div>
-                                </ng-container>
+                                }
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Phone -->
-                    <ng-container *ngIf="contact.phoneNumbers.length">
+                    @if (contact.phoneNumbers.length) {
                         <div class="flex">
                             <mat-icon
                                 [svgIcon]="'heroicons_outline:phone'"
                             ></mat-icon>
                             <div class="ml-6 min-w-0 space-y-1">
-                                <ng-container
-                                    *ngFor="
-                                        let phoneNumber of contact.phoneNumbers;
-                                        trackBy: trackByFn
-                                    "
-                                >
+                                @for (
+                                    phoneNumber of contact.phoneNumbers;
+                                    track trackByFn($index, phoneNumber)
+                                ) {
                                     <div class="flex items-center leading-6">
                                         <div
                                             class="hidden h-4 w-6 overflow-hidden sm:flex"
@@ -201,23 +197,24 @@
                                         <div class="ml-2.5 font-mono">
                                             {{ phoneNumber.phoneNumber }}
                                         </div>
-                                        <div
-                                            class="text-secondary truncate text-md"
-                                            *ngIf="phoneNumber.label"
-                                        >
-                                            <span class="mx-2">&bull;</span>
-                                            <span class="font-medium">{{
-                                                phoneNumber.label
-                                            }}</span>
-                                        </div>
+                                        @if (phoneNumber.label) {
+                                            <div
+                                                class="text-secondary truncate text-md"
+                                            >
+                                                <span class="mx-2">&bull;</span>
+                                                <span class="font-medium">{{
+                                                    phoneNumber.label
+                                                }}</span>
+                                            </div>
+                                        }
                                     </div>
-                                </ng-container>
+                                }
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Address -->
-                    <ng-container *ngIf="contact.address">
+                    @if (contact.address) {
                         <div class="flex sm:items-center">
                             <mat-icon
                                 [svgIcon]="'heroicons_outline:map-pin'"
@@ -226,10 +223,10 @@
                                 {{ contact.address }}
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Birthday -->
-                    <ng-container *ngIf="contact.birthday">
+                    @if (contact.birthday) {
                         <div class="flex sm:items-center">
                             <mat-icon
                                 [svgIcon]="'heroicons_outline:cake'"
@@ -238,10 +235,10 @@
                                 {{ contact.birthday | date: 'longDate' }}
                             </div>
                         </div>
-                    </ng-container>
+                    }
 
                     <!-- Notes -->
-                    <ng-container *ngIf="contact.notes">
+                    @if (contact.notes) {
                         <div class="flex">
                             <mat-icon
                                 [svgIcon]="
@@ -253,25 +250,25 @@
                                 [innerHTML]="contact.notes"
                             ></div>
                         </div>
-                    </ng-container>
+                    }
                 </div>
             </div>
         </div>
-    </ng-container>
+    }
 
     <!-- Edit mode -->
-    <ng-container *ngIf="editMode">
+    @if (editMode) {
         <!-- Header -->
         <div
             class="relative h-40 w-full bg-accent-100 px-8 dark:bg-accent-700 sm:h-48 sm:px-12"
         >
             <!-- Background -->
-            <ng-container *ngIf="contact.background">
+            @if (contact.background) {
                 <img
                     class="absolute inset-0 h-full w-full object-cover"
                     [src]="contact.background"
                 />
-            </ng-container>
+            }
             <!-- Close button -->
             <div
                 class="mx-auto flex w-full max-w-3xl items-center justify-end pt-6"
@@ -347,17 +344,19 @@
                                 </div>
                             </div>
                             <!-- Image/Letter -->
-                            <img
-                                class="h-full w-full object-cover"
-                                *ngIf="contact.avatar"
-                                [src]="contact.avatar"
-                            />
-                            <div
-                                class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                                *ngIf="!contact.avatar"
-                            >
-                                {{ contact.name.charAt(0) }}
-                            </div>
+                            @if (contact.avatar) {
+                                <img
+                                    class="h-full w-full object-cover"
+                                    [src]="contact.avatar"
+                                />
+                            }
+                            @if (!contact.avatar) {
+                                <div
+                                    class="flex h-full w-full items-center justify-center overflow-hidden rounded bg-gray-200 text-8xl font-bold uppercase leading-none text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                                >
+                                    {{ contact.name.charAt(0) }}
+                                </div>
+                            }
                         </div>
                     </div>
 
@@ -385,14 +384,12 @@
                     <!-- Tags -->
                     <div class="-m-1.5 mt-6 flex flex-wrap items-center">
                         <!-- Tags -->
-                        <ng-container *ngIf="contact.tags.length">
-                            <ng-container
-                                *ngFor="
-                                    let tag of contact.tags
-                                        | fuseFindByKey: 'id' : tags;
-                                    trackBy: trackByFn
-                                "
-                            >
+                        @if (contact.tags.length) {
+                            @for (
+                                tag of contact.tags
+                                    | fuseFindByKey: 'id' : tags;
+                                track trackByFn($index, tag)
+                            ) {
                                 <div
                                     class="m-1.5 flex items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
                                 >
@@ -401,15 +398,15 @@
                                         >{{ tag.title }}</span
                                     >
                                 </div>
-                            </ng-container>
-                        </ng-container>
+                            }
+                        }
                         <!-- Tags panel and its button -->
                         <div
                             class="m-1.5 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
                             (click)="openTagsPanel()"
                             #tagsPanelOrigin
                         >
-                            <ng-container *ngIf="contact.tags.length">
+                            @if (contact.tags.length) {
                                 <mat-icon
                                     class="icon-size-5"
                                     [svgIcon]="'heroicons_solid:pencil-square'"
@@ -418,9 +415,9 @@
                                     class="ml-1.5 whitespace-nowrap text-md font-medium"
                                     >Edit</span
                                 >
-                            </ng-container>
+                            }
 
-                            <ng-container *ngIf="!contact.tags.length">
+                            @if (!contact.tags.length) {
                                 <mat-icon
                                     class="icon-size-5"
                                     [svgIcon]="'heroicons_solid:plus-circle'"
@@ -429,7 +426,7 @@
                                     class="ml-1.5 whitespace-nowrap text-md font-medium"
                                     >Add</span
                                 >
-                            </ng-container>
+                            }
 
                             <!-- Tags panel -->
                             <ng-template #tagsPanel>
@@ -466,33 +463,33 @@
                                             mat-icon-button
                                             (click)="toggleTagsEditMode()"
                                         >
-                                            <mat-icon
-                                                *ngIf="!tagsEditMode"
-                                                class="icon-size-5"
-                                                [svgIcon]="
-                                                    'heroicons_solid:pencil-square'
-                                                "
-                                            ></mat-icon>
-                                            <mat-icon
-                                                *ngIf="tagsEditMode"
-                                                class="icon-size-5"
-                                                [svgIcon]="
-                                                    'heroicons_solid:check'
-                                                "
-                                            ></mat-icon>
+                                            @if (!tagsEditMode) {
+                                                <mat-icon
+                                                    class="icon-size-5"
+                                                    [svgIcon]="
+                                                        'heroicons_solid:pencil-square'
+                                                    "
+                                                ></mat-icon>
+                                            }
+                                            @if (tagsEditMode) {
+                                                <mat-icon
+                                                    class="icon-size-5"
+                                                    [svgIcon]="
+                                                        'heroicons_solid:check'
+                                                    "
+                                                ></mat-icon>
+                                            }
                                         </button>
                                     </div>
                                     <div
                                         class="flex max-h-64 flex-col overflow-y-auto border-t py-2"
                                     >
                                         <!-- Tags -->
-                                        <ng-container *ngIf="!tagsEditMode">
-                                            <ng-container
-                                                *ngFor="
-                                                    let tag of filteredTags;
-                                                    trackBy: trackByFn
-                                                "
-                                            >
+                                        @if (!tagsEditMode) {
+                                            @for (
+                                                tag of filteredTags;
+                                                track trackByFn($index, tag)
+                                            ) {
                                                 <div
                                                     class="flex h-10 min-h-10 cursor-pointer items-center pl-1 pr-4 hover:bg-hover"
                                                     (click)="
@@ -513,17 +510,15 @@
                                                     </mat-checkbox>
                                                     <div>{{ tag.title }}</div>
                                                 </div>
-                                            </ng-container>
-                                        </ng-container>
+                                            }
+                                        }
                                         <!-- Tags editing -->
-                                        <ng-container *ngIf="tagsEditMode">
+                                        @if (tagsEditMode) {
                                             <div class="space-y-2 py-2">
-                                                <ng-container
-                                                    *ngFor="
-                                                        let tag of filteredTags;
-                                                        trackBy: trackByFn
-                                                    "
-                                                >
+                                                @for (
+                                                    tag of filteredTags;
+                                                    track trackByFn($index, tag)
+                                                ) {
                                                     <div
                                                         class="flex items-center"
                                                     >
@@ -563,36 +558,39 @@
                                                             </button>
                                                         </mat-form-field>
                                                     </div>
-                                                </ng-container>
+                                                }
                                             </div>
-                                        </ng-container>
+                                        }
                                         <!-- Create tag -->
-                                        <div
-                                            class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center pl-4 pr-3 leading-none hover:bg-hover"
-                                            *ngIf="
-                                                shouldShowCreateTagButton(
-                                                    newTagInput.value
-                                                )
-                                            "
-                                            (click)="
-                                                createTag(newTagInput.value);
-                                                newTagInput.value = ''
-                                            "
-                                            matRipple
-                                        >
-                                            <mat-icon
-                                                class="mr-2 icon-size-5"
-                                                [svgIcon]="
-                                                    'heroicons_solid:plus-circle'
+                                        @if (
+                                            shouldShowCreateTagButton(
+                                                newTagInput.value
+                                            )
+                                        ) {
+                                            <div
+                                                class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center pl-4 pr-3 leading-none hover:bg-hover"
+                                                (click)="
+                                                    createTag(
+                                                        newTagInput.value
+                                                    );
+                                                    newTagInput.value = ''
                                                 "
-                                            ></mat-icon>
-                                            <div class="break-all">
-                                                Create "<b>{{
-                                                    newTagInput.value
-                                                }}</b
-                                                >"
+                                                matRipple
+                                            >
+                                                <mat-icon
+                                                    class="mr-2 icon-size-5"
+                                                    [svgIcon]="
+                                                        'heroicons_solid:plus-circle'
+                                                    "
+                                                ></mat-icon>
+                                                <div class="break-all">
+                                                    Create "<b>{{
+                                                        newTagInput.value
+                                                    }}</b
+                                                    >"
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
                                 </div>
                             </ng-template>
@@ -642,25 +640,21 @@
                     <!-- Emails -->
                     <div class="mt-8">
                         <div class="space-y-4">
-                            <ng-container
-                                *ngFor="
-                                    let email of contactForm.get('emails')[
-                                        'controls'
-                                    ];
-                                    let i = index;
-                                    let first = first;
-                                    let last = last;
-                                    trackBy: trackByFn
-                                "
-                            >
+                            @for (
+                                email of contactForm.get('emails')['controls'];
+                                track trackByFn(i, email);
+                                let i = $index;
+                                let first = $first;
+                                let last = $last
+                            ) {
                                 <div class="flex">
                                     <mat-form-field
                                         class="flex-auto"
                                         [subscriptSizing]="'dynamic'"
                                     >
-                                        <mat-label *ngIf="first"
-                                            >Email</mat-label
-                                        >
+                                        @if (first) {
+                                            <mat-label>Email</mat-label>
+                                        }
                                         <mat-icon
                                             matPrefix
                                             class="hidden icon-size-5 sm:flex"
@@ -679,9 +673,9 @@
                                         class="ml-2 w-full max-w-24 flex-auto sm:ml-4 sm:max-w-40"
                                         [subscriptSizing]="'dynamic'"
                                     >
-                                        <mat-label *ngIf="first"
-                                            >Label</mat-label
-                                        >
+                                        @if (first) {
+                                            <mat-label>Label</mat-label>
+                                        }
                                         <mat-icon
                                             matPrefix
                                             class="hidden icon-size-5 sm:flex"
@@ -694,7 +688,7 @@
                                         />
                                     </mat-form-field>
                                     <!-- Remove email -->
-                                    <ng-container *ngIf="!(first && last)">
+                                    @if (!(first && last)) {
                                         <div
                                             class="flex w-10 items-center pl-2"
                                             [ngClass]="{ 'mt-6': first }"
@@ -713,9 +707,9 @@
                                                 ></mat-icon>
                                             </button>
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
-                            </ng-container>
+                            }
                         </div>
                         <div
                             class="group -ml-4 mt-2 inline-flex cursor-pointer items-center rounded px-4 py-2"
@@ -735,25 +729,23 @@
                     <!-- Phone numbers -->
                     <div class="mt-8">
                         <div class="space-y-4">
-                            <ng-container
-                                *ngFor="
-                                    let phoneNumber of contactForm.get(
-                                        'phoneNumbers'
-                                    )['controls'];
-                                    let i = index;
-                                    let first = first;
-                                    let last = last;
-                                    trackBy: trackByFn
-                                "
-                            >
+                            @for (
+                                phoneNumber of contactForm.get('phoneNumbers')[
+                                    'controls'
+                                ];
+                                track trackByFn(i, phoneNumber);
+                                let i = $index;
+                                let first = $first;
+                                let last = $last
+                            ) {
                                 <div class="relative flex">
                                     <mat-form-field
                                         class="flex-auto"
                                         [subscriptSizing]="'dynamic'"
                                     >
-                                        <mat-label *ngIf="first"
-                                            >Phone</mat-label
-                                        >
+                                        @if (first) {
+                                            <mat-label>Phone</mat-label>
+                                        }
                                         <input
                                             matInput
                                             [formControl]="
@@ -798,12 +790,10 @@
                                                     >
                                                 </span>
                                             </mat-select-trigger>
-                                            <ng-container
-                                                *ngFor="
-                                                    let country of countries;
-                                                    trackBy: trackByFn
-                                                "
-                                            >
+                                            @for (
+                                                country of countries;
+                                                track trackByFn($index, country)
+                                            ) {
                                                 <mat-option
                                                     [value]="country.iso"
                                                 >
@@ -833,16 +823,16 @@
                                                         >
                                                     </span>
                                                 </mat-option>
-                                            </ng-container>
+                                            }
                                         </mat-select>
                                     </mat-form-field>
                                     <mat-form-field
                                         class="ml-2 w-full max-w-24 flex-auto sm:ml-4 sm:max-w-40"
                                         [subscriptSizing]="'dynamic'"
                                     >
-                                        <mat-label *ngIf="first"
-                                            >Label</mat-label
-                                        >
+                                        @if (first) {
+                                            <mat-label>Label</mat-label>
+                                        }
                                         <mat-icon
                                             matPrefix
                                             class="hidden icon-size-5 sm:flex"
@@ -857,7 +847,7 @@
                                         />
                                     </mat-form-field>
                                     <!-- Remove phone number -->
-                                    <ng-container *ngIf="!(first && last)">
+                                    @if (!(first && last)) {
                                         <div
                                             class="flex w-10 items-center pl-2"
                                             [ngClass]="{ 'mt-6': first }"
@@ -878,9 +868,9 @@
                                                 ></mat-icon>
                                             </button>
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
-                            </ng-container>
+                            }
                         </div>
                         <div
                             class="group -ml-4 mt-2 inline-flex cursor-pointer items-center rounded px-4 py-2"
@@ -1006,5 +996,5 @@
                 </form>
             </div>
         </div>
-    </ng-container>
+    }
 </div>

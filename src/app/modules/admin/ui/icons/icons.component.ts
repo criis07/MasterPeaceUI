@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
@@ -25,14 +25,12 @@ import {
     standalone: true,
     imports: [
         MatIconModule,
-        NgIf,
         FuseHighlightComponent,
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
         FormsModule,
         MatOptionModule,
-        NgFor,
         NgClass,
         AsyncPipe,
     ],

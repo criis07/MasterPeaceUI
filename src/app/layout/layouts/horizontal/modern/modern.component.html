@@ -2,7 +2,7 @@
 <fuse-loading-bar></fuse-loading-bar>
 
 <!-- Navigation -->
-<ng-container *ngIf="isScreenSmall">
+@if (isScreenSmall) {
     <fuse-vertical-navigation
         class="dark bg-gray-900 print:hidden"
         [mode]="'over'"
@@ -22,7 +22,7 @@
             </div>
         </ng-container>
     </fuse-vertical-navigation>
-</ng-container>
+}
 
 <!-- Wrapper -->
 <div class="flex w-full min-w-0 flex-auto flex-col">
@@ -30,7 +30,7 @@
     <div
         class="bg-card relative z-49 flex h-16 w-full flex-0 items-center px-4 shadow dark:border-b dark:bg-transparent dark:shadow-none sm:h-20 md:px-6 print:hidden"
     >
-        <ng-container *ngIf="!isScreenSmall">
+        @if (!isScreenSmall) {
             <!-- Logo -->
             <div class="mx-2 flex items-center lg:mr-8">
                 <div class="hidden lg:flex">
@@ -51,16 +51,16 @@
                 [name]="'mainNavigation'"
                 [navigation]="navigation.horizontal"
             ></fuse-horizontal-navigation>
-        </ng-container>
+        }
         <!-- Navigation toggle button -->
-        <ng-container *ngIf="isScreenSmall">
+        @if (isScreenSmall) {
             <button
                 mat-icon-button
                 (click)="toggleNavigation('mainNavigation')"
             >
                 <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
             </button>
-        </ng-container>
+        }
         <!-- Components -->
         <div class="ml-auto flex items-center space-x-0.5 pl-2 sm:space-x-2">
             <languages></languages>
@@ -86,7 +86,9 @@
     <div class="flex w-full flex-auto flex-col">
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
-        <router-outlet *ngIf="true"></router-outlet>
+        @if (true) {
+            <router-outlet></router-outlet>
+        }
     </div>
 
     <!-- Footer -->

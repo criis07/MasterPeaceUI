@@ -1,4 +1,4 @@
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -23,7 +23,7 @@ import { take } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'languages',
     standalone: true,
-    imports: [MatButtonModule, MatMenuModule, NgTemplateOutlet, NgFor],
+    imports: [MatButtonModule, MatMenuModule, NgTemplateOutlet],
 })
 export class LanguagesComponent implements OnInit, OnDestroy {
     availableLangs: AvailableLangs;

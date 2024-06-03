@@ -25,12 +25,10 @@
                     </span>
                 </a>
                 <!-- Course category -->
-                <ng-container
-                    *ngIf="
-                        course.category
-                            | fuseFindByKey: 'slug' : categories as category
-                    "
-                >
+                @if (
+                    course.category | fuseFindByKey: 'slug' : categories;
+                    as category
+                ) {
                     <div
                         class="mt-7 rounded-full px-3 py-0.5 text-sm font-semibold"
                         [ngClass]="{
@@ -41,12 +39,12 @@
                             'bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-pink-50':
                                 category.slug === 'cloud',
                             'bg-amber-100 text-amber-800 dark:bg-amber-500 dark:text-amber-50':
-                                category.slug === 'firebase'
+                                category.slug === 'firebase',
                         }"
                     >
                         {{ category.title }}
                     </div>
-                </ng-container>
+                }
                 <!-- Course title & description -->
                 <div class="mt-3 text-2xl font-semibold">
                     {{ course.title }}
@@ -67,27 +65,25 @@
             <!-- Steps -->
             <div class="px-8 py-2">
                 <ol>
-                    <ng-container
-                        *ngFor="
-                            let step of course.steps;
-                            let last = last;
-                            trackBy: trackByFn
-                        "
-                    >
+                    @for (
+                        step of course.steps;
+                        track trackByFn($index, step);
+                        let last = $last
+                    ) {
                         <li
                             class="group relative py-6"
                             [class.current-step]="step.order === currentStep"
                         >
-                            <ng-container *ngIf="!last">
+                            @if (!last) {
                                 <div
                                     class="absolute left-4 top-6 -ml-px h-full w-0.5"
                                     [ngClass]="{
                                         'bg-primary': step.order < currentStep,
                                         'bg-gray-300 dark:bg-gray-600':
-                                            step.order >= currentStep
+                                            step.order >= currentStep,
                                     }"
                                 ></div>
-                            </ng-container>
+                            }
                             <div
                                 class="relative flex cursor-pointer items-start"
                                 (click)="goToStep(step.order)"
@@ -100,38 +96,32 @@
                                         'ring-primary':
                                             step.order === currentStep,
                                         'ring-gray-300 group-hover:ring-gray-400 dark:ring-gray-600':
-                                            step.order > currentStep
+                                            step.order > currentStep,
                                     }"
                                 >
                                     <!-- Check icon, show if the step is completed -->
-                                    <ng-container
-                                        *ngIf="step.order < currentStep"
-                                    >
+                                    @if (step.order < currentStep) {
                                         <mat-icon
                                             class="text-current icon-size-5"
                                             [svgIcon]="'heroicons_solid:check'"
                                         ></mat-icon>
-                                    </ng-container>
+                                    }
                                     <!-- Step order, show if the step is the current step -->
-                                    <ng-container
-                                        *ngIf="step.order === currentStep"
-                                    >
+                                    @if (step.order === currentStep) {
                                         <div
                                             class="text-md font-semibold text-primary dark:text-primary-500"
                                         >
                                             {{ step.order + 1 }}
                                         </div>
-                                    </ng-container>
+                                    }
                                     <!-- Step order, show if the step is not completed -->
-                                    <ng-container
-                                        *ngIf="step.order > currentStep"
-                                    >
+                                    @if (step.order > currentStep) {
                                         <div
                                             class="text-hint text-md font-semibold group-hover:text-secondary"
                                         >
                                             {{ step.order + 1 }}
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
                                 <div class="ml-4">
                                     <div class="font-medium leading-4">
@@ -145,7 +135,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ng-container>
+                    }
                 </ol>
             </div>
         </mat-drawer>
@@ -181,9 +171,7 @@
                     [animationDuration]="'200'"
                     #courseSteps
                 >
-                    <ng-container
-                        *ngFor="let step of course.steps; trackBy: trackByFn"
-                    >
+                    @for (step of course.steps; track trackByFn($index, step)) {
                         <mat-tab>
                             <ng-template matTabContent>
                                 <div
@@ -192,7 +180,7 @@
                                 ></div>
                             </ng-template>
                         </mat-tab>
-                    </ng-container>
+                    }
                 </mat-tab-group>
 
                 <!-- Navigation - Desktop -->

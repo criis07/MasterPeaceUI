@@ -1,13 +1,6 @@
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import {
-    DOCUMENT,
-    DatePipe,
-    NgClass,
-    NgFor,
-    NgIf,
-    NgTemplateOutlet,
-} from '@angular/common';
+import { DOCUMENT, DatePipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     AfterViewInit,
     Component,
@@ -40,11 +33,9 @@ import { Subject, takeUntil } from 'rxjs';
     standalone: true,
     imports: [
         NgClass,
-        NgIf,
         MatIconModule,
         MatButtonModule,
         FuseScrollbarDirective,
-        NgFor,
         NgTemplateOutlet,
         MatFormFieldModule,
         MatInputModule,

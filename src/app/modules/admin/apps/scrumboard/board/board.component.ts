@@ -8,7 +8,7 @@ import {
     transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -48,11 +48,9 @@ import { ScrumboardBoardAddListComponent } from './add-list/add-list.component';
         CdkScrollable,
         CdkDropList,
         CdkDropListGroup,
-        NgFor,
         CdkDrag,
         CdkDragHandle,
         MatMenuModule,
-        NgIf,
         NgClass,
         ScrumboardBoardAddCardComponent,
         ScrumboardBoardAddListComponent,

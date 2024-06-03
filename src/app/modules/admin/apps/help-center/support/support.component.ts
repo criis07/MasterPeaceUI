@@ -1,5 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { NgIf } from '@angular/common';
+
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -28,7 +28,6 @@ import { HelpCenterService } from 'app/modules/admin/apps/help-center/help-cente
         MatButtonModule,
         RouterLink,
         MatIconModule,
-        NgIf,
         FuseAlertComponent,
         FormsModule,
         ReactiveFormsModule,

@@ -82,16 +82,17 @@
             </div>
 
             <!-- Alert -->
-            <fuse-alert
-                class="mt-8"
-                *ngIf="showAlert"
-                [appearance]="'outline'"
-                [showIcon]="false"
-                [type]="alert.type"
-                [@shake]="alert.type === 'error'"
-            >
-                {{ alert.message }}
-            </fuse-alert>
+            @if (showAlert) {
+                <fuse-alert
+                    class="mt-8"
+                    [appearance]="'outline'"
+                    [showIcon]="false"
+                    [type]="alert.type"
+                    [@shake]="alert.type === 'error'"
+                >
+                    {{ alert.message }}
+                </fuse-alert>
+            }
 
             <!-- Coming soon form -->
             <form
@@ -103,16 +104,14 @@
                 <mat-form-field class="w-full">
                     <mat-label>Email address</mat-label>
                     <input id="email" matInput [formControlName]="'email'" />
-                    <mat-error
-                        *ngIf="comingSoonForm.get('email').hasError('required')"
-                    >
-                        Email address is required
-                    </mat-error>
-                    <mat-error
-                        *ngIf="comingSoonForm.get('email').hasError('email')"
-                    >
-                        Please enter a valid email address
-                    </mat-error>
+                    @if (comingSoonForm.get('email').hasError('required')) {
+                        <mat-error> Email address is required </mat-error>
+                    }
+                    @if (comingSoonForm.get('email').hasError('email')) {
+                        <mat-error>
+                            Please enter a valid email address
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <!-- Submit button -->
@@ -124,14 +123,15 @@
                     [disabled]="comingSoonForm.disabled"
                     (click)="register()"
                 >
-                    <span *ngIf="!comingSoonForm.disabled">
-                        Notify me when you launch
-                    </span>
-                    <mat-progress-spinner
-                        *ngIf="comingSoonForm.disabled"
-                        [diameter]="24"
-                        [mode]="'indeterminate'"
-                    ></mat-progress-spinner>
+                    @if (!comingSoonForm.disabled) {
+                        <span> Notify me when you launch </span>
+                    }
+                    @if (comingSoonForm.disabled) {
+                        <mat-progress-spinner
+                            [diameter]="24"
+                            [mode]="'indeterminate'"
+                        ></mat-progress-spinner>
+                    }
                 </button>
 
                 <!-- Form footer -->

@@ -25,17 +25,19 @@
         <!-- User -->
         <div class="flex w-full flex-col items-center p-4">
             <div class="relative h-24 w-24">
-                <img
-                    class="h-full w-full rounded-full"
-                    *ngIf="user.avatar"
-                    [src]="user.avatar"
-                    alt="User avatar"
-                />
-                <mat-icon
-                    class="icon-size-24"
-                    *ngIf="!user.avatar"
-                    [svgIcon]="'heroicons_solid:user-circle'"
-                ></mat-icon>
+                @if (user.avatar) {
+                    <img
+                        class="h-full w-full rounded-full"
+                        [src]="user.avatar"
+                        alt="User avatar"
+                    />
+                }
+                @if (!user.avatar) {
+                    <mat-icon
+                        class="icon-size-24"
+                        [svgIcon]="'heroicons_solid:user-circle'"
+                    ></mat-icon>
+                }
             </div>
             <div class="mt-6 flex w-full flex-col items-center justify-center">
                 <div
@@ -94,7 +96,9 @@
     <div class="flex flex-auto flex-col">
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
-        <router-outlet *ngIf="true"></router-outlet>
+        @if (true) {
+            <router-outlet></router-outlet>
+        }
     </div>
 
     <!-- Footer -->

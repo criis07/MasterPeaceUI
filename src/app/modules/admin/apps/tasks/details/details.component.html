@@ -8,17 +8,17 @@
             <!-- Mark as ... button -->
             <button class="pl-3.5 pr-4" mat-button (click)="toggleCompleted()">
                 <!-- Mark as complete -->
-                <ng-container *ngIf="!taskForm.get('completed').value">
+                @if (!taskForm.get('completed').value) {
                     <div class="flex items-center justify-center">
                         <mat-icon
                             [svgIcon]="'heroicons_outline:check-circle'"
                         ></mat-icon>
                         <span class="ml-2 font-semibold">MARK AS COMPLETE</span>
                     </div>
-                </ng-container>
+                }
 
                 <!-- Mark as incomplete -->
-                <ng-container *ngIf="taskForm.get('completed').value">
+                @if (taskForm.get('completed').value) {
                     <div class="flex items-center justify-center">
                         <mat-icon
                             class="text-primary"
@@ -28,7 +28,7 @@
                             >MARK AS INCOMPLETE</span
                         >
                     </div>
-                </ng-container>
+                }
             </button>
 
             <div class="flex items-center">
@@ -82,13 +82,11 @@
             <div class="mb-1.5 font-medium">Tags</div>
             <div class="-m-1.5 flex flex-wrap items-center">
                 <!-- Tags -->
-                <ng-container *ngIf="task.tags.length">
-                    <ng-container
-                        *ngFor="
-                            let tag of task.tags | fuseFindByKey: 'id' : tags;
-                            trackBy: trackByFn
-                        "
-                    >
+                @if (task.tags.length) {
+                    @for (
+                        tag of task.tags | fuseFindByKey: 'id' : tags;
+                        track trackByFn($index, tag)
+                    ) {
                         <div
                             class="m-1.5 flex items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
                         >
@@ -97,14 +95,14 @@
                                 >{{ tag.title }}</span
                             >
                         </div>
-                    </ng-container>
-                </ng-container>
+                    }
+                }
                 <div
                     class="m-1.5 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 px-4 leading-9 text-gray-500 dark:bg-gray-700 dark:text-gray-300"
                     (click)="openTagsPanel()"
                     #tagsPanelOrigin
                 >
-                    <ng-container *ngIf="task.tags.length">
+                    @if (task.tags.length) {
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'heroicons_solid:pencil-square'"
@@ -113,9 +111,9 @@
                             class="ml-1.5 whitespace-nowrap text-md font-medium"
                             >Edit</span
                         >
-                    </ng-container>
+                    }
 
-                    <ng-container *ngIf="!task.tags.length">
+                    @if (!task.tags.length) {
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'heroicons_solid:plus-circle'"
@@ -124,7 +122,7 @@
                             class="ml-1.5 whitespace-nowrap text-md font-medium"
                             >Add</span
                         >
-                    </ng-container>
+                    }
 
                     <!-- Tags panel -->
                     <ng-template #tagsPanel>
@@ -157,31 +155,31 @@
                                     mat-icon-button
                                     (click)="toggleTagsEditMode()"
                                 >
-                                    <mat-icon
-                                        *ngIf="!tagsEditMode"
-                                        class="icon-size-5"
-                                        [svgIcon]="
-                                            'heroicons_solid:pencil-square'
-                                        "
-                                    ></mat-icon>
-                                    <mat-icon
-                                        *ngIf="tagsEditMode"
-                                        class="icon-size-5"
-                                        [svgIcon]="'heroicons_solid:check'"
-                                    ></mat-icon>
+                                    @if (!tagsEditMode) {
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            [svgIcon]="
+                                                'heroicons_solid:pencil-square'
+                                            "
+                                        ></mat-icon>
+                                    }
+                                    @if (tagsEditMode) {
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            [svgIcon]="'heroicons_solid:check'"
+                                        ></mat-icon>
+                                    }
                                 </button>
                             </div>
                             <div
                                 class="flex max-h-64 flex-col overflow-y-auto border-t py-2"
                             >
                                 <!-- Tags -->
-                                <ng-container *ngIf="!tagsEditMode">
-                                    <ng-container
-                                        *ngFor="
-                                            let tag of filteredTags;
-                                            trackBy: trackByFn
-                                        "
-                                    >
+                                @if (!tagsEditMode) {
+                                    @for (
+                                        tag of filteredTags;
+                                        track trackByFn($index, tag)
+                                    ) {
                                         <div
                                             class="flex h-10 min-h-10 cursor-pointer items-center pl-1 pr-4 hover:bg-hover"
                                             (click)="toggleTaskTag(tag)"
@@ -200,17 +198,15 @@
                                                 {{ tag.title }}
                                             </div>
                                         </div>
-                                    </ng-container>
-                                </ng-container>
+                                    }
+                                }
                                 <!-- Tags editing -->
-                                <ng-container *ngIf="tagsEditMode">
+                                @if (tagsEditMode) {
                                     <div class="space-y-2 py-2">
-                                        <ng-container
-                                            *ngFor="
-                                                let tag of filteredTags;
-                                                trackBy: trackByFn
-                                            "
-                                        >
+                                        @for (
+                                            tag of filteredTags;
+                                            track trackByFn($index, tag)
+                                        ) {
                                             <div class="flex items-center">
                                                 <mat-form-field
                                                     class="fuse-mat-dense mx-4 w-full"
@@ -242,34 +238,35 @@
                                                     </button>
                                                 </mat-form-field>
                                             </div>
-                                        </ng-container>
+                                        }
                                     </div>
-                                </ng-container>
+                                }
                                 <!-- Create tag -->
-                                <div
-                                    class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center pl-4 pr-3 leading-none hover:bg-hover"
-                                    *ngIf="
-                                        shouldShowCreateTagButton(
-                                            newTagInput.value
-                                        )
-                                    "
-                                    (click)="
-                                        createTag(newTagInput.value);
-                                        newTagInput.value = ''
-                                    "
-                                    matRipple
-                                >
-                                    <mat-icon
-                                        class="mr-2 icon-size-5"
-                                        [svgIcon]="
-                                            'heroicons_solid:plus-circle'
+                                @if (
+                                    shouldShowCreateTagButton(newTagInput.value)
+                                ) {
+                                    <div
+                                        class="-ml-0.5 flex h-10 min-h-10 cursor-pointer items-center pl-4 pr-3 leading-none hover:bg-hover"
+                                        (click)="
+                                            createTag(newTagInput.value);
+                                            newTagInput.value = ''
                                         "
-                                    ></mat-icon>
-                                    <div class="break-all">
-                                        Create "<b>{{ newTagInput.value }}</b
-                                        >"
+                                        matRipple
+                                    >
+                                        <mat-icon
+                                            class="mr-2 icon-size-5"
+                                            [svgIcon]="
+                                                'heroicons_solid:plus-circle'
+                                            "
+                                        ></mat-icon>
+                                        <div class="break-all">
+                                            Create "<b>{{
+                                                newTagInput.value
+                                            }}</b
+                                            >"
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </ng-template>
@@ -290,21 +287,21 @@
                         'bg-gray-200 text-gray-800 dark:bg-gray-500 dark:text-gray-100':
                             task.priority === 1,
                         'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
-                            task.priority === 2
+                            task.priority === 2,
                     }"
                     [matMenuTriggerFor]="priorityMenu"
                 >
                     <!-- Low -->
-                    <ng-container *ngIf="task.priority === 0">
+                    @if (task.priority === 0) {
                         <mat-icon
                             class="text-current icon-size-4"
                             [svgIcon]="'heroicons_mini:arrow-long-down'"
                         ></mat-icon>
                         <span class="ml-2 mr-1 text-md font-medium">Low</span>
-                    </ng-container>
+                    }
 
                     <!-- Normal -->
-                    <ng-container *ngIf="task.priority === 1">
+                    @if (task.priority === 1) {
                         <mat-icon
                             class="text-current icon-size-4"
                             [svgIcon]="'heroicons_solid:minus'"
@@ -312,16 +309,16 @@
                         <span class="ml-2 mr-1 text-md font-medium"
                             >Normal</span
                         >
-                    </ng-container>
+                    }
 
                     <!-- High -->
-                    <ng-container *ngIf="task.priority === 2">
+                    @if (task.priority === 2) {
                         <mat-icon
                             class="text-current icon-size-4"
                             [svgIcon]="'heroicons_mini:arrow-long-up'"
                         ></mat-icon>
                         <span class="ml-2 mr-1 text-md font-medium">High</span>
-                    </ng-container>
+                    }
                 </div>
                 <mat-menu #priorityMenu="matMenu">
                     <!-- Low -->
@@ -388,7 +385,7 @@
                         'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
                             task.dueDate && !isOverdue(),
                         'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
-                            task.dueDate && isOverdue()
+                            task.dueDate && isOverdue(),
                     }"
                     (click)="dueDatePicker.open()"
                 >
@@ -397,12 +394,12 @@
                         [svgIcon]="'heroicons_solid:calendar'"
                     ></mat-icon>
                     <span class="ml-2 text-md font-medium">
-                        <ng-container *ngIf="task.dueDate">{{
-                            task.dueDate | date: 'longDate'
-                        }}</ng-container>
-                        <ng-container *ngIf="!task.dueDate"
-                            >Not set</ng-container
-                        >
+                        @if (task.dueDate) {
+                            {{ task.dueDate | date: 'longDate' }}
+                        }
+                        @if (!task.dueDate) {
+                            Not set
+                        }
                     </span>
                     <mat-form-field
                         class="fuse-mat-dense pointer-events-none invisible absolute inset-0 -mt-2.5 opacity-0"

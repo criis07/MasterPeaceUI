@@ -1,7 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -52,12 +52,10 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
-        NgIf,
         MatButtonModule,
         MatTooltipModule,
         RouterLink,
         MatIconModule,
-        NgFor,
         FormsModule,
         ReactiveFormsModule,
         MatRippleModule,

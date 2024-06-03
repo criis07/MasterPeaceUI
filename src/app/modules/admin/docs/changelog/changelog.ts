@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { NgFor } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     templateUrl: './changelog.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [NgFor],
+    imports: [],
 })
 export class ChangelogComponent {
     changelog: any[] = [

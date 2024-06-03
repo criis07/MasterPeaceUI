@@ -1,5 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { NgFor, NgIf } from '@angular/common';
+
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -21,7 +21,7 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CdkScrollable, NgFor, RouterLink, MatIconModule, NgIf],
+    imports: [CdkScrollable, RouterLink, MatIconModule],
 })
 export class ScrumboardBoardsComponent implements OnInit, OnDestroy {
     boards: Board[];

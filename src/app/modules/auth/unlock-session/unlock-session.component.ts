@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -26,7 +25,6 @@ import { UserService } from 'app/core/user/user.service';
     animations: fuseAnimations,
     standalone: true,
     imports: [
-        NgIf,
         FuseAlertComponent,
         FormsModule,
         ReactiveFormsModule,

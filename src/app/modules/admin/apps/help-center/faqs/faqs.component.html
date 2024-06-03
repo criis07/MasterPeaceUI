@@ -15,18 +15,20 @@
             >
                 Frequently Asked Questions
             </div>
-            <ng-container
-                *ngFor="let faqCategory of faqCategories; trackBy: trackByFn"
-            >
+            @for (
+                faqCategory of faqCategories;
+                track trackByFn($index, faqCategory)
+            ) {
                 <div
                     class="mt-12 text-3xl font-bold leading-tight tracking-tight sm:mt-16"
                 >
                     {{ faqCategory.title }}
                 </div>
                 <mat-accordion class="mt-8 max-w-4xl">
-                    <ng-container
-                        *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn"
-                    >
+                    @for (
+                        faq of faqCategory.faqs;
+                        track trackByFn($index, faq)
+                    ) {
                         <mat-expansion-panel>
                             <mat-expansion-panel-header
                                 [collapsedHeight]="'56px'"
@@ -38,9 +40,9 @@
                             </mat-expansion-panel-header>
                             {{ faq.answer }}
                         </mat-expansion-panel>
-                    </ng-container>
+                    }
                 </mat-accordion>
-            </ng-container>
+            }
         </div>
     </div>
 </div>

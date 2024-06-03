@@ -31,7 +31,7 @@
                 [(ngModel)]="selectedFilter"
                 (change)="onFilterChange($event)"
             >
-                <ng-container *ngFor="let filter of filters">
+                @for (filter of filters; track filter) {
                     <mat-button-toggle class="m-2" [value]="filter">
                         <span class="text-secondary">{{
                             filter | titlecase
@@ -40,7 +40,7 @@
                             >({{ numberOfCards[filter] }})</span
                         >
                     </mat-button-toggle>
-                </ng-container>
+                }
             </mat-button-toggle-group>
         </div>
 
@@ -225,7 +225,7 @@
                             <mat-icon
                                 class="rotate-0 transition-transform duration-150 ease-in-out icon-size-5"
                                 [ngClass]="{
-                                    'rotate-180': expandableCard01.expanded
+                                    'rotate-180': expandableCard01.expanded,
                                 }"
                                 [svgIcon]="'heroicons_mini:chevron-down'"
                             ></mat-icon>
@@ -3068,7 +3068,7 @@
                             <mat-icon
                                 class="rotate-0 transition-transform duration-150 ease-in-out icon-size-5"
                                 [ngClass]="{
-                                    'rotate-180': expandableCard02.expanded
+                                    'rotate-180': expandableCard02.expanded,
                                 }"
                                 [svgIcon]="'heroicons_mini:chevron-down'"
                             ></mat-icon>

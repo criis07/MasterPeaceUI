@@ -1,5 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { NgClass, NgFor, TitleCasePipe } from '@angular/common';
+import { NgClass, TitleCasePipe } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -43,7 +43,6 @@ import { FuseCardComponent } from '@fuse/components/card';
     imports: [
         MatButtonToggleModule,
         FormsModule,
-        NgFor,
         FuseCardComponent,
         MatButtonModule,
         MatIconModule,

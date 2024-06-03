@@ -1,5 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { DOCUMENT, NgClass, NgFor, NgIf } from '@angular/common';
+import { DOCUMENT, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -33,9 +33,7 @@ import { Subject, takeUntil } from 'rxjs';
         MatSidenavModule,
         RouterLink,
         MatIconModule,
-        NgIf,
         NgClass,
-        NgFor,
         MatButtonModule,
         MatProgressBarModule,
         CdkScrollable,

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -22,7 +21,7 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [MatButtonModule, RouterLink, MatIconModule, NgIf],
+    imports: [MatButtonModule, RouterLink, MatIconModule],
 })
 export class FileManagerDetailsComponent implements OnInit, OnDestroy {
     item: Item;

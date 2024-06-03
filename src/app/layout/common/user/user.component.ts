@@ -1,5 +1,5 @@
 import { BooleanInput } from '@angular/cdk/coercion';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -28,7 +28,6 @@ import { Subject, takeUntil } from 'rxjs';
     imports: [
         MatButtonModule,
         MatMenuModule,
-        NgIf,
         MatIconModule,
         NgClass,
         MatDividerModule,

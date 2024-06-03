@@ -12,32 +12,26 @@
                 starting with the most recent.
             </div>
 
-            <ng-container
-                *ngIf="activities$ | async as activities; else loading"
-            >
-                <ng-container *ngIf="activities.length; else noActivity">
+            @if (activities$ | async; as activities) {
+                @if (activities.length) {
                     <div class="mt-8">
                         <ol>
                             <!-- Activities -->
-                            <ng-container
-                                *ngFor="
-                                    let activity of activities;
-                                    let i = index;
-                                    let first = first;
-                                    let last = last;
-                                    trackBy: trackByFn
-                                "
-                            >
+                            @for (
+                                activity of activities;
+                                track trackByFn(i, activity);
+                                let i = $index;
+                                let first = $first;
+                                let last = $last
+                            ) {
                                 <!-- Date separator -->
-                                <ng-container
-                                    *ngIf="
-                                        first ||
-                                        !isSameDay(
-                                            activity.date,
-                                            activities[i - 1].date
-                                        )
-                                    "
-                                >
+                                @if (
+                                    first ||
+                                    !isSameDay(
+                                        activity.date,
+                                        activities[i - 1].date
+                                    )
+                                ) {
                                     <li class="relative flex py-7">
                                         <div
                                             class="relative rounded-full bg-primary px-8 py-2 text-md font-medium leading-5 text-on-primary"
@@ -48,32 +42,26 @@
                                             }}
                                         </div>
                                     </li>
-                                </ng-container>
+                                }
 
                                 <!-- Activity -->
                                 <li class="relative flex py-7">
                                     <!-- Line -->
-                                    <ng-container
-                                        *ngIf="
-                                            !last &&
-                                            isSameDay(
-                                                activity.date,
-                                                activities[i + 1].date
-                                            )
-                                        "
-                                    >
+                                    @if (
+                                        !last &&
+                                        isSameDay(
+                                            activity.date,
+                                            activities[i + 1].date
+                                        )
+                                    ) {
                                         <div
                                             class="absolute left-5 top-7 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-600"
                                         ></div>
-                                    </ng-container>
+                                    }
 
                                     <div class="relative flex flex-auto">
                                         <!-- Icon -->
-                                        <ng-container
-                                            *ngIf="
-                                                activity.icon && !activity.image
-                                            "
-                                        >
+                                        @if (activity.icon && !activity.image) {
                                             <div
                                                 class="mr-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-400"
                                             >
@@ -83,31 +71,29 @@
                                                 >
                                                 </mat-icon>
                                             </div>
-                                        </ng-container>
+                                        }
 
                                         <!-- Image -->
-                                        <ng-container *ngIf="activity.image">
+                                        @if (activity.image) {
                                             <img
                                                 class="mr-4 h-10 w-10 shrink-0 overflow-hidden rounded-full object-cover object-center"
                                                 [src]="activity.image"
                                                 [alt]="'Activity image'"
                                             />
-                                        </ng-container>
+                                        }
 
                                         <!-- Content -->
                                         <div
                                             class="flex flex-auto flex-col items-start"
                                         >
                                             <!-- Description -->
-                                            <ng-container
-                                                *ngIf="activity.description"
-                                            >
+                                            @if (activity.description) {
                                                 <div
                                                     [innerHTML]="
                                                         activity.description
                                                     "
                                                 ></div>
-                                            </ng-container>
+                                            }
                                             <div
                                                 class="mt-2 flex flex-col text-md leading-5 sm:mt-1 sm:flex-row sm:items-center sm:space-x-2"
                                             >
@@ -120,22 +106,14 @@
                                                     }}
                                                 </div>
                                                 <!-- Linked content -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        activity.linkedContent
-                                                    "
-                                                >
+                                                @if (activity.linkedContent) {
                                                     <div
                                                         class="hidden sm:block"
                                                     >
                                                         &bull;
                                                     </div>
                                                     <!-- Internal link -->
-                                                    <ng-container
-                                                        *ngIf="
-                                                            activity.useRouter
-                                                        "
-                                                    >
+                                                    @if (activity.useRouter) {
                                                         <a
                                                             class="cursor-pointer text-primary"
                                                             [routerLink]="
@@ -146,13 +124,9 @@
                                                                 activity.linkedContent
                                                             }}
                                                         </a>
-                                                    </ng-container>
+                                                    }
                                                     <!-- External link -->
-                                                    <ng-container
-                                                        *ngIf="
-                                                            !activity.useRouter
-                                                        "
-                                                    >
+                                                    @if (!activity.useRouter) {
                                                         <a
                                                             class="cursor-pointer text-primary"
                                                             [href]="
@@ -164,36 +138,34 @@
                                                                 activity.linkedContent
                                                             }}
                                                         </a>
-                                                    </ng-container>
-                                                </ng-container>
+                                                    }
+                                                }
                                             </div>
                                             <!-- Extra content -->
-                                            <ng-container
-                                                *ngIf="activity.extraContent"
-                                            >
+                                            @if (activity.extraContent) {
                                                 <div
                                                     class="mt-4 rounded-lg bg-gray-200 px-5 py-4 dark:bg-gray-800"
                                                     [innerHTML]="
                                                         activity.extraContent
                                                     "
                                                 ></div>
-                                            </ng-container>
+                                            }
                                         </div>
                                     </div>
                                 </li>
-                            </ng-container>
+                            }
                         </ol>
                     </div>
-                </ng-container>
-            </ng-container>
+                } @else {
+                    There are is activity at the moment...
+                }
+            } @else {
+                Loading...
+            }
 
             <!-- Loading template -->
-            <ng-template #loading> Loading... </ng-template>
 
             <!-- No Activity template -->
-            <ng-template #noActivity>
-                There are is activity at the moment...
-            </ng-template>
         </div>
     </div>
 </div>

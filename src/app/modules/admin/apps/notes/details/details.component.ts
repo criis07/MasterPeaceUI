@@ -1,5 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -39,12 +39,10 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
-        NgIf,
         MatButtonModule,
         MatIconModule,
         FormsModule,
         TextFieldModule,
-        NgFor,
         MatCheckboxModule,
         NgClass,
         MatRippleModule,

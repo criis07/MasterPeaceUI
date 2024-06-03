@@ -187,7 +187,7 @@ export const messages = [
             .toISO(),
     },
     {
-        id: '3a2d3a0e-839b-46e7-86ae-ca0826ecda7c',
+        id: 'd6f29648-c85c-4dfb-a6ff-6b7ebc40c993',
         chatId: '',
         contactId: 'me',
         value: 'Then this virus thing happened and just after a week we moved in, they decided the whole department will be working remotely.',
@@ -213,7 +213,7 @@ export const messages = [
             .toISO(),
     },
     {
-        id: '415151b9-9ee9-40a4-a4ad-2d88146bc71b',
+        id: '26f2ccbf-aef7-4b49-88df-f6b59381110a',
         chatId: '',
         contactId: '',
         value: "Ohh dude, I'm really sorry you had to go through all that in such a short period of time",
@@ -252,7 +252,7 @@ export const messages = [
             .toISO(),
     },
     {
-        id: '5329c20d-6754-47ec-af8c-660c72be3528',
+        id: '562e3524-15b7-464a-bbf6-9b2582e5e0ee',
         chatId: '',
         contactId: '',
         value: 'Yeah dude. Hit me again next week so we can grab a coffee, remotely!',
@@ -265,7 +265,7 @@ export const messages = [
             .toISO(),
     },
     {
-        id: '5329c20d-6754-47ec-af8c-660c72be3528',
+        id: '9269c775-bad5-46e1-b33b-2de8704ec1d6',
         chatId: '',
         contactId: 'me',
         value: ':) Sure, man! See you next week!',
@@ -278,7 +278,7 @@ export const messages = [
             .toISO(),
     },
     {
-        id: '5329c20d-6754-47ec-af8c-660c72be3528',
+        id: '779a27f2-bece-41c6-b9ca-c422570aee68',
         chatId: '',
         contactId: '',
         value: 'See you later!',

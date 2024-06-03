@@ -1,4 +1,4 @@
-import { DOCUMENT, NgIf } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
     Component,
     Inject,
@@ -33,7 +33,6 @@ import { ThinLayoutComponent } from './layouts/vertical/thin/thin.component';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
-        NgIf,
         EmptyLayoutComponent,
         CenteredLayoutComponent,
         EnterpriseLayoutComponent,

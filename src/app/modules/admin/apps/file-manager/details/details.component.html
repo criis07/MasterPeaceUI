@@ -11,18 +11,18 @@
         <div
             class="flex h-full items-center justify-center rounded-lg border bg-gray-50 dark:bg-card"
         >
-            <ng-container *ngIf="item.type === 'folder'">
+            @if (item.type === 'folder') {
                 <mat-icon
                     class="text-hint icon-size-24"
                     [svgIcon]="'heroicons_outline:folder'"
                 ></mat-icon>
-            </ng-container>
-            <ng-container *ngIf="item.type !== 'folder'">
+            }
+            @if (item.type !== 'folder') {
                 <mat-icon
                     class="text-hint icon-size-24"
                     [svgIcon]="'heroicons_outline:document'"
                 ></mat-icon>
-            </ng-container>
+            }
         </div>
     </div>
 
@@ -61,12 +61,12 @@
             <div class="text-secondary">Size</div>
             <div>{{ item.size }}</div>
         </div>
-        <ng-container *ngIf="item.contents">
+        @if (item.contents) {
             <div class="flex items-center justify-between py-3">
                 <div class="text-secondary">Contents</div>
                 <div>{{ item.contents }}</div>
             </div>
-        </ng-container>
+        }
     </div>
 
     <!-- Description -->
@@ -81,14 +81,14 @@
     </div>
     <div class="mt-2 flex border-t">
         <div class="py-3">
-            <ng-container *ngIf="item.description">
+            @if (item.description) {
                 <div>{{ item.description }}</div>
-            </ng-container>
-            <ng-container *ngIf="!item.description">
+            }
+            @if (!item.description) {
                 <div class="text-secondary italic">
                     Click here to add a description
                 </div>
-            </ng-container>
+            }
         </div>
     </div>
 

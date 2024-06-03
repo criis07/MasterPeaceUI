@@ -134,16 +134,14 @@
             getting started
         </div>
         <mat-accordion class="mt-12 max-w-4xl">
-            <ng-container
-                *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn"
-            >
+            @for (faq of faqCategory.faqs; track trackByFn($index, faq)) {
                 <mat-expansion-panel>
                     <mat-expansion-panel-header [collapsedHeight]="'56px'">
                         <mat-panel-title>{{ faq.question }}</mat-panel-title>
                     </mat-expansion-panel-header>
                     {{ faq.answer }}
                 </mat-expansion-panel>
-            </ng-container>
+            }
         </mat-accordion>
     </div>
 </div>

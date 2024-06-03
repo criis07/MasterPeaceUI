@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,7 +25,6 @@ import { Subject, takeUntil } from 'rxjs';
     imports: [
         MatButtonModule,
         MatIconModule,
-        NgIf,
         MatFormFieldModule,
         MatInputModule,
         FormsModule,

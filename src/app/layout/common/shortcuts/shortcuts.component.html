@@ -22,21 +22,20 @@
             </div>
             <div class="flex items-center text-lg font-medium leading-10">
                 <span class="">Shortcuts</span>
-                <ng-container *ngIf="mode !== 'view'">
+                @if (mode !== 'view') {
                     <span class="ml-1">
-                        <ng-container *ngIf="mode === 'add'"
-                            >- Add new</ng-container
-                        >
-                        <ng-container
-                            *ngIf="mode === 'modify' || mode === 'edit'"
-                            >- Editing</ng-container
-                        >
+                        @if (mode === 'add') {
+                            - Add new
+                        }
+                        @if (mode === 'modify' || mode === 'edit') {
+                            - Editing
+                        }
                     </span>
-                </ng-container>
+                }
             </div>
             <div class="ml-auto">
                 <!-- View mode -->
-                <ng-container *ngIf="mode === 'view'">
+                @if (mode === 'view') {
                     <!-- Enter 'modify' mode -->
                     <button
                         mat-icon-button
@@ -59,10 +58,10 @@
                             [svgIcon]="'heroicons_solid:plus-circle'"
                         ></mat-icon>
                     </button>
-                </ng-container>
+                }
 
                 <!-- Modify mode -->
-                <ng-container *ngIf="mode === 'modify'">
+                @if (mode === 'modify') {
                     <!-- Enter 'view' mode -->
                     <button
                         mat-icon-button
@@ -74,10 +73,10 @@
                             [svgIcon]="'heroicons_solid:check-circle'"
                         ></mat-icon>
                     </button>
-                </ng-container>
+                }
 
                 <!-- Add mode -->
-                <ng-container *ngIf="mode === 'add'">
+                @if (mode === 'add') {
                     <!-- Enter 'view' mode -->
                     <button
                         mat-icon-button
@@ -89,10 +88,10 @@
                             [svgIcon]="'heroicons_solid:x-circle'"
                         ></mat-icon>
                     </button>
-                </ng-container>
+                }
 
                 <!-- Edit mode -->
-                <ng-container *ngIf="mode === 'edit'">
+                @if (mode === 'edit') {
                     <!-- Enter 'modify' mode -->
                     <button
                         mat-icon-button
@@ -104,70 +103,76 @@
                             [svgIcon]="'heroicons_solid:x-circle'"
                         ></mat-icon>
                     </button>
-                </ng-container>
+                }
             </div>
         </div>
         <div
             class="bg-card relative -mb-px flex flex-auto flex-col overflow-y-auto sm:max-h-120"
         >
             <!-- View mode -->
-            <ng-container *ngIf="mode === 'view' || mode === 'modify'">
+            @if (mode === 'view' || mode === 'modify') {
                 <!-- Shortcuts -->
                 <div class="grid grid-flow-row grid-cols-2">
                     <!-- Shortcut -->
-                    <ng-container
-                        *ngFor="let shortcut of shortcuts; trackBy: trackByFn"
-                    >
+                    @for (
+                        shortcut of shortcuts;
+                        track trackByFn($index, shortcut)
+                    ) {
                         <div
                             class="group bg-card relative flex flex-col overflow-hidden border-b border-r even:border-r-0 hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5"
                         >
-                            <ng-container *ngIf="mode === 'modify'">
+                            @if (mode === 'modify') {
                                 <div
                                     class="absolute inset-0 z-99 cursor-pointer"
                                     (click)="editShortcut(shortcut)"
                                 ></div>
-                            </ng-container>
+                            }
                             <!-- Normal links -->
-                            <a
-                                class="flex h-full w-full flex-col items-center justify-center py-6 no-underline"
-                                *ngIf="!shortcut.useRouter"
-                                [ngClass]="{
-                                    'pointer-events-none': mode === 'modify'
-                                }"
-                                [href]="shortcut.link"
-                            >
-                                <ng-container
-                                    *ngTemplateOutlet="linkContent"
-                                ></ng-container>
-                            </a>
+                            @if (!shortcut.useRouter) {
+                                <a
+                                    class="flex h-full w-full flex-col items-center justify-center py-6 no-underline"
+                                    [ngClass]="{
+                                        'pointer-events-none':
+                                            mode === 'modify',
+                                    }"
+                                    [href]="shortcut.link"
+                                >
+                                    <ng-container
+                                        *ngTemplateOutlet="linkContent"
+                                    ></ng-container>
+                                </a>
+                            }
                             <!-- Router links -->
-                            <a
-                                class="flex h-full w-full flex-col items-center justify-center py-6 no-underline"
-                                *ngIf="shortcut.useRouter"
-                                [ngClass]="{
-                                    'pointer-events-none': mode === 'modify'
-                                }"
-                                [routerLink]="shortcut.link"
-                            >
-                                <ng-container
-                                    *ngTemplateOutlet="linkContent"
-                                ></ng-container>
-                            </a>
+                            @if (shortcut.useRouter) {
+                                <a
+                                    class="flex h-full w-full flex-col items-center justify-center py-6 no-underline"
+                                    [ngClass]="{
+                                        'pointer-events-none':
+                                            mode === 'modify',
+                                    }"
+                                    [routerLink]="shortcut.link"
+                                >
+                                    <ng-container
+                                        *ngTemplateOutlet="linkContent"
+                                    ></ng-container>
+                                </a>
+                            }
                             <!-- Link content template -->
                             <ng-template #linkContent>
                                 <div
                                     class="relative mb-3 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700"
                                 >
-                                    <mat-icon
-                                        class="absolute z-20 opacity-0 icon-size-5 group-hover:opacity-100"
-                                        *ngIf="mode === 'modify'"
-                                        [svgIcon]="'heroicons_solid:pencil'"
-                                    ></mat-icon>
+                                    @if (mode === 'modify') {
+                                        <mat-icon
+                                            class="absolute z-20 opacity-0 icon-size-5 group-hover:opacity-100"
+                                            [svgIcon]="'heroicons_solid:pencil'"
+                                        ></mat-icon>
+                                    }
                                     <mat-icon
                                         class="z-10"
                                         [ngClass]="{
                                             'group-hover:opacity-0':
-                                                mode === 'modify'
+                                                mode === 'modify',
                                         }"
                                         [svgIcon]="shortcut.icon"
                                     ></mat-icon>
@@ -180,11 +185,11 @@
                                 </div>
                             </ng-template>
                         </div>
-                    </ng-container>
+                    }
                 </div>
 
                 <!-- No shortcuts -->
-                <ng-container *ngIf="!shortcuts || !shortcuts.length">
+                @if (!shortcuts || !shortcuts.length) {
                     <div
                         class="flex flex-auto flex-col items-center justify-center px-8 py-12 sm:justify-start"
                     >
@@ -205,11 +210,11 @@
                             When you have shortcuts, they will appear here.
                         </div>
                     </div>
-                </ng-container>
-            </ng-container>
+                }
+            }
 
             <!-- Add/Edit mode -->
-            <ng-container *ngIf="mode === 'add' || mode === 'edit'">
+            @if (mode === 'add' || mode === 'edit') {
                 <form class="p-6" [formGroup]="shortcutForm">
                     <mat-form-field class="w-full">
                         <mat-label>Label</mat-label>
@@ -235,15 +240,16 @@
                     </mat-slide-toggle>
                     <!-- Actions -->
                     <div class="mt-4 flex items-center justify-end">
-                        <button
-                            class="mr-2"
-                            *ngIf="mode === 'edit'"
-                            mat-flat-button
-                            type="button"
-                            (click)="delete()"
-                        >
-                            Delete
-                        </button>
+                        @if (mode === 'edit') {
+                            <button
+                                class="mr-2"
+                                mat-flat-button
+                                type="button"
+                                (click)="delete()"
+                            >
+                                Delete
+                            </button>
+                        }
                         <button
                             mat-flat-button
                             [color]="'primary'"
@@ -251,16 +257,16 @@
                             type="button"
                             (click)="save()"
                         >
-                            <ng-container *ngIf="mode === 'add'"
-                                >Add</ng-container
-                            >
-                            <ng-container *ngIf="mode === 'edit'"
-                                >Update</ng-container
-                            >
+                            @if (mode === 'add') {
+                                Add
+                            }
+                            @if (mode === 'edit') {
+                                Update
+                            }
                         </button>
                     </div>
                 </form>
-            </ng-container>
+            }
         </div>
     </div>
 </ng-template>

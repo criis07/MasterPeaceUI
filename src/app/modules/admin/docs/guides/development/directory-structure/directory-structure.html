@@ -80,18 +80,19 @@
                     matTreeNodePadding
                 >
                     <div class="flex items-center font-mono">
+                        @if (!node.last) {
                         <div
                             class="text-hint mr-2 flex h-8 w-8 items-center justify-center"
-                            *ngIf="!node.last"
                         >
                             ├─
                         </div>
+                        } @if (node.last) {
                         <div
                             class="text-hint mr-2 flex h-8 w-8 items-center justify-center"
-                            *ngIf="node.last"
                         >
                             └─
                         </div>
+                        }
                         <span> {{node.name}} </span>
                     </div>
                 </mat-tree-node>
@@ -159,18 +160,19 @@
                     matTreeNodePadding
                 >
                     <div class="flex items-center font-mono">
+                        @if (!node.last) {
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center"
-                            *ngIf="!node.last"
                         >
                             ├─
                         </div>
+                        } @if (node.last) {
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center"
-                            *ngIf="node.last"
                         >
                             └─
                         </div>
+                        }
                         <span> {{node.name}} </span>
                     </div>
                 </mat-tree-node>

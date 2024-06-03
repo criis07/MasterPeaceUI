@@ -34,7 +34,7 @@
                     class="px-6"
                     [ngClass]="{
                         'bg-card pointer-events-none shadow': yearlyBilling,
-                        'bg-transparent': !yearlyBilling
+                        'bg-transparent': !yearlyBilling,
                     }"
                     mat-flat-button
                     (click)="yearlyBilling = true"
@@ -46,7 +46,7 @@
                     class="px-6"
                     [ngClass]="{
                         'bg-card pointer-events-none shadow': !yearlyBilling,
-                        'bg-transparent': yearlyBilling
+                        'bg-transparent': yearlyBilling,
                     }"
                     mat-flat-button
                     (click)="yearlyBilling = false"
@@ -76,12 +76,12 @@
                             <div
                                 class="text-6xl font-semibold leading-tight tracking-tight"
                             >
-                                <ng-container *ngIf="yearlyBilling"
-                                    >$6</ng-container
-                                >
-                                <ng-container *ngIf="!yearlyBilling"
-                                    >$9</ng-container
-                                >
+                                @if (yearlyBilling) {
+                                    $6
+                                }
+                                @if (!yearlyBilling) {
+                                    $9
+                                }
                             </div>
                             <div class="text-secondary ml-2 text-2xl">
                                 / month
@@ -89,14 +89,14 @@
                         </div>
                         <!-- Price details -->
                         <div class="text-secondary mt-2 flex flex-col">
-                            <ng-container *ngIf="yearlyBilling">
+                            @if (yearlyBilling) {
                                 <div>billed yearly</div>
                                 <div><b>$9.00</b> billed monthly</div>
-                            </ng-container>
-                            <ng-container *ngIf="!yearlyBilling">
+                            }
+                            @if (!yearlyBilling) {
                                 <div>billed monthly</div>
                                 <div><b>$6.00</b> billed yearly</div>
-                            </ng-container>
+                            }
                         </div>
                         <!-- Features -->
                         <div class="mt-8 space-y-2">
@@ -134,12 +134,12 @@
                             <div
                                 class="text-6xl font-semibold leading-tight tracking-tight"
                             >
-                                <ng-container *ngIf="yearlyBilling"
-                                    >$12</ng-container
-                                >
-                                <ng-container *ngIf="!yearlyBilling"
-                                    >$15</ng-container
-                                >
+                                @if (yearlyBilling) {
+                                    $12
+                                }
+                                @if (!yearlyBilling) {
+                                    $15
+                                }
                             </div>
                             <div class="text-secondary ml-2 text-2xl">
                                 / month
@@ -147,14 +147,14 @@
                         </div>
                         <!-- Price details -->
                         <div class="text-secondary mt-2 flex flex-col">
-                            <ng-container *ngIf="yearlyBilling">
+                            @if (yearlyBilling) {
                                 <div>billed yearly</div>
                                 <div><b>$15.00</b> billed monthly</div>
-                            </ng-container>
-                            <ng-container *ngIf="!yearlyBilling">
+                            }
+                            @if (!yearlyBilling) {
                                 <div>billed monthly</div>
                                 <div><b>$12.00</b> billed yearly</div>
-                            </ng-container>
+                            }
                         </div>
                         <!-- Features -->
                         <div class="mt-8 space-y-2">
@@ -187,12 +187,12 @@
                             <div
                                 class="text-6xl font-semibold leading-tight tracking-tight"
                             >
-                                <ng-container *ngIf="yearlyBilling"
-                                    >$49</ng-container
-                                >
-                                <ng-container *ngIf="!yearlyBilling"
-                                    >$69</ng-container
-                                >
+                                @if (yearlyBilling) {
+                                    $49
+                                }
+                                @if (!yearlyBilling) {
+                                    $69
+                                }
                             </div>
                             <div class="text-secondary ml-2 text-2xl">
                                 / month
@@ -200,14 +200,14 @@
                         </div>
                         <!-- Price details -->
                         <div class="text-secondary mt-2 flex flex-col">
-                            <ng-container *ngIf="yearlyBilling">
+                            @if (yearlyBilling) {
                                 <div>billed yearly</div>
                                 <div><b>$69.00</b> billed monthly</div>
-                            </ng-container>
-                            <ng-container *ngIf="!yearlyBilling">
+                            }
+                            @if (!yearlyBilling) {
                                 <div>billed monthly</div>
                                 <div><b>$49.00</b> billed yearly</div>
-                            </ng-container>
+                            }
                         </div>
                         <!-- Features -->
                         <div class="mt-8 space-y-2">

@@ -89,16 +89,17 @@
                 </div>
 
                 <!-- Alert -->
-                <fuse-alert
-                    class="-mb-4 mt-8"
-                    *ngIf="showAlert"
-                    [appearance]="'outline'"
-                    [showIcon]="false"
-                    [type]="alert.type"
-                    [@shake]="alert.type === 'error'"
-                >
-                    {{ alert.message }}
-                </fuse-alert>
+                @if (showAlert) {
+                    <fuse-alert
+                        class="-mb-4 mt-8"
+                        [appearance]="'outline'"
+                        [showIcon]="false"
+                        [type]="alert.type"
+                        [@shake]="alert.type === 'error'"
+                    >
+                        {{ alert.message }}
+                    </fuse-alert>
+                }
 
                 <!-- Sign in form -->
                 <form
@@ -114,16 +115,14 @@
                             matInput
                             [formControlName]="'email'"
                         />
-                        <mat-error
-                            *ngIf="signInForm.get('email').hasError('required')"
-                        >
-                            Email address is required
-                        </mat-error>
-                        <mat-error
-                            *ngIf="signInForm.get('email').hasError('email')"
-                        >
-                            Please enter a valid email address
-                        </mat-error>
+                        @if (signInForm.get('email').hasError('required')) {
+                            <mat-error> Email address is required </mat-error>
+                        }
+                        @if (signInForm.get('email').hasError('email')) {
+                            <mat-error>
+                                Please enter a valid email address
+                            </mat-error>
+                        }
                     </mat-form-field>
 
                     <!-- Password field -->
@@ -146,16 +145,18 @@
                             "
                             matSuffix
                         >
-                            <mat-icon
-                                class="icon-size-5"
-                                *ngIf="passwordField.type === 'password'"
-                                [svgIcon]="'heroicons_solid:eye'"
-                            ></mat-icon>
-                            <mat-icon
-                                class="icon-size-5"
-                                *ngIf="passwordField.type === 'text'"
-                                [svgIcon]="'heroicons_solid:eye-slash'"
-                            ></mat-icon>
+                            @if (passwordField.type === 'password') {
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:eye'"
+                                ></mat-icon>
+                            }
+                            @if (passwordField.type === 'text') {
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:eye-slash'"
+                                ></mat-icon>
+                            }
                         </button>
                         <mat-error> Password is required </mat-error>
                     </mat-form-field>
@@ -186,12 +187,15 @@
                         [disabled]="signInForm.disabled"
                         (click)="signIn()"
                     >
-                        <span *ngIf="!signInForm.disabled"> Sign in </span>
-                        <mat-progress-spinner
-                            *ngIf="signInForm.disabled"
-                            [diameter]="24"
-                            [mode]="'indeterminate'"
-                        ></mat-progress-spinner>
+                        @if (!signInForm.disabled) {
+                            <span> Sign in </span>
+                        }
+                        @if (signInForm.disabled) {
+                            <mat-progress-spinner
+                                [diameter]="24"
+                                [mode]="'indeterminate'"
+                            ></mat-progress-spinner>
+                        }
                     </button>
 
                     <!-- Separator -->

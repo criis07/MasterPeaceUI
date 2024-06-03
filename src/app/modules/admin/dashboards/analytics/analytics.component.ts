@@ -1,4 +1,4 @@
-import { DecimalPipe, NgFor } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -29,7 +29,6 @@ import { Subject, takeUntil } from 'rxjs';
         MatButtonToggleModule,
         NgApexchartsModule,
         MatTooltipModule,
-        NgFor,
         DecimalPipe,
     ],
 })

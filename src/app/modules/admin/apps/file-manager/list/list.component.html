@@ -34,12 +34,12 @@
                         <div
                             class="text-secondary mt-0.5 flex items-center font-medium"
                         >
-                            <ng-container *ngIf="!items.path.length">
+                            @if (!items.path.length) {
                                 {{ items.folders.length }} folders,
                                 {{ items.files.length }} files
-                            </ng-container>
+                            }
                             <!-- Breadcrumbs -->
-                            <ng-container *ngIf="items.path.length">
+                            @if (items.path.length) {
                                 <div class="flex items-center space-x-2">
                                     <a
                                         class="cursor-pointer text-primary"
@@ -47,32 +47,30 @@
                                         >Home
                                     </a>
                                     <div class="">/</div>
-                                    <ng-container
-                                        *ngFor="
-                                            let path of items.path;
-                                            let last = last;
-                                            trackBy: trackByFn
-                                        "
-                                    >
-                                        <ng-container *ngIf="!last">
+                                    @for (
+                                        path of items.path;
+                                        track trackByFn($index, path);
+                                        let last = $last
+                                    ) {
+                                        @if (!last) {
                                             <a
                                                 class="cursor-pointer text-primary"
                                                 [routerLink]="[
                                                     '/apps/file-manager/folders/',
-                                                    path.id
+                                                    path.id,
                                                 ]"
                                                 >{{ path.name }}</a
                                             >
-                                        </ng-container>
-                                        <ng-container *ngIf="last">
+                                        }
+                                        @if (last) {
                                             <div>{{ path.name }}</div>
-                                        </ng-container>
-                                        <ng-container *ngIf="!last">
+                                        }
+                                        @if (!last) {
                                             <div class="">/</div>
-                                        </ng-container>
-                                    </ng-container>
+                                        }
+                                    }
                                 </div>
-                            </ng-container>
+                            }
                         </div>
                     </div>
                     <!-- Actions -->
@@ -88,26 +86,20 @@
                 </div>
 
                 <!-- Items list -->
-                <ng-container
-                    *ngIf="
-                        items &&
-                            (items.folders.length > 0 ||
-                                items.files.length > 0);
-                        else noItems
-                    "
-                >
+                @if (
+                    items &&
+                    (items.folders.length > 0 || items.files.length > 0)
+                ) {
                     <div class="space-y-8 p-6 md:p-8">
                         <!-- Folders -->
-                        <ng-container *ngIf="items.folders.length > 0">
+                        @if (items.folders.length > 0) {
                             <div>
                                 <div class="font-medium">Folders</div>
                                 <div class="-m-2 mt-2 flex flex-wrap">
-                                    <ng-container
-                                        *ngFor="
-                                            let folder of items.folders;
-                                            trackBy: trackByFn
-                                        "
-                                    >
+                                    @for (
+                                        folder of items.folders;
+                                        track trackByFn($index, folder)
+                                    ) {
                                         <div
                                             class="bg-card relative m-2 h-40 w-40 rounded-2xl p-4 shadow"
                                         >
@@ -118,7 +110,7 @@
                                                 "
                                                 [routerLink]="[
                                                     './details/',
-                                                    folder.id
+                                                    folder.id,
                                                 ]"
                                                 mat-icon-button
                                             >
@@ -133,7 +125,7 @@
                                                 class="absolute inset-0 z-10 flex cursor-pointer flex-col p-4"
                                                 [routerLink]="[
                                                     '/apps/file-manager/folders/',
-                                                    folder.id
+                                                    folder.id,
                                                 ]"
                                             >
                                                 <div class="aspect-[9/6]">
@@ -160,9 +152,7 @@
                                                     >
                                                         {{ folder.name }}
                                                     </div>
-                                                    <ng-container
-                                                        *ngIf="folder.contents"
-                                                    >
+                                                    @if (folder.contents) {
                                                         <div
                                                             class="text-secondary truncate"
                                                         >
@@ -170,31 +160,29 @@
                                                                 folder.contents
                                                             }}
                                                         </div>
-                                                    </ng-container>
+                                                    }
                                                 </div>
                                             </a>
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
                             </div>
-                        </ng-container>
+                        }
 
                         <!-- Files -->
-                        <ng-container *ngIf="items.files.length > 0">
+                        @if (items.files.length > 0) {
                             <div>
                                 <div class="font-medium">Files</div>
                                 <div class="-m-2 mt-2 flex flex-wrap">
-                                    <ng-container
-                                        *ngFor="
-                                            let file of items.files;
-                                            trackBy: trackByFn
-                                        "
-                                    >
+                                    @for (
+                                        file of items.files;
+                                        track trackByFn($index, file)
+                                    ) {
                                         <a
                                             class="bg-card m-2 flex h-40 w-40 cursor-pointer flex-col rounded-2xl p-4 shadow"
                                             [routerLink]="[
                                                 './details/',
-                                                file.id
+                                                file.id,
                                             ]"
                                         >
                                             <div class="aspect-[9/6]">
@@ -248,26 +236,21 @@
                                                 >
                                                     {{ file.name }}
                                                 </div>
-                                                <ng-container
-                                                    *ngIf="file.contents"
-                                                >
+                                                @if (file.contents) {
                                                     <div
                                                         class="text-secondary truncate"
                                                     >
                                                         {{ file.contents }}
                                                     </div>
-                                                </ng-container>
+                                                }
                                             </div>
                                         </a>
-                                    </ng-container>
+                                    }
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
-                </ng-container>
-
-                <!-- No items template -->
-                <ng-template #noItems>
+                } @else {
                     <div
                         class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
                     >
@@ -281,7 +264,9 @@
                             There are no items!
                         </div>
                     </div>
-                </ng-template>
+                }
+
+                <!-- No items template -->
             </div>
         </mat-drawer-content>
     </mat-drawer-container>

@@ -20,26 +20,26 @@
 
     <!-- Team members -->
     <div class="mt-8 flex flex-col divide-y border-b border-t">
-        <ng-container *ngFor="let member of members; trackBy: trackByFn">
+        @for (member of members; track trackByFn($index, member)) {
             <div class="flex flex-col py-6 sm:flex-row sm:items-center">
                 <div class="flex items-center">
                     <div
                         class="flex h-10 w-10 flex-0 items-center justify-center overflow-hidden rounded-full"
                     >
-                        <ng-container *ngIf="member.avatar">
+                        @if (member.avatar) {
                             <img
                                 class="h-full w-full object-cover"
                                 [src]="member.avatar"
                                 alt="Contact avatar"
                             />
-                        </ng-container>
-                        <ng-container *ngIf="!member.avatar">
+                        }
+                        @if (!member.avatar) {
                             <div
                                 class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-lg uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
                             >
                                 {{ member.name.charAt(0) }}
                             </div>
-                        </ng-container>
+                        }
                     </div>
                     <div class="ml-4">
                         <div class="font-medium">{{ member.name }}</div>
@@ -66,7 +66,7 @@
                                         roleSelect.value | titlecase
                                     }}</span>
                                 </mat-select-trigger>
-                                <ng-container *ngFor="let role of roles">
+                                @for (role of roles; track role) {
                                     <mat-option
                                         class="h-auto py-4 leading-none"
                                         [value]="role.value"
@@ -80,7 +80,7 @@
                                             {{ role.description }}
                                         </div>
                                     </mat-option>
-                                </ng-container>
+                                }
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -94,6 +94,6 @@
                     </div>
                 </div>
             </div>
-        </ng-container>
+        }
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -40,9 +40,7 @@ import { Subject, takeUntil } from 'rxjs';
     imports: [
         MatButtonModule,
         MatIconModule,
-        NgIf,
         MatTooltipModule,
-        NgFor,
         NgClass,
         NgTemplateOutlet,
         RouterLink,

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
@@ -19,7 +18,6 @@ import { FuseHighlightComponent } from '@fuse/components/highlight';
         FuseHighlightComponent,
         MatButtonModule,
         MatTabsModule,
-        NgIf,
         MatFormFieldModule,
         MatSelectModule,
         MatOptionModule,

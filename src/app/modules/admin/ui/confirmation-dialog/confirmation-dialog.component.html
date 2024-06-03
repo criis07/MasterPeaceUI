@@ -121,24 +121,23 @@
                                 >
                                     <mat-label>Icon color</mat-label>
                                     <mat-select [formControlName]="'color'">
-                                        <ng-container
-                                            *ngFor="
-                                                let color of [
-                                                    'primary',
-                                                    'accent',
-                                                    'warn',
-                                                    'basic',
-                                                    'info',
-                                                    'success',
-                                                    'warning',
-                                                    'error'
-                                                ]
-                                            "
-                                        >
+                                        @for (
+                                            color of [
+                                                'primary',
+                                                'accent',
+                                                'warn',
+                                                'basic',
+                                                'info',
+                                                'success',
+                                                'warning',
+                                                'error',
+                                            ];
+                                            track color
+                                        ) {
                                             <mat-option [value]="color">{{
                                                 color | titlecase
                                             }}</mat-option>
-                                        </ng-container>
+                                        }
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -185,19 +184,18 @@
                                             >Confirm button color</mat-label
                                         >
                                         <mat-select [formControlName]="'color'">
-                                            <ng-container
-                                                *ngFor="
-                                                    let color of [
-                                                        'primary',
-                                                        'accent',
-                                                        'warn'
-                                                    ]
-                                                "
-                                            >
+                                            @for (
+                                                color of [
+                                                    'primary',
+                                                    'accent',
+                                                    'warn',
+                                                ];
+                                                track color
+                                            ) {
                                                 <mat-option [value]="color">{{
                                                     color | titlecase
                                                 }}</mat-option>
-                                            </ng-container>
+                                            }
                                         </mat-select>
                                     </mat-form-field>
                                 </div>

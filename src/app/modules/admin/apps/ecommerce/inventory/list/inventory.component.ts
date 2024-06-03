@@ -2,8 +2,6 @@ import {
     AsyncPipe,
     CurrencyPipe,
     NgClass,
-    NgFor,
-    NgIf,
     NgTemplateOutlet,
 } from '@angular/common';
 import {
@@ -87,7 +85,6 @@ import {
     animations: fuseAnimations,
     standalone: true,
     imports: [
-        NgIf,
         MatProgressBarModule,
         MatFormFieldModule,
         MatIconModule,
@@ -96,7 +93,6 @@ import {
         ReactiveFormsModule,
         MatButtonModule,
         MatSortModule,
-        NgFor,
         NgTemplateOutlet,
         MatPaginatorModule,
         NgClass,

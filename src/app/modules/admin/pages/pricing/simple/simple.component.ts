@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,7 +14,7 @@ import { FuseCardComponent } from '@fuse/components/card';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [MatButtonModule, NgClass, FuseCardComponent, NgIf, MatIconModule],
+    imports: [MatButtonModule, NgClass, FuseCardComponent, MatIconModule],
 })
 export class PricingSimpleComponent {
     yearlyBilling: boolean = true;

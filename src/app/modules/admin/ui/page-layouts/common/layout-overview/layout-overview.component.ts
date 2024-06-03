@@ -1,4 +1,4 @@
-import { NgClass, NgComponentOutlet, NgFor, NgIf } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,31 +44,33 @@ export interface PageLayoutsOverviewData {
                             name="options"
                             [(ngModel)]="overview.selectedOption"
                         >
-                            <mat-button-toggle
-                                *ngFor="let option of overview.availableOptions"
-                                class="m-2 font-medium"
-                                [ngClass]="{
-                                    'bg-gray-300 dark:bg-gray-700':
-                                        option.value ===
-                                        overview.selectedOption,
-                                    'bg-transparent':
-                                        option.value !== overview.selectedOption
-                                }"
-                                [value]="option.value"
-                            >
-                                {{ option.title }}
-                            </mat-button-toggle>
+                            @for (
+                                option of overview.availableOptions;
+                                track option
+                            ) {
+                                <mat-button-toggle
+                                    class="m-2 font-medium"
+                                    [ngClass]="{
+                                        'bg-gray-300 dark:bg-gray-700':
+                                            option.value ===
+                                            overview.selectedOption,
+                                        'bg-transparent':
+                                            option.value !==
+                                            overview.selectedOption,
+                                    }"
+                                    [value]="option.value"
+                                >
+                                    {{ option.title }}
+                                </mat-button-toggle>
+                            }
                         </mat-button-toggle-group>
                     </div>
                 </div>
                 <!-- Options -->
-                <ng-container
-                    *ngIf="
-                        overview.options[
-                            overview.selectedOption
-                        ] as selectedOption
-                    "
-                >
+                @if (
+                    overview.options[overview.selectedOption];
+                    as selectedOption
+                ) {
                     <div>
                         <!-- Preview -->
                         <div
@@ -100,8 +102,7 @@ export interface PageLayoutsOverviewData {
                                 <div class="flex flex-auto flex-col">
                                     <!-- Header -->
                                     <div
-                                        class="relative z-10 flex h-16 items-center justify-end border-b border-gray-300
-                                               bg-gray-200 px-6 dark:border-gray-700 dark:bg-gray-800 sm:px-10"
+                                        class="relative z-10 flex h-16 items-center justify-end border-b border-gray-300 bg-gray-200 px-6 dark:border-gray-700 dark:bg-gray-800 sm:px-10"
                                     >
                                         <div
                                             class="h-6 w-6 rounded-full bg-gray-300 dark:bg-gray-700"
@@ -141,24 +142,26 @@ export interface PageLayoutsOverviewData {
                                     >
                                 </div>
                             </div>
-                            <div *ngIf="selectedOption.link">
-                                <a
-                                    mat-flat-button
-                                    [color]="'primary'"
-                                    [routerLink]="selectedOption.link"
-                                >
-                                    <mat-icon
-                                        class="icon-size-4"
-                                        [svgIcon]="
-                                            'heroicons_mini:arrow-top-right-on-square'
-                                        "
-                                    ></mat-icon>
-                                    <span class="ml-2">View</span>
-                                </a>
-                            </div>
+                            @if (selectedOption.link) {
+                                <div>
+                                    <a
+                                        mat-flat-button
+                                        [color]="'primary'"
+                                        [routerLink]="selectedOption.link"
+                                    >
+                                        <mat-icon
+                                            class="icon-size-4"
+                                            [svgIcon]="
+                                                'heroicons_mini:arrow-top-right-on-square'
+                                            "
+                                        ></mat-icon>
+                                        <span class="ml-2">View</span>
+                                    </a>
+                                </div>
+                            }
                         </div>
                     </div>
-                </ng-container>
+                }
             </div>
         </div>
     `,
@@ -177,9 +180,7 @@ export interface PageLayoutsOverviewData {
     imports: [
         MatButtonToggleModule,
         FormsModule,
-        NgFor,
         NgClass,
-        NgIf,
         NgComponentOutlet,
         MatButtonModule,
         RouterLink,

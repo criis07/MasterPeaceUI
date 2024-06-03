@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
     templateUrl: './material-components.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [MatButtonModule, MatIconModule, NgFor],
+    imports: [MatButtonModule, MatIconModule],
 })
 export class MaterialComponentsComponent {
     components: any[];

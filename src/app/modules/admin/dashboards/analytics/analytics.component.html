@@ -512,12 +512,11 @@
                 </div>
                 <div class="mt-8">
                     <div class="-my-3 divide-y">
-                        <ng-container
-                            *ngFor="
-                                let dataset of data.newVsReturning.series;
-                                let i = index
-                            "
-                        >
+                        @for (
+                            dataset of data.newVsReturning.series;
+                            track dataset;
+                            let i = $index
+                        ) {
                             <div class="grid grid-cols-3 py-3">
                                 <div class="flex items-center">
                                     <div
@@ -541,7 +540,7 @@
                                     {{ dataset }}%
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
                 </div>
             </div>
@@ -586,12 +585,11 @@
                 </div>
                 <div class="mt-8">
                     <div class="-my-3 divide-y">
-                        <ng-container
-                            *ngFor="
-                                let dataset of data.gender.series;
-                                let i = index
-                            "
-                        >
+                        @for (
+                            dataset of data.gender.series;
+                            track dataset;
+                            let i = $index
+                        ) {
                             <div class="grid grid-cols-3 py-3">
                                 <div class="flex items-center">
                                     <div
@@ -614,7 +612,7 @@
                                     {{ dataset }}%
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
                 </div>
             </div>
@@ -659,12 +657,11 @@
                 </div>
                 <div class="mt-8">
                     <div class="-my-3 divide-y">
-                        <ng-container
-                            *ngFor="
-                                let dataset of data.age.series;
-                                let i = index
-                            "
-                        >
+                        @for (
+                            dataset of data.age.series;
+                            track dataset;
+                            let i = $index
+                        ) {
                             <div class="grid grid-cols-3 py-3">
                                 <div class="flex items-center">
                                     <div
@@ -687,7 +684,7 @@
                                     {{ dataset }}%
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
                 </div>
             </div>
@@ -732,12 +729,11 @@
                 </div>
                 <div class="mt-8">
                     <div class="-my-3 divide-y">
-                        <ng-container
-                            *ngFor="
-                                let dataset of data.language.series;
-                                let i = index
-                            "
-                        >
+                        @for (
+                            dataset of data.language.series;
+                            track dataset;
+                            let i = $index
+                        ) {
                             <div class="grid grid-cols-3 py-3">
                                 <div class="flex items-center">
                                     <div
@@ -761,7 +757,7 @@
                                     {{ dataset }}%
                                 </div>
                             </div>
-                        </ng-container>
+                        }
                     </div>
                 </div>
             </div>

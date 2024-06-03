@@ -27,20 +27,20 @@
                     Change Profile Photo
                 </div>
             </div>
-            <ng-container *ngIf="profile.avatar">
+            @if (profile.avatar) {
                 <img
                     class="h-full w-full rounded-full object-cover"
                     [src]="profile.avatar"
                     [alt]="'Profile avatar'"
                 />
-            </ng-container>
-            <ng-container *ngIf="!profile.avatar">
+            }
+            @if (!profile.avatar) {
                 <div
                     class="flex h-full w-full items-center justify-center rounded-full bg-gray-200 text-8xl font-semibold uppercase text-gray-600 dark:bg-gray-700 dark:text-gray-200"
                 >
                     {{ profile.name.charAt(0) }}
                 </div>
-            </ng-container>
+            }
         </div>
 
         <!-- Profile info -->

@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -42,8 +42,6 @@ import {
         MatRippleModule,
         NgClass,
         MatIconModule,
-        NgIf,
-        NgFor,
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,

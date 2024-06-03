@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,7 +19,7 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [MatButtonModule, MatIconModule, NgIf, NgFor],
+    imports: [MatButtonModule, MatIconModule],
 })
 export class NewChatComponent implements OnInit, OnDestroy {
     @Input() drawer: MatDrawer;

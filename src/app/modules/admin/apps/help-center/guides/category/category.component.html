@@ -17,19 +17,17 @@
             </div>
             <!-- Guides -->
             <div class="mt-8 flex flex-col items-start space-y-2 sm:mt-12">
-                <ng-container
-                    *ngFor="
-                        let guide of guideCategory.guides;
-                        trackBy: trackByFn
-                    "
-                >
+                @for (
+                    guide of guideCategory.guides;
+                    track trackByFn($index, guide)
+                ) {
                     <a
                         class="font-medium text-primary-500 hover:underline"
                         [routerLink]="[guide.slug]"
                     >
                         {{ guide.title }}
                     </a>
-                </ng-container>
+                }
             </div>
         </div>
     </div>

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +19,6 @@ import { Subject, takeUntil } from 'rxjs';
         MatIconModule,
         RouterLink,
         MatExpansionModule,
-        NgFor,
     ],
 })
 export class HelpCenterComponent implements OnInit, OnDestroy {

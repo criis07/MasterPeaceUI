@@ -29,14 +29,14 @@
             </div>
             <!-- Panel links -->
             <div class="flex flex-col divide-y border-b border-t">
-                <ng-container *ngFor="let panel of panels; trackBy: trackByFn">
+                @for (panel of panels; track trackByFn($index, panel)) {
                     <div
                         class="flex cursor-pointer px-8 py-5"
                         [ngClass]="{
                             'dark:hover:bg-hover hover:bg-gray-100':
                                 !selectedPanel || selectedPanel !== panel.id,
                             'bg-primary-50 dark:bg-hover':
-                                selectedPanel && selectedPanel === panel.id
+                                selectedPanel && selectedPanel === panel.id,
                         }"
                         (click)="goToPanel(panel.id)"
                     >
@@ -46,7 +46,7 @@
                                     !selectedPanel ||
                                     selectedPanel !== panel.id,
                                 'text-primary dark:text-primary-500':
-                                    selectedPanel && selectedPanel === panel.id
+                                    selectedPanel && selectedPanel === panel.id,
                             }"
                             [svgIcon]="panel.icon"
                         ></mat-icon>
@@ -56,7 +56,7 @@
                                 [ngClass]="{
                                     'text-primary dark:text-primary-500':
                                         selectedPanel &&
-                                        selectedPanel === panel.id
+                                        selectedPanel === panel.id,
                                 }"
                             >
                                 {{ panel.title }}
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                </ng-container>
+                }
             </div>
         </mat-drawer>
 
@@ -97,28 +97,28 @@
 
                 <!-- Load settings panel -->
                 <div class="mt-8">
-                    <ng-container [ngSwitch]="selectedPanel">
+                    @switch (selectedPanel) {
                         <!-- Account -->
-                        <ng-container *ngSwitchCase="'account'">
+                        @case ('account') {
                             <settings-account></settings-account>
-                        </ng-container>
+                        }
                         <!-- Security -->
-                        <ng-container *ngSwitchCase="'security'">
+                        @case ('security') {
                             <settings-security></settings-security>
-                        </ng-container>
+                        }
                         <!-- Plan & Billing -->
-                        <ng-container *ngSwitchCase="'plan-billing'">
+                        @case ('plan-billing') {
                             <settings-plan-billing></settings-plan-billing>
-                        </ng-container>
+                        }
                         <!-- Notifications -->
-                        <ng-container *ngSwitchCase="'notifications'">
+                        @case ('notifications') {
                             <settings-notifications></settings-notifications>
-                        </ng-container>
+                        }
                         <!-- Team -->
-                        <ng-container *ngSwitchCase="'team'">
+                        @case ('team') {
                             <settings-team></settings-team>
-                        </ng-container>
-                    </ng-container>
+                        }
+                    }
                 </div>
             </div>
         </mat-drawer-content>

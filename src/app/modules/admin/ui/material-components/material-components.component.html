@@ -76,7 +76,7 @@
         <div
             class="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
         >
-            <ng-container *ngFor="let component of components">
+            @for (component of components; track component) {
                 <a
                     class="bg-card flex flex-col overflow-hidden rounded-2xl shadow transition-shadow duration-200 ease-in-out hover:shadow-xl"
                     [href]="
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </a>
-            </ng-container>
+            }
         </div>
     </div>
 </div>

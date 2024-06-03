@@ -26,16 +26,17 @@
             </div>
 
             <!-- Alert -->
-            <fuse-alert
-                class="mt-8"
-                *ngIf="showAlert"
-                [appearance]="'outline'"
-                [showIcon]="false"
-                [type]="alert.type"
-                [@shake]="alert.type === 'error'"
-            >
-                {{ alert.message }}
-            </fuse-alert>
+            @if (showAlert) {
+                <fuse-alert
+                    class="mt-8"
+                    [appearance]="'outline'"
+                    [showIcon]="false"
+                    [type]="alert.type"
+                    [@shake]="alert.type === 'error'"
+                >
+                    {{ alert.message }}
+                </fuse-alert>
+            }
 
             <!-- Sign Up form -->
             <form class="mt-8" [formGroup]="signUpForm" #signUpNgForm="ngForm">
@@ -43,27 +44,23 @@
                 <mat-form-field class="w-full">
                     <mat-label>Full name</mat-label>
                     <input id="name" matInput [formControlName]="'name'" />
-                    <mat-error
-                        *ngIf="signUpForm.get('name').hasError('required')"
-                    >
-                        Full name is required
-                    </mat-error>
+                    @if (signUpForm.get('name').hasError('required')) {
+                        <mat-error> Full name is required </mat-error>
+                    }
                 </mat-form-field>
 
                 <!-- Email field -->
                 <mat-form-field class="w-full">
                     <mat-label>Email address</mat-label>
                     <input id="email" matInput [formControlName]="'email'" />
-                    <mat-error
-                        *ngIf="signUpForm.get('email').hasError('required')"
-                    >
-                        Email address is required
-                    </mat-error>
-                    <mat-error
-                        *ngIf="signUpForm.get('email').hasError('email')"
-                    >
-                        Please enter a valid email address
-                    </mat-error>
+                    @if (signUpForm.get('email').hasError('required')) {
+                        <mat-error> Email address is required </mat-error>
+                    }
+                    @if (signUpForm.get('email').hasError('email')) {
+                        <mat-error>
+                            Please enter a valid email address
+                        </mat-error>
+                    }
                 </mat-form-field>
 
                 <!-- Password field -->
@@ -86,16 +83,18 @@
                         "
                         matSuffix
                     >
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'password'"
-                            [svgIcon]="'heroicons_solid:eye'"
-                        ></mat-icon>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'text'"
-                            [svgIcon]="'heroicons_solid:eye-slash'"
-                        ></mat-icon>
+                        @if (passwordField.type === 'password') {
+                            <mat-icon
+                                class="icon-size-5"
+                                [svgIcon]="'heroicons_solid:eye'"
+                            ></mat-icon>
+                        }
+                        @if (passwordField.type === 'text') {
+                            <mat-icon
+                                class="icon-size-5"
+                                [svgIcon]="'heroicons_solid:eye-slash'"
+                            ></mat-icon>
+                        }
                     </button>
                     <mat-error> Password is required </mat-error>
                 </mat-form-field>
@@ -140,14 +139,15 @@
                     [disabled]="signUpForm.disabled"
                     (click)="signUp()"
                 >
-                    <span *ngIf="!signUpForm.disabled">
-                        Create your free account
-                    </span>
-                    <mat-progress-spinner
-                        *ngIf="signUpForm.disabled"
-                        [diameter]="24"
-                        [mode]="'indeterminate'"
-                    ></mat-progress-spinner>
+                    @if (!signUpForm.disabled) {
+                        <span> Create your free account </span>
+                    }
+                    @if (signUpForm.disabled) {
+                        <mat-progress-spinner
+                            [diameter]="24"
+                            [mode]="'indeterminate'"
+                        ></mat-progress-spinner>
+                    }
                 </button>
             </form>
         </div>

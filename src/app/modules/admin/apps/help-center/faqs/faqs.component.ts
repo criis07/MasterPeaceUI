@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -13,13 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
     templateUrl: './faqs.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [
-        MatButtonModule,
-        RouterLink,
-        MatIconModule,
-        NgFor,
-        MatExpansionModule,
-    ],
+    imports: [MatButtonModule, RouterLink, MatIconModule, MatExpansionModule],
 })
 export class HelpCenterFaqsComponent implements OnInit, OnDestroy {
     faqCategories: FaqCategory[];

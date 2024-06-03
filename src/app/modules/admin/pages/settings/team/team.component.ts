@@ -1,4 +1,4 @@
-import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
+import { TitleCasePipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,8 +23,6 @@ import { MatSelectModule } from '@angular/material/select';
         MatIconModule,
         MatInputModule,
         MatButtonModule,
-        NgFor,
-        NgIf,
         MatSelectModule,
         MatOptionModule,
         TitleCasePipe,

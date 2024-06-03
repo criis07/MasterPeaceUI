@@ -20,14 +20,15 @@
                 class="bg-card mt-8 rounded-2xl p-6 pb-7 shadow sm:mt-12 sm:p-10 sm:pb-7"
             >
                 <!-- Alert -->
-                <fuse-alert
-                    class="mb-8"
-                    *ngIf="alert"
-                    [type]="alert.type"
-                    [showIcon]="false"
-                >
-                    {{ alert.message }}
-                </fuse-alert>
+                @if (alert) {
+                    <fuse-alert
+                        class="mb-8"
+                        [type]="alert.type"
+                        [showIcon]="false"
+                    >
+                        {{ alert.message }}
+                    </fuse-alert>
+                }
                 <form
                     class="space-y-3"
                     [formGroup]="supportForm"
@@ -50,11 +51,9 @@
                             [required]="true"
                         />
                         <mat-label>Name</mat-label>
-                        <mat-error
-                            *ngIf="supportForm.get('name').hasError('required')"
-                        >
-                            Required
-                        </mat-error>
+                        @if (supportForm.get('name').hasError('required')) {
+                            <mat-error> Required </mat-error>
+                        }
                     </mat-form-field>
                     <!-- Email -->
                     <mat-form-field class="w-full">
@@ -65,18 +64,12 @@
                             [required]="true"
                         />
                         <mat-label>Email</mat-label>
-                        <mat-error
-                            *ngIf="
-                                supportForm.get('email').hasError('required')
-                            "
-                        >
-                            Required
-                        </mat-error>
-                        <mat-error
-                            *ngIf="supportForm.get('email').hasError('email')"
-                        >
-                            Enter a valid email address
-                        </mat-error>
+                        @if (supportForm.get('email').hasError('required')) {
+                            <mat-error> Required </mat-error>
+                        }
+                        @if (supportForm.get('email').hasError('email')) {
+                            <mat-error> Enter a valid email address </mat-error>
+                        }
                     </mat-form-field>
                     <!-- Subject -->
                     <mat-form-field class="w-full">
@@ -86,13 +79,9 @@
                             [required]="true"
                         />
                         <mat-label>Subject</mat-label>
-                        <mat-error
-                            *ngIf="
-                                supportForm.get('subject').hasError('required')
-                            "
-                        >
-                            Required
-                        </mat-error>
+                        @if (supportForm.get('subject').hasError('required')) {
+                            <mat-error> Required </mat-error>
+                        }
                     </mat-form-field>
                     <!-- Message -->
                     <mat-form-field class="w-full">
@@ -104,13 +93,9 @@
                             cdkTextareaAutosize
                         ></textarea>
                         <mat-label>Message</mat-label>
-                        <mat-error
-                            *ngIf="
-                                supportForm.get('message').hasError('required')
-                            "
-                        >
-                            Required
-                        </mat-error>
+                        @if (supportForm.get('message').hasError('required')) {
+                            <mat-error> Required </mat-error>
+                        }
                     </mat-form-field>
                     <!-- Actions -->
                     <div class="flex items-center justify-end">

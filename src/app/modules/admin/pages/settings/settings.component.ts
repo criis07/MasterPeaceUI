@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -29,10 +29,7 @@ import { SettingsTeamComponent } from './team/team.component';
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
-        NgFor,
         NgClass,
-        NgSwitch,
-        NgSwitchCase,
         SettingsAccountComponent,
         SettingsSecurityComponent,
         SettingsPlanBillingComponent,

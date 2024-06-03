@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -34,8 +34,6 @@ import { Subject, takeUntil } from 'rxjs';
         MatTabsModule,
         MatButtonToggleModule,
         NgApexchartsModule,
-        NgFor,
-        NgIf,
         MatTableModule,
         NgClass,
         CurrencyPipe,

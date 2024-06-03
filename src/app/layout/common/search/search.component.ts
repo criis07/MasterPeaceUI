@@ -1,5 +1,5 @@
 import { Overlay } from '@angular/cdk/overlay';
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
     Component,
@@ -44,14 +44,12 @@ import { Subject, debounceTime, filter, map, takeUntil } from 'rxjs';
     animations: fuseAnimations,
     standalone: true,
     imports: [
-        NgIf,
         MatButtonModule,
         MatIconModule,
         FormsModule,
         MatAutocompleteModule,
         ReactiveFormsModule,
         MatOptionModule,
-        NgFor,
         RouterLink,
         NgTemplateOutlet,
         MatFormFieldModule,

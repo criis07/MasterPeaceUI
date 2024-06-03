@@ -4,8 +4,6 @@ import {
     DatePipe,
     DecimalPipe,
     NgClass,
-    NgFor,
-    NgIf,
     NgPlural,
     NgPluralCase,
 } from '@angular/common';
@@ -44,12 +42,10 @@ import { Subject, takeUntil } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
-        NgIf,
         MatButtonModule,
         RouterLink,
         MatIconModule,
         MatMenuModule,
-        NgFor,
         MatRippleModule,
         MatCheckboxModule,
         NgClass,

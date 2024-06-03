@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -28,7 +28,6 @@ import { Subject, takeUntil } from 'rxjs';
     standalone: true,
     imports: [
         MatSidenavModule,
-        NgIf,
         NewChatComponent,
         ProfileComponent,
         MatButtonModule,
@@ -36,7 +35,6 @@ import { Subject, takeUntil } from 'rxjs';
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
-        NgFor,
         NgClass,
         RouterLink,
         RouterOutlet,

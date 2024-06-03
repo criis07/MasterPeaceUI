@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,7 +39,6 @@ import { Subject, takeUntil } from 'rxjs';
         ShortcutsComponent,
         MessagesComponent,
         NotificationsComponent,
-        NgIf,
         RouterOutlet,
         QuickChatComponent,
     ],

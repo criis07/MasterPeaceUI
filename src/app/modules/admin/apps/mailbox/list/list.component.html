@@ -1,6 +1,6 @@
 <div class="bg-card relative flex w-full flex-auto dark:bg-transparent">
     <!-- Mails list -->
-    <ng-container *ngIf="mails && mails.length > 0; else noMails">
+    @if (mails && mails.length > 0) {
         <div
             class="relative z-10 flex w-full min-w-0 flex-auto flex-col border-r lg:min-w-90 lg:max-w-90"
         >
@@ -43,7 +43,7 @@
                             '../' +
                                 (pagination.currentPage > 1
                                     ? pagination.currentPage - 1
-                                    : 1)
+                                    : 1),
                         ]"
                     >
                         <mat-icon
@@ -62,7 +62,7 @@
                             '../' +
                                 (pagination.currentPage < pagination.lastPage
                                     ? pagination.currentPage + 1
-                                    : pagination.lastPage)
+                                    : pagination.lastPage),
                         ]"
                     >
                         <mat-icon
@@ -73,23 +73,18 @@
                 </div>
 
                 <!-- Loading bar -->
-                <mat-progress-bar
-                    class="absolute inset-x-0 bottom-0 h-0.5"
-                    *ngIf="mailsLoading"
-                    [mode]="'indeterminate'"
-                ></mat-progress-bar>
+                @if (mailsLoading) {
+                    <mat-progress-bar
+                        class="absolute inset-x-0 bottom-0 h-0.5"
+                        [mode]="'indeterminate'"
+                    ></mat-progress-bar>
+                }
             </div>
 
             <!-- Mail list -->
             <div class="overflow-y-auto" #mailList>
                 <!-- Item loop -->
-                <ng-container
-                    *ngFor="
-                        let mail of mails;
-                        let i = index;
-                        trackBy: trackByFn
-                    "
-                >
+                @for (mail of mails; track trackByFn(i, mail); let i = $index) {
                     <!-- Item -->
                     <a
                         class="relative flex border-t hover:bg-hover first:border-0"
@@ -102,7 +97,7 @@
                             [ngClass]="{
                                 'border-primary': mail.unread,
                                 'bg-primary-50 dark:bg-black dark:bg-opacity-5':
-                                    selectedMail && selectedMail.id === mail.id
+                                    selectedMail && selectedMail.id === mail.id,
                             }"
                         >
                             <!-- Info -->
@@ -112,13 +107,14 @@
                                     {{ mail.from.contact.split('<')[0].trim() }}
                                 </div>
                                 <!-- Important indicator -->
-                                <mat-icon
-                                    class="mr-3 text-red-500 icon-size-4 dark:text-red-600"
-                                    *ngIf="mail.important"
-                                    [svgIcon]="
-                                        'heroicons_solid:exclamation-circle'
-                                    "
-                                ></mat-icon>
+                                @if (mail.important) {
+                                    <mat-icon
+                                        class="mr-3 text-red-500 icon-size-4 dark:text-red-600"
+                                        [svgIcon]="
+                                            'heroicons_solid:exclamation-circle'
+                                        "
+                                    ></mat-icon>
+                                }
                                 <!-- Date -->
                                 <div
                                     class="text-hint ml-auto whitespace-nowrap text-right text-md"
@@ -133,30 +129,35 @@
                                     mail.subject
                                 }}</span>
                                 <!-- Indicators -->
-                                <div
-                                    class="ml-auto flex pl-2"
-                                    *ngIf="
-                                        (mail.attachments &&
-                                            mail.attachments.length > 0) ||
-                                        mail.starred
-                                    "
-                                >
-                                    <!-- Attachments -->
-                                    <mat-icon
-                                        class="flex justify-center icon-size-4"
-                                        *ngIf="
+                                @if (
+                                    (mail.attachments &&
+                                        mail.attachments.length > 0) ||
+                                    mail.starred
+                                ) {
+                                    <div class="ml-auto flex pl-2">
+                                        <!-- Attachments -->
+                                        @if (
                                             mail.attachments &&
                                             mail.attachments.length > 0
-                                        "
-                                        [svgIcon]="'heroicons_solid:paper-clip'"
-                                    ></mat-icon>
-                                    <!-- Starred -->
-                                    <mat-icon
-                                        class="ml-1 flex justify-center text-orange-500 icon-size-4 dark:text-orange-400"
-                                        *ngIf="mail.starred"
-                                        [svgIcon]="'heroicons_solid:star'"
-                                    ></mat-icon>
-                                </div>
+                                        ) {
+                                            <mat-icon
+                                                class="flex justify-center icon-size-4"
+                                                [svgIcon]="
+                                                    'heroicons_solid:paper-clip'
+                                                "
+                                            ></mat-icon>
+                                        }
+                                        <!-- Starred -->
+                                        @if (mail.starred) {
+                                            <mat-icon
+                                                class="ml-1 flex justify-center text-orange-500 icon-size-4 dark:text-orange-400"
+                                                [svgIcon]="
+                                                    'heroicons_solid:star'
+                                                "
+                                            ></mat-icon>
+                                        }
+                                    </div>
+                                }
                             </div>
 
                             <!-- Excerpt -->
@@ -167,13 +168,10 @@
                             </div>
                         </div>
                     </a>
-                </ng-container>
+                }
             </div>
         </div>
-    </ng-container>
-
-    <!-- No mails template -->
-    <ng-template #noMails>
+    } @else {
         <div
             class="z-100 absolute inset-0 flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
         >
@@ -187,19 +185,21 @@
                 There are no e-mails
             </div>
         </div>
-    </ng-template>
+    }
+
+    <!-- No mails template -->
 
     <!-- Mail details -->
-    <ng-container *ngIf="mails && mails.length > 0">
+    @if (mails && mails.length > 0) {
         <div
             class="flex-auto"
             [ngClass]="{
                 'absolute inset-0 z-20 flex lg:static lg:inset-auto':
                     selectedMail && selectedMail.id,
-                'hidden lg:flex': !selectedMail || !selectedMail.id
+                'hidden lg:flex': !selectedMail || !selectedMail.id,
             }"
         >
             <router-outlet></router-outlet>
         </div>
-    </ng-container>
+    }
 </div>

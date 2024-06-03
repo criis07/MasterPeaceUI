@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
     templateUrl: './guides.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [MatButtonModule, RouterLink, MatIconModule, NgFor, NgIf],
+    imports: [MatButtonModule, RouterLink, MatIconModule],
 })
 export class HelpCenterGuidesComponent implements OnInit, OnDestroy {
     guideCategories: GuideCategory[];

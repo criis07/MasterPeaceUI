@@ -1,10 +1,4 @@
-import {
-    AsyncPipe,
-    DatePipe,
-    NgFor,
-    NgIf,
-    TitleCasePipe,
-} from '@angular/common';
+import { AsyncPipe, DatePipe, TitleCasePipe } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -24,15 +18,7 @@ import { Observable } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [
-        NgIf,
-        NgFor,
-        MatIconModule,
-        RouterLink,
-        AsyncPipe,
-        TitleCasePipe,
-        DatePipe,
-    ],
+    imports: [MatIconModule, RouterLink, AsyncPipe, TitleCasePipe, DatePipe],
 })
 export class ActivitiesComponent implements OnInit {
     activities$: Observable<Activity[]>;

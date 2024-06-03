@@ -1,4 +1,4 @@
-import { I18nPluralPipe, NgIf } from '@angular/common';
+import { I18nPluralPipe } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
@@ -10,7 +10,7 @@ import { AuthService } from 'app/core/auth/auth.service';
     encapsulation: ViewEncapsulation.None,
     animations: fuseAnimations,
     standalone: true,
-    imports: [NgIf, RouterLink, I18nPluralPipe],
+    imports: [RouterLink, I18nPluralPipe],
 })
 export class SignOutSplitScreenComponent {
     countdown: number = 5;

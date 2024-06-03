@@ -51,16 +51,14 @@
                         (selectionChange)="filterByCategory($event)"
                     >
                         <mat-option [value]="'all'">All</mat-option>
-                        <ng-container
-                            *ngFor="
-                                let category of categories;
-                                trackBy: trackByFn
-                            "
-                        >
+                        @for (
+                            category of categories;
+                            track trackByFn($index, category)
+                        ) {
                             <mat-option [value]="category.slug">{{
                                 category.title
                             }}</mat-option>
-                        </ng-container>
+                        }
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field
@@ -88,16 +86,14 @@
                 </mat-slide-toggle>
             </div>
             <!-- Courses -->
-            <ng-container *ngIf="this.filteredCourses.length; else noCourses">
+            @if (this.filteredCourses.length) {
                 <div
                     class="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3"
                 >
-                    <ng-container
-                        *ngFor="
-                            let course of filteredCourses;
-                            trackBy: trackByFn
-                        "
-                    >
+                    @for (
+                        course of filteredCourses;
+                        track trackByFn($index, course)
+                    ) {
                         <!-- Course -->
                         <div
                             class="bg-card flex h-96 flex-col overflow-hidden rounded-2xl shadow"
@@ -105,14 +101,13 @@
                             <div class="flex flex-col p-6">
                                 <div class="flex items-center justify-between">
                                     <!-- Course category -->
-                                    <ng-container
-                                        *ngIf="
-                                            course.category
-                                                | fuseFindByKey
-                                                    : 'slug'
-                                                    : categories as category
-                                        "
-                                    >
+                                    @if (
+                                        course.category
+                                            | fuseFindByKey
+                                                : 'slug'
+                                                : categories;
+                                        as category
+                                    ) {
                                         <div
                                             class="rounded-full px-3 py-0.5 text-sm font-semibold"
                                             [ngClass]="{
@@ -123,19 +118,16 @@
                                                 'bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-pink-50':
                                                     category.slug === 'cloud',
                                                 'bg-amber-100 text-amber-800 dark:bg-amber-500 dark:text-amber-50':
-                                                    category.slug === 'firebase'
+                                                    category.slug ===
+                                                    'firebase',
                                             }"
                                         >
                                             {{ category.title }}
                                         </div>
-                                    </ng-container>
+                                    }
                                     <!-- Completed at least once -->
                                     <div class="flex items-center">
-                                        <ng-container
-                                            *ngIf="
-                                                course.progress.completed > 0
-                                            "
-                                        >
+                                        @if (course.progress.completed > 0) {
                                             <mat-icon
                                                 class="text-green-600 icon-size-5"
                                                 [svgIcon]="
@@ -145,7 +137,7 @@
                                                     'You completed this course at least once'
                                                 "
                                             ></mat-icon>
-                                        </ng-container>
+                                        }
                                     </div>
                                 </div>
                                 <!-- Course title & description -->
@@ -178,42 +170,35 @@
                                             'heroicons_solid:academic-cap'
                                         "
                                     ></mat-icon>
-                                    <ng-container
-                                        *ngIf="course.progress.completed === 0"
-                                    >
+                                    @if (course.progress.completed === 0) {
                                         <div class="ml-1.5">
                                             Never completed
                                         </div>
-                                    </ng-container>
-                                    <ng-container
-                                        *ngIf="course.progress.completed > 0"
-                                    >
+                                    }
+                                    @if (course.progress.completed > 0) {
                                         <div class="ml-1.5">
                                             <span>Completed</span>
                                             <span class="ml-1">
                                                 <!-- Once -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        course.progress
-                                                            .completed === 1
-                                                    "
-                                                    >once</ng-container
-                                                >
+                                                @if (
+                                                    course.progress
+                                                        .completed === 1
+                                                ) {
+                                                    once
+                                                }
                                                 <!-- Twice -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        course.progress
-                                                            .completed === 2
-                                                    "
-                                                    >twice</ng-container
-                                                >
+                                                @if (
+                                                    course.progress
+                                                        .completed === 2
+                                                ) {
+                                                    twice
+                                                }
                                                 <!-- Others -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        course.progress
-                                                            .completed > 2
-                                                    "
-                                                    >{{
+                                                @if (
+                                                    course.progress.completed >
+                                                    2
+                                                ) {
+                                                    {{
                                                         course.progress
                                                             .completed
                                                     }}
@@ -224,13 +209,13 @@
                                                                 : {
                                                                       '=0': 'time',
                                                                       '=1': 'time',
-                                                                      other: 'times'
+                                                                      other: 'times',
                                                                   }
                                                     }}
-                                                </ng-container>
+                                                }
                                             </span>
                                         </div>
-                                    </ng-container>
+                                    }
                                 </div>
                             </div>
                             <!-- Footer -->
@@ -266,41 +251,32 @@
                                     >
                                         <span class="inline-flex items-center">
                                             <!-- Not started -->
-                                            <ng-container
-                                                *ngIf="
-                                                    course.progress
-                                                        .currentStep === 0
-                                                "
-                                            >
+                                            @if (
+                                                course.progress.currentStep ===
+                                                0
+                                            ) {
                                                 <!-- Never completed -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        course.progress
-                                                            .completed === 0
-                                                    "
-                                                >
+                                                @if (
+                                                    course.progress
+                                                        .completed === 0
+                                                ) {
                                                     <span>Start</span>
-                                                </ng-container>
+                                                }
                                                 <!-- Completed before -->
-                                                <ng-container
-                                                    *ngIf="
-                                                        course.progress
-                                                            .completed > 0
-                                                    "
-                                                >
+                                                @if (
+                                                    course.progress.completed >
+                                                    0
+                                                ) {
                                                     <span>Start again</span>
-                                                </ng-container>
-                                            </ng-container>
+                                                }
+                                            }
 
                                             <!-- Started -->
-                                            <ng-container
-                                                *ngIf="
-                                                    course.progress
-                                                        .currentStep > 0
-                                                "
-                                            >
+                                            @if (
+                                                course.progress.currentStep > 0
+                                            ) {
                                                 <span>Continue</span>
-                                            </ng-container>
+                                            }
 
                                             <mat-icon
                                                 class="ml-1.5 icon-size-5"
@@ -313,12 +289,9 @@
                                 </div>
                             </div>
                         </div>
-                    </ng-container>
+                    }
                 </div>
-            </ng-container>
-
-            <!-- No courses -->
-            <ng-template #noCourses>
+            } @else {
                 <div
                     class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
                 >
@@ -332,7 +305,9 @@
                         No courses found!
                     </div>
                 </div>
-            </ng-template>
+            }
+
+            <!-- No courses -->
         </div>
     </div>
 </div>

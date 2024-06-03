@@ -21,25 +21,25 @@
                 [formControlName]="'plan'"
                 #planRadioGroup="matRadioGroup"
             >
-                <ng-container *ngFor="let plan of plans; trackBy: trackByFn">
+                @for (plan of plans; track trackByFn($index, plan)) {
                     <mat-radio-button [value]="plan.value"></mat-radio-button>
-                </ng-container>
+                }
             </mat-radio-group>
-            <ng-container *ngFor="let plan of plans; trackBy: trackByFn">
+            @for (plan of plans; track trackByFn($index, plan)) {
                 <div
                     class="bg-card relative flex cursor-pointer flex-col items-start justify-start rounded-md p-6 shadow"
                     [ngClass]="{
                         'ring ring-inset ring-primary':
-                            planRadioGroup.value === plan.value
+                            planRadioGroup.value === plan.value,
                     }"
                     (click)="planRadioGroup.value = plan.value"
                 >
-                    <ng-container *ngIf="planRadioGroup.value === plan.value">
+                    @if (planRadioGroup.value === plan.value) {
                         <mat-icon
                             class="absolute right-0 top-0 mr-3 mt-3 text-primary icon-size-7"
                             [svgIcon]="'heroicons_solid:check-circle'"
                         ></mat-icon>
-                    </ng-container>
+                    }
                     <div class="font-semibold">{{ plan.label }}</div>
                     <div class="text-secondary mt-1 whitespace-normal">
                         {{ plan.details }}
@@ -52,7 +52,7 @@
                         <span class="text-secondary"> / month</span>
                     </div>
                 </div>
-            </ng-container>
+            }
         </div>
 
         <!-- Divider -->

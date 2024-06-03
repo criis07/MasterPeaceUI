@@ -56,7 +56,7 @@
                     'bg-green-200 text-green-800 dark:bg-green-500 dark:text-green-100':
                         card.dueDate && !isOverdue(card.dueDate),
                     'bg-red-200 text-red-800 dark:bg-red-500 dark:text-red-100':
-                        card.dueDate && isOverdue(card.dueDate)
+                        card.dueDate && isOverdue(card.dueDate),
                 }"
                 (click)="dueDatePicker.open()"
             >
@@ -65,10 +65,12 @@
                     [svgIcon]="'heroicons_solid:calendar'"
                 ></mat-icon>
                 <span class="ml-2 text-md font-medium">
-                    <ng-container *ngIf="card.dueDate">{{
-                        card.dueDate | date: 'longDate'
-                    }}</ng-container>
-                    <ng-container *ngIf="!card.dueDate">Not set</ng-container>
+                    @if (card.dueDate) {
+                        {{ card.dueDate | date: 'longDate' }}
+                    }
+                    @if (!card.dueDate) {
+                        Not set
+                    }
                 </span>
                 <mat-form-field
                     class="fuse-mat-dense pointer-events-none invisible absolute inset-0 -mt-2.5 opacity-0"
@@ -127,9 +129,10 @@
                 <!-- Available labels -->
                 <div class="max-h-40 overflow-y-auto border-t leading-none">
                     <!-- Labels -->
-                    <ng-container
-                        *ngFor="let label of filteredLabels; trackBy: trackByFn"
-                    >
+                    @for (
+                        label of filteredLabels;
+                        track trackByFn($index, label)
+                    ) {
                         <mat-checkbox
                             class="flex h-10 min-h-10 items-center pl-1 pr-4"
                             [color]="'primary'"
@@ -138,7 +141,7 @@
                         >
                             {{ label.title }}
                         </mat-checkbox>
-                    </ng-container>
+                    }
                 </div>
             </div>
         </div>

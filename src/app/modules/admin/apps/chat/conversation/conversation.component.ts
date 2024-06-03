@@ -1,11 +1,5 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import {
-    DatePipe,
-    NgClass,
-    NgFor,
-    NgIf,
-    NgTemplateOutlet,
-} from '@angular/common';
+import { DatePipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -38,14 +32,12 @@ import { Subject, takeUntil } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
-        NgIf,
         MatSidenavModule,
         ContactInfoComponent,
         MatButtonModule,
         RouterLink,
         MatIconModule,
         MatMenuModule,
-        NgFor,
         NgClass,
         NgTemplateOutlet,
         MatFormFieldModule,

@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -31,9 +31,7 @@ import { FuseAlertComponent } from '@fuse/components/alert';
         ReactiveFormsModule,
         FuseAlertComponent,
         MatRadioModule,
-        NgFor,
         NgClass,
-        NgIf,
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
     FormsModule,
@@ -24,7 +23,6 @@ import { FuseValidators } from '@fuse/validators';
     animations: fuseAnimations,
     standalone: true,
     imports: [
-        NgIf,
         FuseAlertComponent,
         FormsModule,
         ReactiveFormsModule,

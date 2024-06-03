@@ -2,8 +2,6 @@ import {
     CurrencyPipe,
     DecimalPipe,
     NgClass,
-    NgFor,
-    NgIf,
     UpperCasePipe,
 } from '@angular/common';
 import {
@@ -37,14 +35,12 @@ import { Subject, takeUntil } from 'rxjs';
     standalone: true,
     imports: [
         MatSidenavModule,
-        NgFor,
         MatIconModule,
         NgClass,
         NgApexchartsModule,
         MatFormFieldModule,
         MatSelectModule,
         MatOptionModule,
-        NgIf,
         FormsModule,
         MatInputModule,
         MatButtonModule,
