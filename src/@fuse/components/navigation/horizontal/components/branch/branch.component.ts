@@ -1,5 +1,5 @@
 import { BooleanInput } from '@angular/cdk/coercion';
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -27,11 +27,9 @@ import { Subject, takeUntil } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [
-        NgIf,
         NgClass,
         MatMenuModule,
         NgTemplateOutlet,
-        NgFor,
         FuseHorizontalNavigationBasicItemComponent,
         forwardRef(() => FuseHorizontalNavigationBranchItemComponent),
         FuseHorizontalNavigationDividerItemComponent,

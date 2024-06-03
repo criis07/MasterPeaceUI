@@ -1,5 +1,5 @@
 import { BooleanInput } from '@angular/cdk/coercion';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -33,9 +33,7 @@ import { Subject, filter, takeUntil } from 'rxjs';
     imports: [
         NgClass,
         MatTooltipModule,
-        NgIf,
         MatIconModule,
-        NgFor,
         FuseVerticalNavigationBasicItemComponent,
         forwardRef(() => FuseVerticalNavigationCollapsableItemComponent),
         FuseVerticalNavigationDividerItemComponent,

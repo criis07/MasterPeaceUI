@@ -1,4 +1,4 @@
-import { NgClass, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -29,7 +29,6 @@ import { Subject, takeUntil } from 'rxjs';
     standalone: true,
     imports: [
         NgClass,
-        NgIf,
         RouterLink,
         RouterLinkActive,
         MatTooltipModule,

@@ -1,6 +1,6 @@
 <div class="relative flex h-full w-full flex-col">
     <!-- Dismiss button -->
-    <ng-container *ngIf="data.dismissible">
+    @if (data.dismissible) {
         <div class="absolute right-0 top-0 pr-4 pt-4">
             <button mat-icon-button [matDialogClose]="undefined">
                 <mat-icon
@@ -9,14 +9,14 @@
                 ></mat-icon>
             </button>
         </div>
-    </ng-container>
+    }
 
     <!-- Content -->
     <div
         class="flex flex-auto flex-col items-center p-8 pb-6 sm:flex-row sm:items-start sm:pb-8"
     >
         <!-- Icon -->
-        <ng-container *ngIf="data.icon.show">
+        @if (data.icon.show) {
             <div
                 class="flex h-10 w-10 flex-0 items-center justify-center rounded-full sm:mr-4"
                 [ngClass]="{
@@ -35,7 +35,7 @@
                     'bg-amber-100 text-amber-500 dark:bg-amber-500 dark:text-amber-50':
                         data.icon.color === 'warning',
                     'bg-red-100 text-red-600 dark:bg-red-600 dark:text-red-50':
-                        data.icon.color === 'error'
+                        data.icon.color === 'error',
                 }"
             >
                 <mat-icon
@@ -43,45 +43,45 @@
                     [svgIcon]="data.icon.name"
                 ></mat-icon>
             </div>
-        </ng-container>
+        }
 
-        <ng-container *ngIf="data.title || data.message">
+        @if (data.title || data.message) {
             <div
                 class="mt-4 flex flex-col items-center space-y-1 text-center sm:mt-0 sm:items-start sm:pr-8 sm:text-left"
             >
                 <!-- Title -->
-                <ng-container *ngIf="data.title">
+                @if (data.title) {
                     <div
                         class="text-xl font-medium leading-6"
                         [innerHTML]="data.title"
                     ></div>
-                </ng-container>
+                }
 
                 <!-- Message -->
-                <ng-container *ngIf="data.message">
+                @if (data.message) {
                     <div
                         class="text-secondary"
                         [innerHTML]="data.message"
                     ></div>
-                </ng-container>
+                }
             </div>
-        </ng-container>
+        }
     </div>
 
     <!-- Actions -->
-    <ng-container *ngIf="data.actions.confirm.show || data.actions.cancel.show">
+    @if (data.actions.confirm.show || data.actions.cancel.show) {
         <div
             class="flex items-center justify-center space-x-3 bg-gray-50 px-6 py-4 dark:bg-black dark:bg-opacity-10 sm:justify-end"
         >
             <!-- Cancel -->
-            <ng-container *ngIf="data.actions.cancel.show">
+            @if (data.actions.cancel.show) {
                 <button mat-stroked-button [matDialogClose]="'cancelled'">
                     {{ data.actions.cancel.label }}
                 </button>
-            </ng-container>
+            }
 
             <!-- Confirm -->
-            <ng-container *ngIf="data.actions.confirm.show">
+            @if (data.actions.confirm.show) {
                 <button
                     mat-flat-button
                     [color]="data.actions.confirm.color"
@@ -89,7 +89,7 @@
                 >
                     {{ data.actions.confirm.label }}
                 </button>
-            </ng-container>
+            }
         </div>
-    </ng-container>
+    }
 </div>

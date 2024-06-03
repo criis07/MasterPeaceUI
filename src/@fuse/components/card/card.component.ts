@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
+
 import {
     Component,
     HostBinding,
@@ -19,7 +19,7 @@ import { FuseCardFace } from '@fuse/components/card/card.types';
     animations: fuseAnimations,
     exportAs: 'fuseCard',
     standalone: true,
-    imports: [NgIf],
+    imports: [],
 })
 export class FuseCardComponent implements OnChanges {
     /* eslint-disable @typescript-eslint/naming-convention */

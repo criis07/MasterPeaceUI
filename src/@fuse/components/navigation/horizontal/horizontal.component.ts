@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -30,8 +29,6 @@ import { FuseHorizontalNavigationSpacerItemComponent } from './components/spacer
     exportAs: 'fuseHorizontalNavigation',
     standalone: true,
     imports: [
-        NgFor,
-        NgIf,
         FuseHorizontalNavigationBasicItemComponent,
         FuseHorizontalNavigationBranchItemComponent,
         FuseHorizontalNavigationSpacerItemComponent,

@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
+
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -35,7 +35,7 @@ import { Subject, filter, takeUntil } from 'rxjs';
     animations: fuseAnimations,
     exportAs: 'fuseAlert',
     standalone: true,
-    imports: [NgIf, MatIconModule, MatButtonModule],
+    imports: [MatIconModule, MatButtonModule],
 })
 export class FuseAlertComponent implements OnChanges, OnInit, OnDestroy {
     /* eslint-disable @typescript-eslint/naming-convention */

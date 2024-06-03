@@ -6,7 +6,7 @@ import {
 } from '@angular/animations';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { DOCUMENT, NgFor, NgIf } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -67,8 +67,6 @@ import {
     standalone: true,
     imports: [
         FuseScrollbarDirective,
-        NgFor,
-        NgIf,
         FuseVerticalNavigationAsideItemComponent,
         FuseVerticalNavigationBasicItemComponent,
         FuseVerticalNavigationCollapsableItemComponent,
