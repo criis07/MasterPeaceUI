@@ -1067,19 +1067,19 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 ],
             },
             {
-                id: 'navigation-features.level.0',
+                id: 'navigation-features.level.0-with-subtitle',
                 title: 'Level 0',
                 subtitle: 'With subtitle',
                 icon: 'heroicons_outline:check-circle',
                 type: 'collapsable',
                 children: [
                     {
-                        id: 'navigation-features.level.0.1-1',
+                        id: 'navigation-features.level.0.1-1-with-subtitle',
                         title: 'Level 1.1',
                         type: 'basic',
                     },
                     {
-                        id: 'navigation-features.level.0.1-2',
+                        id: 'navigation-features.level.0.1-2-with-subtitle',
                         title: 'Level 1.2',
                         type: 'basic',
                     },
@@ -1179,7 +1179,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         title: 'Apps',
         tooltip: 'Apps',
         type: 'aside',
-        icon: 'heroicons_outline:qrcode',
+        icon: 'heroicons_outline:squares-2x2',
         children: [], // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
@@ -1259,7 +1259,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         id: 'apps',
         title: 'Apps',
         type: 'group',
-        icon: 'heroicons_outline:qrcode',
+        icon: 'heroicons_outline:squares-2x2',
         children: [], // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
     {
