@@ -1003,20 +1003,10 @@
 
     .mat-mdc-menu-content {
         .mat-mdc-menu-item {
-            display: flex;
-            align-items: center;
-
-            > span {
-                display: inline-flex;
+            .mat-mdc-menu-item-text {
+                display: flex;
                 align-items: center;
-            }
-
-            &.mat-mdc-menu-item-submenu-trigger {
-                padding-right: 40px;
-            }
-
-            .mat-icon {
-                margin-right: 12px;
+                padding-right: 16px;
             }
 
             .mat-icon-no-color {
