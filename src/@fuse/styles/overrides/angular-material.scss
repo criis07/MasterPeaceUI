@@ -1107,6 +1107,7 @@
 
         .mat-mdc-select-arrow {
             margin: 0 0 0 8px;
+            @apply text-secondary #{!important};
         }
     }
 }
