@@ -14,7 +14,7 @@ export class ChangelogComponent {
         // v20.0.0
         {
             version: 'v20.0.0',
-            releaseDate: 'May 27, 2024',
+            releaseDate: 'Jun 04, 2024',
             changes: [
                 {
                     type: 'Changed',
@@ -22,12 +22,18 @@ export class ChangelogComponent {
                         '(Dependencies) Updated Angular & Angular Material to v18',
                         '(Dependencies) Updated other packages',
                         'Moved the project to the new "application" builder',
+                        'Moved assets to "/public" folder',
+                        'Added prettier and re-formatted entire codebase with it',
+                        'Moved to the new control flow syntax (@if, @for, @switch, and etc.)',
                     ],
                 },
                 {
                     type: 'Fixed',
                     list: [
                         '(apps/mailbox) "filter" renamed to "funnel" accidentally',
+                        'Missing/renamed icons on navigation',
+                        'Mat-select icon color',
+                        'Mat-menu misalignment and size issues',
                     ],
                 },
             ],
