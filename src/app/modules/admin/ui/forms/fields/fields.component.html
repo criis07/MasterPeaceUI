@@ -161,7 +161,11 @@
                     <mat-label>Label</mat-label>
                     <input matInput />
                 </mat-form-field>
-                <mat-form-field [ngClass]="formFieldHelpers" class="w-full">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="w-full"
+                    floatLabel="always"
+                >
                     <mat-label>Label and Placeholder</mat-label>
                     <input matInput [placeholder]="'Placeholder'" />
                 </mat-form-field>
