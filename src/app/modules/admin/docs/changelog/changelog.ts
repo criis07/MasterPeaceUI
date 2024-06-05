@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -849,9 +847,4 @@ export class ChangelogComponent {
             ],
         },
     ];
-
-    /**
-     * Constructor
-     */
-    constructor() {}
 }
