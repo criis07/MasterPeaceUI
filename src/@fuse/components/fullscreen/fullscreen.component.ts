@@ -1,5 +1,12 @@
 import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    TemplateRef,
+    ViewEncapsulation,
+    inject,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -11,17 +18,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'fuseFullscreen',
     standalone: true,
-    imports: [MatButtonModule, MatTooltipModule, NgTemplateOutlet, MatIconModule],
+    imports: [
+        MatButtonModule,
+        MatTooltipModule,
+        NgTemplateOutlet,
+        MatIconModule,
+    ],
 })
-export class FuseFullscreenComponent
-{
+export class FuseFullscreenComponent {
+    private _document = inject(DOCUMENT);
+
     @Input() iconTpl: TemplateRef<any>;
     @Input() tooltip: string;
-
-    /**
-     * Constructor
-     */
-    constructor(@Inject(DOCUMENT) private _document: Document) { }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
@@ -30,10 +38,8 @@ export class FuseFullscreenComponent
     /**
      * Toggle the fullscreen mode
      */
-    toggleFullscreen(): void
-    {
-        if (!this._document.fullscreenEnabled)
-        {
+    toggleFullscreen(): void {
+        if (!this._document.fullscreenEnabled) {
             console.log('Fullscreen is not available in this browser.');
             return;
         }
@@ -42,17 +48,12 @@ export class FuseFullscreenComponent
         const fullScreen = this._document.fullscreenElement;
 
         // Toggle the fullscreen
-        if (fullScreen)
-        {
+        if (fullScreen) {
             this._document.exitFullscreen();
-        }
-        else
-        {
-            this._document.documentElement.requestFullscreen()
-                .catch(() =>
-                {
-                    console.error('Entering fullscreen mode failed.');
-                });
+        } else {
+            this._document.documentElement.requestFullscreen().catch(() => {
+                console.error('Entering fullscreen mode failed.');
+            });
         }
     }
 }
