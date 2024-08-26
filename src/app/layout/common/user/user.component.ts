@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'app/core/user/user.service';
 import { User } from 'app/core/user/user.types';
 import { Subject, takeUntil } from 'rxjs';
+import { getAvatarImageSrc } from 'Utils/image.utils';
 
 @Component({
     selector: 'user',
@@ -71,6 +72,9 @@ export class UserComponent implements OnInit, OnDestroy {
             });
     }
 
+    getAvatarImage(): string {
+        return getAvatarImageSrc(this.user.avatar);
+      }
     /**
      * On destroy
      */

@@ -67,11 +67,14 @@ export class AuthSignUpComponent implements OnInit {
         // Create the form
         this.signUpForm = this._formBuilder.group({
             name: ['', Validators.required],
+            lastname: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
+            confirmPassword: ['',Validators.required],
             company: [''],
-            agreements: ['', Validators.requiredTrue],
+            agreements: [''],
         });
+        
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -84,6 +87,14 @@ export class AuthSignUpComponent implements OnInit {
     signUp(): void {
         // Do nothing if the form is invalid
         if (this.signUpForm.invalid) {
+            return;
+        }
+        if(!this.signUpForm.value.agreements){
+            this.alert = {
+                type: 'warning',
+                message: 'Debe aceptar los términos y políticas de privacidad',
+            };
+            this.showAlert = true;
             return;
         }
 
@@ -109,7 +120,7 @@ export class AuthSignUpComponent implements OnInit {
                 // Set the alert
                 this.alert = {
                     type: 'error',
-                    message: 'Something went wrong, please try again.',
+                    message: 'Ha ocurrido un error, si el problema persiste contacte con soporte técnico!',
                 };
 
                 // Show the alert

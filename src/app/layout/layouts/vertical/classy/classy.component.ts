@@ -21,6 +21,7 @@ import { SearchComponent } from 'app/layout/common/search/search.component';
 import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 import { UserComponent } from 'app/layout/common/user/user.component';
 import { Subject, takeUntil } from 'rxjs';
+import { getAvatarImageSrc } from '../../../../../Utils/image.utils';
 
 @Component({
     selector: 'classy-layout',
@@ -102,6 +103,10 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy {
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
     }
+
+    getAvatarImage(): string {
+        return getAvatarImageSrc(this.user.avatar);
+      }
 
     /**
      * On destroy

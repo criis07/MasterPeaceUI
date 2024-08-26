@@ -77,7 +77,7 @@ export class AuthMockApi {
             .onPost('api/auth/sign-in-with-token')
             .reply(({ request }) => {
                 // Get the access token
-                const accessToken = request.body.accessToken;
+                const accessToken = request.body.token;
 
                 // Verify the token
                 if (this._verifyJWTToken(accessToken)) {

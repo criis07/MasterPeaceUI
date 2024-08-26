@@ -2,7 +2,7 @@
 <button mat-icon-button [matMenuTriggerFor]="userActions">
     <span class="relative">
         @if (showAvatar && user.avatar) {
-            <img class="h-7 w-7 rounded-full" [src]="user.avatar" />
+            <img class="h-7 w-7 rounded-full" [src]="getAvatarImage()" />
         }
         @if (!showAvatar || !user.avatar) {
             <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
