@@ -8,6 +8,7 @@ import {
     vendors as vendorsData,
 } from 'app/mock-api/apps/ecommerce/inventory/data';
 import { assign, cloneDeep } from 'lodash-es';
+import { ProductDetail } from '../../../../modules/products/products.types';
 
 @Injectable({ providedIn: 'root' })
 export class ECommerceInventoryMockApi {
@@ -162,25 +163,21 @@ export class ECommerceInventoryMockApi {
             .reply(() => {
                 // Generate a new product
                 const newProduct = {
-                    id: FuseMockApiUtils.guid(),
-                    category: '',
-                    name: 'A New Product',
-                    description: '',
-                    tags: [],
-                    sku: '',
-                    barcode: '',
-                    brand: '',
-                    vendor: '',
-                    stock: '',
-                    reserved: '',
-                    cost: '',
-                    basePrice: '',
-                    taxPercent: '',
-                    price: '',
-                    weight: '',
-                    thumbnail: '',
-                    images: [],
-                    active: false,
+                    productId: FuseMockApiUtils.guid(),
+                    productCodeId: '',
+                    importDate: '',
+                    batchId: '',
+                    available: false,
+                    productDetails: [
+                        {
+                            productImage: null,
+                            amount: '',
+                            productDetailId: '',                   
+                            productId: '',
+                            productModel: '',
+                            unitaryPrice: ''
+                        }
+                        ],
                 };
 
                 // Unshift the new product

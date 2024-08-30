@@ -1,0 +1,48 @@
+<div
+    class="bg-card flex min-w-0 flex-auto flex-col dark:bg-transparent sm:absolute sm:inset-0 sm:overflow-hidden"
+>
+
+    <!-- Header -->
+    <div
+        class="relative flex flex-0 flex-col border-b px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-8"
+    >
+            <!-- Loader -->
+            @if (isLoading) {
+                <div class="absolute inset-x-0 bottom-0">
+                    <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+                </div>
+            }
+
+            <!-- Title -->
+            <div class="text-4xl font-extrabold tracking-tight">Categorias y lotes</div>
+            <!-- Actions -->
+            <div class="mt-6 flex shrink-0 items-center sm:ml-4 sm:mt-0">
+                <!-- Search -->
+                <mat-form-field
+                    class="fuse-mat-dense fuse-mat-rounded min-w-64"
+                    [subscriptSizing]="'dynamic'"
+                >
+                    <mat-icon
+                        class="icon-size-5"
+                        matPrefix
+                        [svgIcon]="'heroicons_solid:magnifying-glass'"
+                    ></mat-icon>
+                    <input
+                        matInput
+                        [formControl]="searchInputControl"
+                        [autocomplete]="'off'"
+                        [placeholder]="'Search products'"
+                    />
+                </mat-form-field>
+                <!-- Add product button -->
+                <button
+                    class="ml-4"
+                    mat-flat-button
+                    [color]="'primary'"
+                    (click)="createCatalog()"
+                >
+                    <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                    <span class="ml-2 mr-1">Add</span>
+                </button>
+            </div>
+        </div>
